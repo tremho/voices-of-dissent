@@ -1,0 +1,38 @@
+{
+  "name": "UploadInitiate",
+  "description": "Initiates the start of a new file upload",
+  "version": "1.0.0",
+  "pathMap": "/initiate",
+  "method": "POST",
+  "timeoutSeconds": 0,
+  "memorySize": 0,
+  "schemas": {
+    "Metadata": {
+      "artistId": "string",
+      "artistName": "string",
+      "title": "string",
+      "description": "string",
+      "attributions": "string",
+      "artFileName": "string",
+      "audioFileName": "string"
+    },
+    "IdResponse": {
+      "metaId":  "string",
+      "artId":  "string",
+      "audioId": "string"
+    }
+
+  },
+  "parameters": [
+  ],
+  "returns": {
+    "200": {
+      "type": "IdResponse",
+      "description": "successful response."
+    },
+    "500": {
+      "type": "string",
+      "description": "Error details"
+    }
+  }
+}

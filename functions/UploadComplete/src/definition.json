@@ -1,0 +1,39 @@
+{
+  "name": "UploadComplete",
+  "description": "",
+  "version": "1.0.0",
+  "pathMap": "/complete/{uploadId}/{fileKey}",
+  "method": "GET",
+  "timeoutSeconds": 0,
+  "memorySize": 0,
+  "schemas": {
+    "Response": {
+      "url": "string",
+      "uploadId": "string"
+    }
+  },
+  "parameters": [
+    {
+      "name": "uploadId",
+      "type": "string",
+      "in": "path",
+      "description": "The uploadId for this asset obtained from UploadInitiate action"
+    },
+    {
+      "name": "fileKey",
+      "type": "string",
+      "in": "path",
+      "description": "the key for this file. use ':' as a substitute for '/'"
+    }
+  ],
+  "returns": {
+    "200": {
+      "type": "Response",
+      "description": "successful response. Url will be the accessible url of the asset"
+    },
+    "500": {
+      "type": "string",
+      "description": "Error details"
+    }
+  }
+}

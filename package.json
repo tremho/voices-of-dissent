@@ -1,0 +1,31 @@
+{
+  "name": "voices-of-dissent",
+  "version": "1.0.0-prerelease.1",
+  "description": "a site for sharing songs of protest or hope",
+  "author": "tremho",
+  "copyright": "(C) 2025 tremho. All rights reserved.",
+  "license": "MIT",
+  "devDependencies": {
+    "@tremho/tap-assert": "^1.0.5",
+    "@types/aws-sdk": "^0.0.42",
+    "@types/node": "^22.13.10",
+    "@types/react-dom": "^19.0.4",
+    "tap": "^21.1.0"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.772.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.8",
+    "@tremho/basic-s3-actions": "^2.3.8",
+    "@tremho/coverterage": "^1.0.5",
+    "@tremho/idtbd": "^1.0.1",
+    "@tremho/inverse-y": "^2.1.9",
+    "base64-js": "^1.5.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-dropzone": "^14.3.8",
+    "react-router-dom": "^7.4.0",
+    "typescript": "^5.8.2"
+  }
+}

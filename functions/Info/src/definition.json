@@ -1,0 +1,44 @@
+{
+  "name": "Info",
+  "description": "sets and returns information recorded for a logged in user",
+  "version": "1.0.0",
+  "pathMap": "/info/{id}/{name}/{email}",
+  "method": "GET",
+  "timeoutSeconds": 0,
+  "memorySize": 0,
+  "schemas": {
+    "Response": {
+      "artistName": "string"
+    }
+  },
+  "parameters": [
+    {
+      "name": "id",
+      "type": "string",
+      "in": "path",
+      "description": "id of logged in user"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "in": "path",
+      "description": "name of user as returned by identity (may be empty)"
+    },
+    {
+      "name": "email",
+      "type": "string",
+      "in": "path",
+      "description": "email of logged in user as returned by identity"
+    }
+  ],
+  "returns": {
+    "200": {
+      "type": "Response",
+      "description": "successful response."
+    },
+    "500": {
+      "type": "string",
+      "description": "Error details"
+    }
+  }
+}

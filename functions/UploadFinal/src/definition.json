@@ -1,0 +1,42 @@
+{
+  "name": "UploadFinal",
+  "description": "",
+  "version": "1.0.0",
+  "pathMap": "/finalize",
+  "method": "POST",
+  "timeoutSeconds": 0,
+  "memorySize": 0,
+  "schemas": {
+  },
+  "parameters": [
+    {
+      "name": "metaId",
+      "in": "body",
+      "type": "string",
+      "description": "the metaId of the top level object to bind to"
+    },
+    {
+      "name": "audioUrl",
+      "in": "body",
+      "type": "string",
+      "description": "the url of the audio asset"
+    },
+    {
+      "name": "artUrl",
+      "in": "body",
+      "type": "string",
+      "description": "the url of the cover art asset"
+    }
+
+  ],
+  "returns": {
+    "200": {
+      "type": "empty",
+      "description": "successful response."
+    },
+    "500": {
+      "type": "string",
+      "description": "Error details"
+    }
+  }
+}

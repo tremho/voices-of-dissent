@@ -1,0 +1,14 @@
+{
+  "port": 8081,
+  "rebuildFunctionsOnChange": true,
+  "refreshBrowserOnFunctionChange": false,
+  "refreshBrowserOnWebrootChange": true,
+  "esbuild": {
+    "watch": true,
+    "entryPoints": [
+      "app/app.tsx"
+    ],
+    "metafile": true,
+    "outdir": "webroot"
+  }
+}

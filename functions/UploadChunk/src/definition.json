@@ -1,0 +1,45 @@
+{
+  "name": "UploadChunk",
+  "description": "uploads a chunk of data in a multi-chunk file transfer. data in body",
+  "version": "1.0.0",
+  "pathMap": "/chunk/{uploadId}/{fileKey}/{chunkIndex}",
+  "method": "POST",
+  "timeoutSeconds": 0,
+  "memorySize": 0,
+  "schemas": {
+    "Response": {
+      "etag": "string",
+      "index": "number"
+    }
+  },
+  "parameters": [
+    {
+      "name": "uploadId",
+      "type": "string",
+      "in": "path",
+      "description": "The uploadId for this asset obtained from UploadInitiate action"
+    },
+    {
+      "name": "fileKey",
+      "type": "string",
+      "in": "path",
+      "description": "the key for this file. use ':' as a substitute for '/'"
+    },
+    {
+      "name": "chunkIndex",
+      "type": "number",
+      "in": "path",
+      "description": "the index of the chunk order for this chunk"
+    }
+  ],
+  "returns": {
+    "200": {
+      "type": "Response",
+      "description": "successful response."
+    },
+    "500": {
+      "type": "string",
+      "description": "Error details"
+    }
+  }
+}

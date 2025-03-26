@@ -1,0 +1,23 @@
+{
+  "name": "Covers",
+  "description": "returns array of at least three cover art selections to use for main page",
+  "version": "1.0.0",
+  "pathMap": "/covers",
+  "method": "GET",
+  "timeoutSeconds": 0,
+  "memorySize": 0,
+  "schemas": {
+  },
+  "parameters": [
+  ],
+  "returns": {
+    "200": {
+      "type": "empty",
+      "description": "successful response."
+    },
+    "500": {
+      "type": "string",
+      "description": "Error details"
+    }
+  }
+}
