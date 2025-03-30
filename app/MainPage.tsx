@@ -123,7 +123,7 @@ export default function MainPage() {
                         <Grid item>
                             <Paper sx={{padding: 2, backgroundColor: "#bdbdbd"}}>
                                 {/*<Typography variant="h6">Left Section 3</Typography>*/}
-                                <ListenPrompt/>
+                                <ListenPrompt userIdentity={identity?.userIdentity}/>
                             </Paper>
                         </Grid>
                     </Grid>

@@ -49,11 +49,11 @@ export function SharePrompt(props) {
         <p>
             This site is dedicated to the sharing of music, poetry, and other creative audio media contributed by users.
             <br/>
-            If you are a musician and can record a performance of either an original or a cover song that captures a spirit of resistance, or a thread of hope, or a reminder of humanity then please contribute to this collection.
+            If you are a musician and can record a performance of either an original or a licensed cover song that captures a spirit of resistance, or a thread of hope, or a reminder of humanity then please contribute to this collection.
             <br/>
             If you prefer poetry, or similar lyrical recitals, share that. The idea is to express ourselves and our feelings with audio content.
             <br/>
-        </p>
+        </p><br/>
         <Button variant={"contained"} onClick={goUpload}>Share your voice</Button>
         </>
 

@@ -1,0 +1,52 @@
+{
+  "name": "Like",
+  "description": "(PUT) return number of likes, optionally adding or subtracting to count",
+  "version": "1.0.0",
+  "pathMap": "/like/{likerId}/{artistId}/{contentId}/{likeType}",
+  "method": "PUT",
+  "timeoutSeconds": 0,
+  "memorySize": 0,
+  "schemas": {
+    "Response": {
+      "like": "boolean",
+      "numLikes": "number"
+    }
+  },
+  "parameters": [
+    {
+      "name": "likerId",
+      "in": "path",
+      "type": "string",
+      "description": "the userIdentity of the one doing the liking"
+    },
+    {
+      "name": "artistId",
+      "in": "path",
+      "type": "string",
+      "description": "the id of the artist (metaId)"
+    },
+    {
+      "name": "contentId",
+      "in": "path",
+      "type": "string",
+      "description": "the id of the content data"
+    },
+    {
+      "name": "likeType",
+      "in": "path",
+      "type": "string",
+      "description": "'like' to add, 'dislike' to subtract, other to return without adding or subtracting first"
+    }
+
+  ],
+  "returns": {
+    "200": {
+      "type": "Response",
+      "description": "successful response."
+    },
+    "500": {
+      "type": "string",
+      "description": "Error details"
+    }
+  }
+}

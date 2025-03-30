@@ -1,0 +1,29 @@
+{
+  "name": "Skips",
+  "description": "Records the items marked as skipped for this user. array of skip ids is in body",
+  "version": "1.0.0",
+  "pathMap": "/skips/{identity}",
+  "method": "POST",
+  "timeoutSeconds": 0,
+  "memorySize": 0,
+  "schemas": {
+  },
+  "parameters": [
+    {
+      "name": "identity",
+      "type": "string",
+      "in": "path",
+      "description": "defines the user to record skips for"
+    }
+  ],
+  "returns": {
+    "200": {
+      "type": "empty",
+      "description": "successful response."
+    },
+    "500": {
+      "type": "string",
+      "description": "Error details"
+    }
+  }
+}

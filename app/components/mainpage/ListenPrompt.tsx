@@ -3,10 +3,18 @@ import React from 'react'
 import {Button} from '@mui/material'
 
 
-export function ListenPrompt() {
+let userIdentity = ''
+
+function goListen() {
+    console.log("Oh, Oh, Oh... Listen to the music")
+    location.href='/?page=listen&id='+(userIdentity ?? '')
+}
+
+export function ListenPrompt(props) {
+    userIdentity = props.userIdentity
     return (
         <>
-            <Button variant={"contained"}>Hear the voices</Button>
+            <Button variant={"contained"} onClick={goListen}>Hear the voices</Button>
             <p>
                 <br/>
                 Need a soundtrack for the times we are experiencing to help you get through the day? Look no futher.

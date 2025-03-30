@@ -4,12 +4,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import MainPage from './MainPage'
 import UploadPage from './UploadPage'
+import ListenPage from './ListenPage'
 
 let pageComp = <MainPage />
 
 const routes = {
     home: <MainPage />,
-    upload: <UploadPage />
+    upload: <UploadPage />,
+    listen: <ListenPage />
 }
 
 // route to the page directed by the ?page= query parameter

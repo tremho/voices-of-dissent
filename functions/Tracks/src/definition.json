@@ -1,0 +1,36 @@
+{
+  "name": "Tracks",
+  "description": "returns",
+  "version": "1.0.0",
+  "pathMap": "/tracks/{artist}/{id}",
+  "method": "GET",
+  "timeoutSeconds": 0,
+  "memorySize": 0,
+  "schemas": {
+  },
+  "parameters": [
+    {
+      "name": "artist",
+      "in": "path",
+      "type": "string",
+      "description": "if defined, it's the artist id part of info identification"
+    },
+    {
+      "name": "id",
+      "in": "path",
+      "type": "string",
+      "description": "must be defined if artist is defined and is the timestamp/id key of the info object"
+    }
+
+  ],
+  "returns": {
+    "200": {
+      "type": "empty",
+      "description": "successful response."
+    },
+    "500": {
+      "type": "string",
+      "description": "Error details"
+    }
+  }
+}

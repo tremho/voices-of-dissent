@@ -1,0 +1,306 @@
+openapi: 3.0.0
+info:
+  title: voices-of-dissent
+  version: 1.0.0-prerelease.1
+paths:
+  /covers:
+    get:
+      summary: Covers
+      description: returns array of at least three cover art selections to use for main page
+      responses:
+        "200":
+          description: successful response.
+          content:
+            text/plain: {}
+  /info/{id}/{name}/{email}:
+    get:
+      summary: Info
+      description: sets and returns information recorded for a logged in user
+      responses:
+        "200":
+          description: successful response.
+          content:
+            text/plain: {}
+    parameters:
+      - in: path
+        name: id
+        description: id of logged in user
+        example: ""
+        schema:
+          type: string
+          example: ""
+      - in: path
+        name: name
+        description: name of user as returned by identity (may be empty)
+        example: ""
+        schema:
+          type: string
+          example: ""
+      - in: path
+        name: email
+        description: email of logged in user as returned by identity
+        example: ""
+        schema:
+          type: string
+          example: ""
+  /like/{likerId}/{artistId}/{contentId}/{likeType}:
+    put:
+      summary: Like
+      description: (PUT) return number of likes, optionally adding or subtracting to count
+      responses:
+        "200":
+          description: successful response.
+          content:
+            text/plain: {}
+    parameters:
+      - in: path
+        name: likerId
+        description: the userIdentity of the one doing the liking
+        example: ""
+        schema:
+          type: string
+          example: ""
+      - in: path
+        name: artistId
+        description: the id of the artist (metaId)
+        example: ""
+        schema:
+          type: string
+          example: ""
+      - in: path
+        name: contentId
+        description: the id of the content data
+        example: ""
+        schema:
+          type: string
+          example: ""
+      - in: path
+        name: likeType
+        description: "'like' to add, 'dislike' to subtract, other to return without
+          adding or subtracting first"
+        example: ""
+        schema:
+          type: string
+          example: ""
+  /secrets:
+    get:
+      summary: Secrets
+      description: Returns the secrets for this app as a full json object
+      responses:
+        "200":
+          description: json object
+          content:
+            text/plain: {}
+  /skips/{identity}:
+    post:
+      summary: Skips
+      description: Records the items marked as skipped for this user. array of skip
+        ids is in body
+      responses:
+        "200":
+          description: successful response.
+          content:
+            text/plain: {}
+    parameters:
+      - in: path
+        name: identity
+        description: defines the user to record skips for
+        example: ""
+        schema:
+          type: string
+          example: ""
+  /tracks/{artist}/{id}:
+    get:
+      summary: Tracks
+      description: returns
+      responses:
+        "200":
+          description: successful response.
+          content:
+            text/plain: {}
+    parameters:
+      - in: path
+        name: artist
+        description: if defined, it's the artist id part of info identification
+        example: ""
+        schema:
+          type: string
+          example: ""
+      - in: path
+        name: id
+        description: must be defined if artist is defined and is the timestamp/id key of
+          the info object
+        example: ""
+        schema:
+          type: string
+          example: ""
+  /chunk/{uploadId}/{fileKey}/{chunkIndex}:
+    post:
+      summary: UploadChunk
+      description: uploads a chunk of data in a multi-chunk file transfer. data in body
+      responses:
+        "200":
+          description: successful response.
+          content:
+            text/plain: {}
+    parameters:
+      - in: path
+        name: uploadId
+        description: The uploadId for this asset obtained from UploadInitiate action
+        example: ""
+        schema:
+          type: string
+          example: ""
+      - in: path
+        name: fileKey
+        description: the key for this file. use ':' as a substitute for '/'
+        example: ""
+        schema:
+          type: string
+          example: ""
+      - in: path
+        name: chunkIndex
+        description: the index of the chunk order for this chunk
+        example: ""
+        schema:
+          type: number
+          example: ""
+  /complete/{uploadId}/{fileKey}:
+    get:
+      summary: UploadComplete
+      description: ""
+      responses:
+        "200":
+          description: successful response. Url will be the accessible url of the asset
+          content:
+            text/plain: {}
+    parameters:
+      - in: path
+        name: uploadId
+        description: The uploadId for this asset obtained from UploadInitiate action
+        example: ""
+        schema:
+          type: string
+          example: ""
+      - in: path
+        name: fileKey
+        description: the key for this file. use ':' as a substitute for '/'
+        example: ""
+        schema:
+          type: string
+          example: ""
+  /finalize:
+    post:
+      summary: UploadFinal
+      description: ""
+      responses:
+        "200":
+          description: successful response.
+          content:
+            text/plain: {}
+    parameters:
+      - in: body
+        name: metaId
+        description: the metaId of the top level object to bind to
+        example: ""
+        schema:
+          type: string
+          example: ""
+      - in: body
+        name: audioUrl
+        description: the url of the audio asset
+        example: ""
+        schema:
+          type: string
+          example: ""
+      - in: body
+        name: artUrl
+        description: the url of the cover art asset
+        example: ""
+        schema:
+          type: string
+          example: ""
+  /initiate:
+    post:
+      summary: UploadInitiate
+      description: Initiates the start of a new file upload
+      responses:
+        "200":
+          description: successful response.
+          content:
+            text/plain: {}
+components:
+  schemas:
+    Empty:
+      title: Empty Schema
+      type: object
+    Response:
+      title: Response
+      type: object
+      properties:
+        url:
+          schema:
+            type: string
+            example: ""
+        uploadId:
+          schema:
+            type: string
+            example: ""
+    Metadata:
+      title: Metadata
+      type: object
+      properties:
+        artistId:
+          schema:
+            type: string
+            example: ""
+        artistName:
+          schema:
+            type: string
+            example: ""
+        title:
+          schema:
+            type: string
+            example: ""
+        description:
+          schema:
+            type: string
+            example: ""
+        attributions:
+          schema:
+            type: string
+            example: ""
+        artFileName:
+          schema:
+            type: string
+            example: ""
+        audioFileName:
+          schema:
+            type: string
+            example: ""
+    IdResponse:
+      title: IdResponse
+      type: object
+      properties:
+        metaId:
+          schema:
+            type: string
+            example: ""
+        artId:
+          schema:
+            type: string
+            example: ""
+        audioId:
+          schema:
+            type: string
+            example: ""
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}
+tags: []
+servers: []
