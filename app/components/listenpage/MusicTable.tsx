@@ -9,13 +9,17 @@ import {
     TableHead,
     TableRow,
     TableSortLabel,
-    TextField
+    TextField,
+    Typography
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import MusicNoteIcon from "@mui/icons-material/MusicNote"
 
 export const MusicTable = (props) => {
     const data = props?.data
     const reportBack = props.reportBack
+    const identity = props.identity
+
     const setSelectedData = props.setSelectedData
     const [orderBy, setOrderBy] = useState(null);
     const [order, setOrder] = useState(null);
@@ -23,6 +27,11 @@ export const MusicTable = (props) => {
     const [selectedRow, setSelectedRow] = useState(null);
     const [skippedIds, setSkippedIds] = useState([])
     const [fetchedSkip, setFetchedSkip] = useState(false)
+    const [ref, setSongRef] = useState(props.ref)
+
+    // console.log("-------------REF---------")
+    // console.log(ref)
+    // console.log("-------------------------")
 
     const containerRef = useRef(null);
     const itemRefs = useRef({});
@@ -50,10 +59,10 @@ export const MusicTable = (props) => {
 
     let killTimer:any
     async function updateIdentitySkips(skipArray = skippedIds, noBody = false, ) {
-        console.warn('------updateIdentitySkips-------', skipArray)
+        // console.warn('------updateIdentitySkips-------', skipArray)
         if(killTimer) return
         killTimer = setTimeout(async () => {
-            const skipsUrl = `/skips/${props.identity}`
+            const skipsUrl = `/skips/${identity}`
             const sids = Array.isArray(skipArray) ? skipArray : []
             const body = {skippedIds: sids}
             const resp = await fetch(skipsUrl, {
@@ -61,20 +70,20 @@ export const MusicTable = (props) => {
                 headers: {"Content-Type": "application/json"},
                 body: noBody ? undefined : JSON.stringify(body)
             })
-            console.log("updateIdentitySkips - ", {body, noBody, sids, skippedIds})
+            // console.log("updateIdentitySkips - ", {body, noBody, sids, skippedIds})
             const skresp:any = await resp.json()
             const skipped = skresp?.skipped ?? []
-            console.warn("Skipped returned from updateIdentitySkips", skipped)
+            // console.warn("Skipped returned from updateIdentitySkips", skipped)
             setSkippedIds(skipped)
             killTimer = null
-            console.warn('---------------------------------')
+            // console.warn('---------------------------------')
         }, 500);
     }
 
 
     const filteredData = useMemo(() => {
-        console.log("DATA before filtering:", data);
-        console.log("Current search:", search);
+        // console.log("DATA before filtering:", data);
+        // console.log("Current search:", search);
 
         if (!Array.isArray(data) || data.length === 0) return [];
 
@@ -87,7 +96,7 @@ export const MusicTable = (props) => {
             })
         );
 
-        console.log("Filtered Data:", result);
+        // console.log("Filtered Data:", result);
         return result;
     }, [data, search]);
 
@@ -123,6 +132,7 @@ export const MusicTable = (props) => {
     }
 
     function isSkipped(row) {
+        if(!identity) return false
         // console.log("skippedIds", skippedIds)
         const i = Array(...skippedIds).findIndex(id => id === row.id)
         const skip = i !== -1
@@ -130,16 +140,17 @@ export const MusicTable = (props) => {
         return skip
     }
     function toggleSkip(row) {
-        console.log("toggleSkip", row.id, {skippedIds});
+        if(!identity) return;
+        // console.log("toggleSkip", row.id, {skippedIds});
 
         setSkippedIds((prevSkipped) => {
             const prev = Array(...prevSkipped).filter(id => typeof id === 'string')
-            console.log("setSkippedIds", prev)
+            // console.log("setSkippedIds", prev)
             const newSkipped = prev.includes(row.id)
                 ? prev.filter(id => id !== row.id) // Remove if already skipped
                 : [...prev, row.id]; // Add if not skipped
 
-            console.log("Updated skippedIds", {newSkipped});
+            // console.log("Updated skippedIds", {newSkipped});
             setTimeout(() => updateIdentitySkips(newSkipped), 1000)
             return newSkipped; // Ensure React sees it as a new array
         });
@@ -157,15 +168,25 @@ export const MusicTable = (props) => {
     };
 
     const handleRowClick = (e, id) => {
-        const onSkip = e.target.nodeName === "INPUT"
-        console.log('handleRowClick', onSkip)
+        const onSkip = e?.target?.nodeName === "INPUT"
+        // console.log('handleRowClick', onSkip)
         if(onSkip) return;
         const selectedData = sortedData.find(row => row.id === id) || {};
         setSelectedRow(id);
         setSelectedData(selectedData);
+        // console.log("row click data", {id, sortedData, selectedRow, selectedData})
     };
 
-    console.log(">>> ", {data, filteredData, sortedData})
+    if(ref && sortedData?.length) {
+        // console.log(">>handling ref<<")
+        const sr = ref
+        setSongRef('')
+        setTimeout(() => {
+            handleRowClick(null, sr)
+        },500)
+    }
+
+    // console.log(">>> ", {data, filteredData, sortedData})
     return (
         <div style={{ minHeight: 420, maxHeight: 420, overflowY: "scroll" }} ref={containerRef}>
             <Table stickyHeader>
@@ -207,10 +228,26 @@ export const MusicTable = (props) => {
                             onClick={(e) => handleRowClick(e, row.id)}
                             sx={{ backgroundColor: selectedRow === row.id ? "pink" : "inherit" }}
                         >
-                            <TableCell><Avatar src={row.artUrl} variant="square" /></TableCell>
+                            <TableCell>
+                                <Avatar src={row.artUrl || undefined} variant="square">
+                                    {!row.artUrl && <MusicNoteIcon />}
+                                </Avatar>
+                            </TableCell>
                             <TableCell>{row.artistName}</TableCell>
                             <TableCell>{row.title}</TableCell>
-                            <TableCell>{row.description}</TableCell>
+                            <TableCell>
+                                <Typography
+                                    sx={{
+                                        display: '-webkit-box',
+                                        WebkitLineClamp: 2,
+                                        WebkitBoxOrient: 'vertical',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                    }}
+                                >
+                                    {row.description}
+                                </Typography>
+                            </TableCell>
                             <TableCell><Checkbox checked={isSkipped(row)} onClick={() =>{toggleSkip(row)}} /></TableCell>
                         </TableRow>
                     ))}

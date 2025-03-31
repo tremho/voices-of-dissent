@@ -14,7 +14,7 @@ import {TrackInfo} from "./components/listenpage/TrackInfo"
 let reported:any
 function reportBack(n:any) {
     reported = n
-    console.warn("reported", {reported})
+    // console.warn("reported", {reported})
 
 }
 
@@ -24,30 +24,36 @@ export default function ListenPage(props:any) {
     const [selectedData, setSelectedData] = useState<TrackData>(props.selectedData)
 
     function advanceRow() {
-        console.warn("sanity check called", {reported})
+        // console.warn("sanity check called", {reported})
         reported?.advanceToNextRow()
     }
 
     function getPassedId() {
         const params = new URLSearchParams(document.location.search)
         let id = params.get("id")?.toLowerCase().trim()
-        // console.log("passed Id= "+id)
+        console.log("ListenPage was passed Id= "+id)
         return id
+    }
+    function getPassedTrackRef() {
+        const params = new URLSearchParams(document.location.search)
+        let ref = params.get("ref")?.toLowerCase().trim()
+        return ref
+
     }
 
     useEffect(() => {
         if(!trackData?.length) {
-            console.log('fetching tracks')
+            // console.log('fetching tracks')
             fetch('/tracks/').then(async resp => {
                 const data = await resp.json()
-                console.log(`${data.length} tracks returned`, {data})
+                // console.log(`${data.length} tracks returned`, {data})
                 setTrackData(data)
-                console.log("tracks set", {trackData})
+                // console.log("tracks set", {trackData})
             })
 
         }
     })
-    console.log(">> tracks set", {trackData})
+    // console.log(">> tracks set", {trackData})
     return(
         <>
             <h1>Voices of Dissent</h1>
@@ -56,7 +62,7 @@ export default function ListenPage(props:any) {
                 {/* Top Sections */}
                 <Grid item xs={12} md={6}>
                 <Paper sx={{ p: 2, minHeight: 150 }}>
-                    <MusicTable data={trackData} identity={getPassedId()} setSelectedData={setSelectedData}  reportBack={reportBack} />
+                    <MusicTable ref={getPassedTrackRef()} data={trackData} identity={getPassedId()} setSelectedData={setSelectedData}  reportBack={reportBack} />
                 </Paper>
                 </Grid>
                 <Grid item xs={12} md={6}>
@@ -67,11 +73,11 @@ export default function ListenPage(props:any) {
 
             {/* Bottom Sections */}
                 <Grid item xs={12} md={6}>
-                    <Paper sx={{ p: 2, minHeight: 200 }}>
-                        <div style={{width:"50%"}}>
-                            Possible future home of comments
-                        </div>
-                    </Paper>
+                    {/*<Paper sx={{ p: 2, minHeight: 200 }}>*/}
+                    {/*    <div style={{width:"50%"}}>*/}
+                    {/*        Possible future home of comments*/}
+                    {/*    </div>*/}
+                    {/*</Paper>*/}
                 </Grid>
                 <Grid item xs={12} md={6}>
                 <Paper sx={{ p: 2, minHeight: 200 }}>

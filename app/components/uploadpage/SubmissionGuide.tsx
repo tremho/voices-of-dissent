@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Container, Typography, Paper, Checkbox, FormControlLabel, Button } from "@mui/material";
 
-export function SubmissionGuidelines({ onProceed }) {
+export function SubmissionGuidelines({ onProceed, active }) {
     const [acknowledged, setAcknowledged] = useState(false);
 
-    if(!acknowledged) {
+    if(active && !acknowledged) {
         return (
             <Container maxWidth="md" sx={{mt: 4}}>
                 <Paper elevation={3} sx={{p: 4, textAlign: "center"}}>
@@ -15,14 +15,7 @@ export function SubmissionGuidelines({ onProceed }) {
                         Before submitting your content, please ensure that it adheres to the following guidelines:
                     </Typography>
                     <ul style={{textAlign: "left"}}>
-                        <li>Content must be original and not infringe on any copyrights.</li>
-                        <li>Cover material will require an assertion in the attribution section that proper copyrights have been obtained.
-                        see these sources for example: <a target="_blank" rel="noopener noreferrer" href={"https://bandzoogle.com/blog/covering-a-song-legally-a-guide-to-respecting-copyright-and-creating-music"}>
-                                Covering a song legally (bandzoogle.com)
-                            </a> and <a target="_blank" rel="noopener noreferrer" href={"https://pirate.com/en/blog/cover-song-licensing/"}>
-                                Cover Song Licensing Explained (pirate.com)
-                            </a>
-                        </li>
+                        <li>Content must not infringe on any copyrights.</li>
                         <li>No directly offensive, harmful, or illegal material is allowed.</li>
                         <li>Ensure proper formatting and clear descriptions.</li>
                         <li>By submitting, you grant permission for content review.</li>

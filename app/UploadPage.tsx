@@ -9,6 +9,7 @@ import {SubmissionMetadata} from "../commonLib/SubmissionMetadata";
 import {SubmissionGuidelines} from "./components/uploadpage/SubmissionGuide";
 
 import {mimeMatch} from "../commonLib/MimeType";
+import {LoadingSpinner} from "./components/LoadingSpinner";
 
 // TODO: Need to find a better, global way to do this. Maybe inverse-y can fetch JSON from self instead of using 'fs'
 function getAssetUrl(idPath) {
@@ -26,20 +27,59 @@ function getPassedId() {
     return id
 }
 
+function getEditId() {
+    const params = new URLSearchParams(document.location.search)
+    let edit = params.get("edit")?.toLowerCase().trim()
+    if (edit) {
+        let id = params.get("id")?.toLowerCase().trim()
+        return id + '/' + edit
+    }
+    return ''
+}
+
 export default function UploadPage() {
+    // console.log("Entering UploadPage")
     const [inputs, setInputs]  =  useState({})
     const [imageFile, setImageFile] = useState<File | null>(null)
     const [audioFile, setAudioFile] = useState<File | null>(null)
     const [idInfo, setIdInfo] = useState(null)
+    const [uploading, setUploading] = useState(false)
+    const [editId, setEditId] = useState(getEditId())
+    const [editFetched, setEditFetched] = useState(false)
+    const [editArtUrl, setEditArtUrl] = useState('')
+    const [editAudioUrl, setEditAudioUrl] = useState('')
+
+    // console.log("UploadPage 2")
 
     async function asyncUseEffect() {
+        // console.log("UploadPage asyncUseEffect", {idInfo, editId, editFetched})
         if(!idInfo) {
             const id = getPassedId()
+            // console.log("Upload Page Fetching info/"+id);
             const ir = await fetch(`info/${id}`)
             const info = await ir.json()
+            if(info.artistName === 'undefined') info.artistName = ''
             setIdInfo(info)
-            console.log("fetched for upload form", {info, idInfo})
+            // console.log("fetched for upload form", {info, idInfo})
         }
+        if(editId && !editFetched) {
+            // console.log("getting edit info for "+editId)
+            const er = await fetch(`tracks/${editId}`)
+            const info = await er.json()
+            // console.log("edit info returned ", {info})
+            setEditFetched(true)
+            const values = {
+                name: info.artistName,
+                title: info.title,
+                desc: info.description,
+                attr: info.attributions
+            }
+            setInputs(values)
+            // console.log("assets urls ", {art: info.artUrl, audio: info.audioUrl})
+            if(info.artUrl) setEditArtUrl(info.artUrl)
+            if(info.audioUrl) setEditAudioUrl(info.audioUrl)
+        }
+        // console.log("done with asyncUseEffect")
     }
     React.useEffect(() => {
         asyncUseEffect()
@@ -95,21 +135,57 @@ export default function UploadPage() {
         setInputs(values => ({...values, [id]: value}))
     }
     function handleSubmit(event) {
-        // console.log("submitting...", {event})
-        // console.log("inputs", inputs)
-        // console.log("files", {imageFile, audioFile})
+        console.log("submitting...")
+        console.log("inputs", inputs)
+        console.log("files", {imageFile, audioFile})
+
+        if(editId) {
+            console.warn("Submitting an edit update for "+editId)
+        }
+
+        function pick(name) {
+            const idany:any = idInfo as any
+            return idany[name] ?? inputs[name]
+        }
+        setUploading(true)
         const info:SubmissionMetadata = new SubmissionMetadata()
         info.artistId = getPassedId()
-        info.artistName = inputs['name']
-        info.title = inputs['title']
-        info.description = inputs['desc']
-        info.attributions = inputs['attr']
+        info.artistName = pick('artistName') ?? pick('name')
+        info.title = pick('title')
+        info.description = pick('desc')
+        info.attributions = pick('attr')
         info.artFile = imageFile
         info.audioFile = audioFile
 
-        conductSubmission(info).then(resp => {
+        if(!info.artistName) {
+            setUploading(false)
+            alert('you must include a value for artist name')
+            return
+        }
+        if(!info.title) {
+            setUploading(false)
+            alert('you must include a title for the content')
+            return
+        }
+        if(!info.audioFile && !editId) {
+            setUploading(false)
+            alert("you didn't attach an audio file for your content!")
+            return
+        }
+
+        conductSubmission(info, editId).then(resp => {
             // console.warn('conductSubmission completes with response', {resp})
-            fetch(`/info/${info.artistId}/${info.artistName}`) // update artist name
+            // console.log(`writing artistName via /info/${info.artistId}/${info.artistName}`)
+            fetch(`/info/${info.artistId}/${info.artistName}`).then(() => { // update artist name
+                setUploading(false)
+                if(editId) {
+                    alert('update complete!')
+                    location.href = '/?page=listen&id='+getPassedId()+"&ref="+editId
+                } else {
+                    alert('upload complete!')
+                    location.href = '/?page=listen&id='+getPassedId()
+                }
+            })
         })
     }
     function handleUpload(file:File) {
@@ -146,24 +222,26 @@ export default function UploadPage() {
     // acceptedImageTypes = it.join(',')
     // acceptedAudioTypes = at.join(',')
 
+    // console.log("UploadPage rendering")
     return (
         <>
             <div style={background}>
                 <div style={blur}>
-                    <SubmissionGuidelines />
+                    <LoadingSpinner active={uploading}/>
+                    <SubmissionGuidelines active={editId ? false : true}/>
                     <div style={content}>
                         <h1>Upload your content!</h1>
                         <Typography style={heading} variant={"h6"}>
                             Please enter the following information about your submission
                         </Typography>
-                        <p style={{height:"50px"}}/>
+                        <p style={{height:"20px"}}/>
                         <Typography style={heading} variant={"h6"}>Your name to be published</Typography>
                         <form onSubmit={handleSubmit}>
                             <TextField
                                 slotProps={slotProps}
-                                sx={{
+                                sx={idInfo?.artistName ? {
                                     "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" },
-                                }}
+                                } : {}}
                                 defaultValue={idInfo?.artistName ?? '' ?? inputs['name'] ?? ''}
                                 required={true}
                                 error={inError.name}
@@ -173,10 +251,11 @@ export default function UploadPage() {
                                 variant="outlined"
                                 onChange={handleChange}
                             />
-                            <p style={{height:"20px"}}/>
+                            <p style={{height:"10px"}}/>
                             <Typography style={heading} variant={"h6"}>Give your creation a title</Typography>
                             <TextField
                                 slotProps={slotProps}
+                                sx = {inputs['title'] ? {"& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" }} : {}}
                                 defaultValue={inputs['title']}
                                 required={true}
                                 error={inError.title}
@@ -186,10 +265,11 @@ export default function UploadPage() {
                                 variant="outlined"
                                 onChange={handleChange}
                             />
-                            <p style={{height:"20px"}}/>
+                            <p style={{height:"10px"}}/>
                             <Typography style={heading} variant={"h6"}>Describe the material and how it came to be</Typography>
                             <TextField
                                 slotProps={slotProps}
+                                sx = {inputs['desc'] ? {"& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" }} : {}}
                                 defaultValue={inputs['desc']}
                                 required={false}
                                 error={inError.desc}
@@ -203,10 +283,11 @@ export default function UploadPage() {
                                 fullWidth={true}
                                 onChange={handleChange}
                             />
-                            <p style={{height:"20px"}}/>
+                            <p style={{height:"10px"}}/>
                             <Typography style={heading} variant={"h6"}>Give any credits due here, list copyrights, etc</Typography>
                             <TextField
                                 slotProps={slotProps}
+                                sx = {inputs['attr'] ? {"& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" }} : {}}
                                 defaultValue={inputs['attr']}
                                 required={false}
                                 error={inError.attr}
@@ -220,18 +301,47 @@ export default function UploadPage() {
                                 fullWidth={true}
                                 onChange={handleChange}
                             />
-                            <p style={{height:"20px"}}/>
+                            <p style={{height:"10px"}}/>
                             <Typography style={heading} variant={"h6"}>Upload your content files</Typography>
                             <Box sx={{ display: "flex", flexDirection: "column", justifyContent:"center", alignItems:"center", gap: 3 }}>
-                                <FileUploader onFileSelect={handleUpload} acceptedTypes={acceptedTypes}  />
+                                <FileUploader
+                                    editArtUrl={editArtUrl}
+                                    editAudioUrl={editAudioUrl}
+                                    onFileSelect={handleUpload}
+                                    acceptedTypes={acceptedTypes}
+                                />
                                 {/*<FileUpload onFileUpload={handleAudioUpload} acceptedTypes={acceptedAudioTypes} label="Upload Audio File" />*/}
                             </Box>
                         </form>
-                        <div style={{ marginTop: "50px", display: "flex", justifyContent: "center" }}>
-                            <Button variant={"contained"} onClick={handleSubmit}>Submit your creation!</Button>
+                        <div style={{ marginTop: "20px", display: "flex", justifyContent: "center" }}>
+                            <Button variant={"contained"} onClick={handleSubmit}>{
+                                editId ? "Update Your Content" : "Submit Your Creation!"
+                            }</Button>
                         </div>
+                        <DeleteContent />
                     </div>
                 </div>
+            </div>
+        </>
+    )
+}
+
+function handleDelete() {
+    const editId = getEditId()
+    console.warn("Deleting "+editId)
+    fetch('/delete/'+editId).then(() =>{
+        console.log("returned from delete")
+        alert('content deleted!')
+        location.href = '/?page=listen&id='+getPassedId()
+
+    })
+}
+
+function DeleteContent(props) {
+    return(
+        <>
+            <div style={{marginTop: "10px", display: "flex", justifyContent: "center"}}>
+                <Button variant={"contained"} onClick={handleDelete}>Delete this submission</Button>
             </div>
         </>
     )

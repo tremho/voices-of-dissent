@@ -27,9 +27,6 @@ export const mimeMatch = {
 
 }
 export function getMimeType(filename:string) {
-    let i = filename?.lastIndexOf('.') ?? -1
-    if(i !== -1) {
-        let ext = filename.substring(++i)
-        return mimeMatch[ext]
-    }
+    const ext = filename.split('.').pop()?.toLowerCase() || ''
+    return mimeMatch[ext] || "application/octet-stream"
 }

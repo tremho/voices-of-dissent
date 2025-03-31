@@ -6,7 +6,7 @@ import {Button} from '@mui/material'
 let userIdentity = ''
 
 function goListen() {
-    console.log("Oh, Oh, Oh... Listen to the music")
+    // console.log("Oh, Oh, Oh... Listen to the music")
     location.href='/?page=listen&id='+(userIdentity ?? '')
 }
 

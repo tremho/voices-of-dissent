@@ -2,32 +2,35 @@ import React from 'react'
 
 
 export function FileShow(props) {
-    console.log("Entering FileShow", {props})
+    // console.log("Entering FileShow", {props})
     const imageFile:File = props.imageFile
     const audioFile:File = props.audioFile
     const [imageUrl, setImageUrl] = React.useState<string>(null)
     const [audioUrl, setAudioUrl] = React.useState<string>(null)
 
     if(imageFile) {
-        console.log('getting image url')
+        // console.log('getting image url')
         const reader:any = new FileReader()
         reader.onload = () => {
-            console.log('got reader result', {reader, result:reader.result})
+            // console.log('got reader result', {reader, result:reader.result})
             setImageUrl(reader.result)
-            console.log('set image url', imageUrl)
+            // console.log('set image url', imageUrl)
         }
         reader.readAsDataURL(imageFile)
+    } else if(props.editArtUrl && !imageUrl) {
+        setImageUrl(props.editArtUrl)
     }
     if(audioFile) {
-        console.log('getting audio url')
+        // console.log('getting audio url')
         const reader:any = new FileReader()
         reader.onload = () => {
-            console.log('got reader result', {reader, result:reader.result})
+            // console.log('got reader result', {reader, result:reader.result})
             setAudioUrl(reader.result)
-            console.log('set audio url', audioUrl)
+            // console.log('set audio url', audioUrl)
         }
         reader.readAsDataURL(audioFile)
-
+    } else if(props.editAudioUrl && !audioUrl) {
+        setAudioUrl(props.editAudioUrl)
     }
 
     const fileInfo:any = {
@@ -52,7 +55,7 @@ export function FileShow(props) {
 
     }
 
-    console.log("showing FileShow", {audioUrl, imageUrl})
+    // console.log("showing FileShow", {audioUrl, imageUrl})
     return (
         <>
             <div style={fileInfo}>

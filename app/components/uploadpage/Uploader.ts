@@ -19,13 +19,30 @@ function getLambdaEndpoint(funcPath) {
  *
  * @param info -- the SubmissionMetadata object that contains submission data
  */
-export async function conductSubmission(info:SubmissionMetadata) {
-    const initUrl = getLambdaEndpoint('/initiate')
-    console.log("Posting to start", {initUrl, info})
+export async function conductSubmission(info:SubmissionMetadata, editId?:string) {
+    let initPath = '/initiate'
+    if(editId) initPath += '/'+editId
+    const initUrl = getLambdaEndpoint(initPath)
+    console.log("conductSubmissions - Posting to "+(editId?"edit":"start")+" at init url", initUrl)
+    console.log("info ", info)
+    const eInfo:any = {
+        artistId: info.artistId,
+        title: info.title,
+        description: info.description,
+        attributions: info.attributions,
+        // I don't know what happened here, but path used to pass through from File, but now not so much...
+        artFile: {
+            path: (info.artFile as any)?.path ?? info.artFile?.name ?? ''
+        },
+        audioFile: {
+            path: (info.audioFile as any)?.path ?? info.audioFile?.name ?? ''
+        }
+    }
+    console.log("Fetching at "+initUrl)
     const resp:any = await fetch(initUrl, {
         method: "POST",
         headers: {"Content-Type":"application/json"},
-        body:  JSON.stringify(info)
+        body:  JSON.stringify(eInfo)
     })
     let data = await resp.json()
     console.log("initiate response ", resp, data)
@@ -41,8 +58,9 @@ export async function conductSubmission(info:SubmissionMetadata) {
     const audioUrl = await uploadFileInChunks(info.audioFile, audioId, metaId+'/audio')
     console.log("audio url is", audioUrl)
     // do final binding
-    console.log("doing binding ", {metaId, audioUrl, artUrl})
-    const fresp:any = await doFinalBinding(metaId, audioUrl, artUrl)
+    const bindId = editId ?? metaId
+    console.log("doing binding ", {bindId, audioUrl, artUrl})
+    const fresp:any = await doFinalBinding(bindId, info.artistName, audioUrl, artUrl)
     console.log("response from final", fresp)
 
 }
@@ -102,13 +120,13 @@ async function uploadFileInChunks(file:File, uploadId:string, fileKey:string) : 
  * @param audioUrl  -- the url for the audio asset to record
  * @param artUrl    -- the url for the cover art asset to record
  */
-async function doFinalBinding(metaId:string, audioUrl?:string, artUrl?:string) {
+async function doFinalBinding(metaId:string, artistName:string, audioUrl?:string, artUrl?:string) {
 
     const finalUrl = getLambdaEndpoint('/finalize')
     const resp:any = await fetch(finalUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({metaId, audioUrl, artUrl})
+        body: JSON.stringify({metaId, artistName, audioUrl, artUrl})
     })
     return await resp.json()
 }

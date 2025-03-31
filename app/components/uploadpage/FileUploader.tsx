@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import {FileShow} from "./FileShow";
 import { Button, Typography, Paper } from "@mui/material";
 
-export const FileUploader = ({ onFileSelect }: { onFileSelect: (file: File) => void }) => {
+export const FileUploader = (props) => {
+    const onFileSelect:any = props?.onFileSelect
+    const editArtUrl:string = props?.editArtUrl ?? ''
+    const editAudioUrl:string = props?.editAudioUrl ?? ''
     const [dragging, setDragging] = useState(false);
     const [imageFile, setImageFile] = useState(null)
     const [audioFile, setAudioFile] = useState(null)
@@ -20,10 +23,10 @@ export const FileUploader = ({ onFileSelect }: { onFileSelect: (file: File) => v
 
         if (event.dataTransfer.files.length > 0) {
             const file:File = event.dataTransfer.files[0]
-            console.log("onDrop")
+            // console.log("onDrop")
             onFileSelect(file);
-            console.log("onDrop2")
-            console.log("handleFileSelect2", {type: file?.type})
+            // console.log("onDrop2")
+            // console.log("handleFileSelect2", {type: file?.type})
             if(file?.type.startsWith('image/')) setImageFile(file)
             if(file?.type.startsWith('audio/')) setAudioFile(file)
         }
@@ -32,9 +35,9 @@ export const FileUploader = ({ onFileSelect }: { onFileSelect: (file: File) => v
     const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files.length > 0) {
             const file:File = event.target.files[0]
-            console.log("handleFileSelect", file)
+            // console.log("handleFileSelect", file)
             onFileSelect(file);
-            console.log("handleFileSelect2", {type: file?.type})
+            // console.log("handleFileSelect2", {type: file?.type})
             if(file?.type.startsWith('image/')) setImageFile(file)
             if(file?.type.startsWith('audio/')) setAudioFile(file)
 
@@ -93,7 +96,7 @@ export const FileUploader = ({ onFileSelect }: { onFileSelect: (file: File) => v
                 onChange={handleFileSelect}
             />
             {/* Other interactive elements remain functional */}
-            <FileShow imageFile={imageFile} audioFile={audioFile}/>
+            <FileShow imageFile={imageFile} audioFile={audioFile} editArtUrl={editArtUrl} editAudioUrl={editAudioUrl}/>
         </div>
     );
 };

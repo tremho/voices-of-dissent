@@ -2,7 +2,7 @@
   "name": "UploadInitiate",
   "description": "Initiates the start of a new file upload",
   "version": "1.0.0",
-  "pathMap": "/initiate",
+  "pathMap": "/initiate/{artistId}/{id}",
   "method": "POST",
   "timeoutSeconds": 0,
   "memorySize": 0,
@@ -24,6 +24,18 @@
 
   },
   "parameters": [
+    {
+      "name": "editArtist",
+      "type": "string",
+      "in": "path",
+      "description": "the artist component of the edit id. passed only if we are editing an existing submission."
+    },
+    {
+      "name": "editId",
+      "type": "string",
+      "in": "path",
+      "description": "the content id component of the edit id. passed only if we are editing an existing submission."
+    }
   ],
   "returns": {
     "200": {

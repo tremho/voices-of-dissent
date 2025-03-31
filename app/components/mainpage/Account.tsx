@@ -221,6 +221,6 @@ async function extractIdentityInfo(identity:any) {
     const addInfo:any = await aiResp.json()
     out.artistName = addInfo.artistName
 
-    console.log("extracted info = ", out)
+    // console.log("extracted info = ", out)
     return out;
 }

@@ -1473,7 +1473,7 @@
           return dispatcher;
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var React120 = require_react(), Internals = {
+        var React124 = require_react(), Internals = {
           d: {
             f: noop3,
             r: function() {
@@ -1491,7 +1491,7 @@
           },
           p: 0,
           findDOMNode: null
-        }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React120.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+        }, REACT_PORTAL_TYPE = Symbol.for("react.portal"), ReactSharedInternals = React124.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
         "function" === typeof Map && null != Map.prototype && "function" === typeof Map.prototype.forEach && "function" === typeof Set && null != Set.prototype && "function" === typeof Set.prototype.clear && "function" === typeof Set.prototype.forEach || console.error(
           "React depends on Map and Set built-in types. Make sure that you load a polyfill in older browsers. https://reactjs.org/link/react-polyfills"
         );
@@ -2947,7 +2947,7 @@
           "number" === type && getActiveElement(node2.ownerDocument) === node2 || node2.defaultValue === "" + value || (node2.defaultValue = "" + value);
         }
         function validateOptionProps(element, props) {
-          null == props.value && ("object" === typeof props.children && null !== props.children ? React120.Children.forEach(props.children, function(child) {
+          null == props.value && ("object" === typeof props.children && null !== props.children ? React124.Children.forEach(props.children, function(child) {
             null == child || "string" === typeof child || "number" === typeof child || "bigint" === typeof child || didWarnInvalidChild || (didWarnInvalidChild = true, console.error(
               "Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>."
             ));
@@ -16417,13 +16417,13 @@
           ));
         }
         "undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-        var Scheduler = require_scheduler(), React120 = require_react(), ReactDOM3 = require_react_dom(), REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy");
+        var Scheduler = require_scheduler(), React124 = require_react(), ReactDOM3 = require_react_dom(), REACT_LEGACY_ELEMENT_TYPE = Symbol.for("react.element"), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy");
         Symbol.for("react.scope");
         Symbol.for("react.debug_trace_mode");
         var REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen");
         Symbol.for("react.legacy_hidden");
         Symbol.for("react.tracing_marker");
-        var REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React120.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, assign2 = Object.assign, disabledDepth = 0, prevLog, prevInfo, prevWarn, prevError, prevGroup, prevGroupCollapsed, prevGroupEnd;
+        var REACT_MEMO_CACHE_SENTINEL = Symbol.for("react.memo_cache_sentinel"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE = Symbol.for("react.client.reference"), ReactSharedInternals = React124.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, assign2 = Object.assign, disabledDepth = 0, prevLog, prevInfo, prevWarn, prevError, prevGroup, prevGroupCollapsed, prevGroupEnd;
         disabledLog.__reactDisabledLog = true;
         var prefix2, suffix, reentry = false;
         var componentFrameCache = new ("function" === typeof WeakMap ? WeakMap : Map)();
@@ -19143,7 +19143,7 @@
           }
         };
         (function() {
-          var isomorphicReactPackageVersion = React120.version;
+          var isomorphicReactPackageVersion = React124.version;
           if ("19.0.0" !== isomorphicReactPackageVersion)
             throw Error(
               'Incompatible React versions: The "react" and "react-dom" packages must have the exact same version. Instead got:\n  - react:      ' + (isomorphicReactPackageVersion + "\n  - react-dom:  19.0.0\nLearn more: https://react.dev/warnings/version-mismatch")
@@ -21002,9 +21002,9 @@
           info || (parentType = getComponentNameFromType(parentType)) && (info = "\n\nCheck the top-level render call using <" + parentType + ">.");
           return info;
         }
-        var React120 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler");
+        var React124 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler");
         Symbol.for("react.provider");
-        var REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE$2 = Symbol.for("react.client.reference"), ReactSharedInternals = React120.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, assign2 = Object.assign, REACT_CLIENT_REFERENCE$1 = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, disabledDepth = 0, prevLog, prevInfo, prevWarn, prevError, prevGroup, prevGroupCollapsed, prevGroupEnd;
+        var REACT_CONSUMER_TYPE = Symbol.for("react.consumer"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, REACT_CLIENT_REFERENCE$2 = Symbol.for("react.client.reference"), ReactSharedInternals = React124.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, hasOwnProperty = Object.prototype.hasOwnProperty, assign2 = Object.assign, REACT_CLIENT_REFERENCE$1 = Symbol.for("react.client.reference"), isArrayImpl = Array.isArray, disabledDepth = 0, prevLog, prevInfo, prevWarn, prevError, prevGroup, prevGroupCollapsed, prevGroupEnd;
         disabledLog.__reactDisabledLog = true;
         var prefix2, suffix, reentry = false;
         var componentFrameCache = new ("function" === typeof WeakMap ? WeakMap : Map)();
@@ -26188,10 +26188,10 @@ For example, \`@sm\` or \`@600\` or \`@40rem/sidebar\`.` : formatMuiErrorMessage
     }
     return React17.createElement.apply(null, createElementArgArray);
   };
-  (function(_jsx63) {
+  (function(_jsx66) {
     var JSX;
     /* @__PURE__ */ (function(_JSX) {
-    })(JSX || (JSX = _jsx63.JSX || (_jsx63.JSX = {})));
+    })(JSX || (JSX = _jsx66.JSX || (_jsx66.JSX = {})));
   })(jsx || (jsx = {}));
   var Global = /* @__PURE__ */ withEmotionCache(function(props, cache) {
     var styles4 = props.styles;
@@ -30727,15 +30727,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // app/components/mainpage/SampleCovers.tsx
   var import_react6 = __toESM(require_react());
-  function getAssetUrl(idPath) {
-    if (location.host.indexOf("localhost") !== -1) {
-      return idPath;
-    }
-    return "https://tremho-voices-of-dissent.s3.us-west-1.amazonaws.com/" + idPath;
-  }
   var coverSize = 200;
   var coverCommon = {
     position: "relative",
+    top: "15px",
     width: coverSize + "px",
     height: coverSize + "px",
     backgroundSize: "contain",
@@ -30746,32 +30741,43 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     height: "220px"
   };
   function SampleCovers(props) {
-    const covers = [];
-    for (let i = 0; i < 3; i++) {
-      let img = getAssetUrl(`images/placeholder-cover-${i + 1}.png`);
-      const cover = Object.assign({}, coverCommon);
-      cover.backgroundImage = `url(${img})`;
-      const r2 = Math.floor(Math.random() * 60) - 30;
-      cover.rotate = r2 + "deg";
-      const d = Math.floor(Math.random() * 50) - 20;
-      cover.top = i * -coverSize + d + "px";
-      const off = Math.floor(Math.random() * coverSize / 5);
-      cover.left = i * coverSize - off + "px";
-      covers.push(cover);
+    const [coverstyles, setCoverstyles] = (0, import_react6.useState)(null);
+    async function useEffectAsync() {
+      if (!coverstyles) {
+        const resp = await fetch("/covers");
+        const list = await resp.json();
+        const cstyles = [];
+        for (let i = 0; i < 3; i++) {
+          let img = list[i];
+          const cover = Object.assign({}, coverCommon);
+          cover.backgroundImage = `url(${img})`;
+          const r2 = Math.floor(Math.random() * 60) - 30;
+          cover.rotate = r2 + "deg";
+          const d = Math.floor(Math.random() * 50) - 20;
+          cover.top = i * -coverSize + d + "px";
+          const off = Math.floor(Math.random() * coverSize / 5);
+          cover.left = i * coverSize - off + "px";
+          cstyles.push(cover);
+        }
+        setCoverstyles(cstyles);
+      }
     }
-    return /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, /* @__PURE__ */ import_react6.default.createElement("div", { style: container }, /* @__PURE__ */ import_react6.default.createElement("div", { style: covers[0] }), /* @__PURE__ */ import_react6.default.createElement("div", { style: covers[1] }), /* @__PURE__ */ import_react6.default.createElement("div", { style: covers[2] })));
+    (0, import_react6.useEffect)(() => {
+      useEffectAsync();
+    }, [coverstyles]);
+    return /* @__PURE__ */ import_react6.default.createElement(import_react6.default.Fragment, null, /* @__PURE__ */ import_react6.default.createElement("div", { style: container }, /* @__PURE__ */ import_react6.default.createElement("div", { style: coverstyles && coverstyles[0] }), /* @__PURE__ */ import_react6.default.createElement("div", { style: coverstyles && coverstyles[1] }), /* @__PURE__ */ import_react6.default.createElement("div", { style: coverstyles && coverstyles[2] })));
   }
 
   // app/components/mainpage/SiteImage.tsx
   var import_react7 = __toESM(require_react());
-  function getAssetUrl2(idPath) {
+  function getAssetUrl(idPath) {
     if (location.host.indexOf("localhost") !== -1) {
       return idPath;
     }
     return "https://tremho-voices-of-dissent.s3.us-west-1.amazonaws.com/" + idPath;
   }
   var siteDiv = {
-    backgroundImage: `url(${getAssetUrl2("images/vodImage.jpeg")})`,
+    backgroundImage: `url(${getAssetUrl("images/vodImage.jpeg")})`,
     backgroundSize: "contain",
     width: "100%",
     height: "100%",
@@ -36530,8 +36536,144 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   } : void 0;
   var Checkbox_default = Checkbox;
 
-  // node_modules/@mui/material/Container/Container.js
+  // node_modules/@mui/material/ClickAwayListener/ClickAwayListener.js
+  var React74 = __toESM(require_react());
   var import_prop_types34 = __toESM(require_prop_types());
+  function mapEventPropToEvent(eventProp) {
+    return eventProp.substring(2).toLowerCase();
+  }
+  function clickedRootScrollbar(event, doc) {
+    return doc.documentElement.clientWidth < event.clientX || doc.documentElement.clientHeight < event.clientY;
+  }
+  function ClickAwayListener(props) {
+    const {
+      children,
+      disableReactTree = false,
+      mouseEvent = "onClick",
+      onClickAway,
+      touchEvent = "onTouchEnd"
+    } = props;
+    const movedRef = React74.useRef(false);
+    const nodeRef = React74.useRef(null);
+    const activatedRef = React74.useRef(false);
+    const syntheticEventRef = React74.useRef(false);
+    React74.useEffect(() => {
+      setTimeout(() => {
+        activatedRef.current = true;
+      }, 0);
+      return () => {
+        activatedRef.current = false;
+      };
+    }, []);
+    const handleRef = useForkRef(getReactElementRef(children), nodeRef);
+    const handleClickAway = useEventCallback_default((event) => {
+      const insideReactTree = syntheticEventRef.current;
+      syntheticEventRef.current = false;
+      const doc = ownerDocument(nodeRef.current);
+      if (!activatedRef.current || !nodeRef.current || "clientX" in event && clickedRootScrollbar(event, doc)) {
+        return;
+      }
+      if (movedRef.current) {
+        movedRef.current = false;
+        return;
+      }
+      let insideDOM;
+      if (event.composedPath) {
+        insideDOM = event.composedPath().includes(nodeRef.current);
+      } else {
+        insideDOM = !doc.documentElement.contains(
+          // @ts-expect-error returns `false` as intended when not dispatched from a Node
+          event.target
+        ) || nodeRef.current.contains(
+          // @ts-expect-error returns `false` as intended when not dispatched from a Node
+          event.target
+        );
+      }
+      if (!insideDOM && (disableReactTree || !insideReactTree)) {
+        onClickAway(event);
+      }
+    });
+    const createHandleSynthetic = (handlerName) => (event) => {
+      syntheticEventRef.current = true;
+      const childrenPropsHandler = children.props[handlerName];
+      if (childrenPropsHandler) {
+        childrenPropsHandler(event);
+      }
+    };
+    const childrenProps = {
+      ref: handleRef
+    };
+    if (touchEvent !== false) {
+      childrenProps[touchEvent] = createHandleSynthetic(touchEvent);
+    }
+    React74.useEffect(() => {
+      if (touchEvent !== false) {
+        const mappedTouchEvent = mapEventPropToEvent(touchEvent);
+        const doc = ownerDocument(nodeRef.current);
+        const handleTouchMove = () => {
+          movedRef.current = true;
+        };
+        doc.addEventListener(mappedTouchEvent, handleClickAway);
+        doc.addEventListener("touchmove", handleTouchMove);
+        return () => {
+          doc.removeEventListener(mappedTouchEvent, handleClickAway);
+          doc.removeEventListener("touchmove", handleTouchMove);
+        };
+      }
+      return void 0;
+    }, [handleClickAway, touchEvent]);
+    if (mouseEvent !== false) {
+      childrenProps[mouseEvent] = createHandleSynthetic(mouseEvent);
+    }
+    React74.useEffect(() => {
+      if (mouseEvent !== false) {
+        const mappedMouseEvent = mapEventPropToEvent(mouseEvent);
+        const doc = ownerDocument(nodeRef.current);
+        doc.addEventListener(mappedMouseEvent, handleClickAway);
+        return () => {
+          doc.removeEventListener(mappedMouseEvent, handleClickAway);
+        };
+      }
+      return void 0;
+    }, [handleClickAway, mouseEvent]);
+    return /* @__PURE__ */ React74.cloneElement(children, childrenProps);
+  }
+  true ? ClickAwayListener.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │ To update them, edit the TypeScript types and run `pnpm proptypes`. │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The wrapped element.
+     */
+    children: elementAcceptingRef_default.isRequired,
+    /**
+     * If `true`, the React tree is ignored and only the DOM tree is considered.
+     * This prop changes how portaled elements are handled.
+     * @default false
+     */
+    disableReactTree: import_prop_types34.default.bool,
+    /**
+     * The mouse event to listen to. You can disable the listener by providing `false`.
+     * @default 'onClick'
+     */
+    mouseEvent: import_prop_types34.default.oneOf(["onClick", "onMouseDown", "onMouseUp", "onPointerDown", "onPointerUp", false]),
+    /**
+     * Callback fired when a "click away" event is detected.
+     */
+    onClickAway: import_prop_types34.default.func.isRequired,
+    /**
+     * The touch event to listen to. You can disable the listener by providing `false`.
+     * @default 'onTouchEnd'
+     */
+    touchEvent: import_prop_types34.default.oneOf(["onTouchEnd", "onTouchStart", false])
+  } : void 0;
+  if (true) {
+    ClickAwayListener["propTypes"] = exactProp(ClickAwayListener.propTypes);
+  }
+
+  // node_modules/@mui/material/Container/Container.js
+  var import_prop_types35 = __toESM(require_prop_types());
   var Container = createContainer({
     createStyledComponent: styled_default2("div", {
       name: "MuiContainer",
@@ -36556,21 +36698,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * @ignore
      */
-    children: import_prop_types34.default.node,
+    children: import_prop_types35.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types34.default.object,
+    classes: import_prop_types35.default.object,
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
      */
-    component: import_prop_types34.default.elementType,
+    component: import_prop_types35.default.elementType,
     /**
      * If `true`, the left and right padding is removed.
      * @default false
      */
-    disableGutters: import_prop_types34.default.bool,
+    disableGutters: import_prop_types35.default.bool,
     /**
      * Set the max-width to match the min-width of the current breakpoint.
      * This is useful if you'd prefer to design for a fixed set of sizes
@@ -36578,18 +36720,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * It's fluid by default.
      * @default false
      */
-    fixed: import_prop_types34.default.bool,
+    fixed: import_prop_types35.default.bool,
     /**
      * Determine the max-width of the container.
      * The container width grows with the size of the screen.
      * Set to `false` to disable `maxWidth`.
      * @default 'lg'
      */
-    maxWidth: import_prop_types34.default.oneOfType([import_prop_types34.default.oneOf(["xs", "sm", "md", "lg", "xl", false]), import_prop_types34.default.string]),
+    maxWidth: import_prop_types35.default.oneOfType([import_prop_types35.default.oneOf(["xs", "sm", "md", "lg", "xl", false]), import_prop_types35.default.string]),
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types34.default.oneOfType([import_prop_types34.default.arrayOf(import_prop_types34.default.oneOfType([import_prop_types34.default.func, import_prop_types34.default.object, import_prop_types34.default.bool])), import_prop_types34.default.func, import_prop_types34.default.object])
+    sx: import_prop_types35.default.oneOfType([import_prop_types35.default.arrayOf(import_prop_types35.default.oneOfType([import_prop_types35.default.func, import_prop_types35.default.object, import_prop_types35.default.bool])), import_prop_types35.default.func, import_prop_types35.default.object])
   } : void 0;
   var Container_default = Container;
 
@@ -36776,12 +36918,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // node_modules/@mui/material/Modal/Modal.js
-  var React76 = __toESM(require_react());
-  var import_prop_types36 = __toESM(require_prop_types());
+  var React77 = __toESM(require_react());
+  var import_prop_types37 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/Unstable_TrapFocus/FocusTrap.js
-  var React74 = __toESM(require_react());
-  var import_prop_types35 = __toESM(require_prop_types());
+  var React75 = __toESM(require_react());
+  var import_prop_types36 = __toESM(require_prop_types());
   var import_jsx_runtime33 = __toESM(require_jsx_runtime());
   var candidatesSelector = ["input", "select", "textarea", "a[href]", "button", "[tabindex]", "audio[controls]", "video[controls]", '[contenteditable]:not([contenteditable="false"])'].join(",");
   function getTabIndex(node2) {
@@ -36847,22 +36989,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       isEnabled = defaultIsEnabled,
       open
     } = props;
-    const ignoreNextEnforceFocus = React74.useRef(false);
-    const sentinelStart = React74.useRef(null);
-    const sentinelEnd = React74.useRef(null);
-    const nodeToRestore = React74.useRef(null);
-    const reactFocusEventTarget = React74.useRef(null);
-    const activated = React74.useRef(false);
-    const rootRef = React74.useRef(null);
+    const ignoreNextEnforceFocus = React75.useRef(false);
+    const sentinelStart = React75.useRef(null);
+    const sentinelEnd = React75.useRef(null);
+    const nodeToRestore = React75.useRef(null);
+    const reactFocusEventTarget = React75.useRef(null);
+    const activated = React75.useRef(false);
+    const rootRef = React75.useRef(null);
     const handleRef = useForkRef(getReactElementRef(children), rootRef);
-    const lastKeydown = React74.useRef(null);
-    React74.useEffect(() => {
+    const lastKeydown = React75.useRef(null);
+    React75.useEffect(() => {
       if (!open || !rootRef.current) {
         return;
       }
       activated.current = !disableAutoFocus;
     }, [disableAutoFocus, open]);
-    React74.useEffect(() => {
+    React75.useEffect(() => {
       if (!open || !rootRef.current) {
         return;
       }
@@ -36888,7 +37030,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
       };
     }, [open]);
-    React74.useEffect(() => {
+    React75.useEffect(() => {
       if (!open || !rootRef.current) {
         return;
       }
@@ -36977,13 +37119,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
       activated.current = true;
     };
-    return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(React74.Fragment, {
+    return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(React75.Fragment, {
       children: [/* @__PURE__ */ (0, import_jsx_runtime33.jsx)("div", {
         tabIndex: open ? 0 : -1,
         onFocus: handleFocusSentinel,
         ref: sentinelStart,
         "data-testid": "sentinelStart"
-      }), /* @__PURE__ */ React74.cloneElement(children, {
+      }), /* @__PURE__ */ React75.cloneElement(children, {
         ref: handleRef,
         onFocus
       }), /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("div", {
@@ -37012,7 +37154,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * accessible to assistive technologies, like screen readers.
      * @default false
      */
-    disableAutoFocus: import_prop_types35.default.bool,
+    disableAutoFocus: import_prop_types36.default.bool,
     /**
      * If `true`, the focus trap will not prevent focus from leaving the focus trap while open.
      *
@@ -37020,19 +37162,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * accessible to assistive technologies, like screen readers.
      * @default false
      */
-    disableEnforceFocus: import_prop_types35.default.bool,
+    disableEnforceFocus: import_prop_types36.default.bool,
     /**
      * If `true`, the focus trap will not restore focus to previously focused element once
      * focus trap is hidden or unmounted.
      * @default false
      */
-    disableRestoreFocus: import_prop_types35.default.bool,
+    disableRestoreFocus: import_prop_types36.default.bool,
     /**
      * Returns an array of ordered tabbable nodes (i.e. in tab order) within the root.
      * For instance, you can provide the "tabbable" npm dependency.
      * @param {HTMLElement} root
      */
-    getTabbable: import_prop_types35.default.func,
+    getTabbable: import_prop_types36.default.func,
     /**
      * This prop extends the `open` prop.
      * It allows to toggle the open state without having to wait for a rerender when changing the `open` prop.
@@ -37042,11 +37184,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *   return true;
      * }
      */
-    isEnabled: import_prop_types35.default.func,
+    isEnabled: import_prop_types36.default.func,
     /**
      * If `true`, focus is locked.
      */
-    open: import_prop_types35.default.bool.isRequired
+    open: import_prop_types36.default.bool.isRequired
   } : void 0;
   if (true) {
     FocusTrap["propTypes"] = exactProp(FocusTrap.propTypes);
@@ -37054,7 +37196,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var FocusTrap_default = FocusTrap;
 
   // node_modules/@mui/material/Modal/useModal.js
-  var React75 = __toESM(require_react());
+  var React76 = __toESM(require_react());
   function getContainer2(container3) {
     return typeof container3 === "function" ? container3() : container3;
   }
@@ -37077,11 +37219,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       open,
       rootRef
     } = parameters;
-    const modal = React75.useRef({});
-    const mountNodeRef = React75.useRef(null);
-    const modalRef = React75.useRef(null);
+    const modal = React76.useRef({});
+    const mountNodeRef = React76.useRef(null);
+    const modalRef = React76.useRef(null);
     const handleRef = useForkRef(modalRef, rootRef);
-    const [exited, setExited] = React75.useState(!open);
+    const [exited, setExited] = React76.useState(!open);
     const hasTransition = getHasTransition(children);
     let ariaHiddenProp = true;
     if (parameters["aria-hidden"] === "false" || parameters["aria-hidden"] === false) {
@@ -37120,15 +37262,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         ariaHidden(modalRef.current, ariaHiddenProp);
       }
     });
-    const handleClose = React75.useCallback(() => {
+    const handleClose = React76.useCallback(() => {
       manager.remove(getModal(), ariaHiddenProp);
     }, [ariaHiddenProp]);
-    React75.useEffect(() => {
+    React76.useEffect(() => {
       return () => {
         handleClose();
       };
     }, [handleClose]);
-    React75.useEffect(() => {
+    React76.useEffect(() => {
       if (open) {
         handleOpen();
       } else if (!hasTransition || !closeAfterTransition) {
@@ -37277,7 +37419,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   })({
     zIndex: -1
   });
-  var Modal = /* @__PURE__ */ React76.forwardRef(function Modal2(inProps, ref) {
+  var Modal = /* @__PURE__ */ React77.forwardRef(function Modal2(inProps, ref) {
     const props = useDefaultProps2({
       name: "MuiModal",
       props: inProps
@@ -37415,7 +37557,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           disableRestoreFocus,
           isEnabled: isTopModal,
           open,
-          children: /* @__PURE__ */ React76.cloneElement(children, childProps)
+          children: /* @__PURE__ */ React77.cloneElement(children, childProps)
         })]
       })
     });
@@ -37439,12 +37581,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *   zIndex: -1,
      * })
      */
-    BackdropComponent: import_prop_types36.default.elementType,
+    BackdropComponent: import_prop_types37.default.elementType,
     /**
      * Props applied to the [`Backdrop`](https://mui.com/material-ui/api/backdrop/) element.
      * @deprecated Use `slotProps.backdrop` instead.
      */
-    BackdropProps: import_prop_types36.default.object,
+    BackdropProps: import_prop_types37.default.object,
     /**
      * A single child content element.
      */
@@ -37452,21 +37594,21 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types36.default.object,
+    classes: import_prop_types37.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types36.default.string,
+    className: import_prop_types37.default.string,
     /**
      * When set to true the Modal waits until a nested Transition is completed before closing.
      * @default false
      */
-    closeAfterTransition: import_prop_types36.default.bool,
+    closeAfterTransition: import_prop_types37.default.bool,
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
      */
-    component: import_prop_types36.default.elementType,
+    component: import_prop_types37.default.elementType,
     /**
      * The components used for each slot inside.
      *
@@ -37474,9 +37616,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * @default {}
      */
-    components: import_prop_types36.default.shape({
-      Backdrop: import_prop_types36.default.elementType,
-      Root: import_prop_types36.default.elementType
+    components: import_prop_types37.default.shape({
+      Backdrop: import_prop_types37.default.elementType,
+      Root: import_prop_types37.default.elementType
     }),
     /**
      * The extra props for the slot components.
@@ -37486,9 +37628,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * @default {}
      */
-    componentsProps: import_prop_types36.default.shape({
-      backdrop: import_prop_types36.default.oneOfType([import_prop_types36.default.func, import_prop_types36.default.object]),
-      root: import_prop_types36.default.oneOfType([import_prop_types36.default.func, import_prop_types36.default.object])
+    componentsProps: import_prop_types37.default.shape({
+      backdrop: import_prop_types37.default.oneOfType([import_prop_types37.default.func, import_prop_types37.default.object]),
+      root: import_prop_types37.default.oneOfType([import_prop_types37.default.func, import_prop_types37.default.object])
     }),
     /**
      * An HTML element or function that returns one.
@@ -37500,7 +37642,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * By default, it uses the body of the top-level document object,
      * so it's simply `document.body` most of the time.
      */
-    container: import_prop_types36.default.oneOfType([HTMLElementType, import_prop_types36.default.func]),
+    container: import_prop_types37.default.oneOfType([HTMLElementType, import_prop_types37.default.func]),
     /**
      * If `true`, the modal will not automatically shift focus to itself when it opens, and
      * replace it to the last focused element when it closes.
@@ -37510,7 +37652,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * accessible to assistive technologies, like screen readers.
      * @default false
      */
-    disableAutoFocus: import_prop_types36.default.bool,
+    disableAutoFocus: import_prop_types37.default.bool,
     /**
      * If `true`, the modal will not prevent focus from leaving the modal while open.
      *
@@ -37518,45 +37660,45 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * accessible to assistive technologies, like screen readers.
      * @default false
      */
-    disableEnforceFocus: import_prop_types36.default.bool,
+    disableEnforceFocus: import_prop_types37.default.bool,
     /**
      * If `true`, hitting escape will not fire the `onClose` callback.
      * @default false
      */
-    disableEscapeKeyDown: import_prop_types36.default.bool,
+    disableEscapeKeyDown: import_prop_types37.default.bool,
     /**
      * The `children` will be under the DOM hierarchy of the parent component.
      * @default false
      */
-    disablePortal: import_prop_types36.default.bool,
+    disablePortal: import_prop_types37.default.bool,
     /**
      * If `true`, the modal will not restore focus to previously focused element once
      * modal is hidden or unmounted.
      * @default false
      */
-    disableRestoreFocus: import_prop_types36.default.bool,
+    disableRestoreFocus: import_prop_types37.default.bool,
     /**
      * Disable the scroll lock behavior.
      * @default false
      */
-    disableScrollLock: import_prop_types36.default.bool,
+    disableScrollLock: import_prop_types37.default.bool,
     /**
      * If `true`, the backdrop is not rendered.
      * @default false
      */
-    hideBackdrop: import_prop_types36.default.bool,
+    hideBackdrop: import_prop_types37.default.bool,
     /**
      * Always keep the children in the DOM.
      * This prop can be useful in SEO situation or
      * when you want to maximize the responsiveness of the Modal.
      * @default false
      */
-    keepMounted: import_prop_types36.default.bool,
+    keepMounted: import_prop_types37.default.bool,
     /**
      * Callback fired when the backdrop is clicked.
      * @deprecated Use the `onClose` prop with the `reason` argument to handle the `backdropClick` events.
      */
-    onBackdropClick: import_prop_types36.default.func,
+    onBackdropClick: import_prop_types37.default.func,
     /**
      * Callback fired when the component requests to be closed.
      * The `reason` parameter can optionally be used to control the response to `onClose`.
@@ -37564,46 +37706,46 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * @param {object} event The event source of the callback.
      * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
      */
-    onClose: import_prop_types36.default.func,
+    onClose: import_prop_types37.default.func,
     /**
      * A function called when a transition enters.
      */
-    onTransitionEnter: import_prop_types36.default.func,
+    onTransitionEnter: import_prop_types37.default.func,
     /**
      * A function called when a transition has exited.
      */
-    onTransitionExited: import_prop_types36.default.func,
+    onTransitionExited: import_prop_types37.default.func,
     /**
      * If `true`, the component is shown.
      */
-    open: import_prop_types36.default.bool.isRequired,
+    open: import_prop_types37.default.bool.isRequired,
     /**
      * The props used for each slot inside the Modal.
      * @default {}
      */
-    slotProps: import_prop_types36.default.shape({
-      backdrop: import_prop_types36.default.oneOfType([import_prop_types36.default.func, import_prop_types36.default.object]),
-      root: import_prop_types36.default.oneOfType([import_prop_types36.default.func, import_prop_types36.default.object])
+    slotProps: import_prop_types37.default.shape({
+      backdrop: import_prop_types37.default.oneOfType([import_prop_types37.default.func, import_prop_types37.default.object]),
+      root: import_prop_types37.default.oneOfType([import_prop_types37.default.func, import_prop_types37.default.object])
     }),
     /**
      * The components used for each slot inside the Modal.
      * Either a string to use a HTML element or a component.
      * @default {}
      */
-    slots: import_prop_types36.default.shape({
-      backdrop: import_prop_types36.default.elementType,
-      root: import_prop_types36.default.elementType
+    slots: import_prop_types37.default.shape({
+      backdrop: import_prop_types37.default.elementType,
+      root: import_prop_types37.default.elementType
     }),
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types36.default.oneOfType([import_prop_types36.default.arrayOf(import_prop_types36.default.oneOfType([import_prop_types36.default.func, import_prop_types36.default.object, import_prop_types36.default.bool])), import_prop_types36.default.func, import_prop_types36.default.object])
+    sx: import_prop_types37.default.oneOfType([import_prop_types37.default.arrayOf(import_prop_types37.default.oneOfType([import_prop_types37.default.func, import_prop_types37.default.object, import_prop_types37.default.bool])), import_prop_types37.default.func, import_prop_types37.default.object])
   } : void 0;
   var Modal_default = Modal;
 
   // node_modules/@mui/material/FilledInput/FilledInput.js
-  var React77 = __toESM(require_react());
-  var import_prop_types37 = __toESM(require_prop_types());
+  var React78 = __toESM(require_react());
+  var import_prop_types38 = __toESM(require_prop_types());
   var import_jsx_runtime35 = __toESM(require_jsx_runtime());
   var useUtilityClasses16 = (ownerState) => {
     const {
@@ -37857,7 +37999,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   })));
-  var FilledInput = /* @__PURE__ */ React77.forwardRef(function FilledInput2(inProps, ref) {
+  var FilledInput = /* @__PURE__ */ React78.forwardRef(function FilledInput2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiFilledInput"
@@ -37921,22 +38063,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * The name can be confusing, as it's more like an autofill.
      * You can learn more about it [following the specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
      */
-    autoComplete: import_prop_types37.default.string,
+    autoComplete: import_prop_types38.default.string,
     /**
      * If `true`, the `input` element is focused during the first mount.
      */
-    autoFocus: import_prop_types37.default.bool,
+    autoFocus: import_prop_types38.default.bool,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types37.default.object,
+    classes: import_prop_types38.default.object,
     /**
      * The color of the component.
      * It supports both default and custom theme colors, which can be added as shown in the
      * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
      * The prop defaults to the value (`'primary'`) inherited from the parent FormControl component.
      */
-    color: import_prop_types37.default.oneOfType([import_prop_types37.default.oneOf(["primary", "secondary"]), import_prop_types37.default.string]),
+    color: import_prop_types38.default.oneOfType([import_prop_types38.default.oneOf(["primary", "secondary"]), import_prop_types38.default.string]),
     /**
      * The components used for each slot inside.
      *
@@ -37944,9 +38086,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * @default {}
      */
-    components: import_prop_types37.default.shape({
-      Input: import_prop_types37.default.elementType,
-      Root: import_prop_types37.default.elementType
+    components: import_prop_types38.default.shape({
+      Input: import_prop_types38.default.elementType,
+      Root: import_prop_types38.default.elementType
     }),
     /**
      * The extra props for the slot components.
@@ -37956,60 +38098,60 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * @default {}
      */
-    componentsProps: import_prop_types37.default.shape({
-      input: import_prop_types37.default.object,
-      root: import_prop_types37.default.object
+    componentsProps: import_prop_types38.default.shape({
+      input: import_prop_types38.default.object,
+      root: import_prop_types38.default.object
     }),
     /**
      * The default value. Use when the component is not controlled.
      */
-    defaultValue: import_prop_types37.default.any,
+    defaultValue: import_prop_types38.default.any,
     /**
      * If `true`, the component is disabled.
      * The prop defaults to the value (`false`) inherited from the parent FormControl component.
      */
-    disabled: import_prop_types37.default.bool,
+    disabled: import_prop_types38.default.bool,
     /**
      * If `true`, the input will not have an underline.
      * @default false
      */
-    disableUnderline: import_prop_types37.default.bool,
+    disableUnderline: import_prop_types38.default.bool,
     /**
      * End `InputAdornment` for this component.
      */
-    endAdornment: import_prop_types37.default.node,
+    endAdornment: import_prop_types38.default.node,
     /**
      * If `true`, the `input` will indicate an error.
      * The prop defaults to the value (`false`) inherited from the parent FormControl component.
      */
-    error: import_prop_types37.default.bool,
+    error: import_prop_types38.default.bool,
     /**
      * If `true`, the `input` will take up the full width of its container.
      * @default false
      */
-    fullWidth: import_prop_types37.default.bool,
+    fullWidth: import_prop_types38.default.bool,
     /**
      * If `true`, the label is hidden.
      * This is used to increase density for a `FilledInput`.
      * Be sure to add `aria-label` to the `input` element.
      * @default false
      */
-    hiddenLabel: import_prop_types37.default.bool,
+    hiddenLabel: import_prop_types38.default.bool,
     /**
      * The id of the `input` element.
      */
-    id: import_prop_types37.default.string,
+    id: import_prop_types38.default.string,
     /**
      * The component used for the `input` element.
      * Either a string to use a HTML element or a component.
      * @default 'input'
      */
-    inputComponent: import_prop_types37.default.elementType,
+    inputComponent: import_prop_types38.default.elementType,
     /**
      * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
      * @default {}
      */
-    inputProps: import_prop_types37.default.object,
+    inputProps: import_prop_types38.default.object,
     /**
      * Pass a ref to the `input` element.
      */
@@ -38019,49 +38161,49 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * FormControl.
      * The prop defaults to the value (`'none'`) inherited from the parent FormControl component.
      */
-    margin: import_prop_types37.default.oneOf(["dense", "none"]),
+    margin: import_prop_types38.default.oneOf(["dense", "none"]),
     /**
      * Maximum number of rows to display when multiline option is set to true.
      */
-    maxRows: import_prop_types37.default.oneOfType([import_prop_types37.default.number, import_prop_types37.default.string]),
+    maxRows: import_prop_types38.default.oneOfType([import_prop_types38.default.number, import_prop_types38.default.string]),
     /**
      * Minimum number of rows to display when multiline option is set to true.
      */
-    minRows: import_prop_types37.default.oneOfType([import_prop_types37.default.number, import_prop_types37.default.string]),
+    minRows: import_prop_types38.default.oneOfType([import_prop_types38.default.number, import_prop_types38.default.string]),
     /**
      * If `true`, a [TextareaAutosize](https://mui.com/material-ui/react-textarea-autosize/) element is rendered.
      * @default false
      */
-    multiline: import_prop_types37.default.bool,
+    multiline: import_prop_types38.default.bool,
     /**
      * Name attribute of the `input` element.
      */
-    name: import_prop_types37.default.string,
+    name: import_prop_types38.default.string,
     /**
      * Callback fired when the value is changed.
      *
      * @param {React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>} event The event source of the callback.
      * You can pull out the new value by accessing `event.target.value` (string).
      */
-    onChange: import_prop_types37.default.func,
+    onChange: import_prop_types38.default.func,
     /**
      * The short hint displayed in the `input` before the user enters a value.
      */
-    placeholder: import_prop_types37.default.string,
+    placeholder: import_prop_types38.default.string,
     /**
      * It prevents the user from changing the value of the field
      * (not from interacting with the field).
      */
-    readOnly: import_prop_types37.default.bool,
+    readOnly: import_prop_types38.default.bool,
     /**
      * If `true`, the `input` element is required.
      * The prop defaults to the value (`false`) inherited from the parent FormControl component.
      */
-    required: import_prop_types37.default.bool,
+    required: import_prop_types38.default.bool,
     /**
      * Number of rows to display when multiline option is set to true.
      */
-    rows: import_prop_types37.default.oneOfType([import_prop_types37.default.number, import_prop_types37.default.string]),
+    rows: import_prop_types38.default.oneOfType([import_prop_types38.default.number, import_prop_types38.default.string]),
     /**
      * The extra props for the slot components.
      * You can override the existing props or add new ones.
@@ -38070,9 +38212,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * @default {}
      */
-    slotProps: import_prop_types37.default.shape({
-      input: import_prop_types37.default.object,
-      root: import_prop_types37.default.object
+    slotProps: import_prop_types38.default.shape({
+      input: import_prop_types38.default.object,
+      root: import_prop_types38.default.object
     }),
     /**
      * The components used for each slot inside.
@@ -38081,34 +38223,34 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * @default {}
      */
-    slots: import_prop_types37.default.shape({
-      input: import_prop_types37.default.elementType,
-      root: import_prop_types37.default.elementType
+    slots: import_prop_types38.default.shape({
+      input: import_prop_types38.default.elementType,
+      root: import_prop_types38.default.elementType
     }),
     /**
      * Start `InputAdornment` for this component.
      */
-    startAdornment: import_prop_types37.default.node,
+    startAdornment: import_prop_types38.default.node,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types37.default.oneOfType([import_prop_types37.default.arrayOf(import_prop_types37.default.oneOfType([import_prop_types37.default.func, import_prop_types37.default.object, import_prop_types37.default.bool])), import_prop_types37.default.func, import_prop_types37.default.object]),
+    sx: import_prop_types38.default.oneOfType([import_prop_types38.default.arrayOf(import_prop_types38.default.oneOfType([import_prop_types38.default.func, import_prop_types38.default.object, import_prop_types38.default.bool])), import_prop_types38.default.func, import_prop_types38.default.object]),
     /**
      * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types).
      * @default 'text'
      */
-    type: import_prop_types37.default.string,
+    type: import_prop_types38.default.string,
     /**
      * The value of the `input` element, required for a controlled component.
      */
-    value: import_prop_types37.default.any
+    value: import_prop_types38.default.any
   } : void 0;
   FilledInput.muiName = "Input";
   var FilledInput_default = FilledInput;
 
   // node_modules/@mui/material/FormControl/FormControl.js
-  var React78 = __toESM(require_react());
-  var import_prop_types38 = __toESM(require_prop_types());
+  var React79 = __toESM(require_react());
+  var import_prop_types39 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/FormControl/formControlClasses.js
   function getFormControlUtilityClasses(slot) {
@@ -38174,7 +38316,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   });
-  var FormControl = /* @__PURE__ */ React78.forwardRef(function FormControl2(inProps, ref) {
+  var FormControl = /* @__PURE__ */ React79.forwardRef(function FormControl2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiFormControl"
@@ -38209,10 +38351,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       variant
     };
     const classes = useUtilityClasses17(ownerState);
-    const [adornedStart, setAdornedStart] = React78.useState(() => {
+    const [adornedStart, setAdornedStart] = React79.useState(() => {
       let initialAdornedStart = false;
       if (children) {
-        React78.Children.forEach(children, (child) => {
+        React79.Children.forEach(children, (child) => {
           if (!isMuiElement_default(child, ["Input", "Select"])) {
             return;
           }
@@ -38224,10 +38366,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
       return initialAdornedStart;
     });
-    const [filled, setFilled] = React78.useState(() => {
+    const [filled, setFilled] = React79.useState(() => {
       let initialFilled = false;
       if (children) {
-        React78.Children.forEach(children, (child) => {
+        React79.Children.forEach(children, (child) => {
           if (!isMuiElement_default(child, ["Input", "Select"])) {
             return;
           }
@@ -38238,13 +38380,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
       return initialFilled;
     });
-    const [focusedState, setFocused] = React78.useState(false);
+    const [focusedState, setFocused] = React79.useState(false);
     if (disabled && focusedState) {
       setFocused(false);
     }
     const focused = visuallyFocused !== void 0 && !disabled ? visuallyFocused : focusedState;
     let registerEffect;
-    const registeredInput = React78.useRef(false);
+    const registeredInput = React79.useRef(false);
     if (true) {
       registerEffect = () => {
         if (registeredInput.current) {
@@ -38256,13 +38398,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         };
       };
     }
-    const onFilled = React78.useCallback(() => {
+    const onFilled = React79.useCallback(() => {
       setFilled(true);
     }, []);
-    const onEmpty = React78.useCallback(() => {
+    const onEmpty = React79.useCallback(() => {
       setFilled(false);
     }, []);
-    const childContext = React78.useMemo(() => {
+    const childContext = React79.useMemo(() => {
       return {
         adornedStart,
         setAdornedStart,
@@ -38307,83 +38449,83 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * The content of the component.
      */
-    children: import_prop_types38.default.node,
+    children: import_prop_types39.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types38.default.object,
+    classes: import_prop_types39.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types38.default.string,
+    className: import_prop_types39.default.string,
     /**
      * The color of the component.
      * It supports both default and custom theme colors, which can be added as shown in the
      * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
      * @default 'primary'
      */
-    color: import_prop_types38.default.oneOfType([import_prop_types38.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types38.default.string]),
+    color: import_prop_types39.default.oneOfType([import_prop_types39.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types39.default.string]),
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
      */
-    component: import_prop_types38.default.elementType,
+    component: import_prop_types39.default.elementType,
     /**
      * If `true`, the label, input and helper text should be displayed in a disabled state.
      * @default false
      */
-    disabled: import_prop_types38.default.bool,
+    disabled: import_prop_types39.default.bool,
     /**
      * If `true`, the label is displayed in an error state.
      * @default false
      */
-    error: import_prop_types38.default.bool,
+    error: import_prop_types39.default.bool,
     /**
      * If `true`, the component is displayed in focused state.
      */
-    focused: import_prop_types38.default.bool,
+    focused: import_prop_types39.default.bool,
     /**
      * If `true`, the component will take up the full width of its container.
      * @default false
      */
-    fullWidth: import_prop_types38.default.bool,
+    fullWidth: import_prop_types39.default.bool,
     /**
      * If `true`, the label is hidden.
      * This is used to increase density for a `FilledInput`.
      * Be sure to add `aria-label` to the `input` element.
      * @default false
      */
-    hiddenLabel: import_prop_types38.default.bool,
+    hiddenLabel: import_prop_types39.default.bool,
     /**
      * If `dense` or `normal`, will adjust vertical spacing of this and contained components.
      * @default 'none'
      */
-    margin: import_prop_types38.default.oneOf(["dense", "none", "normal"]),
+    margin: import_prop_types39.default.oneOf(["dense", "none", "normal"]),
     /**
      * If `true`, the label will indicate that the `input` is required.
      * @default false
      */
-    required: import_prop_types38.default.bool,
+    required: import_prop_types39.default.bool,
     /**
      * The size of the component.
      * @default 'medium'
      */
-    size: import_prop_types38.default.oneOfType([import_prop_types38.default.oneOf(["medium", "small"]), import_prop_types38.default.string]),
+    size: import_prop_types39.default.oneOfType([import_prop_types39.default.oneOf(["medium", "small"]), import_prop_types39.default.string]),
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types38.default.oneOfType([import_prop_types38.default.arrayOf(import_prop_types38.default.oneOfType([import_prop_types38.default.func, import_prop_types38.default.object, import_prop_types38.default.bool])), import_prop_types38.default.func, import_prop_types38.default.object]),
+    sx: import_prop_types39.default.oneOfType([import_prop_types39.default.arrayOf(import_prop_types39.default.oneOfType([import_prop_types39.default.func, import_prop_types39.default.object, import_prop_types39.default.bool])), import_prop_types39.default.func, import_prop_types39.default.object]),
     /**
      * The variant to use.
      * @default 'outlined'
      */
-    variant: import_prop_types38.default.oneOf(["filled", "outlined", "standard"])
+    variant: import_prop_types39.default.oneOf(["filled", "outlined", "standard"])
   } : void 0;
   var FormControl_default = FormControl;
 
   // node_modules/@mui/material/FormControlLabel/FormControlLabel.js
-  var React79 = __toESM(require_react());
-  var import_prop_types39 = __toESM(require_prop_types());
+  var React80 = __toESM(require_react());
+  var import_prop_types40 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/FormControlLabel/formControlLabelClasses.js
   function getFormControlLabelUtilityClasses(slot) {
@@ -38483,7 +38625,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       color: (theme.vars || theme).palette.error.main
     }
   })));
-  var FormControlLabel = /* @__PURE__ */ React79.forwardRef(function FormControlLabel2(inProps, ref) {
+  var FormControlLabel = /* @__PURE__ */ React80.forwardRef(function FormControlLabel2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiFormControlLabel"
@@ -38557,7 +38699,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ownerState,
       ref,
       ...other,
-      children: [/* @__PURE__ */ React79.cloneElement(control, controlProps), required ? /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("div", {
+      children: [/* @__PURE__ */ React80.cloneElement(control, controlProps), required ? /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("div", {
         children: [label, /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(AsteriskComponent, {
           ownerState,
           "aria-hidden": true,
@@ -38575,35 +38717,35 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * If `true`, the component appears selected.
      */
-    checked: import_prop_types39.default.bool,
+    checked: import_prop_types40.default.bool,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types39.default.object,
+    classes: import_prop_types40.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types39.default.string,
+    className: import_prop_types40.default.string,
     /**
      * The props used for each slot inside.
      * @default {}
      * @deprecated use the `slotProps` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
      */
-    componentsProps: import_prop_types39.default.shape({
-      typography: import_prop_types39.default.object
+    componentsProps: import_prop_types40.default.shape({
+      typography: import_prop_types40.default.object
     }),
     /**
      * A control element. For instance, it can be a `Radio`, a `Switch` or a `Checkbox`.
      */
-    control: import_prop_types39.default.element.isRequired,
+    control: import_prop_types40.default.element.isRequired,
     /**
      * If `true`, the control is disabled.
      */
-    disabled: import_prop_types39.default.bool,
+    disabled: import_prop_types40.default.bool,
     /**
      * If `true`, the label is rendered as it is passed without an additional typography node.
      */
-    disableTypography: import_prop_types39.default.bool,
+    disableTypography: import_prop_types40.default.bool,
     /**
      * Pass a ref to the `input` element.
      */
@@ -38611,55 +38753,55 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * A text or an element to be used in an enclosing label element.
      */
-    label: import_prop_types39.default.node,
+    label: import_prop_types40.default.node,
     /**
      * The position of the label.
      * @default 'end'
      */
-    labelPlacement: import_prop_types39.default.oneOf(["bottom", "end", "start", "top"]),
+    labelPlacement: import_prop_types40.default.oneOf(["bottom", "end", "start", "top"]),
     /**
      * @ignore
      */
-    name: import_prop_types39.default.string,
+    name: import_prop_types40.default.string,
     /**
      * Callback fired when the state is changed.
      *
      * @param {React.SyntheticEvent} event The event source of the callback.
      * You can pull out the new checked state by accessing `event.target.checked` (boolean).
      */
-    onChange: import_prop_types39.default.func,
+    onChange: import_prop_types40.default.func,
     /**
      * If `true`, the label will indicate that the `input` is required.
      */
-    required: import_prop_types39.default.bool,
+    required: import_prop_types40.default.bool,
     /**
      * The props used for each slot inside.
      * @default {}
      */
-    slotProps: import_prop_types39.default.shape({
-      typography: import_prop_types39.default.oneOfType([import_prop_types39.default.func, import_prop_types39.default.object])
+    slotProps: import_prop_types40.default.shape({
+      typography: import_prop_types40.default.oneOfType([import_prop_types40.default.func, import_prop_types40.default.object])
     }),
     /**
      * The components used for each slot inside.
      * @default {}
      */
-    slots: import_prop_types39.default.shape({
-      typography: import_prop_types39.default.elementType
+    slots: import_prop_types40.default.shape({
+      typography: import_prop_types40.default.elementType
     }),
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types39.default.oneOfType([import_prop_types39.default.arrayOf(import_prop_types39.default.oneOfType([import_prop_types39.default.func, import_prop_types39.default.object, import_prop_types39.default.bool])), import_prop_types39.default.func, import_prop_types39.default.object]),
+    sx: import_prop_types40.default.oneOfType([import_prop_types40.default.arrayOf(import_prop_types40.default.oneOfType([import_prop_types40.default.func, import_prop_types40.default.object, import_prop_types40.default.bool])), import_prop_types40.default.func, import_prop_types40.default.object]),
     /**
      * The value of the component.
      */
-    value: import_prop_types39.default.any
+    value: import_prop_types40.default.any
   } : void 0;
   var FormControlLabel_default = FormControlLabel;
 
   // node_modules/@mui/material/FormHelperText/FormHelperText.js
-  var React80 = __toESM(require_react());
-  var import_prop_types40 = __toESM(require_prop_types());
+  var React81 = __toESM(require_react());
+  var import_prop_types41 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/FormHelperText/formHelperTextClasses.js
   function getFormHelperTextUtilityClasses(slot) {
@@ -38729,7 +38871,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   })));
-  var FormHelperText = /* @__PURE__ */ React80.forwardRef(function FormHelperText2(inProps, ref) {
+  var FormHelperText = /* @__PURE__ */ React81.forwardRef(function FormHelperText2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiFormHelperText"
@@ -38793,59 +38935,59 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * If `' '` is provided, the component reserves one line height for displaying a future message.
      */
-    children: import_prop_types40.default.node,
+    children: import_prop_types41.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types40.default.object,
+    classes: import_prop_types41.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types40.default.string,
+    className: import_prop_types41.default.string,
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
      */
-    component: import_prop_types40.default.elementType,
+    component: import_prop_types41.default.elementType,
     /**
      * If `true`, the helper text should be displayed in a disabled state.
      */
-    disabled: import_prop_types40.default.bool,
+    disabled: import_prop_types41.default.bool,
     /**
      * If `true`, helper text should be displayed in an error state.
      */
-    error: import_prop_types40.default.bool,
+    error: import_prop_types41.default.bool,
     /**
      * If `true`, the helper text should use filled classes key.
      */
-    filled: import_prop_types40.default.bool,
+    filled: import_prop_types41.default.bool,
     /**
      * If `true`, the helper text should use focused classes key.
      */
-    focused: import_prop_types40.default.bool,
+    focused: import_prop_types41.default.bool,
     /**
      * If `dense`, will adjust vertical spacing. This is normally obtained via context from
      * FormControl.
      */
-    margin: import_prop_types40.default.oneOf(["dense"]),
+    margin: import_prop_types41.default.oneOf(["dense"]),
     /**
      * If `true`, the helper text should use required classes key.
      */
-    required: import_prop_types40.default.bool,
+    required: import_prop_types41.default.bool,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types40.default.oneOfType([import_prop_types40.default.arrayOf(import_prop_types40.default.oneOfType([import_prop_types40.default.func, import_prop_types40.default.object, import_prop_types40.default.bool])), import_prop_types40.default.func, import_prop_types40.default.object]),
+    sx: import_prop_types41.default.oneOfType([import_prop_types41.default.arrayOf(import_prop_types41.default.oneOfType([import_prop_types41.default.func, import_prop_types41.default.object, import_prop_types41.default.bool])), import_prop_types41.default.func, import_prop_types41.default.object]),
     /**
      * The variant to use.
      */
-    variant: import_prop_types40.default.oneOfType([import_prop_types40.default.oneOf(["filled", "outlined", "standard"]), import_prop_types40.default.string])
+    variant: import_prop_types41.default.oneOfType([import_prop_types41.default.oneOf(["filled", "outlined", "standard"]), import_prop_types41.default.string])
   } : void 0;
   var FormHelperText_default = FormHelperText;
 
   // node_modules/@mui/material/FormLabel/FormLabel.js
-  var React81 = __toESM(require_react());
-  var import_prop_types41 = __toESM(require_prop_types());
+  var React82 = __toESM(require_react());
+  var import_prop_types42 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/FormLabel/formLabelClasses.js
   function getFormLabelUtilityClasses(slot) {
@@ -38921,7 +39063,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       color: (theme.vars || theme).palette.error.main
     }
   })));
-  var FormLabel = /* @__PURE__ */ React81.forwardRef(function FormLabel2(inProps, ref) {
+  var FormLabel = /* @__PURE__ */ React82.forwardRef(function FormLabel2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiFormLabel"
@@ -38977,56 +39119,56 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * The content of the component.
      */
-    children: import_prop_types41.default.node,
+    children: import_prop_types42.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types41.default.object,
+    classes: import_prop_types42.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types41.default.string,
+    className: import_prop_types42.default.string,
     /**
      * The color of the component.
      * It supports both default and custom theme colors, which can be added as shown in the
      * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
      */
-    color: import_prop_types41.default.oneOfType([import_prop_types41.default.oneOf(["error", "info", "primary", "secondary", "success", "warning"]), import_prop_types41.default.string]),
+    color: import_prop_types42.default.oneOfType([import_prop_types42.default.oneOf(["error", "info", "primary", "secondary", "success", "warning"]), import_prop_types42.default.string]),
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
      */
-    component: import_prop_types41.default.elementType,
+    component: import_prop_types42.default.elementType,
     /**
      * If `true`, the label should be displayed in a disabled state.
      */
-    disabled: import_prop_types41.default.bool,
+    disabled: import_prop_types42.default.bool,
     /**
      * If `true`, the label is displayed in an error state.
      */
-    error: import_prop_types41.default.bool,
+    error: import_prop_types42.default.bool,
     /**
      * If `true`, the label should use filled classes key.
      */
-    filled: import_prop_types41.default.bool,
+    filled: import_prop_types42.default.bool,
     /**
      * If `true`, the input of this label is focused (used by `FormGroup` components).
      */
-    focused: import_prop_types41.default.bool,
+    focused: import_prop_types42.default.bool,
     /**
      * If `true`, the label will indicate that the `input` is required.
      */
-    required: import_prop_types41.default.bool,
+    required: import_prop_types42.default.bool,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types41.default.oneOfType([import_prop_types41.default.arrayOf(import_prop_types41.default.oneOfType([import_prop_types41.default.func, import_prop_types41.default.object, import_prop_types41.default.bool])), import_prop_types41.default.func, import_prop_types41.default.object])
+    sx: import_prop_types42.default.oneOfType([import_prop_types42.default.arrayOf(import_prop_types42.default.oneOfType([import_prop_types42.default.func, import_prop_types42.default.object, import_prop_types42.default.bool])), import_prop_types42.default.func, import_prop_types42.default.object])
   } : void 0;
   var FormLabel_default = FormLabel;
 
   // node_modules/@mui/material/Grow/Grow.js
-  var React82 = __toESM(require_react());
-  var import_prop_types42 = __toESM(require_prop_types());
+  var React83 = __toESM(require_react());
+  var import_prop_types43 = __toESM(require_prop_types());
   var import_jsx_runtime40 = __toESM(require_jsx_runtime());
   function getScale(value) {
     return `scale(${value}, ${value ** 2})`;
@@ -39042,7 +39184,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
   };
   var isWebKit154 = typeof navigator !== "undefined" && /^((?!chrome|android).)*(safari|mobile)/i.test(navigator.userAgent) && /(os |version\/)15(.|_)4/i.test(navigator.userAgent);
-  var Grow = /* @__PURE__ */ React82.forwardRef(function Grow2(props, ref) {
+  var Grow = /* @__PURE__ */ React83.forwardRef(function Grow2(props, ref) {
     const {
       addEndListener,
       appear = true,
@@ -39062,9 +39204,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ...other
     } = props;
     const timer = useTimeout();
-    const autoTimeout = React82.useRef();
+    const autoTimeout = React83.useRef();
     const theme = useTheme4();
-    const nodeRef = React82.useRef(null);
+    const nodeRef = React83.useRef(null);
     const handleRef = useForkRef_default(nodeRef, getReactElementRef(children), ref);
     const normalizedTransitionCallback = (callback) => (maybeIsAppearing) => {
       if (callback) {
@@ -39170,7 +39312,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         ownerState,
         ...restChildProps
       }) => {
-        return /* @__PURE__ */ React82.cloneElement(children, {
+        return /* @__PURE__ */ React83.cloneElement(children, {
           style: {
             opacity: 0,
             transform: getScale(0.75),
@@ -39195,13 +39337,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * node and a done callback. Allows for more fine grained transition end
      * logic. Note: Timeouts are still used as a fallback if provided.
      */
-    addEndListener: import_prop_types42.default.func,
+    addEndListener: import_prop_types43.default.func,
     /**
      * Perform the enter transition when it first mounts if `in` is also `true`.
      * Set this to `false` to disable this behavior.
      * @default true
      */
-    appear: import_prop_types42.default.bool,
+    appear: import_prop_types43.default.bool,
     /**
      * A single child content element.
      */
@@ -39210,42 +39352,42 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * The transition timing function.
      * You may specify a single easing or a object containing enter and exit values.
      */
-    easing: import_prop_types42.default.oneOfType([import_prop_types42.default.shape({
-      enter: import_prop_types42.default.string,
-      exit: import_prop_types42.default.string
-    }), import_prop_types42.default.string]),
+    easing: import_prop_types43.default.oneOfType([import_prop_types43.default.shape({
+      enter: import_prop_types43.default.string,
+      exit: import_prop_types43.default.string
+    }), import_prop_types43.default.string]),
     /**
      * If `true`, the component will transition in.
      */
-    in: import_prop_types42.default.bool,
+    in: import_prop_types43.default.bool,
     /**
      * @ignore
      */
-    onEnter: import_prop_types42.default.func,
+    onEnter: import_prop_types43.default.func,
     /**
      * @ignore
      */
-    onEntered: import_prop_types42.default.func,
+    onEntered: import_prop_types43.default.func,
     /**
      * @ignore
      */
-    onEntering: import_prop_types42.default.func,
+    onEntering: import_prop_types43.default.func,
     /**
      * @ignore
      */
-    onExit: import_prop_types42.default.func,
+    onExit: import_prop_types43.default.func,
     /**
      * @ignore
      */
-    onExited: import_prop_types42.default.func,
+    onExited: import_prop_types43.default.func,
     /**
      * @ignore
      */
-    onExiting: import_prop_types42.default.func,
+    onExiting: import_prop_types43.default.func,
     /**
      * @ignore
      */
-    style: import_prop_types42.default.object,
+    style: import_prop_types43.default.object,
     /**
      * The duration for the transition, in milliseconds.
      * You may specify a single timeout for all transitions, or individually with an object.
@@ -39253,10 +39395,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * Set to 'auto' to automatically calculate transition time based on height.
      * @default 'auto'
      */
-    timeout: import_prop_types42.default.oneOfType([import_prop_types42.default.oneOf(["auto"]), import_prop_types42.default.number, import_prop_types42.default.shape({
-      appear: import_prop_types42.default.number,
-      enter: import_prop_types42.default.number,
-      exit: import_prop_types42.default.number
+    timeout: import_prop_types43.default.oneOfType([import_prop_types43.default.oneOf(["auto"]), import_prop_types43.default.number, import_prop_types43.default.shape({
+      appear: import_prop_types43.default.number,
+      enter: import_prop_types43.default.number,
+      exit: import_prop_types43.default.number
     })])
   } : void 0;
   if (Grow) {
@@ -39265,8 +39407,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var Grow_default = Grow;
 
   // node_modules/@mui/material/Input/Input.js
-  var React83 = __toESM(require_react());
-  var import_prop_types43 = __toESM(require_prop_types());
+  var React84 = __toESM(require_react());
+  var import_prop_types44 = __toESM(require_prop_types());
   var import_jsx_runtime41 = __toESM(require_jsx_runtime());
   var useUtilityClasses21 = (ownerState) => {
     const {
@@ -39384,7 +39526,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     slot: "Input",
     overridesResolver: inputOverridesResolver
   })({});
-  var Input = /* @__PURE__ */ React83.forwardRef(function Input2(inProps, ref) {
+  var Input = /* @__PURE__ */ React84.forwardRef(function Input2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiInput"
@@ -39438,22 +39580,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * The name can be confusing, as it's more like an autofill.
      * You can learn more about it [following the specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
      */
-    autoComplete: import_prop_types43.default.string,
+    autoComplete: import_prop_types44.default.string,
     /**
      * If `true`, the `input` element is focused during the first mount.
      */
-    autoFocus: import_prop_types43.default.bool,
+    autoFocus: import_prop_types44.default.bool,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types43.default.object,
+    classes: import_prop_types44.default.object,
     /**
      * The color of the component.
      * It supports both default and custom theme colors, which can be added as shown in the
      * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
      * The prop defaults to the value (`'primary'`) inherited from the parent FormControl component.
      */
-    color: import_prop_types43.default.oneOfType([import_prop_types43.default.oneOf(["primary", "secondary"]), import_prop_types43.default.string]),
+    color: import_prop_types44.default.oneOfType([import_prop_types44.default.oneOf(["primary", "secondary"]), import_prop_types44.default.string]),
     /**
      * The components used for each slot inside.
      *
@@ -39461,9 +39603,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * @default {}
      */
-    components: import_prop_types43.default.shape({
-      Input: import_prop_types43.default.elementType,
-      Root: import_prop_types43.default.elementType
+    components: import_prop_types44.default.shape({
+      Input: import_prop_types44.default.elementType,
+      Root: import_prop_types44.default.elementType
     }),
     /**
      * The extra props for the slot components.
@@ -39473,53 +39615,53 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * @default {}
      */
-    componentsProps: import_prop_types43.default.shape({
-      input: import_prop_types43.default.object,
-      root: import_prop_types43.default.object
+    componentsProps: import_prop_types44.default.shape({
+      input: import_prop_types44.default.object,
+      root: import_prop_types44.default.object
     }),
     /**
      * The default value. Use when the component is not controlled.
      */
-    defaultValue: import_prop_types43.default.any,
+    defaultValue: import_prop_types44.default.any,
     /**
      * If `true`, the component is disabled.
      * The prop defaults to the value (`false`) inherited from the parent FormControl component.
      */
-    disabled: import_prop_types43.default.bool,
+    disabled: import_prop_types44.default.bool,
     /**
      * If `true`, the `input` will not have an underline.
      * @default false
      */
-    disableUnderline: import_prop_types43.default.bool,
+    disableUnderline: import_prop_types44.default.bool,
     /**
      * End `InputAdornment` for this component.
      */
-    endAdornment: import_prop_types43.default.node,
+    endAdornment: import_prop_types44.default.node,
     /**
      * If `true`, the `input` will indicate an error.
      * The prop defaults to the value (`false`) inherited from the parent FormControl component.
      */
-    error: import_prop_types43.default.bool,
+    error: import_prop_types44.default.bool,
     /**
      * If `true`, the `input` will take up the full width of its container.
      * @default false
      */
-    fullWidth: import_prop_types43.default.bool,
+    fullWidth: import_prop_types44.default.bool,
     /**
      * The id of the `input` element.
      */
-    id: import_prop_types43.default.string,
+    id: import_prop_types44.default.string,
     /**
      * The component used for the `input` element.
      * Either a string to use a HTML element or a component.
      * @default 'input'
      */
-    inputComponent: import_prop_types43.default.elementType,
+    inputComponent: import_prop_types44.default.elementType,
     /**
      * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
      * @default {}
      */
-    inputProps: import_prop_types43.default.object,
+    inputProps: import_prop_types44.default.object,
     /**
      * Pass a ref to the `input` element.
      */
@@ -39529,49 +39671,49 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * FormControl.
      * The prop defaults to the value (`'none'`) inherited from the parent FormControl component.
      */
-    margin: import_prop_types43.default.oneOf(["dense", "none"]),
+    margin: import_prop_types44.default.oneOf(["dense", "none"]),
     /**
      * Maximum number of rows to display when multiline option is set to true.
      */
-    maxRows: import_prop_types43.default.oneOfType([import_prop_types43.default.number, import_prop_types43.default.string]),
+    maxRows: import_prop_types44.default.oneOfType([import_prop_types44.default.number, import_prop_types44.default.string]),
     /**
      * Minimum number of rows to display when multiline option is set to true.
      */
-    minRows: import_prop_types43.default.oneOfType([import_prop_types43.default.number, import_prop_types43.default.string]),
+    minRows: import_prop_types44.default.oneOfType([import_prop_types44.default.number, import_prop_types44.default.string]),
     /**
      * If `true`, a [TextareaAutosize](https://mui.com/material-ui/react-textarea-autosize/) element is rendered.
      * @default false
      */
-    multiline: import_prop_types43.default.bool,
+    multiline: import_prop_types44.default.bool,
     /**
      * Name attribute of the `input` element.
      */
-    name: import_prop_types43.default.string,
+    name: import_prop_types44.default.string,
     /**
      * Callback fired when the value is changed.
      *
      * @param {React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>} event The event source of the callback.
      * You can pull out the new value by accessing `event.target.value` (string).
      */
-    onChange: import_prop_types43.default.func,
+    onChange: import_prop_types44.default.func,
     /**
      * The short hint displayed in the `input` before the user enters a value.
      */
-    placeholder: import_prop_types43.default.string,
+    placeholder: import_prop_types44.default.string,
     /**
      * It prevents the user from changing the value of the field
      * (not from interacting with the field).
      */
-    readOnly: import_prop_types43.default.bool,
+    readOnly: import_prop_types44.default.bool,
     /**
      * If `true`, the `input` element is required.
      * The prop defaults to the value (`false`) inherited from the parent FormControl component.
      */
-    required: import_prop_types43.default.bool,
+    required: import_prop_types44.default.bool,
     /**
      * Number of rows to display when multiline option is set to true.
      */
-    rows: import_prop_types43.default.oneOfType([import_prop_types43.default.number, import_prop_types43.default.string]),
+    rows: import_prop_types44.default.oneOfType([import_prop_types44.default.number, import_prop_types44.default.string]),
     /**
      * The extra props for the slot components.
      * You can override the existing props or add new ones.
@@ -39580,9 +39722,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * @default {}
      */
-    slotProps: import_prop_types43.default.shape({
-      input: import_prop_types43.default.object,
-      root: import_prop_types43.default.object
+    slotProps: import_prop_types44.default.shape({
+      input: import_prop_types44.default.object,
+      root: import_prop_types44.default.object
     }),
     /**
      * The components used for each slot inside.
@@ -39591,34 +39733,34 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * @default {}
      */
-    slots: import_prop_types43.default.shape({
-      input: import_prop_types43.default.elementType,
-      root: import_prop_types43.default.elementType
+    slots: import_prop_types44.default.shape({
+      input: import_prop_types44.default.elementType,
+      root: import_prop_types44.default.elementType
     }),
     /**
      * Start `InputAdornment` for this component.
      */
-    startAdornment: import_prop_types43.default.node,
+    startAdornment: import_prop_types44.default.node,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types43.default.oneOfType([import_prop_types43.default.arrayOf(import_prop_types43.default.oneOfType([import_prop_types43.default.func, import_prop_types43.default.object, import_prop_types43.default.bool])), import_prop_types43.default.func, import_prop_types43.default.object]),
+    sx: import_prop_types44.default.oneOfType([import_prop_types44.default.arrayOf(import_prop_types44.default.oneOfType([import_prop_types44.default.func, import_prop_types44.default.object, import_prop_types44.default.bool])), import_prop_types44.default.func, import_prop_types44.default.object]),
     /**
      * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types).
      * @default 'text'
      */
-    type: import_prop_types43.default.string,
+    type: import_prop_types44.default.string,
     /**
      * The value of the `input` element, required for a controlled component.
      */
-    value: import_prop_types43.default.any
+    value: import_prop_types44.default.any
   } : void 0;
   Input.muiName = "Input";
   var Input_default = Input;
 
   // node_modules/@mui/material/InputAdornment/InputAdornment.js
-  var React84 = __toESM(require_react());
-  var import_prop_types44 = __toESM(require_prop_types());
+  var React85 = __toESM(require_react());
+  var import_prop_types45 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/InputAdornment/inputAdornmentClasses.js
   function getInputAdornmentUtilityClass(slot) {
@@ -39694,7 +39836,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   })));
-  var InputAdornment = /* @__PURE__ */ React84.forwardRef(function InputAdornment2(inProps, ref) {
+  var InputAdornment = /* @__PURE__ */ React85.forwardRef(function InputAdornment2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiInputAdornment"
@@ -39741,7 +39883,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         children: typeof children === "string" && !disableTypography ? /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Typography_default, {
           color: "textSecondary",
           children
-        }) : /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(React84.Fragment, {
+        }) : /* @__PURE__ */ (0, import_jsx_runtime42.jsxs)(React85.Fragment, {
           children: [position2 === "start" ? (
             /* notranslate needed while Google Translate will not fix zero-width space issue */
             _span2 || (_span2 = /* @__PURE__ */ (0, import_jsx_runtime42.jsx)("span", {
@@ -39762,51 +39904,51 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * The content of the component, normally an `IconButton` or string.
      */
-    children: import_prop_types44.default.node,
+    children: import_prop_types45.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types44.default.object,
+    classes: import_prop_types45.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types44.default.string,
+    className: import_prop_types45.default.string,
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
      */
-    component: import_prop_types44.default.elementType,
+    component: import_prop_types45.default.elementType,
     /**
      * Disable pointer events on the root.
      * This allows for the content of the adornment to focus the `input` on click.
      * @default false
      */
-    disablePointerEvents: import_prop_types44.default.bool,
+    disablePointerEvents: import_prop_types45.default.bool,
     /**
      * If children is a string then disable wrapping in a Typography component.
      * @default false
      */
-    disableTypography: import_prop_types44.default.bool,
+    disableTypography: import_prop_types45.default.bool,
     /**
      * The position this adornment should appear relative to the `Input`.
      */
-    position: import_prop_types44.default.oneOf(["end", "start"]).isRequired,
+    position: import_prop_types45.default.oneOf(["end", "start"]).isRequired,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types44.default.oneOfType([import_prop_types44.default.arrayOf(import_prop_types44.default.oneOfType([import_prop_types44.default.func, import_prop_types44.default.object, import_prop_types44.default.bool])), import_prop_types44.default.func, import_prop_types44.default.object]),
+    sx: import_prop_types45.default.oneOfType([import_prop_types45.default.arrayOf(import_prop_types45.default.oneOfType([import_prop_types45.default.func, import_prop_types45.default.object, import_prop_types45.default.bool])), import_prop_types45.default.func, import_prop_types45.default.object]),
     /**
      * The variant to use.
      * Note: If you are using the `TextField` component or the `FormControl` component
      * you do not have to set this manually.
      */
-    variant: import_prop_types44.default.oneOf(["filled", "outlined", "standard"])
+    variant: import_prop_types45.default.oneOf(["filled", "outlined", "standard"])
   } : void 0;
   var InputAdornment_default = InputAdornment;
 
   // node_modules/@mui/material/InputLabel/InputLabel.js
-  var React85 = __toESM(require_react());
-  var import_prop_types45 = __toESM(require_prop_types());
+  var React86 = __toESM(require_react());
+  var import_prop_types46 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/InputLabel/inputLabelClasses.js
   function getInputLabelUtilityClasses(slot) {
@@ -39972,7 +40114,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   })));
-  var InputLabel = /* @__PURE__ */ React85.forwardRef(function InputLabel2(inProps, ref) {
+  var InputLabel = /* @__PURE__ */ React86.forwardRef(function InputLabel2(inProps, ref) {
     const props = useDefaultProps2({
       name: "MuiInputLabel",
       props: inProps
@@ -40023,74 +40165,74 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * The content of the component.
      */
-    children: import_prop_types45.default.node,
+    children: import_prop_types46.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types45.default.object,
+    classes: import_prop_types46.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types45.default.string,
+    className: import_prop_types46.default.string,
     /**
      * The color of the component.
      * It supports both default and custom theme colors, which can be added as shown in the
      * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
      */
-    color: import_prop_types45.default.oneOfType([import_prop_types45.default.oneOf(["error", "info", "primary", "secondary", "success", "warning"]), import_prop_types45.default.string]),
+    color: import_prop_types46.default.oneOfType([import_prop_types46.default.oneOf(["error", "info", "primary", "secondary", "success", "warning"]), import_prop_types46.default.string]),
     /**
      * If `true`, the transition animation is disabled.
      * @default false
      */
-    disableAnimation: import_prop_types45.default.bool,
+    disableAnimation: import_prop_types46.default.bool,
     /**
      * If `true`, the component is disabled.
      */
-    disabled: import_prop_types45.default.bool,
+    disabled: import_prop_types46.default.bool,
     /**
      * If `true`, the label is displayed in an error state.
      */
-    error: import_prop_types45.default.bool,
+    error: import_prop_types46.default.bool,
     /**
      * If `true`, the `input` of this label is focused.
      */
-    focused: import_prop_types45.default.bool,
+    focused: import_prop_types46.default.bool,
     /**
      * If `dense`, will adjust vertical spacing. This is normally obtained via context from
      * FormControl.
      */
-    margin: import_prop_types45.default.oneOf(["dense"]),
+    margin: import_prop_types46.default.oneOf(["dense"]),
     /**
      * if `true`, the label will indicate that the `input` is required.
      */
-    required: import_prop_types45.default.bool,
+    required: import_prop_types46.default.bool,
     /**
      * If `true`, the label is shrunk.
      */
-    shrink: import_prop_types45.default.bool,
+    shrink: import_prop_types46.default.bool,
     /**
      * The size of the component.
      * @default 'normal'
      */
-    size: import_prop_types45.default.oneOfType([import_prop_types45.default.oneOf(["normal", "small"]), import_prop_types45.default.string]),
+    size: import_prop_types46.default.oneOfType([import_prop_types46.default.oneOf(["normal", "small"]), import_prop_types46.default.string]),
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types45.default.oneOfType([import_prop_types45.default.arrayOf(import_prop_types45.default.oneOfType([import_prop_types45.default.func, import_prop_types45.default.object, import_prop_types45.default.bool])), import_prop_types45.default.func, import_prop_types45.default.object]),
+    sx: import_prop_types46.default.oneOfType([import_prop_types46.default.arrayOf(import_prop_types46.default.oneOfType([import_prop_types46.default.func, import_prop_types46.default.object, import_prop_types46.default.bool])), import_prop_types46.default.func, import_prop_types46.default.object]),
     /**
      * The variant to use.
      */
-    variant: import_prop_types45.default.oneOf(["filled", "outlined", "standard"])
+    variant: import_prop_types46.default.oneOf(["filled", "outlined", "standard"])
   } : void 0;
   var InputLabel_default = InputLabel;
 
   // node_modules/@mui/material/List/List.js
-  var React87 = __toESM(require_react());
-  var import_prop_types46 = __toESM(require_prop_types());
+  var React88 = __toESM(require_react());
+  var import_prop_types47 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/List/ListContext.js
-  var React86 = __toESM(require_react());
-  var ListContext = /* @__PURE__ */ React86.createContext({});
+  var React87 = __toESM(require_react());
+  var ListContext = /* @__PURE__ */ React87.createContext({});
   if (true) {
     ListContext.displayName = "ListContext";
   }
@@ -40147,7 +40289,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   });
-  var List = /* @__PURE__ */ React87.forwardRef(function List2(inProps, ref) {
+  var List = /* @__PURE__ */ React88.forwardRef(function List2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiList"
@@ -40161,7 +40303,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       subheader,
       ...other
     } = props;
-    const context = React87.useMemo(() => ({
+    const context = React88.useMemo(() => ({
       dense
     }), [dense]);
     const ownerState = {
@@ -40191,52 +40333,52 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * The content of the component.
      */
-    children: import_prop_types46.default.node,
+    children: import_prop_types47.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types46.default.object,
+    classes: import_prop_types47.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types46.default.string,
+    className: import_prop_types47.default.string,
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
      */
-    component: import_prop_types46.default.elementType,
+    component: import_prop_types47.default.elementType,
     /**
      * If `true`, compact vertical padding designed for keyboard and mouse input is used for
      * the list and list items.
      * The prop is available to descendant components as the `dense` context.
      * @default false
      */
-    dense: import_prop_types46.default.bool,
+    dense: import_prop_types47.default.bool,
     /**
      * If `true`, vertical padding is removed from the list.
      * @default false
      */
-    disablePadding: import_prop_types46.default.bool,
+    disablePadding: import_prop_types47.default.bool,
     /**
      * The content of the subheader, normally `ListSubheader`.
      */
-    subheader: import_prop_types46.default.node,
+    subheader: import_prop_types47.default.node,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types46.default.oneOfType([import_prop_types46.default.arrayOf(import_prop_types46.default.oneOfType([import_prop_types46.default.func, import_prop_types46.default.object, import_prop_types46.default.bool])), import_prop_types46.default.func, import_prop_types46.default.object])
+    sx: import_prop_types47.default.oneOfType([import_prop_types47.default.arrayOf(import_prop_types47.default.oneOfType([import_prop_types47.default.func, import_prop_types47.default.object, import_prop_types47.default.bool])), import_prop_types47.default.func, import_prop_types47.default.object])
   } : void 0;
   var List_default = List;
 
   // node_modules/@mui/material/Menu/Menu.js
-  var React90 = __toESM(require_react());
+  var React91 = __toESM(require_react());
   var import_react_is4 = __toESM(require_react_is4());
-  var import_prop_types49 = __toESM(require_prop_types());
+  var import_prop_types50 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/MenuList/MenuList.js
-  var React88 = __toESM(require_react());
+  var React89 = __toESM(require_react());
   var import_react_is3 = __toESM(require_react_is4());
-  var import_prop_types47 = __toESM(require_prop_types());
+  var import_prop_types48 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/utils/getScrollbarSize.js
   var getScrollbarSize_default = getScrollbarSize;
@@ -40298,7 +40440,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
     return false;
   }
-  var MenuList = /* @__PURE__ */ React88.forwardRef(function MenuList2(props, ref) {
+  var MenuList = /* @__PURE__ */ React89.forwardRef(function MenuList2(props, ref) {
     const {
       // private
       // eslint-disable-next-line react/prop-types
@@ -40313,8 +40455,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       variant = "selectedMenu",
       ...other
     } = props;
-    const listRef = React88.useRef(null);
-    const textCriteriaRef = React88.useRef({
+    const listRef = React89.useRef(null);
+    const textCriteriaRef = React89.useRef({
       keys: [],
       repeating: true,
       previousKeyMatched: true,
@@ -40325,7 +40467,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         listRef.current.focus();
       }
     }, [autoFocus]);
-    React88.useImperativeHandle(actions, () => ({
+    React89.useImperativeHandle(actions, () => ({
       adjustStyleForScrollbar: (containerElement, {
         direction
       }) => {
@@ -40389,8 +40531,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     };
     const handleRef = useForkRef_default(listRef, ref);
     let activeItemIndex = -1;
-    React88.Children.forEach(children, (child, index) => {
-      if (!/* @__PURE__ */ React88.isValidElement(child)) {
+    React89.Children.forEach(children, (child, index) => {
+      if (!/* @__PURE__ */ React89.isValidElement(child)) {
         if (activeItemIndex === index) {
           activeItemIndex += 1;
           if (activeItemIndex >= children.length) {
@@ -40418,7 +40560,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         }
       }
     });
-    const items = React88.Children.map(children, (child, index) => {
+    const items = React89.Children.map(children, (child, index) => {
       if (index === activeItemIndex) {
         const newChildProps = {};
         if (autoFocusItem) {
@@ -40427,7 +40569,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         if (child.props.tabIndex === void 0 && variant === "selectedMenu") {
           newChildProps.tabIndex = 0;
         }
-        return /* @__PURE__ */ React88.cloneElement(child, newChildProps);
+        return /* @__PURE__ */ React89.cloneElement(child, newChildProps);
       }
       return child;
     });
@@ -40450,47 +40592,47 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * If `true`, will focus the `[role="menu"]` container and move into tab order.
      * @default false
      */
-    autoFocus: import_prop_types47.default.bool,
+    autoFocus: import_prop_types48.default.bool,
     /**
      * If `true`, will focus the first menuitem if `variant="menu"` or selected item
      * if `variant="selectedMenu"`.
      * @default false
      */
-    autoFocusItem: import_prop_types47.default.bool,
+    autoFocusItem: import_prop_types48.default.bool,
     /**
      * MenuList contents, normally `MenuItem`s.
      */
-    children: import_prop_types47.default.node,
+    children: import_prop_types48.default.node,
     /**
      * @ignore
      */
-    className: import_prop_types47.default.string,
+    className: import_prop_types48.default.string,
     /**
      * If `true`, will allow focus on disabled items.
      * @default false
      */
-    disabledItemsFocusable: import_prop_types47.default.bool,
+    disabledItemsFocusable: import_prop_types48.default.bool,
     /**
      * If `true`, the menu items will not wrap focus.
      * @default false
      */
-    disableListWrap: import_prop_types47.default.bool,
+    disableListWrap: import_prop_types48.default.bool,
     /**
      * @ignore
      */
-    onKeyDown: import_prop_types47.default.func,
+    onKeyDown: import_prop_types48.default.func,
     /**
      * The variant to use. Use `menu` to prevent selected items from impacting the initial focus
      * and the vertical alignment relative to the anchor element.
      * @default 'selectedMenu'
      */
-    variant: import_prop_types47.default.oneOf(["menu", "selectedMenu"])
+    variant: import_prop_types48.default.oneOf(["menu", "selectedMenu"])
   } : void 0;
   var MenuList_default = MenuList;
 
   // node_modules/@mui/material/Popover/Popover.js
-  var React89 = __toESM(require_react());
-  var import_prop_types48 = __toESM(require_prop_types());
+  var React90 = __toESM(require_react());
+  var import_prop_types49 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/Popover/popoverClasses.js
   function getPopoverUtilityClass(slot) {
@@ -40560,7 +40702,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     // We disable the focus ring for mouse, touch and keyboard users.
     outline: 0
   });
-  var Popover = /* @__PURE__ */ React89.forwardRef(function Popover2(inProps, ref) {
+  var Popover = /* @__PURE__ */ React90.forwardRef(function Popover2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiPopover"
@@ -40596,7 +40738,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       disableScrollLock = false,
       ...other
     } = props;
-    const paperRef = React89.useRef();
+    const paperRef = React90.useRef();
     const ownerState = {
       ...props,
       anchorOrigin,
@@ -40609,7 +40751,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       TransitionProps
     };
     const classes = useUtilityClasses25(ownerState);
-    const getAnchorOffset = React89.useCallback(() => {
+    const getAnchorOffset = React90.useCallback(() => {
       if (anchorReference === "anchorPosition") {
         if (true) {
           if (!anchorPosition) {
@@ -40632,13 +40774,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         left: anchorRect.left + getOffsetLeft(anchorRect, anchorOrigin.horizontal)
       };
     }, [anchorEl, anchorOrigin.horizontal, anchorOrigin.vertical, anchorPosition, anchorReference]);
-    const getTransformOrigin = React89.useCallback((elemRect) => {
+    const getTransformOrigin = React90.useCallback((elemRect) => {
       return {
         vertical: getOffsetTop(elemRect, transformOrigin.vertical),
         horizontal: getOffsetLeft(elemRect, transformOrigin.horizontal)
       };
     }, [transformOrigin.horizontal, transformOrigin.vertical]);
-    const getPositioningStyle = React89.useCallback((element) => {
+    const getPositioningStyle = React90.useCallback((element) => {
       const elemRect = {
         width: element.offsetWidth,
         height: element.offsetHeight
@@ -40688,8 +40830,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         transformOrigin: getTransformOriginValue(elemTransformOrigin)
       };
     }, [anchorEl, anchorReference, getAnchorOffset, getTransformOrigin, marginThreshold]);
-    const [isPositioned, setIsPositioned] = React89.useState(open);
-    const setPositioningStyles = React89.useCallback(() => {
+    const [isPositioned, setIsPositioned] = React90.useState(open);
+    const setPositioningStyles = React90.useCallback(() => {
       const element = paperRef.current;
       if (!element) {
         return;
@@ -40704,7 +40846,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       element.style.transformOrigin = positioning.transformOrigin;
       setIsPositioned(true);
     }, [getPositioningStyle]);
-    React89.useEffect(() => {
+    React90.useEffect(() => {
       if (disableScrollLock) {
         window.addEventListener("scroll", setPositioningStyles);
       }
@@ -40716,17 +40858,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const handleExited = () => {
       setIsPositioned(false);
     };
-    React89.useEffect(() => {
+    React90.useEffect(() => {
       if (open) {
         setPositioningStyles();
       }
     });
-    React89.useImperativeHandle(action, () => open ? {
+    React90.useImperativeHandle(action, () => open ? {
       updatePosition: () => {
         setPositioningStyles();
       }
     } : null, [open, setPositioningStyles]);
-    React89.useEffect(() => {
+    React90.useEffect(() => {
       if (!open) {
         return void 0;
       }
@@ -40849,7 +40991,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * or a function that returns either.
      * It's used to set the position of the popover.
      */
-    anchorEl: chainPropTypes(import_prop_types48.default.oneOfType([HTMLElementType, import_prop_types48.default.func]), (props) => {
+    anchorEl: chainPropTypes(import_prop_types49.default.oneOfType([HTMLElementType, import_prop_types49.default.func]), (props) => {
       if (props.open && (!props.anchorReference || props.anchorReference === "anchorEl")) {
         const resolvedAnchorEl = resolveAnchorEl(props.anchorEl);
         if (resolvedAnchorEl && resolvedAnchorEl.nodeType === 1) {
@@ -40876,24 +41018,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *   horizontal: 'left',
      * }
      */
-    anchorOrigin: import_prop_types48.default.shape({
-      horizontal: import_prop_types48.default.oneOfType([import_prop_types48.default.oneOf(["center", "left", "right"]), import_prop_types48.default.number]).isRequired,
-      vertical: import_prop_types48.default.oneOfType([import_prop_types48.default.oneOf(["bottom", "center", "top"]), import_prop_types48.default.number]).isRequired
+    anchorOrigin: import_prop_types49.default.shape({
+      horizontal: import_prop_types49.default.oneOfType([import_prop_types49.default.oneOf(["center", "left", "right"]), import_prop_types49.default.number]).isRequired,
+      vertical: import_prop_types49.default.oneOfType([import_prop_types49.default.oneOf(["bottom", "center", "top"]), import_prop_types49.default.number]).isRequired
     }),
     /**
      * This is the position that may be used to set the position of the popover.
      * The coordinates are relative to the application's client area.
      */
-    anchorPosition: import_prop_types48.default.shape({
-      left: import_prop_types48.default.number.isRequired,
-      top: import_prop_types48.default.number.isRequired
+    anchorPosition: import_prop_types49.default.shape({
+      left: import_prop_types49.default.number.isRequired,
+      top: import_prop_types49.default.number.isRequired
     }),
     /**
      * This determines which anchor prop to refer to when setting
      * the position of the popover.
      * @default 'anchorEl'
      */
-    anchorReference: import_prop_types48.default.oneOf(["anchorEl", "anchorPosition", "none"]),
+    anchorReference: import_prop_types49.default.oneOf(["anchorEl", "anchorPosition", "none"]),
     /**
      * A backdrop component. This prop enables custom backdrop rendering.
      * @deprecated Use `slots.backdrop` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
@@ -40907,24 +41049,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *   zIndex: -1,
      * })
      */
-    BackdropComponent: import_prop_types48.default.elementType,
+    BackdropComponent: import_prop_types49.default.elementType,
     /**
      * Props applied to the [`Backdrop`](/material-ui/api/backdrop/) element.
      * @deprecated Use `slotProps.backdrop` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
      */
-    BackdropProps: import_prop_types48.default.object,
+    BackdropProps: import_prop_types49.default.object,
     /**
      * The content of the component.
      */
-    children: import_prop_types48.default.node,
+    children: import_prop_types49.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types48.default.object,
+    classes: import_prop_types49.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types48.default.string,
+    className: import_prop_types49.default.string,
     /**
      * An HTML element, component instance, or function that returns either.
      * The `container` will passed to the Modal component.
@@ -40932,12 +41074,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * By default, it uses the body of the anchorEl's top-level document object,
      * so it's simply `document.body` most of the time.
      */
-    container: import_prop_types48.default.oneOfType([HTMLElementType, import_prop_types48.default.func]),
+    container: import_prop_types49.default.oneOfType([HTMLElementType, import_prop_types49.default.func]),
     /**
      * Disable the scroll lock behavior.
      * @default false
      */
-    disableScrollLock: import_prop_types48.default.bool,
+    disableScrollLock: import_prop_types49.default.bool,
     /**
      * The elevation of the popover.
      * @default 8
@@ -40948,16 +41090,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * If null, the popover will not be constrained by the window.
      * @default 16
      */
-    marginThreshold: import_prop_types48.default.number,
+    marginThreshold: import_prop_types49.default.number,
     /**
      * Callback fired when the component requests to be closed.
      * The `reason` parameter can optionally be used to control the response to `onClose`.
      */
-    onClose: import_prop_types48.default.func,
+    onClose: import_prop_types49.default.func,
     /**
      * If `true`, the component is shown.
      */
-    open: import_prop_types48.default.bool.isRequired,
+    open: import_prop_types49.default.bool.isRequired,
     /**
      * Props applied to the [`Paper`](https://mui.com/material-ui/api/paper/) element.
      *
@@ -40966,33 +41108,33 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * @default {}
      */
-    PaperProps: import_prop_types48.default.shape({
+    PaperProps: import_prop_types49.default.shape({
       component: elementTypeAcceptingRef_default
     }),
     /**
      * The props used for each slot inside.
      * @default {}
      */
-    slotProps: import_prop_types48.default.shape({
-      backdrop: import_prop_types48.default.oneOfType([import_prop_types48.default.func, import_prop_types48.default.object]),
-      paper: import_prop_types48.default.oneOfType([import_prop_types48.default.func, import_prop_types48.default.object]),
-      root: import_prop_types48.default.oneOfType([import_prop_types48.default.func, import_prop_types48.default.object]),
-      transition: import_prop_types48.default.oneOfType([import_prop_types48.default.func, import_prop_types48.default.object])
+    slotProps: import_prop_types49.default.shape({
+      backdrop: import_prop_types49.default.oneOfType([import_prop_types49.default.func, import_prop_types49.default.object]),
+      paper: import_prop_types49.default.oneOfType([import_prop_types49.default.func, import_prop_types49.default.object]),
+      root: import_prop_types49.default.oneOfType([import_prop_types49.default.func, import_prop_types49.default.object]),
+      transition: import_prop_types49.default.oneOfType([import_prop_types49.default.func, import_prop_types49.default.object])
     }),
     /**
      * The components used for each slot inside.
      * @default {}
      */
-    slots: import_prop_types48.default.shape({
-      backdrop: import_prop_types48.default.elementType,
-      paper: import_prop_types48.default.elementType,
-      root: import_prop_types48.default.elementType,
-      transition: import_prop_types48.default.elementType
+    slots: import_prop_types49.default.shape({
+      backdrop: import_prop_types49.default.elementType,
+      paper: import_prop_types49.default.elementType,
+      root: import_prop_types49.default.elementType,
+      transition: import_prop_types49.default.elementType
     }),
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types48.default.oneOfType([import_prop_types48.default.arrayOf(import_prop_types48.default.oneOfType([import_prop_types48.default.func, import_prop_types48.default.object, import_prop_types48.default.bool])), import_prop_types48.default.func, import_prop_types48.default.object]),
+    sx: import_prop_types49.default.oneOfType([import_prop_types49.default.arrayOf(import_prop_types49.default.oneOfType([import_prop_types49.default.func, import_prop_types49.default.object, import_prop_types49.default.bool])), import_prop_types49.default.func, import_prop_types49.default.object]),
     /**
      * This is the point on the popover which
      * will attach to the anchor's origin.
@@ -41005,9 +41147,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *   horizontal: 'left',
      * }
      */
-    transformOrigin: import_prop_types48.default.shape({
-      horizontal: import_prop_types48.default.oneOfType([import_prop_types48.default.oneOf(["center", "left", "right"]), import_prop_types48.default.number]).isRequired,
-      vertical: import_prop_types48.default.oneOfType([import_prop_types48.default.oneOf(["bottom", "center", "top"]), import_prop_types48.default.number]).isRequired
+    transformOrigin: import_prop_types49.default.shape({
+      horizontal: import_prop_types49.default.oneOfType([import_prop_types49.default.oneOf(["center", "left", "right"]), import_prop_types49.default.number]).isRequired,
+      vertical: import_prop_types49.default.oneOfType([import_prop_types49.default.oneOf(["bottom", "center", "top"]), import_prop_types49.default.number]).isRequired
     }),
     /**
      * The component used for the transition.
@@ -41015,15 +41157,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * @deprecated use the `slots.transition` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
      * @default Grow
      */
-    TransitionComponent: import_prop_types48.default.elementType,
+    TransitionComponent: import_prop_types49.default.elementType,
     /**
      * Set to 'auto' to automatically calculate transition time based on height.
      * @default 'auto'
      */
-    transitionDuration: import_prop_types48.default.oneOfType([import_prop_types48.default.oneOf(["auto"]), import_prop_types48.default.number, import_prop_types48.default.shape({
-      appear: import_prop_types48.default.number,
-      enter: import_prop_types48.default.number,
-      exit: import_prop_types48.default.number
+    transitionDuration: import_prop_types49.default.oneOfType([import_prop_types49.default.oneOf(["auto"]), import_prop_types49.default.number, import_prop_types49.default.shape({
+      appear: import_prop_types49.default.number,
+      enter: import_prop_types49.default.number,
+      exit: import_prop_types49.default.number
     })]),
     /**
      * Props applied to the transition element.
@@ -41031,7 +41173,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * @deprecated use the `slotProps.transition` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
      * @default {}
      */
-    TransitionProps: import_prop_types48.default.object
+    TransitionProps: import_prop_types49.default.object
   } : void 0;
   var Popover_default = Popover;
 
@@ -41088,7 +41230,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     // We disable the focus ring for mouse, touch and keyboard users.
     outline: 0
   });
-  var Menu = /* @__PURE__ */ React90.forwardRef(function Menu2(inProps, ref) {
+  var Menu = /* @__PURE__ */ React91.forwardRef(function Menu2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiMenu"
@@ -41127,7 +41269,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     };
     const classes = useUtilityClasses26(ownerState);
     const autoFocusItem = autoFocus && !disableAutoFocusItem && open;
-    const menuListActionsRef = React90.useRef(null);
+    const menuListActionsRef = React91.useRef(null);
     const handleEntering = (element, isAppearing) => {
       if (menuListActionsRef.current) {
         menuListActionsRef.current.adjustStyleForScrollbar(element, {
@@ -41147,8 +41289,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     };
     let activeItemIndex = -1;
-    React90.Children.map(children, (child, index) => {
-      if (!/* @__PURE__ */ React90.isValidElement(child)) {
+    React91.Children.map(children, (child, index) => {
+      if (!/* @__PURE__ */ React91.isValidElement(child)) {
         return;
       }
       if (true) {
@@ -41254,7 +41396,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * An HTML element, or a function that returns one.
      * It's used to set the position of the menu.
      */
-    anchorEl: import_prop_types49.default.oneOfType([HTMLElementType, import_prop_types49.default.func]),
+    anchorEl: import_prop_types50.default.oneOfType([HTMLElementType, import_prop_types50.default.func]),
     /**
      * If `true` (Default) will focus the `[role="menu"]` if no focusable child is found. Disabled
      * children are not focusable. If you set this prop to `false` focus will be placed
@@ -41262,19 +41404,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * and should only be considered if you manage focus otherwise.
      * @default true
      */
-    autoFocus: import_prop_types49.default.bool,
+    autoFocus: import_prop_types50.default.bool,
     /**
      * Menu contents, normally `MenuItem`s.
      */
-    children: import_prop_types49.default.node,
+    children: import_prop_types50.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types49.default.object,
+    classes: import_prop_types50.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types49.default.string,
+    className: import_prop_types50.default.string,
     /**
      * When opening the menu will not focus the active item but the `[role="menu"]`
      * unless `autoFocus` is also set to `false`. Not using the default means not
@@ -41282,66 +41424,66 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * accessibility implications.
      * @default false
      */
-    disableAutoFocusItem: import_prop_types49.default.bool,
+    disableAutoFocusItem: import_prop_types50.default.bool,
     /**
      * Props applied to the [`MenuList`](https://mui.com/material-ui/api/menu-list/) element.
      * @deprecated use the `slotProps.list` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
      * @default {}
      */
-    MenuListProps: import_prop_types49.default.object,
+    MenuListProps: import_prop_types50.default.object,
     /**
      * Callback fired when the component requests to be closed.
      *
      * @param {object} event The event source of the callback.
      * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`, `"tabKeyDown"`.
      */
-    onClose: import_prop_types49.default.func,
+    onClose: import_prop_types50.default.func,
     /**
      * If `true`, the component is shown.
      */
-    open: import_prop_types49.default.bool.isRequired,
+    open: import_prop_types50.default.bool.isRequired,
     /**
      * @ignore
      */
-    PaperProps: import_prop_types49.default.object,
+    PaperProps: import_prop_types50.default.object,
     /**
      * `classes` prop applied to the [`Popover`](https://mui.com/material-ui/api/popover/) element.
      */
-    PopoverClasses: import_prop_types49.default.object,
+    PopoverClasses: import_prop_types50.default.object,
     /**
      * The props used for each slot inside.
      * @default {}
      */
-    slotProps: import_prop_types49.default.shape({
-      backdrop: import_prop_types49.default.oneOfType([import_prop_types49.default.func, import_prop_types49.default.object]),
-      list: import_prop_types49.default.oneOfType([import_prop_types49.default.func, import_prop_types49.default.object]),
-      paper: import_prop_types49.default.oneOfType([import_prop_types49.default.func, import_prop_types49.default.object]),
-      root: import_prop_types49.default.oneOfType([import_prop_types49.default.func, import_prop_types49.default.object]),
-      transition: import_prop_types49.default.oneOfType([import_prop_types49.default.func, import_prop_types49.default.object])
+    slotProps: import_prop_types50.default.shape({
+      backdrop: import_prop_types50.default.oneOfType([import_prop_types50.default.func, import_prop_types50.default.object]),
+      list: import_prop_types50.default.oneOfType([import_prop_types50.default.func, import_prop_types50.default.object]),
+      paper: import_prop_types50.default.oneOfType([import_prop_types50.default.func, import_prop_types50.default.object]),
+      root: import_prop_types50.default.oneOfType([import_prop_types50.default.func, import_prop_types50.default.object]),
+      transition: import_prop_types50.default.oneOfType([import_prop_types50.default.func, import_prop_types50.default.object])
     }),
     /**
      * The components used for each slot inside.
      * @default {}
      */
-    slots: import_prop_types49.default.shape({
-      backdrop: import_prop_types49.default.elementType,
-      list: import_prop_types49.default.elementType,
-      paper: import_prop_types49.default.elementType,
-      root: import_prop_types49.default.elementType,
-      transition: import_prop_types49.default.elementType
+    slots: import_prop_types50.default.shape({
+      backdrop: import_prop_types50.default.elementType,
+      list: import_prop_types50.default.elementType,
+      paper: import_prop_types50.default.elementType,
+      root: import_prop_types50.default.elementType,
+      transition: import_prop_types50.default.elementType
     }),
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types49.default.oneOfType([import_prop_types49.default.arrayOf(import_prop_types49.default.oneOfType([import_prop_types49.default.func, import_prop_types49.default.object, import_prop_types49.default.bool])), import_prop_types49.default.func, import_prop_types49.default.object]),
+    sx: import_prop_types50.default.oneOfType([import_prop_types50.default.arrayOf(import_prop_types50.default.oneOfType([import_prop_types50.default.func, import_prop_types50.default.object, import_prop_types50.default.bool])), import_prop_types50.default.func, import_prop_types50.default.object]),
     /**
      * The length of the transition in `ms`, or 'auto'
      * @default 'auto'
      */
-    transitionDuration: import_prop_types49.default.oneOfType([import_prop_types49.default.oneOf(["auto"]), import_prop_types49.default.number, import_prop_types49.default.shape({
-      appear: import_prop_types49.default.number,
-      enter: import_prop_types49.default.number,
-      exit: import_prop_types49.default.number
+    transitionDuration: import_prop_types50.default.oneOfType([import_prop_types50.default.oneOf(["auto"]), import_prop_types50.default.number, import_prop_types50.default.shape({
+      appear: import_prop_types50.default.number,
+      enter: import_prop_types50.default.number,
+      exit: import_prop_types50.default.number
     })]),
     /**
      * Props applied to the transition element.
@@ -41349,18 +41491,18 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * @deprecated use the `slotProps.transition` prop instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
      * @default {}
      */
-    TransitionProps: import_prop_types49.default.object,
+    TransitionProps: import_prop_types50.default.object,
     /**
      * The variant to use. Use `menu` to prevent selected items from impacting the initial focus.
      * @default 'selectedMenu'
      */
-    variant: import_prop_types49.default.oneOf(["menu", "selectedMenu"])
+    variant: import_prop_types50.default.oneOf(["menu", "selectedMenu"])
   } : void 0;
   var Menu_default = Menu;
 
   // node_modules/@mui/material/NativeSelect/NativeSelectInput.js
-  var React91 = __toESM(require_react());
-  var import_prop_types50 = __toESM(require_prop_types());
+  var React92 = __toESM(require_react());
+  var import_prop_types51 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/NativeSelect/nativeSelectClasses.js
   function getNativeSelectUtilityClasses(slot) {
@@ -41510,7 +41652,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       return [styles4.icon, ownerState.variant && styles4[`icon${capitalize_default(ownerState.variant)}`], ownerState.open && styles4.iconOpen];
     }
   })({});
-  var NativeSelectInput = /* @__PURE__ */ React91.forwardRef(function NativeSelectInput2(props, ref) {
+  var NativeSelectInput = /* @__PURE__ */ React92.forwardRef(function NativeSelectInput2(props, ref) {
     const {
       className,
       disabled,
@@ -41527,7 +41669,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       error
     };
     const classes = useUtilityClasses27(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(React91.Fragment, {
+    return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(React92.Fragment, {
       children: [/* @__PURE__ */ (0, import_jsx_runtime48.jsx)(NativeSelectSelect, {
         ownerState,
         className: clsx_default(classes.select, className),
@@ -41546,27 +41688,27 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * The option elements to populate the select with.
      * Can be some `<option>` elements.
      */
-    children: import_prop_types50.default.node,
+    children: import_prop_types51.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types50.default.object,
+    classes: import_prop_types51.default.object,
     /**
      * The CSS class name of the select element.
      */
-    className: import_prop_types50.default.string,
+    className: import_prop_types51.default.string,
     /**
      * If `true`, the select is disabled.
      */
-    disabled: import_prop_types50.default.bool,
+    disabled: import_prop_types51.default.bool,
     /**
      * If `true`, the `select input` will indicate an error.
      */
-    error: import_prop_types50.default.bool,
+    error: import_prop_types51.default.bool,
     /**
      * The icon that displays the arrow.
      */
-    IconComponent: import_prop_types50.default.elementType.isRequired,
+    IconComponent: import_prop_types51.default.elementType.isRequired,
     /**
      * Use that prop to pass a ref to the native select element.
      * @deprecated
@@ -41575,36 +41717,36 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * @ignore
      */
-    multiple: import_prop_types50.default.bool,
+    multiple: import_prop_types51.default.bool,
     /**
      * Name attribute of the `select` or hidden `input` element.
      */
-    name: import_prop_types50.default.string,
+    name: import_prop_types51.default.string,
     /**
      * Callback fired when a menu item is selected.
      *
      * @param {object} event The event source of the callback.
      * You can pull out the new value by accessing `event.target.value` (string).
      */
-    onChange: import_prop_types50.default.func,
+    onChange: import_prop_types51.default.func,
     /**
      * The input value.
      */
-    value: import_prop_types50.default.any,
+    value: import_prop_types51.default.any,
     /**
      * The variant to use.
      */
-    variant: import_prop_types50.default.oneOf(["standard", "outlined", "filled"])
+    variant: import_prop_types51.default.oneOf(["standard", "outlined", "filled"])
   } : void 0;
   var NativeSelectInput_default = NativeSelectInput;
 
   // node_modules/@mui/material/OutlinedInput/OutlinedInput.js
-  var React93 = __toESM(require_react());
-  var import_prop_types52 = __toESM(require_prop_types());
+  var React94 = __toESM(require_react());
+  var import_prop_types53 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/OutlinedInput/NotchedOutline.js
-  var React92 = __toESM(require_react());
-  var import_prop_types51 = __toESM(require_prop_types());
+  var React93 = __toESM(require_react());
+  var import_prop_types52 = __toESM(require_prop_types());
   var import_jsx_runtime49 = __toESM(require_jsx_runtime());
   var _span3;
   var NotchedOutlineRoot = styled_default2("fieldset", {
@@ -41728,27 +41870,27 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * The content of the component.
      */
-    children: import_prop_types51.default.node,
+    children: import_prop_types52.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types51.default.object,
+    classes: import_prop_types52.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types51.default.string,
+    className: import_prop_types52.default.string,
     /**
      * The label.
      */
-    label: import_prop_types51.default.node,
+    label: import_prop_types52.default.node,
     /**
      * If `true`, the outline is notched to accommodate the label.
      */
-    notched: import_prop_types51.default.bool.isRequired,
+    notched: import_prop_types52.default.bool.isRequired,
     /**
      * @ignore
      */
-    style: import_prop_types51.default.object
+    style: import_prop_types52.default.object
   } : void 0;
 
   // node_modules/@mui/material/OutlinedInput/OutlinedInput.js
@@ -41915,7 +42057,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   })));
-  var OutlinedInput = /* @__PURE__ */ React93.forwardRef(function OutlinedInput2(inProps, ref) {
+  var OutlinedInput = /* @__PURE__ */ React94.forwardRef(function OutlinedInput2(inProps, ref) {
     var _React$Fragment;
     const props = useDefaultProps2({
       props: inProps,
@@ -41962,7 +42104,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       renderSuffix: (state) => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(NotchedOutlineRoot2, {
         ownerState,
         className: classes.notchedOutline,
-        label: label != null && label !== "" && fcs.required ? _React$Fragment || (_React$Fragment = /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(React93.Fragment, {
+        label: label != null && label !== "" && fcs.required ? _React$Fragment || (_React$Fragment = /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(React94.Fragment, {
           children: [label, "\u2009", "*"]
         })) : label,
         notched: typeof notched !== "undefined" ? notched : Boolean(state.startAdornment || state.filled || state.focused)
@@ -41989,22 +42131,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * The name can be confusing, as it's more like an autofill.
      * You can learn more about it [following the specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
      */
-    autoComplete: import_prop_types52.default.string,
+    autoComplete: import_prop_types53.default.string,
     /**
      * If `true`, the `input` element is focused during the first mount.
      */
-    autoFocus: import_prop_types52.default.bool,
+    autoFocus: import_prop_types53.default.bool,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types52.default.object,
+    classes: import_prop_types53.default.object,
     /**
      * The color of the component.
      * It supports both default and custom theme colors, which can be added as shown in the
      * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
      * The prop defaults to the value (`'primary'`) inherited from the parent FormControl component.
      */
-    color: import_prop_types52.default.oneOfType([import_prop_types52.default.oneOf(["primary", "secondary"]), import_prop_types52.default.string]),
+    color: import_prop_types53.default.oneOfType([import_prop_types53.default.oneOf(["primary", "secondary"]), import_prop_types53.default.string]),
     /**
      * The components used for each slot inside.
      *
@@ -42012,48 +42154,48 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * @default {}
      */
-    components: import_prop_types52.default.shape({
-      Input: import_prop_types52.default.elementType,
-      Root: import_prop_types52.default.elementType
+    components: import_prop_types53.default.shape({
+      Input: import_prop_types53.default.elementType,
+      Root: import_prop_types53.default.elementType
     }),
     /**
      * The default value. Use when the component is not controlled.
      */
-    defaultValue: import_prop_types52.default.any,
+    defaultValue: import_prop_types53.default.any,
     /**
      * If `true`, the component is disabled.
      * The prop defaults to the value (`false`) inherited from the parent FormControl component.
      */
-    disabled: import_prop_types52.default.bool,
+    disabled: import_prop_types53.default.bool,
     /**
      * End `InputAdornment` for this component.
      */
-    endAdornment: import_prop_types52.default.node,
+    endAdornment: import_prop_types53.default.node,
     /**
      * If `true`, the `input` will indicate an error.
      * The prop defaults to the value (`false`) inherited from the parent FormControl component.
      */
-    error: import_prop_types52.default.bool,
+    error: import_prop_types53.default.bool,
     /**
      * If `true`, the `input` will take up the full width of its container.
      * @default false
      */
-    fullWidth: import_prop_types52.default.bool,
+    fullWidth: import_prop_types53.default.bool,
     /**
      * The id of the `input` element.
      */
-    id: import_prop_types52.default.string,
+    id: import_prop_types53.default.string,
     /**
      * The component used for the `input` element.
      * Either a string to use a HTML element or a component.
      * @default 'input'
      */
-    inputComponent: import_prop_types52.default.elementType,
+    inputComponent: import_prop_types53.default.elementType,
     /**
      * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
      * @default {}
      */
-    inputProps: import_prop_types52.default.object,
+    inputProps: import_prop_types53.default.object,
     /**
      * Pass a ref to the `input` element.
      */
@@ -42062,59 +42204,59 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * The label of the `input`. It is only used for layout. The actual labelling
      * is handled by `InputLabel`.
      */
-    label: import_prop_types52.default.node,
+    label: import_prop_types53.default.node,
     /**
      * If `dense`, will adjust vertical spacing. This is normally obtained via context from
      * FormControl.
      * The prop defaults to the value (`'none'`) inherited from the parent FormControl component.
      */
-    margin: import_prop_types52.default.oneOf(["dense", "none"]),
+    margin: import_prop_types53.default.oneOf(["dense", "none"]),
     /**
      * Maximum number of rows to display when multiline option is set to true.
      */
-    maxRows: import_prop_types52.default.oneOfType([import_prop_types52.default.number, import_prop_types52.default.string]),
+    maxRows: import_prop_types53.default.oneOfType([import_prop_types53.default.number, import_prop_types53.default.string]),
     /**
      * Minimum number of rows to display when multiline option is set to true.
      */
-    minRows: import_prop_types52.default.oneOfType([import_prop_types52.default.number, import_prop_types52.default.string]),
+    minRows: import_prop_types53.default.oneOfType([import_prop_types53.default.number, import_prop_types53.default.string]),
     /**
      * If `true`, a [TextareaAutosize](https://mui.com/material-ui/react-textarea-autosize/) element is rendered.
      * @default false
      */
-    multiline: import_prop_types52.default.bool,
+    multiline: import_prop_types53.default.bool,
     /**
      * Name attribute of the `input` element.
      */
-    name: import_prop_types52.default.string,
+    name: import_prop_types53.default.string,
     /**
      * If `true`, the outline is notched to accommodate the label.
      */
-    notched: import_prop_types52.default.bool,
+    notched: import_prop_types53.default.bool,
     /**
      * Callback fired when the value is changed.
      *
      * @param {React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>} event The event source of the callback.
      * You can pull out the new value by accessing `event.target.value` (string).
      */
-    onChange: import_prop_types52.default.func,
+    onChange: import_prop_types53.default.func,
     /**
      * The short hint displayed in the `input` before the user enters a value.
      */
-    placeholder: import_prop_types52.default.string,
+    placeholder: import_prop_types53.default.string,
     /**
      * It prevents the user from changing the value of the field
      * (not from interacting with the field).
      */
-    readOnly: import_prop_types52.default.bool,
+    readOnly: import_prop_types53.default.bool,
     /**
      * If `true`, the `input` element is required.
      * The prop defaults to the value (`false`) inherited from the parent FormControl component.
      */
-    required: import_prop_types52.default.bool,
+    required: import_prop_types53.default.bool,
     /**
      * Number of rows to display when multiline option is set to true.
      */
-    rows: import_prop_types52.default.oneOfType([import_prop_types52.default.number, import_prop_types52.default.string]),
+    rows: import_prop_types53.default.oneOfType([import_prop_types53.default.number, import_prop_types53.default.string]),
     /**
      * The components used for each slot inside.
      *
@@ -42122,39 +42264,39 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      *
      * @default {}
      */
-    slots: import_prop_types52.default.shape({
-      input: import_prop_types52.default.elementType,
-      root: import_prop_types52.default.elementType
+    slots: import_prop_types53.default.shape({
+      input: import_prop_types53.default.elementType,
+      root: import_prop_types53.default.elementType
     }),
     /**
      * Start `InputAdornment` for this component.
      */
-    startAdornment: import_prop_types52.default.node,
+    startAdornment: import_prop_types53.default.node,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types52.default.oneOfType([import_prop_types52.default.arrayOf(import_prop_types52.default.oneOfType([import_prop_types52.default.func, import_prop_types52.default.object, import_prop_types52.default.bool])), import_prop_types52.default.func, import_prop_types52.default.object]),
+    sx: import_prop_types53.default.oneOfType([import_prop_types53.default.arrayOf(import_prop_types53.default.oneOfType([import_prop_types53.default.func, import_prop_types53.default.object, import_prop_types53.default.bool])), import_prop_types53.default.func, import_prop_types53.default.object]),
     /**
      * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types).
      * @default 'text'
      */
-    type: import_prop_types52.default.string,
+    type: import_prop_types53.default.string,
     /**
      * The value of the `input` element, required for a controlled component.
      */
-    value: import_prop_types52.default.any
+    value: import_prop_types53.default.any
   } : void 0;
   OutlinedInput.muiName = "Input";
   var OutlinedInput_default = OutlinedInput;
 
   // node_modules/@mui/material/Select/Select.js
-  var React95 = __toESM(require_react());
-  var import_prop_types54 = __toESM(require_prop_types());
+  var React96 = __toESM(require_react());
+  var import_prop_types55 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/Select/SelectInput.js
-  var React94 = __toESM(require_react());
+  var React95 = __toESM(require_react());
   var import_react_is5 = __toESM(require_react_is4());
-  var import_prop_types53 = __toESM(require_prop_types());
+  var import_prop_types54 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/Select/selectClasses.js
   function getSelectUtilityClasses(slot) {
@@ -42250,7 +42392,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     };
     return composeClasses(slots, getSelectUtilityClasses, classes);
   };
-  var SelectInput = /* @__PURE__ */ React94.forwardRef(function SelectInput2(props, ref) {
+  var SelectInput = /* @__PURE__ */ React95.forwardRef(function SelectInput2(props, ref) {
     const {
       "aria-describedby": ariaDescribedby,
       "aria-label": ariaLabel,
@@ -42296,40 +42438,40 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       default: defaultOpen,
       name: "Select"
     });
-    const inputRef = React94.useRef(null);
-    const displayRef = React94.useRef(null);
-    const [displayNode, setDisplayNode] = React94.useState(null);
+    const inputRef = React95.useRef(null);
+    const displayRef = React95.useRef(null);
+    const [displayNode, setDisplayNode] = React95.useState(null);
     const {
       current: isOpenControlled
-    } = React94.useRef(openProp != null);
-    const [menuMinWidthState, setMenuMinWidthState] = React94.useState();
+    } = React95.useRef(openProp != null);
+    const [menuMinWidthState, setMenuMinWidthState] = React95.useState();
     const handleRef = useForkRef_default(ref, inputRefProp);
-    const handleDisplayRef = React94.useCallback((node2) => {
+    const handleDisplayRef = React95.useCallback((node2) => {
       displayRef.current = node2;
       if (node2) {
         setDisplayNode(node2);
       }
     }, []);
     const anchorElement = displayNode?.parentNode;
-    React94.useImperativeHandle(handleRef, () => ({
+    React95.useImperativeHandle(handleRef, () => ({
       focus: () => {
         displayRef.current.focus();
       },
       node: inputRef.current,
       value
     }), [value]);
-    React94.useEffect(() => {
+    React95.useEffect(() => {
       if (defaultOpen && openState && displayNode && !isOpenControlled) {
         setMenuMinWidthState(autoWidth ? null : anchorElement.clientWidth);
         displayRef.current.focus();
       }
     }, [displayNode, autoWidth]);
-    React94.useEffect(() => {
+    React95.useEffect(() => {
       if (autoFocus) {
         displayRef.current.focus();
       }
     }, [autoFocus]);
-    React94.useEffect(() => {
+    React95.useEffect(() => {
       if (!labelId) {
         return void 0;
       }
@@ -42371,7 +42513,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const handleClose = (event) => {
       update(false, event);
     };
-    const childrenArray = React94.Children.toArray(children);
+    const childrenArray = React95.Children.toArray(children);
     const handleChange = (event) => {
       const child = childrenArray.find((childItem) => childItem.props.value === event.target.value);
       if (child === void 0) {
@@ -42465,7 +42607,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }
     const items = childrenArray.map((child) => {
-      if (!/* @__PURE__ */ React94.isValidElement(child)) {
+      if (!/* @__PURE__ */ React95.isValidElement(child)) {
         return null;
       }
       if (true) {
@@ -42491,7 +42633,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       if (selected) {
         foundMatch = true;
       }
-      return /* @__PURE__ */ React94.cloneElement(child, {
+      return /* @__PURE__ */ React95.cloneElement(child, {
         "aria-selected": selected ? "true" : "false",
         onClick: handleItemClick(child),
         onKeyUp: (event) => {
@@ -42511,7 +42653,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       });
     });
     if (true) {
-      React94.useEffect(() => {
+      React95.useEffect(() => {
         if (!foundMatch && !multiple && value !== "") {
           const values3 = childrenArray.map((child) => child.props.value);
           console.warn([`MUI: You have provided an out-of-range value \`${value}\` for the select ${name ? `(name="${name}") ` : ""}component.`, "Consider providing a value that matches one of the available options or ''.", `The available values are ${values3.filter((x) => x != null).map((x) => `\`${x}\``).join(", ") || '""'}.`].join("\n"));
@@ -42559,7 +42701,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ...MenuProps.slotProps?.paper
     };
     const listboxId = useId2();
-    return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(React94.Fragment, {
+    return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(React95.Fragment, {
       children: [/* @__PURE__ */ (0, import_jsx_runtime51.jsx)(SelectSelect, {
         as: "div",
         ref: handleDisplayRef,
@@ -42648,58 +42790,58 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * @ignore
      */
-    "aria-describedby": import_prop_types53.default.string,
+    "aria-describedby": import_prop_types54.default.string,
     /**
      * @ignore
      */
-    "aria-label": import_prop_types53.default.string,
+    "aria-label": import_prop_types54.default.string,
     /**
      * @ignore
      */
-    autoFocus: import_prop_types53.default.bool,
+    autoFocus: import_prop_types54.default.bool,
     /**
      * If `true`, the width of the popover will automatically be set according to the items inside the
      * menu, otherwise it will be at least the width of the select input.
      */
-    autoWidth: import_prop_types53.default.bool,
+    autoWidth: import_prop_types54.default.bool,
     /**
      * The option elements to populate the select with.
      * Can be some `<MenuItem>` elements.
      */
-    children: import_prop_types53.default.node,
+    children: import_prop_types54.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types53.default.object,
+    classes: import_prop_types54.default.object,
     /**
      * The CSS class name of the select element.
      */
-    className: import_prop_types53.default.string,
+    className: import_prop_types54.default.string,
     /**
      * If `true`, the component is toggled on mount. Use when the component open state is not controlled.
      * You can only use it when the `native` prop is `false` (default).
      */
-    defaultOpen: import_prop_types53.default.bool,
+    defaultOpen: import_prop_types54.default.bool,
     /**
      * The default value. Use when the component is not controlled.
      */
-    defaultValue: import_prop_types53.default.any,
+    defaultValue: import_prop_types54.default.any,
     /**
      * If `true`, the select is disabled.
      */
-    disabled: import_prop_types53.default.bool,
+    disabled: import_prop_types54.default.bool,
     /**
      * If `true`, the selected item is displayed even if its value is empty.
      */
-    displayEmpty: import_prop_types53.default.bool,
+    displayEmpty: import_prop_types54.default.bool,
     /**
      * If `true`, the `select input` will indicate an error.
      */
-    error: import_prop_types53.default.bool,
+    error: import_prop_types54.default.bool,
     /**
      * The icon that displays the arrow.
      */
-    IconComponent: import_prop_types53.default.elementType.isRequired,
+    IconComponent: import_prop_types54.default.elementType.isRequired,
     /**
      * Imperative handle implementing `{ value: T, node: HTMLElement, focus(): void }`
      * Equivalent to `ref`
@@ -42709,23 +42851,23 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * The ID of an element that acts as an additional label. The Select will
      * be labelled by the additional label and the selected value.
      */
-    labelId: import_prop_types53.default.string,
+    labelId: import_prop_types54.default.string,
     /**
      * Props applied to the [`Menu`](/material-ui/api/menu/) element.
      */
-    MenuProps: import_prop_types53.default.object,
+    MenuProps: import_prop_types54.default.object,
     /**
      * If `true`, `value` must be an array and the menu will support multiple selections.
      */
-    multiple: import_prop_types53.default.bool,
+    multiple: import_prop_types54.default.bool,
     /**
      * Name attribute of the `select` or hidden `input` element.
      */
-    name: import_prop_types53.default.string,
+    name: import_prop_types54.default.string,
     /**
      * @ignore
      */
-    onBlur: import_prop_types53.default.func,
+    onBlur: import_prop_types54.default.func,
     /**
      * Callback fired when a menu item is selected.
      *
@@ -42733,64 +42875,64 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * You can pull out the new value by accessing `event.target.value` (any).
      * @param {object} [child] The react element that was selected.
      */
-    onChange: import_prop_types53.default.func,
+    onChange: import_prop_types54.default.func,
     /**
      * Callback fired when the component requests to be closed.
      * Use in controlled mode (see open).
      *
      * @param {object} event The event source of the callback.
      */
-    onClose: import_prop_types53.default.func,
+    onClose: import_prop_types54.default.func,
     /**
      * @ignore
      */
-    onFocus: import_prop_types53.default.func,
+    onFocus: import_prop_types54.default.func,
     /**
      * Callback fired when the component requests to be opened.
      * Use in controlled mode (see open).
      *
      * @param {object} event The event source of the callback.
      */
-    onOpen: import_prop_types53.default.func,
+    onOpen: import_prop_types54.default.func,
     /**
      * If `true`, the component is shown.
      */
-    open: import_prop_types53.default.bool,
+    open: import_prop_types54.default.bool,
     /**
      * @ignore
      */
-    readOnly: import_prop_types53.default.bool,
+    readOnly: import_prop_types54.default.bool,
     /**
      * Render the selected value.
      *
      * @param {any} value The `value` provided to the component.
      * @returns {ReactNode}
      */
-    renderValue: import_prop_types53.default.func,
+    renderValue: import_prop_types54.default.func,
     /**
      * If `true`, the component is required.
      */
-    required: import_prop_types53.default.bool,
+    required: import_prop_types54.default.bool,
     /**
      * Props applied to the clickable div element.
      */
-    SelectDisplayProps: import_prop_types53.default.object,
+    SelectDisplayProps: import_prop_types54.default.object,
     /**
      * @ignore
      */
-    tabIndex: import_prop_types53.default.oneOfType([import_prop_types53.default.number, import_prop_types53.default.string]),
+    tabIndex: import_prop_types54.default.oneOfType([import_prop_types54.default.number, import_prop_types54.default.string]),
     /**
      * @ignore
      */
-    type: import_prop_types53.default.any,
+    type: import_prop_types54.default.any,
     /**
      * The input value.
      */
-    value: import_prop_types53.default.any,
+    value: import_prop_types54.default.any,
     /**
      * The variant to use.
      */
-    variant: import_prop_types53.default.oneOf(["standard", "outlined", "filled"])
+    variant: import_prop_types54.default.oneOf(["standard", "outlined", "filled"])
   } : void 0;
   var SelectInput_default = SelectInput;
 
@@ -42818,7 +42960,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var StyledInput = styled_default2(Input_default, styledRootConfig)("");
   var StyledOutlinedInput = styled_default2(OutlinedInput_default, styledRootConfig)("");
   var StyledFilledInput = styled_default2(FilledInput_default, styledRootConfig)("");
-  var Select = /* @__PURE__ */ React95.forwardRef(function Select2(inProps, ref) {
+  var Select = /* @__PURE__ */ React96.forwardRef(function Select2(inProps, ref) {
     const props = useDefaultProps2({
       name: "MuiSelect",
       props: inProps
@@ -42878,8 +43020,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       })
     }[variant];
     const inputComponentRef = useForkRef_default(ref, getReactElementRef(InputComponent));
-    return /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(React95.Fragment, {
-      children: /* @__PURE__ */ React95.cloneElement(InputComponent, {
+    return /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(React96.Fragment, {
+      children: /* @__PURE__ */ React96.cloneElement(InputComponent, {
         // Most of the logic is implemented in `SelectInput`.
         // The `Select` component is a simple API wrapper to expose something better to play with.
         inputComponent,
@@ -42935,33 +43077,33 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * menu, otherwise it will be at least the width of the select input.
      * @default false
      */
-    autoWidth: import_prop_types54.default.bool,
+    autoWidth: import_prop_types55.default.bool,
     /**
      * The option elements to populate the select with.
      * Can be some `MenuItem` when `native` is false and `option` when `native` is true.
      *
      * ⚠️The `MenuItem` elements **must** be direct descendants when `native` is false.
      */
-    children: import_prop_types54.default.node,
+    children: import_prop_types55.default.node,
     /**
      * Override or extend the styles applied to the component.
      * @default {}
      */
-    classes: import_prop_types54.default.object,
+    classes: import_prop_types55.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types54.default.string,
+    className: import_prop_types55.default.string,
     /**
      * If `true`, the component is initially open. Use when the component open state is not controlled (i.e. the `open` prop is not defined).
      * You can only use it when the `native` prop is `false` (default).
      * @default false
      */
-    defaultOpen: import_prop_types54.default.bool,
+    defaultOpen: import_prop_types55.default.bool,
     /**
      * The default value. Use when the component is not controlled.
      */
-    defaultValue: import_prop_types54.default.any,
+    defaultValue: import_prop_types55.default.any,
     /**
      * If `true`, a value is displayed even if no items are selected.
      *
@@ -42972,48 +43114,48 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * The label should either be hidden or forced to a shrunk state.
      * @default false
      */
-    displayEmpty: import_prop_types54.default.bool,
+    displayEmpty: import_prop_types55.default.bool,
     /**
      * The icon that displays the arrow.
      * @default ArrowDropDownIcon
      */
-    IconComponent: import_prop_types54.default.elementType,
+    IconComponent: import_prop_types55.default.elementType,
     /**
      * The `id` of the wrapper element or the `select` element when `native`.
      */
-    id: import_prop_types54.default.string,
+    id: import_prop_types55.default.string,
     /**
      * An `Input` element; does not have to be a material-ui specific `Input`.
      */
-    input: import_prop_types54.default.element,
+    input: import_prop_types55.default.element,
     /**
      * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
      * When `native` is `true`, the attributes are applied on the `select` element.
      */
-    inputProps: import_prop_types54.default.object,
+    inputProps: import_prop_types55.default.object,
     /**
      * See [OutlinedInput#label](https://mui.com/material-ui/api/outlined-input/#props)
      */
-    label: import_prop_types54.default.node,
+    label: import_prop_types55.default.node,
     /**
      * The ID of an element that acts as an additional label. The Select will
      * be labelled by the additional label and the selected value.
      */
-    labelId: import_prop_types54.default.string,
+    labelId: import_prop_types55.default.string,
     /**
      * Props applied to the [`Menu`](https://mui.com/material-ui/api/menu/) element.
      */
-    MenuProps: import_prop_types54.default.object,
+    MenuProps: import_prop_types55.default.object,
     /**
      * If `true`, `value` must be an array and the menu will support multiple selections.
      * @default false
      */
-    multiple: import_prop_types54.default.bool,
+    multiple: import_prop_types55.default.bool,
     /**
      * If `true`, the component uses a native `select` element.
      * @default false
      */
-    native: import_prop_types54.default.bool,
+    native: import_prop_types55.default.bool,
     /**
      * Callback fired when a menu item is selected.
      *
@@ -43022,26 +43164,26 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * **Warning**: This is a generic event, not a change event, unless the change event is caused by browser autofill.
      * @param {object} [child] The react element that was selected when `native` is `false` (default).
      */
-    onChange: import_prop_types54.default.func,
+    onChange: import_prop_types55.default.func,
     /**
      * Callback fired when the component requests to be closed.
      * Use it in either controlled (see the `open` prop), or uncontrolled mode (to detect when the Select collapses).
      *
      * @param {object} event The event source of the callback.
      */
-    onClose: import_prop_types54.default.func,
+    onClose: import_prop_types55.default.func,
     /**
      * Callback fired when the component requests to be opened.
      * Use it in either controlled (see the `open` prop), or uncontrolled mode (to detect when the Select expands).
      *
      * @param {object} event The event source of the callback.
      */
-    onOpen: import_prop_types54.default.func,
+    onOpen: import_prop_types55.default.func,
     /**
      * If `true`, the component is shown.
      * You can only use it when the `native` prop is `false` (default).
      */
-    open: import_prop_types54.default.bool,
+    open: import_prop_types55.default.bool,
     /**
      * Render the selected value.
      * You can only use it when the `native` prop is `false` (default).
@@ -43049,15 +43191,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * @param {any} value The `value` provided to the component.
      * @returns {ReactNode}
      */
-    renderValue: import_prop_types54.default.func,
+    renderValue: import_prop_types55.default.func,
     /**
      * Props applied to the clickable div element.
      */
-    SelectDisplayProps: import_prop_types54.default.object,
+    SelectDisplayProps: import_prop_types55.default.object,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types54.default.oneOfType([import_prop_types54.default.arrayOf(import_prop_types54.default.oneOfType([import_prop_types54.default.func, import_prop_types54.default.object, import_prop_types54.default.bool])), import_prop_types54.default.func, import_prop_types54.default.object]),
+    sx: import_prop_types55.default.oneOfType([import_prop_types55.default.arrayOf(import_prop_types55.default.oneOfType([import_prop_types55.default.func, import_prop_types55.default.object, import_prop_types55.default.bool])), import_prop_types55.default.func, import_prop_types55.default.object]),
     /**
      * The `input` value. Providing an empty string will select no options.
      * Set to an empty string `''` if you don't want any of the available options to be selected.
@@ -43065,23 +43207,684 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * If the value is an object it must have reference equality with the option in order to be selected.
      * If the value is not an object, the string representation must match with the string representation of the option in order to be selected.
      */
-    value: import_prop_types54.default.oneOfType([import_prop_types54.default.oneOf([""]), import_prop_types54.default.any]),
+    value: import_prop_types55.default.oneOfType([import_prop_types55.default.oneOf([""]), import_prop_types55.default.any]),
     /**
      * The variant to use.
      * @default 'outlined'
      */
-    variant: import_prop_types54.default.oneOf(["filled", "outlined", "standard"])
+    variant: import_prop_types55.default.oneOf(["filled", "outlined", "standard"])
   } : void 0;
   Select.muiName = "Select";
   var Select_default = Select;
 
-  // node_modules/@mui/material/Table/Table.js
+  // node_modules/@mui/material/Snackbar/Snackbar.js
+  var React99 = __toESM(require_react());
+  var import_prop_types57 = __toESM(require_prop_types());
+
+  // node_modules/@mui/material/Snackbar/useSnackbar.js
   var React97 = __toESM(require_react());
-  var import_prop_types55 = __toESM(require_prop_types());
+  function useSnackbar(parameters = {}) {
+    const {
+      autoHideDuration = null,
+      disableWindowBlurListener = false,
+      onClose,
+      open,
+      resumeHideDuration
+    } = parameters;
+    const timerAutoHide = useTimeout();
+    React97.useEffect(() => {
+      if (!open) {
+        return void 0;
+      }
+      function handleKeyDown(nativeEvent) {
+        if (!nativeEvent.defaultPrevented) {
+          if (nativeEvent.key === "Escape") {
+            onClose?.(nativeEvent, "escapeKeyDown");
+          }
+        }
+      }
+      document.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+      };
+    }, [open, onClose]);
+    const handleClose = useEventCallback_default((event, reason) => {
+      onClose?.(event, reason);
+    });
+    const setAutoHideTimer = useEventCallback_default((autoHideDurationParam) => {
+      if (!onClose || autoHideDurationParam == null) {
+        return;
+      }
+      timerAutoHide.start(autoHideDurationParam, () => {
+        handleClose(null, "timeout");
+      });
+    });
+    React97.useEffect(() => {
+      if (open) {
+        setAutoHideTimer(autoHideDuration);
+      }
+      return timerAutoHide.clear;
+    }, [open, autoHideDuration, setAutoHideTimer, timerAutoHide]);
+    const handleClickAway = (event) => {
+      onClose?.(event, "clickaway");
+    };
+    const handlePause = timerAutoHide.clear;
+    const handleResume = React97.useCallback(() => {
+      if (autoHideDuration != null) {
+        setAutoHideTimer(resumeHideDuration != null ? resumeHideDuration : autoHideDuration * 0.5);
+      }
+    }, [autoHideDuration, resumeHideDuration, setAutoHideTimer]);
+    const createHandleBlur = (otherHandlers) => (event) => {
+      const onBlurCallback = otherHandlers.onBlur;
+      onBlurCallback?.(event);
+      handleResume();
+    };
+    const createHandleFocus = (otherHandlers) => (event) => {
+      const onFocusCallback = otherHandlers.onFocus;
+      onFocusCallback?.(event);
+      handlePause();
+    };
+    const createMouseEnter = (otherHandlers) => (event) => {
+      const onMouseEnterCallback = otherHandlers.onMouseEnter;
+      onMouseEnterCallback?.(event);
+      handlePause();
+    };
+    const createMouseLeave = (otherHandlers) => (event) => {
+      const onMouseLeaveCallback = otherHandlers.onMouseLeave;
+      onMouseLeaveCallback?.(event);
+      handleResume();
+    };
+    React97.useEffect(() => {
+      if (!disableWindowBlurListener && open) {
+        window.addEventListener("focus", handleResume);
+        window.addEventListener("blur", handlePause);
+        return () => {
+          window.removeEventListener("focus", handleResume);
+          window.removeEventListener("blur", handlePause);
+        };
+      }
+      return void 0;
+    }, [disableWindowBlurListener, open, handleResume, handlePause]);
+    const getRootProps = (externalProps = {}) => {
+      const externalEventHandlers = {
+        ...extractEventHandlers_default(parameters),
+        ...extractEventHandlers_default(externalProps)
+      };
+      return {
+        // ClickAwayListener adds an `onClick` prop which results in the alert not being announced.
+        // See https://github.com/mui/material-ui/issues/29080
+        role: "presentation",
+        ...externalProps,
+        ...externalEventHandlers,
+        onBlur: createHandleBlur(externalEventHandlers),
+        onFocus: createHandleFocus(externalEventHandlers),
+        onMouseEnter: createMouseEnter(externalEventHandlers),
+        onMouseLeave: createMouseLeave(externalEventHandlers)
+      };
+    };
+    return {
+      getRootProps,
+      onClickAway: handleClickAway
+    };
+  }
+  var useSnackbar_default = useSnackbar;
+
+  // node_modules/@mui/material/SnackbarContent/SnackbarContent.js
+  var React98 = __toESM(require_react());
+  var import_prop_types56 = __toESM(require_prop_types());
+
+  // node_modules/@mui/material/SnackbarContent/snackbarContentClasses.js
+  function getSnackbarContentUtilityClass(slot) {
+    return generateUtilityClass("MuiSnackbarContent", slot);
+  }
+  var snackbarContentClasses = generateUtilityClasses("MuiSnackbarContent", ["root", "message", "action"]);
+
+  // node_modules/@mui/material/SnackbarContent/SnackbarContent.js
+  var import_jsx_runtime53 = __toESM(require_jsx_runtime());
+  var useUtilityClasses31 = (ownerState) => {
+    const {
+      classes
+    } = ownerState;
+    const slots = {
+      root: ["root"],
+      action: ["action"],
+      message: ["message"]
+    };
+    return composeClasses(slots, getSnackbarContentUtilityClass, classes);
+  };
+  var SnackbarContentRoot = styled_default2(Paper_default, {
+    name: "MuiSnackbarContent",
+    slot: "Root",
+    overridesResolver: (props, styles4) => styles4.root
+  })(memoTheme_default(({
+    theme
+  }) => {
+    const emphasis = theme.palette.mode === "light" ? 0.8 : 0.98;
+    const backgroundColor2 = emphasize(theme.palette.background.default, emphasis);
+    return {
+      ...theme.typography.body2,
+      color: theme.vars ? theme.vars.palette.SnackbarContent.color : theme.palette.getContrastText(backgroundColor2),
+      backgroundColor: theme.vars ? theme.vars.palette.SnackbarContent.bg : backgroundColor2,
+      display: "flex",
+      alignItems: "center",
+      flexWrap: "wrap",
+      padding: "6px 16px",
+      borderRadius: (theme.vars || theme).shape.borderRadius,
+      flexGrow: 1,
+      [theme.breakpoints.up("sm")]: {
+        flexGrow: "initial",
+        minWidth: 288
+      }
+    };
+  }));
+  var SnackbarContentMessage = styled_default2("div", {
+    name: "MuiSnackbarContent",
+    slot: "Message",
+    overridesResolver: (props, styles4) => styles4.message
+  })({
+    padding: "8px 0"
+  });
+  var SnackbarContentAction = styled_default2("div", {
+    name: "MuiSnackbarContent",
+    slot: "Action",
+    overridesResolver: (props, styles4) => styles4.action
+  })({
+    display: "flex",
+    alignItems: "center",
+    marginLeft: "auto",
+    paddingLeft: 16,
+    marginRight: -8
+  });
+  var SnackbarContent = /* @__PURE__ */ React98.forwardRef(function SnackbarContent2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiSnackbarContent"
+    });
+    const {
+      action,
+      className,
+      message,
+      role = "alert",
+      ...other
+    } = props;
+    const ownerState = props;
+    const classes = useUtilityClasses31(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(SnackbarContentRoot, {
+      role,
+      square: true,
+      elevation: 6,
+      className: clsx_default(classes.root, className),
+      ownerState,
+      ref,
+      ...other,
+      children: [/* @__PURE__ */ (0, import_jsx_runtime53.jsx)(SnackbarContentMessage, {
+        className: classes.message,
+        ownerState,
+        children: message
+      }), action ? /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(SnackbarContentAction, {
+        className: classes.action,
+        ownerState,
+        children: action
+      }) : null]
+    });
+  });
+  true ? SnackbarContent.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The action to display. It renders after the message, at the end of the snackbar.
+     */
+    action: import_prop_types56.default.node,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types56.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types56.default.string,
+    /**
+     * The message to display.
+     */
+    message: import_prop_types56.default.node,
+    /**
+     * The ARIA role attribute of the element.
+     * @default 'alert'
+     */
+    role: import_prop_types56.default.string,
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types56.default.oneOfType([import_prop_types56.default.arrayOf(import_prop_types56.default.oneOfType([import_prop_types56.default.func, import_prop_types56.default.object, import_prop_types56.default.bool])), import_prop_types56.default.func, import_prop_types56.default.object])
+  } : void 0;
+  var SnackbarContent_default = SnackbarContent;
+
+  // node_modules/@mui/material/Snackbar/snackbarClasses.js
+  function getSnackbarUtilityClass(slot) {
+    return generateUtilityClass("MuiSnackbar", slot);
+  }
+  var snackbarClasses = generateUtilityClasses("MuiSnackbar", ["root", "anchorOriginTopCenter", "anchorOriginBottomCenter", "anchorOriginTopRight", "anchorOriginBottomRight", "anchorOriginTopLeft", "anchorOriginBottomLeft"]);
+
+  // node_modules/@mui/material/Snackbar/Snackbar.js
+  var import_jsx_runtime54 = __toESM(require_jsx_runtime());
+  var useUtilityClasses32 = (ownerState) => {
+    const {
+      classes,
+      anchorOrigin
+    } = ownerState;
+    const slots = {
+      root: ["root", `anchorOrigin${capitalize_default(anchorOrigin.vertical)}${capitalize_default(anchorOrigin.horizontal)}`]
+    };
+    return composeClasses(slots, getSnackbarUtilityClass, classes);
+  };
+  var SnackbarRoot = styled_default2("div", {
+    name: "MuiSnackbar",
+    slot: "Root",
+    overridesResolver: (props, styles4) => {
+      const {
+        ownerState
+      } = props;
+      return [styles4.root, styles4[`anchorOrigin${capitalize_default(ownerState.anchorOrigin.vertical)}${capitalize_default(ownerState.anchorOrigin.horizontal)}`]];
+    }
+  })(memoTheme_default(({
+    theme
+  }) => ({
+    zIndex: (theme.vars || theme).zIndex.snackbar,
+    position: "fixed",
+    display: "flex",
+    left: 8,
+    right: 8,
+    justifyContent: "center",
+    alignItems: "center",
+    variants: [{
+      props: ({
+        ownerState
+      }) => ownerState.anchorOrigin.vertical === "top",
+      style: {
+        top: 8,
+        [theme.breakpoints.up("sm")]: {
+          top: 24
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.anchorOrigin.vertical !== "top",
+      style: {
+        bottom: 8,
+        [theme.breakpoints.up("sm")]: {
+          bottom: 24
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.anchorOrigin.horizontal === "left",
+      style: {
+        justifyContent: "flex-start",
+        [theme.breakpoints.up("sm")]: {
+          left: 24,
+          right: "auto"
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.anchorOrigin.horizontal === "right",
+      style: {
+        justifyContent: "flex-end",
+        [theme.breakpoints.up("sm")]: {
+          right: 24,
+          left: "auto"
+        }
+      }
+    }, {
+      props: ({
+        ownerState
+      }) => ownerState.anchorOrigin.horizontal === "center",
+      style: {
+        [theme.breakpoints.up("sm")]: {
+          left: "50%",
+          right: "auto",
+          transform: "translateX(-50%)"
+        }
+      }
+    }]
+  })));
+  var Snackbar = /* @__PURE__ */ React99.forwardRef(function Snackbar2(inProps, ref) {
+    const props = useDefaultProps2({
+      props: inProps,
+      name: "MuiSnackbar"
+    });
+    const theme = useTheme4();
+    const defaultTransitionDuration = {
+      enter: theme.transitions.duration.enteringScreen,
+      exit: theme.transitions.duration.leavingScreen
+    };
+    const {
+      action,
+      anchorOrigin: {
+        vertical,
+        horizontal
+      } = {
+        vertical: "bottom",
+        horizontal: "left"
+      },
+      autoHideDuration = null,
+      children,
+      className,
+      ClickAwayListenerProps: ClickAwayListenerPropsProp,
+      ContentProps: ContentPropsProp,
+      disableWindowBlurListener = false,
+      message,
+      onBlur,
+      onClose,
+      onFocus,
+      onMouseEnter,
+      onMouseLeave,
+      open,
+      resumeHideDuration,
+      slots = {},
+      slotProps = {},
+      TransitionComponent: TransitionComponentProp,
+      transitionDuration = defaultTransitionDuration,
+      TransitionProps: {
+        onEnter,
+        onExited,
+        ...TransitionPropsProp
+      } = {},
+      ...other
+    } = props;
+    const ownerState = {
+      ...props,
+      anchorOrigin: {
+        vertical,
+        horizontal
+      },
+      autoHideDuration,
+      disableWindowBlurListener,
+      TransitionComponent: TransitionComponentProp,
+      transitionDuration
+    };
+    const classes = useUtilityClasses32(ownerState);
+    const {
+      getRootProps,
+      onClickAway
+    } = useSnackbar_default({
+      ...ownerState
+    });
+    const [exited, setExited] = React99.useState(true);
+    const handleExited = (node2) => {
+      setExited(true);
+      if (onExited) {
+        onExited(node2);
+      }
+    };
+    const handleEnter = (node2, isAppearing) => {
+      setExited(false);
+      if (onEnter) {
+        onEnter(node2, isAppearing);
+      }
+    };
+    const externalForwardedProps = {
+      slots: {
+        transition: TransitionComponentProp,
+        ...slots
+      },
+      slotProps: {
+        content: ContentPropsProp,
+        clickAwayListener: ClickAwayListenerPropsProp,
+        transition: TransitionPropsProp,
+        ...slotProps
+      }
+    };
+    const [Root, rootProps] = useSlot("root", {
+      ref,
+      className: [classes.root, className],
+      elementType: SnackbarRoot,
+      getSlotProps: getRootProps,
+      externalForwardedProps: {
+        ...externalForwardedProps,
+        ...other
+      },
+      ownerState
+    });
+    const [ClickAwaySlot, {
+      ownerState: clickAwayOwnerStateProp,
+      ...clickAwayListenerProps
+    }] = useSlot("clickAwayListener", {
+      elementType: ClickAwayListener,
+      externalForwardedProps,
+      getSlotProps: (handlers) => ({
+        onClickAway: (...params2) => {
+          handlers.onClickAway?.(...params2);
+          onClickAway(...params2);
+        }
+      }),
+      ownerState
+    });
+    const [ContentSlot, contentSlotProps] = useSlot("content", {
+      elementType: SnackbarContent_default,
+      shouldForwardComponentProp: true,
+      externalForwardedProps,
+      additionalProps: {
+        message,
+        action
+      },
+      ownerState
+    });
+    const [TransitionSlot, transitionProps] = useSlot("transition", {
+      elementType: Grow_default,
+      externalForwardedProps,
+      getSlotProps: (handlers) => ({
+        onEnter: (...params2) => {
+          handlers.onEnter?.(...params2);
+          handleEnter(...params2);
+        },
+        onExited: (...params2) => {
+          handlers.onExited?.(...params2);
+          handleExited(...params2);
+        }
+      }),
+      additionalProps: {
+        appear: true,
+        in: open,
+        timeout: transitionDuration,
+        direction: vertical === "top" ? "down" : "up"
+      },
+      ownerState
+    });
+    if (!open && exited) {
+      return null;
+    }
+    return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(ClickAwaySlot, {
+      ...clickAwayListenerProps,
+      ...slots.clickAwayListener && {
+        ownerState: clickAwayOwnerStateProp
+      },
+      children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Root, {
+        ...rootProps,
+        children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(TransitionSlot, {
+          ...transitionProps,
+          children: children || /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(ContentSlot, {
+            ...contentSlotProps
+          })
+        })
+      })
+    });
+  });
+  true ? Snackbar.propTypes = {
+    // ┌────────────────────────────── Warning ──────────────────────────────┐
+    // │ These PropTypes are generated from the TypeScript type definitions. │
+    // │    To update them, edit the d.ts file and run `pnpm proptypes`.     │
+    // └─────────────────────────────────────────────────────────────────────┘
+    /**
+     * The action to display. It renders after the message, at the end of the snackbar.
+     */
+    action: import_prop_types57.default.node,
+    /**
+     * The anchor of the `Snackbar`.
+     * On smaller screens, the component grows to occupy all the available width,
+     * the horizontal alignment is ignored.
+     * @default { vertical: 'bottom', horizontal: 'left' }
+     */
+    anchorOrigin: import_prop_types57.default.shape({
+      horizontal: import_prop_types57.default.oneOf(["center", "left", "right"]).isRequired,
+      vertical: import_prop_types57.default.oneOf(["bottom", "top"]).isRequired
+    }),
+    /**
+     * The number of milliseconds to wait before automatically calling the
+     * `onClose` function. `onClose` should then set the state of the `open`
+     * prop to hide the Snackbar. This behavior is disabled by default with
+     * the `null` value.
+     * @default null
+     */
+    autoHideDuration: import_prop_types57.default.number,
+    /**
+     * Replace the `SnackbarContent` component.
+     */
+    children: import_prop_types57.default.element,
+    /**
+     * Override or extend the styles applied to the component.
+     */
+    classes: import_prop_types57.default.object,
+    /**
+     * @ignore
+     */
+    className: import_prop_types57.default.string,
+    /**
+     * Props applied to the `ClickAwayListener` element.
+     * @deprecated Use `slotProps.clickAwayListener` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     */
+    ClickAwayListenerProps: import_prop_types57.default.object,
+    /**
+     * Props applied to the [`SnackbarContent`](https://mui.com/material-ui/api/snackbar-content/) element.
+     * @deprecated Use `slotProps.content` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     */
+    ContentProps: import_prop_types57.default.object,
+    /**
+     * If `true`, the `autoHideDuration` timer will expire even if the window is not focused.
+     * @default false
+     */
+    disableWindowBlurListener: import_prop_types57.default.bool,
+    /**
+     * When displaying multiple consecutive snackbars using a single parent-rendered
+     * `<Snackbar/>`, add the `key` prop to ensure independent treatment of each message.
+     * For instance, use `<Snackbar key={message} />`. Otherwise, messages might update
+     * in place, and features like `autoHideDuration` could be affected.
+     */
+    key: () => null,
+    /**
+     * The message to display.
+     */
+    message: import_prop_types57.default.node,
+    /**
+     * @ignore
+     */
+    onBlur: import_prop_types57.default.func,
+    /**
+     * Callback fired when the component requests to be closed.
+     * Typically `onClose` is used to set state in the parent component,
+     * which is used to control the `Snackbar` `open` prop.
+     * The `reason` parameter can optionally be used to control the response to `onClose`,
+     * for example ignoring `clickaway`.
+     *
+     * @param {React.SyntheticEvent<any> | Event} event The event source of the callback.
+     * @param {string} reason Can be: `"timeout"` (`autoHideDuration` expired), `"clickaway"`, or `"escapeKeyDown"`.
+     */
+    onClose: import_prop_types57.default.func,
+    /**
+     * @ignore
+     */
+    onFocus: import_prop_types57.default.func,
+    /**
+     * @ignore
+     */
+    onMouseEnter: import_prop_types57.default.func,
+    /**
+     * @ignore
+     */
+    onMouseLeave: import_prop_types57.default.func,
+    /**
+     * If `true`, the component is shown.
+     */
+    open: import_prop_types57.default.bool,
+    /**
+     * The number of milliseconds to wait before dismissing after user interaction.
+     * If `autoHideDuration` prop isn't specified, it does nothing.
+     * If `autoHideDuration` prop is specified but `resumeHideDuration` isn't,
+     * we default to `autoHideDuration / 2` ms.
+     */
+    resumeHideDuration: import_prop_types57.default.number,
+    /**
+     * The props used for each slot inside.
+     * @default {}
+     */
+    slotProps: import_prop_types57.default.shape({
+      clickAwayListener: import_prop_types57.default.oneOfType([import_prop_types57.default.func, import_prop_types57.default.shape({
+        children: import_prop_types57.default.element.isRequired,
+        disableReactTree: import_prop_types57.default.bool,
+        mouseEvent: import_prop_types57.default.oneOf(["onClick", "onMouseDown", "onMouseUp", "onPointerDown", "onPointerUp", false]),
+        onClickAway: import_prop_types57.default.func,
+        touchEvent: import_prop_types57.default.oneOf(["onTouchEnd", "onTouchStart", false])
+      })]),
+      content: import_prop_types57.default.oneOfType([import_prop_types57.default.func, import_prop_types57.default.object]),
+      root: import_prop_types57.default.oneOfType([import_prop_types57.default.func, import_prop_types57.default.object]),
+      transition: import_prop_types57.default.oneOfType([import_prop_types57.default.func, import_prop_types57.default.object])
+    }),
+    /**
+     * The components used for each slot inside.
+     * @default {}
+     */
+    slots: import_prop_types57.default.shape({
+      clickAwayListener: import_prop_types57.default.elementType,
+      content: import_prop_types57.default.elementType,
+      root: import_prop_types57.default.elementType,
+      transition: import_prop_types57.default.elementType
+    }),
+    /**
+     * The system prop that allows defining system overrides as well as additional CSS styles.
+     */
+    sx: import_prop_types57.default.oneOfType([import_prop_types57.default.arrayOf(import_prop_types57.default.oneOfType([import_prop_types57.default.func, import_prop_types57.default.object, import_prop_types57.default.bool])), import_prop_types57.default.func, import_prop_types57.default.object]),
+    /**
+     * The component used for the transition.
+     * [Follow this guide](https://mui.com/material-ui/transitions/#transitioncomponent-prop) to learn more about the requirements for this component.
+     * @deprecated Use `slots.transition` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     * @default Grow
+     */
+    TransitionComponent: import_prop_types57.default.elementType,
+    /**
+     * The duration for the transition, in milliseconds.
+     * You may specify a single timeout for all transitions, or individually with an object.
+     * @default {
+     *   enter: theme.transitions.duration.enteringScreen,
+     *   exit: theme.transitions.duration.leavingScreen,
+     * }
+     */
+    transitionDuration: import_prop_types57.default.oneOfType([import_prop_types57.default.number, import_prop_types57.default.shape({
+      appear: import_prop_types57.default.number,
+      enter: import_prop_types57.default.number,
+      exit: import_prop_types57.default.number
+    })]),
+    /**
+     * Props applied to the transition element.
+     * By default, the element is based on this [`Transition`](https://reactcommunity.org/react-transition-group/transition/) component.
+     * @deprecated Use `slotProps.transition` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](/material-ui/migration/migrating-from-deprecated-apis/) for more details.
+     * @default {}
+     */
+    TransitionProps: import_prop_types57.default.object
+  } : void 0;
+  var Snackbar_default = Snackbar;
+
+  // node_modules/@mui/material/Table/Table.js
+  var React101 = __toESM(require_react());
+  var import_prop_types58 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/Table/TableContext.js
-  var React96 = __toESM(require_react());
-  var TableContext = /* @__PURE__ */ React96.createContext();
+  var React100 = __toESM(require_react());
+  var TableContext = /* @__PURE__ */ React100.createContext();
   if (true) {
     TableContext.displayName = "TableContext";
   }
@@ -43094,8 +43897,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var tableClasses = generateUtilityClasses("MuiTable", ["root", "stickyHeader"]);
 
   // node_modules/@mui/material/Table/Table.js
-  var import_jsx_runtime53 = __toESM(require_jsx_runtime());
-  var useUtilityClasses31 = (ownerState) => {
+  var import_jsx_runtime55 = __toESM(require_jsx_runtime());
+  var useUtilityClasses33 = (ownerState) => {
     const {
       classes,
       stickyHeader
@@ -43138,7 +43941,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }]
   })));
   var defaultComponent = "table";
-  var Table = /* @__PURE__ */ React97.forwardRef(function Table2(inProps, ref) {
+  var Table = /* @__PURE__ */ React101.forwardRef(function Table2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTable"
@@ -43158,15 +43961,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       size,
       stickyHeader
     };
-    const classes = useUtilityClasses31(ownerState);
-    const table = React97.useMemo(() => ({
+    const classes = useUtilityClasses33(ownerState);
+    const table = React101.useMemo(() => ({
       padding: padding2,
       size,
       stickyHeader
     }), [padding2, size, stickyHeader]);
-    return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(TableContext_default.Provider, {
+    return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(TableContext_default.Provider, {
       value: table,
-      children: /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(TableRoot, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(TableRoot, {
         as: component,
         role: component === defaultComponent ? null : "table",
         ref,
@@ -43184,49 +43987,49 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * The content of the table, normally `TableHead` and `TableBody`.
      */
-    children: import_prop_types55.default.node,
+    children: import_prop_types58.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types55.default.object,
+    classes: import_prop_types58.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types55.default.string,
+    className: import_prop_types58.default.string,
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
      */
-    component: import_prop_types55.default.elementType,
+    component: import_prop_types58.default.elementType,
     /**
      * Allows TableCells to inherit padding of the Table.
      * @default 'normal'
      */
-    padding: import_prop_types55.default.oneOf(["checkbox", "none", "normal"]),
+    padding: import_prop_types58.default.oneOf(["checkbox", "none", "normal"]),
     /**
      * Allows TableCells to inherit size of the Table.
      * @default 'medium'
      */
-    size: import_prop_types55.default.oneOfType([import_prop_types55.default.oneOf(["medium", "small"]), import_prop_types55.default.string]),
+    size: import_prop_types58.default.oneOfType([import_prop_types58.default.oneOf(["medium", "small"]), import_prop_types58.default.string]),
     /**
      * Set the header sticky.
      * @default false
      */
-    stickyHeader: import_prop_types55.default.bool,
+    stickyHeader: import_prop_types58.default.bool,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types55.default.oneOfType([import_prop_types55.default.arrayOf(import_prop_types55.default.oneOfType([import_prop_types55.default.func, import_prop_types55.default.object, import_prop_types55.default.bool])), import_prop_types55.default.func, import_prop_types55.default.object])
+    sx: import_prop_types58.default.oneOfType([import_prop_types58.default.arrayOf(import_prop_types58.default.oneOfType([import_prop_types58.default.func, import_prop_types58.default.object, import_prop_types58.default.bool])), import_prop_types58.default.func, import_prop_types58.default.object])
   } : void 0;
   var Table_default = Table;
 
   // node_modules/@mui/material/TableBody/TableBody.js
-  var React99 = __toESM(require_react());
-  var import_prop_types56 = __toESM(require_prop_types());
+  var React103 = __toESM(require_react());
+  var import_prop_types59 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/Table/Tablelvl2Context.js
-  var React98 = __toESM(require_react());
-  var Tablelvl2Context = /* @__PURE__ */ React98.createContext();
+  var React102 = __toESM(require_react());
+  var Tablelvl2Context = /* @__PURE__ */ React102.createContext();
   if (true) {
     Tablelvl2Context.displayName = "Tablelvl2Context";
   }
@@ -43239,8 +44042,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var tableBodyClasses = generateUtilityClasses("MuiTableBody", ["root"]);
 
   // node_modules/@mui/material/TableBody/TableBody.js
-  var import_jsx_runtime54 = __toESM(require_jsx_runtime());
-  var useUtilityClasses32 = (ownerState) => {
+  var import_jsx_runtime56 = __toESM(require_jsx_runtime());
+  var useUtilityClasses34 = (ownerState) => {
     const {
       classes
     } = ownerState;
@@ -43260,7 +44063,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     variant: "body"
   };
   var defaultComponent2 = "tbody";
-  var TableBody = /* @__PURE__ */ React99.forwardRef(function TableBody2(inProps, ref) {
+  var TableBody = /* @__PURE__ */ React103.forwardRef(function TableBody2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTableBody"
@@ -43274,10 +44077,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ...props,
       component
     };
-    const classes = useUtilityClasses32(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Tablelvl2Context_default.Provider, {
+    const classes = useUtilityClasses34(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(Tablelvl2Context_default.Provider, {
       value: tablelvl2,
-      children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(TableBodyRoot, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(TableBodyRoot, {
         className: clsx_default(classes.root, className),
         as: component,
         ref,
@@ -43295,30 +44098,30 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * The content of the component, normally `TableRow`.
      */
-    children: import_prop_types56.default.node,
+    children: import_prop_types59.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types56.default.object,
+    classes: import_prop_types59.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types56.default.string,
+    className: import_prop_types59.default.string,
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
      */
-    component: import_prop_types56.default.elementType,
+    component: import_prop_types59.default.elementType,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types56.default.oneOfType([import_prop_types56.default.arrayOf(import_prop_types56.default.oneOfType([import_prop_types56.default.func, import_prop_types56.default.object, import_prop_types56.default.bool])), import_prop_types56.default.func, import_prop_types56.default.object])
+    sx: import_prop_types59.default.oneOfType([import_prop_types59.default.arrayOf(import_prop_types59.default.oneOfType([import_prop_types59.default.func, import_prop_types59.default.object, import_prop_types59.default.bool])), import_prop_types59.default.func, import_prop_types59.default.object])
   } : void 0;
   var TableBody_default = TableBody;
 
   // node_modules/@mui/material/TableCell/TableCell.js
-  var React100 = __toESM(require_react());
-  var import_prop_types57 = __toESM(require_prop_types());
+  var React104 = __toESM(require_react());
+  var import_prop_types60 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/TableCell/tableCellClasses.js
   function getTableCellUtilityClass(slot) {
@@ -43328,8 +44131,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var tableCellClasses_default = tableCellClasses;
 
   // node_modules/@mui/material/TableCell/TableCell.js
-  var import_jsx_runtime55 = __toESM(require_jsx_runtime());
-  var useUtilityClasses33 = (ownerState) => {
+  var import_jsx_runtime57 = __toESM(require_jsx_runtime());
+  var useUtilityClasses35 = (ownerState) => {
     const {
       classes,
       variant,
@@ -43461,7 +44264,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   })));
-  var TableCell = /* @__PURE__ */ React100.forwardRef(function TableCell2(inProps, ref) {
+  var TableCell = /* @__PURE__ */ React104.forwardRef(function TableCell2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTableCell"
@@ -43477,8 +44280,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       variant: variantProp,
       ...other
     } = props;
-    const table = React100.useContext(TableContext_default);
-    const tablelvl23 = React100.useContext(Tablelvl2Context_default);
+    const table = React104.useContext(TableContext_default);
+    const tablelvl23 = React104.useContext(Tablelvl2Context_default);
     const isHeadCell = tablelvl23 && tablelvl23.variant === "head";
     let component;
     if (componentProp) {
@@ -43503,12 +44306,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       stickyHeader: variant === "head" && table && table.stickyHeader,
       variant
     };
-    const classes = useUtilityClasses33(ownerState);
+    const classes = useUtilityClasses35(ownerState);
     let ariaSort = null;
     if (sortDirection) {
       ariaSort = sortDirection === "asc" ? "ascending" : "descending";
     }
-    return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(TableCellRoot, {
+    return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TableCellRoot, {
       as: component,
       ref,
       className: clsx_default(classes.root, className),
@@ -43530,57 +44333,57 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * you to add them up quickly in your head without having to worry about decimals.
      * @default 'inherit'
      */
-    align: import_prop_types57.default.oneOf(["center", "inherit", "justify", "left", "right"]),
+    align: import_prop_types60.default.oneOf(["center", "inherit", "justify", "left", "right"]),
     /**
      * The content of the component.
      */
-    children: import_prop_types57.default.node,
+    children: import_prop_types60.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types57.default.object,
+    classes: import_prop_types60.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types57.default.string,
+    className: import_prop_types60.default.string,
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
      */
-    component: import_prop_types57.default.elementType,
+    component: import_prop_types60.default.elementType,
     /**
      * Sets the padding applied to the cell.
      * The prop defaults to the value (`'default'`) inherited from the parent Table component.
      */
-    padding: import_prop_types57.default.oneOf(["checkbox", "none", "normal"]),
+    padding: import_prop_types60.default.oneOf(["checkbox", "none", "normal"]),
     /**
      * Set scope attribute.
      */
-    scope: import_prop_types57.default.string,
+    scope: import_prop_types60.default.string,
     /**
      * Specify the size of the cell.
      * The prop defaults to the value (`'medium'`) inherited from the parent Table component.
      */
-    size: import_prop_types57.default.oneOfType([import_prop_types57.default.oneOf(["medium", "small"]), import_prop_types57.default.string]),
+    size: import_prop_types60.default.oneOfType([import_prop_types60.default.oneOf(["medium", "small"]), import_prop_types60.default.string]),
     /**
      * Set aria-sort direction.
      */
-    sortDirection: import_prop_types57.default.oneOf(["asc", "desc", false]),
+    sortDirection: import_prop_types60.default.oneOf(["asc", "desc", false]),
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types57.default.oneOfType([import_prop_types57.default.arrayOf(import_prop_types57.default.oneOfType([import_prop_types57.default.func, import_prop_types57.default.object, import_prop_types57.default.bool])), import_prop_types57.default.func, import_prop_types57.default.object]),
+    sx: import_prop_types60.default.oneOfType([import_prop_types60.default.arrayOf(import_prop_types60.default.oneOfType([import_prop_types60.default.func, import_prop_types60.default.object, import_prop_types60.default.bool])), import_prop_types60.default.func, import_prop_types60.default.object]),
     /**
      * Specify the cell type.
      * The prop defaults to the value inherited from the parent TableHead, TableBody, or TableFooter components.
      */
-    variant: import_prop_types57.default.oneOfType([import_prop_types57.default.oneOf(["body", "footer", "head"]), import_prop_types57.default.string])
+    variant: import_prop_types60.default.oneOfType([import_prop_types60.default.oneOf(["body", "footer", "head"]), import_prop_types60.default.string])
   } : void 0;
   var TableCell_default = TableCell;
 
   // node_modules/@mui/material/TableHead/TableHead.js
-  var React101 = __toESM(require_react());
-  var import_prop_types58 = __toESM(require_prop_types());
+  var React105 = __toESM(require_react());
+  var import_prop_types61 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/TableHead/tableHeadClasses.js
   function getTableHeadUtilityClass(slot) {
@@ -43589,8 +44392,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var tableHeadClasses = generateUtilityClasses("MuiTableHead", ["root"]);
 
   // node_modules/@mui/material/TableHead/TableHead.js
-  var import_jsx_runtime56 = __toESM(require_jsx_runtime());
-  var useUtilityClasses34 = (ownerState) => {
+  var import_jsx_runtime58 = __toESM(require_jsx_runtime());
+  var useUtilityClasses36 = (ownerState) => {
     const {
       classes
     } = ownerState;
@@ -43610,7 +44413,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     variant: "head"
   };
   var defaultComponent3 = "thead";
-  var TableHead = /* @__PURE__ */ React101.forwardRef(function TableHead2(inProps, ref) {
+  var TableHead = /* @__PURE__ */ React105.forwardRef(function TableHead2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTableHead"
@@ -43624,10 +44427,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ...props,
       component
     };
-    const classes = useUtilityClasses34(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(Tablelvl2Context_default.Provider, {
+    const classes = useUtilityClasses36(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Tablelvl2Context_default.Provider, {
       value: tablelvl22,
-      children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(TableHeadRoot, {
+      children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(TableHeadRoot, {
         as: component,
         className: clsx_default(classes.root, className),
         ref,
@@ -43645,30 +44448,30 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * The content of the component, normally `TableRow`.
      */
-    children: import_prop_types58.default.node,
+    children: import_prop_types61.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types58.default.object,
+    classes: import_prop_types61.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types58.default.string,
+    className: import_prop_types61.default.string,
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
      */
-    component: import_prop_types58.default.elementType,
+    component: import_prop_types61.default.elementType,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types58.default.oneOfType([import_prop_types58.default.arrayOf(import_prop_types58.default.oneOfType([import_prop_types58.default.func, import_prop_types58.default.object, import_prop_types58.default.bool])), import_prop_types58.default.func, import_prop_types58.default.object])
+    sx: import_prop_types61.default.oneOfType([import_prop_types61.default.arrayOf(import_prop_types61.default.oneOfType([import_prop_types61.default.func, import_prop_types61.default.object, import_prop_types61.default.bool])), import_prop_types61.default.func, import_prop_types61.default.object])
   } : void 0;
   var TableHead_default = TableHead;
 
   // node_modules/@mui/material/TableRow/TableRow.js
-  var React102 = __toESM(require_react());
-  var import_prop_types59 = __toESM(require_prop_types());
+  var React106 = __toESM(require_react());
+  var import_prop_types62 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/TableRow/tableRowClasses.js
   function getTableRowUtilityClass(slot) {
@@ -43678,8 +44481,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var tableRowClasses_default = tableRowClasses;
 
   // node_modules/@mui/material/TableRow/TableRow.js
-  var import_jsx_runtime57 = __toESM(require_jsx_runtime());
-  var useUtilityClasses35 = (ownerState) => {
+  var import_jsx_runtime59 = __toESM(require_jsx_runtime());
+  var useUtilityClasses37 = (ownerState) => {
     const {
       classes,
       selected,
@@ -43720,7 +44523,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
   })));
   var defaultComponent4 = "tr";
-  var TableRow = /* @__PURE__ */ React102.forwardRef(function TableRow2(inProps, ref) {
+  var TableRow = /* @__PURE__ */ React106.forwardRef(function TableRow2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTableRow"
@@ -43732,7 +44535,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       selected = false,
       ...other
     } = props;
-    const tablelvl23 = React102.useContext(Tablelvl2Context_default);
+    const tablelvl23 = React106.useContext(Tablelvl2Context_default);
     const ownerState = {
       ...props,
       component,
@@ -43741,8 +44544,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       head: tablelvl23 && tablelvl23.variant === "head",
       footer: tablelvl23 && tablelvl23.variant === "footer"
     };
-    const classes = useUtilityClasses35(ownerState);
-    return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TableRowRoot, {
+    const classes = useUtilityClasses37(ownerState);
+    return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(TableRowRoot, {
       as: component,
       ref,
       className: clsx_default(classes.root, className),
@@ -43759,45 +44562,45 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * Should be valid `<tr>` children such as `TableCell`.
      */
-    children: import_prop_types59.default.node,
+    children: import_prop_types62.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types59.default.object,
+    classes: import_prop_types62.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types59.default.string,
+    className: import_prop_types62.default.string,
     /**
      * The component used for the root node.
      * Either a string to use a HTML element or a component.
      */
-    component: import_prop_types59.default.elementType,
+    component: import_prop_types62.default.elementType,
     /**
      * If `true`, the table row will shade on hover.
      * @default false
      */
-    hover: import_prop_types59.default.bool,
+    hover: import_prop_types62.default.bool,
     /**
      * If `true`, the table row will have the selected shading.
      * @default false
      */
-    selected: import_prop_types59.default.bool,
+    selected: import_prop_types62.default.bool,
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types59.default.oneOfType([import_prop_types59.default.arrayOf(import_prop_types59.default.oneOfType([import_prop_types59.default.func, import_prop_types59.default.object, import_prop_types59.default.bool])), import_prop_types59.default.func, import_prop_types59.default.object])
+    sx: import_prop_types62.default.oneOfType([import_prop_types62.default.arrayOf(import_prop_types62.default.oneOfType([import_prop_types62.default.func, import_prop_types62.default.object, import_prop_types62.default.bool])), import_prop_types62.default.func, import_prop_types62.default.object])
   } : void 0;
   var TableRow_default = TableRow;
 
   // node_modules/@mui/material/TableSortLabel/TableSortLabel.js
-  var import_prop_types60 = __toESM(require_prop_types());
-  var React104 = __toESM(require_react());
+  var import_prop_types63 = __toESM(require_prop_types());
+  var React108 = __toESM(require_react());
 
   // node_modules/@mui/material/internal/svg-icons/ArrowDownward.js
-  var React103 = __toESM(require_react());
-  var import_jsx_runtime58 = __toESM(require_jsx_runtime());
-  var ArrowDownward_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", {
+  var React107 = __toESM(require_react());
+  var import_jsx_runtime60 = __toESM(require_jsx_runtime());
+  var ArrowDownward_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime60.jsx)("path", {
     d: "M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
   }), "ArrowDownward");
 
@@ -43809,8 +44612,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var tableSortLabelClasses_default = tableSortLabelClasses;
 
   // node_modules/@mui/material/TableSortLabel/TableSortLabel.js
-  var import_jsx_runtime59 = __toESM(require_jsx_runtime());
-  var useUtilityClasses36 = (ownerState) => {
+  var import_jsx_runtime61 = __toESM(require_jsx_runtime());
+  var useUtilityClasses38 = (ownerState) => {
     const {
       classes,
       direction,
@@ -43892,7 +44695,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
     }]
   })));
-  var TableSortLabel = /* @__PURE__ */ React104.forwardRef(function TableSortLabel2(inProps, ref) {
+  var TableSortLabel = /* @__PURE__ */ React108.forwardRef(function TableSortLabel2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTableSortLabel"
@@ -43915,7 +44718,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       hideSortIcon,
       IconComponent
     };
-    const classes = useUtilityClasses36(ownerState);
+    const classes = useUtilityClasses38(ownerState);
     const externalForwardedProps = {
       slots,
       slotProps
@@ -43933,12 +44736,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       ownerState,
       className: classes.icon
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(RootSlot, {
+    return /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(RootSlot, {
       disableRipple: true,
       component: "span",
       ...rootProps,
       ...other,
-      children: [children, hideSortIcon && !active ? null : /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(IconSlot, {
+      children: [children, hideSortIcon && !active ? null : /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(IconSlot, {
         as: IconComponent,
         ...iconProps
       })]
@@ -43953,60 +44756,60 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * If `true`, the label will have the active styling (should be true for the sorted column).
      * @default false
      */
-    active: import_prop_types60.default.bool,
+    active: import_prop_types63.default.bool,
     /**
      * Label contents, the arrow will be appended automatically.
      */
-    children: import_prop_types60.default.node,
+    children: import_prop_types63.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types60.default.object,
+    classes: import_prop_types63.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types60.default.string,
+    className: import_prop_types63.default.string,
     /**
      * The current sort direction.
      * @default 'asc'
      */
-    direction: import_prop_types60.default.oneOf(["asc", "desc"]),
+    direction: import_prop_types63.default.oneOf(["asc", "desc"]),
     /**
      * Hide sort icon when active is false.
      * @default false
      */
-    hideSortIcon: import_prop_types60.default.bool,
+    hideSortIcon: import_prop_types63.default.bool,
     /**
      * Sort icon to use.
      * @default ArrowDownwardIcon
      */
-    IconComponent: import_prop_types60.default.elementType,
+    IconComponent: import_prop_types63.default.elementType,
     /**
      * The props used for each slot inside.
      * @default {}
      */
-    slotProps: import_prop_types60.default.shape({
-      icon: import_prop_types60.default.oneOfType([import_prop_types60.default.func, import_prop_types60.default.object]),
-      root: import_prop_types60.default.oneOfType([import_prop_types60.default.func, import_prop_types60.default.object])
+    slotProps: import_prop_types63.default.shape({
+      icon: import_prop_types63.default.oneOfType([import_prop_types63.default.func, import_prop_types63.default.object]),
+      root: import_prop_types63.default.oneOfType([import_prop_types63.default.func, import_prop_types63.default.object])
     }),
     /**
      * The components used for each slot inside.
      * @default {}
      */
-    slots: import_prop_types60.default.shape({
-      icon: import_prop_types60.default.elementType,
-      root: import_prop_types60.default.elementType
+    slots: import_prop_types63.default.shape({
+      icon: import_prop_types63.default.elementType,
+      root: import_prop_types63.default.elementType
     }),
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types60.default.oneOfType([import_prop_types60.default.arrayOf(import_prop_types60.default.oneOfType([import_prop_types60.default.func, import_prop_types60.default.object, import_prop_types60.default.bool])), import_prop_types60.default.func, import_prop_types60.default.object])
+    sx: import_prop_types63.default.oneOfType([import_prop_types63.default.arrayOf(import_prop_types63.default.oneOfType([import_prop_types63.default.func, import_prop_types63.default.object, import_prop_types63.default.bool])), import_prop_types63.default.func, import_prop_types63.default.object])
   } : void 0;
   var TableSortLabel_default = TableSortLabel;
 
   // node_modules/@mui/material/TextField/TextField.js
-  var React105 = __toESM(require_react());
-  var import_prop_types61 = __toESM(require_prop_types());
+  var React109 = __toESM(require_react());
+  var import_prop_types64 = __toESM(require_prop_types());
 
   // node_modules/@mui/material/TextField/textFieldClasses.js
   function getTextFieldUtilityClass(slot) {
@@ -44015,13 +44818,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var textFieldClasses = generateUtilityClasses("MuiTextField", ["root"]);
 
   // node_modules/@mui/material/TextField/TextField.js
-  var import_jsx_runtime60 = __toESM(require_jsx_runtime());
+  var import_jsx_runtime62 = __toESM(require_jsx_runtime());
   var variantComponent = {
     standard: Input_default,
     filled: FilledInput_default,
     outlined: OutlinedInput_default
   };
-  var useUtilityClasses37 = (ownerState) => {
+  var useUtilityClasses39 = (ownerState) => {
     const {
       classes
     } = ownerState;
@@ -44035,7 +44838,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     slot: "Root",
     overridesResolver: (props, styles4) => styles4.root
   })({});
-  var TextField = /* @__PURE__ */ React105.forwardRef(function TextField2(inProps, ref) {
+  var TextField = /* @__PURE__ */ React109.forwardRef(function TextField2(inProps, ref) {
     const props = useDefaultProps2({
       props: inProps,
       name: "MuiTextField"
@@ -44089,7 +44892,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       select,
       variant
     };
-    const classes = useUtilityClasses37(ownerState);
+    const classes = useUtilityClasses39(ownerState);
     if (true) {
       if (select && !children) {
         console.error("MUI: `children` must be passed when using the `TextField` component with `select`.");
@@ -44150,7 +44953,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       externalForwardedProps,
       ownerState
     });
-    const InputElement = /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(InputSlot, {
+    const InputElement = /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(InputSlot, {
       "aria-describedby": helperTextId,
       autoComplete,
       autoFocus,
@@ -44175,7 +44978,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       },
       ...inputProps
     });
-    return /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(TextFieldRoot, {
+    return /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(TextFieldRoot, {
       className: clsx_default(classes.root, className),
       disabled,
       error,
@@ -44186,12 +44989,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       variant,
       ownerState,
       ...other,
-      children: [label != null && label !== "" && /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(InputLabelSlot, {
+      children: [label != null && label !== "" && /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(InputLabelSlot, {
         htmlFor: id,
         id: inputLabelId,
         ...inputLabelProps,
         children: label
-      }), select ? /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(SelectSlot, {
+      }), select ? /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(SelectSlot, {
         "aria-describedby": helperTextId,
         id,
         labelId: inputLabelId,
@@ -44199,7 +45002,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         input: InputElement,
         ...selectProps,
         children
-      }) : InputElement, helperText && /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(FormHelperTextSlot, {
+      }) : InputElement, helperText && /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(FormHelperTextSlot, {
         id: helperTextId,
         ...formHelperTextProps,
         children: helperText
@@ -44216,75 +45019,75 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * The name can be confusing, as it's more like an autofill.
      * You can learn more about it [following the specification](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill).
      */
-    autoComplete: import_prop_types61.default.string,
+    autoComplete: import_prop_types64.default.string,
     /**
      * If `true`, the `input` element is focused during the first mount.
      * @default false
      */
-    autoFocus: import_prop_types61.default.bool,
+    autoFocus: import_prop_types64.default.bool,
     /**
      * @ignore
      */
-    children: import_prop_types61.default.node,
+    children: import_prop_types64.default.node,
     /**
      * Override or extend the styles applied to the component.
      */
-    classes: import_prop_types61.default.object,
+    classes: import_prop_types64.default.object,
     /**
      * @ignore
      */
-    className: import_prop_types61.default.string,
+    className: import_prop_types64.default.string,
     /**
      * The color of the component.
      * It supports both default and custom theme colors, which can be added as shown in the
      * [palette customization guide](https://mui.com/material-ui/customization/palette/#custom-colors).
      * @default 'primary'
      */
-    color: import_prop_types61.default.oneOfType([import_prop_types61.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types61.default.string]),
+    color: import_prop_types64.default.oneOfType([import_prop_types64.default.oneOf(["primary", "secondary", "error", "info", "success", "warning"]), import_prop_types64.default.string]),
     /**
      * The default value. Use when the component is not controlled.
      */
-    defaultValue: import_prop_types61.default.any,
+    defaultValue: import_prop_types64.default.any,
     /**
      * If `true`, the component is disabled.
      * @default false
      */
-    disabled: import_prop_types61.default.bool,
+    disabled: import_prop_types64.default.bool,
     /**
      * If `true`, the label is displayed in an error state.
      * @default false
      */
-    error: import_prop_types61.default.bool,
+    error: import_prop_types64.default.bool,
     /**
      * Props applied to the [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/) element.
      * @deprecated Use `slotProps.formHelperText` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
      */
-    FormHelperTextProps: import_prop_types61.default.object,
+    FormHelperTextProps: import_prop_types64.default.object,
     /**
      * If `true`, the input will take up the full width of its container.
      * @default false
      */
-    fullWidth: import_prop_types61.default.bool,
+    fullWidth: import_prop_types64.default.bool,
     /**
      * The helper text content.
      */
-    helperText: import_prop_types61.default.node,
+    helperText: import_prop_types64.default.node,
     /**
      * The id of the `input` element.
      * Use this prop to make `label` and `helperText` accessible for screen readers.
      */
-    id: import_prop_types61.default.string,
+    id: import_prop_types64.default.string,
     /**
      * Props applied to the [`InputLabel`](https://mui.com/material-ui/api/input-label/) element.
      * Pointer events like `onClick` are enabled if and only if `shrink` is `true`.
      * @deprecated Use `slotProps.inputLabel` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
      */
-    InputLabelProps: import_prop_types61.default.object,
+    InputLabelProps: import_prop_types64.default.object,
     /**
      * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
      * @deprecated Use `slotProps.htmlInput` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
      */
-    inputProps: import_prop_types61.default.object,
+    inputProps: import_prop_types64.default.object,
     /**
      * Props applied to the Input element.
      * It will be a [`FilledInput`](https://mui.com/material-ui/api/filled-input/),
@@ -44292,7 +45095,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
      * component depending on the `variant` prop value.
      * @deprecated Use `slotProps.input` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
      */
-    InputProps: import_prop_types61.default.object,
+    InputProps: import_prop_types64.default.object,
     /**
      * Pass a ref to the `input` element.
      */
@@ -44300,112 +45103,112 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     /**
      * The label content.
      */
-    label: import_prop_types61.default.node,
+    label: import_prop_types64.default.node,
     /**
      * If `dense` or `normal`, will adjust vertical spacing of this and contained components.
      * @default 'none'
      */
-    margin: import_prop_types61.default.oneOf(["dense", "none", "normal"]),
+    margin: import_prop_types64.default.oneOf(["dense", "none", "normal"]),
     /**
      * Maximum number of rows to display when multiline option is set to true.
      */
-    maxRows: import_prop_types61.default.oneOfType([import_prop_types61.default.number, import_prop_types61.default.string]),
+    maxRows: import_prop_types64.default.oneOfType([import_prop_types64.default.number, import_prop_types64.default.string]),
     /**
      * Minimum number of rows to display when multiline option is set to true.
      */
-    minRows: import_prop_types61.default.oneOfType([import_prop_types61.default.number, import_prop_types61.default.string]),
+    minRows: import_prop_types64.default.oneOfType([import_prop_types64.default.number, import_prop_types64.default.string]),
     /**
      * If `true`, a `textarea` element is rendered instead of an input.
      * @default false
      */
-    multiline: import_prop_types61.default.bool,
+    multiline: import_prop_types64.default.bool,
     /**
      * Name attribute of the `input` element.
      */
-    name: import_prop_types61.default.string,
+    name: import_prop_types64.default.string,
     /**
      * @ignore
      */
-    onBlur: import_prop_types61.default.func,
+    onBlur: import_prop_types64.default.func,
     /**
      * Callback fired when the value is changed.
      *
      * @param {object} event The event source of the callback.
      * You can pull out the new value by accessing `event.target.value` (string).
      */
-    onChange: import_prop_types61.default.func,
+    onChange: import_prop_types64.default.func,
     /**
      * @ignore
      */
-    onFocus: import_prop_types61.default.func,
+    onFocus: import_prop_types64.default.func,
     /**
      * The short hint displayed in the `input` before the user enters a value.
      */
-    placeholder: import_prop_types61.default.string,
+    placeholder: import_prop_types64.default.string,
     /**
      * If `true`, the label is displayed as required and the `input` element is required.
      * @default false
      */
-    required: import_prop_types61.default.bool,
+    required: import_prop_types64.default.bool,
     /**
      * Number of rows to display when multiline option is set to true.
      */
-    rows: import_prop_types61.default.oneOfType([import_prop_types61.default.number, import_prop_types61.default.string]),
+    rows: import_prop_types64.default.oneOfType([import_prop_types64.default.number, import_prop_types64.default.string]),
     /**
      * Render a [`Select`](https://mui.com/material-ui/api/select/) element while passing the Input element to `Select` as `input` parameter.
      * If this option is set you must pass the options of the select as children.
      * @default false
      */
-    select: import_prop_types61.default.bool,
+    select: import_prop_types64.default.bool,
     /**
      * Props applied to the [`Select`](https://mui.com/material-ui/api/select/) element.
      * @deprecated Use `slotProps.select` instead. This prop will be removed in v7. See [Migrating from deprecated APIs](https://mui.com/material-ui/migration/migrating-from-deprecated-apis/) for more details.
      */
-    SelectProps: import_prop_types61.default.object,
+    SelectProps: import_prop_types64.default.object,
     /**
      * The size of the component.
      * @default 'medium'
      */
-    size: import_prop_types61.default.oneOfType([import_prop_types61.default.oneOf(["medium", "small"]), import_prop_types61.default.string]),
+    size: import_prop_types64.default.oneOfType([import_prop_types64.default.oneOf(["medium", "small"]), import_prop_types64.default.string]),
     /**
      * The props used for each slot inside.
      * @default {}
      */
-    slotProps: import_prop_types61.default.shape({
-      formHelperText: import_prop_types61.default.oneOfType([import_prop_types61.default.func, import_prop_types61.default.object]),
-      htmlInput: import_prop_types61.default.oneOfType([import_prop_types61.default.func, import_prop_types61.default.object]),
-      input: import_prop_types61.default.oneOfType([import_prop_types61.default.func, import_prop_types61.default.object]),
-      inputLabel: import_prop_types61.default.oneOfType([import_prop_types61.default.func, import_prop_types61.default.object]),
-      select: import_prop_types61.default.oneOfType([import_prop_types61.default.func, import_prop_types61.default.object])
+    slotProps: import_prop_types64.default.shape({
+      formHelperText: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
+      htmlInput: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
+      input: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
+      inputLabel: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object]),
+      select: import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object])
     }),
     /**
      * The components used for each slot inside.
      * @default {}
      */
-    slots: import_prop_types61.default.shape({
-      formHelperText: import_prop_types61.default.elementType,
-      htmlInput: import_prop_types61.default.elementType,
-      input: import_prop_types61.default.elementType,
-      inputLabel: import_prop_types61.default.elementType,
-      select: import_prop_types61.default.elementType
+    slots: import_prop_types64.default.shape({
+      formHelperText: import_prop_types64.default.elementType,
+      htmlInput: import_prop_types64.default.elementType,
+      input: import_prop_types64.default.elementType,
+      inputLabel: import_prop_types64.default.elementType,
+      select: import_prop_types64.default.elementType
     }),
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
-    sx: import_prop_types61.default.oneOfType([import_prop_types61.default.arrayOf(import_prop_types61.default.oneOfType([import_prop_types61.default.func, import_prop_types61.default.object, import_prop_types61.default.bool])), import_prop_types61.default.func, import_prop_types61.default.object]),
+    sx: import_prop_types64.default.oneOfType([import_prop_types64.default.arrayOf(import_prop_types64.default.oneOfType([import_prop_types64.default.func, import_prop_types64.default.object, import_prop_types64.default.bool])), import_prop_types64.default.func, import_prop_types64.default.object]),
     /**
      * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types).
      */
-    type: import_prop_types61.default.string,
+    type: import_prop_types64.default.string,
     /**
      * The value of the `input` element, required for a controlled component.
      */
-    value: import_prop_types61.default.any,
+    value: import_prop_types64.default.any,
     /**
      * The variant to use.
      * @default 'outlined'
      */
-    variant: import_prop_types61.default.oneOf(["filled", "outlined", "standard"])
+    variant: import_prop_types64.default.oneOf(["filled", "outlined", "standard"])
   } : void 0;
   var TextField_default = TextField;
 
@@ -44439,7 +45242,6 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var import_react13 = __toESM(require_react());
   var userIdentity = "";
   function goListen() {
-    console.log("Oh, Oh, Oh... Listen to the music");
     location.href = "/?page=listen&id=" + (userIdentity ?? "");
   }
   function ListenPrompt(props) {
@@ -44449,7 +45251,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // app/components/mainpage/Account.tsx
   var import_react14 = __toESM(require_react());
-  function getAssetUrl3(idPath) {
+  function getAssetUrl2(idPath) {
     if (location.host.indexOf("localhost") !== -1) {
       return idPath;
     }
@@ -44524,8 +45326,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       asyncUseEffect();
     });
     if (idInfo) {
-      if (!props.identity?.userIdentity) idInfo.avatar = getAssetUrl3("images/no-login.png");
-      else if (!idInfo.avatar) idInfo.avatar = getAssetUrl3("images/no-avatar.png");
+      if (!props.identity?.userIdentity) idInfo.avatar = getAssetUrl2("images/no-login.png");
+      else if (!idInfo.avatar) idInfo.avatar = getAssetUrl2("images/no-avatar.png");
       const colors = [
         "aqua",
         "black",
@@ -44600,7 +45402,6 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const aiResp = await fetch(`/info/${identity?.userIdentity}/${out.name}/${email}`);
     const addInfo = await aiResp.json();
     out.artistName = addInfo.artistName;
-    console.log("extracted info = ", out);
     return out;
   }
 
@@ -44715,17 +45516,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         });
       }
       if (secrets && !identity) {
-        console.log("doing IDTBD load");
         const rapidapikey = secrets.vod.key.rapidapi;
         identity_tbd_client_es6_default.allowCookie = true;
         identity_tbd_client_es6_default.onLoad(rapidapikey, appId, callback, statusCallback).then(() => {
-          console.log("return from onLoad", identity_tbd_client_es6_default);
           setLoaded(true);
         });
       }
     });
     async function setLoggedInUser(identity2) {
-      console.warn("SetLoggedInUser", identity2);
       setIdentity(identity2);
       const params2 = new URLSearchParams(document.location.search);
       let page3 = params2.get("page")?.toLowerCase().trim();
@@ -44740,7 +45538,6 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       setTimeout(identity_tbd_client_es6_default.login, 1e3);
     }
     function ready() {
-      console.log("ready check", { status, loaded });
       return !status && loaded;
     }
     let page2;
@@ -44761,30 +45558,27 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   // app/components/uploadpage/FileShow.tsx
   var import_react18 = __toESM(require_react());
   function FileShow(props) {
-    console.log("Entering FileShow", { props });
     const imageFile = props.imageFile;
     const audioFile = props.audioFile;
     const [imageUrl, setImageUrl] = import_react18.default.useState(null);
     const [audioUrl, setAudioUrl] = import_react18.default.useState(null);
     if (imageFile) {
-      console.log("getting image url");
       const reader = new FileReader();
       reader.onload = () => {
-        console.log("got reader result", { reader, result: reader.result });
         setImageUrl(reader.result);
-        console.log("set image url", imageUrl);
       };
       reader.readAsDataURL(imageFile);
+    } else if (props.editArtUrl && !imageUrl) {
+      setImageUrl(props.editArtUrl);
     }
     if (audioFile) {
-      console.log("getting audio url");
       const reader = new FileReader();
       reader.onload = () => {
-        console.log("got reader result", { reader, result: reader.result });
         setAudioUrl(reader.result);
-        console.log("set audio url", audioUrl);
       };
       reader.readAsDataURL(audioFile);
+    } else if (props.editAudioUrl && !audioUrl) {
+      setAudioUrl(props.editAudioUrl);
     }
     const fileInfo = {};
     function fileSize(file) {
@@ -44802,12 +45596,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
       return "(" + size.toLocaleString(void 0, { minimumFractionDigits: 2 }) + " " + sfx + ")";
     }
-    console.log("showing FileShow", { audioUrl, imageUrl });
     return /* @__PURE__ */ import_react18.default.createElement(import_react18.default.Fragment, null, /* @__PURE__ */ import_react18.default.createElement("div", { style: fileInfo }, audioFile?.name ?? "choose an audio file", " ", fileSize(audioFile), /* @__PURE__ */ import_react18.default.createElement("br", null), imageFile?.name ?? "choose a cover art image file", " ", fileSize(imageFile), " ", /* @__PURE__ */ import_react18.default.createElement("br", null)), /* @__PURE__ */ import_react18.default.createElement("div", null, /* @__PURE__ */ import_react18.default.createElement("img", { src: imageUrl, width: "150", height: "150" })), /* @__PURE__ */ import_react18.default.createElement("div", null, /* @__PURE__ */ import_react18.default.createElement("audio", { controls: true, style: { marginLeft: "-10px" }, src: audioUrl })));
   }
 
   // app/components/uploadpage/FileUploader.tsx
-  var FileUploader = ({ onFileSelect }) => {
+  var FileUploader = (props) => {
+    const onFileSelect = props?.onFileSelect;
+    const editArtUrl = props?.editArtUrl ?? "";
+    const editAudioUrl = props?.editAudioUrl ?? "";
     const [dragging, setDragging] = (0, import_react19.useState)(false);
     const [imageFile, setImageFile] = (0, import_react19.useState)(null);
     const [audioFile, setAudioFile] = (0, import_react19.useState)(null);
@@ -44821,10 +45617,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       setDragging(false);
       if (event.dataTransfer.files.length > 0) {
         const file = event.dataTransfer.files[0];
-        console.log("onDrop");
         onFileSelect(file);
-        console.log("onDrop2");
-        console.log("handleFileSelect2", { type: file?.type });
         if (file?.type.startsWith("image/")) setImageFile(file);
         if (file?.type.startsWith("audio/")) setAudioFile(file);
       }
@@ -44832,9 +45625,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const handleFileSelect = (event) => {
       if (event.target.files && event.target.files.length > 0) {
         const file = event.target.files[0];
-        console.log("handleFileSelect", file);
         onFileSelect(file);
-        console.log("handleFileSelect2", { type: file?.type });
         if (file?.type.startsWith("image/")) setImageFile(file);
         if (file?.type.startsWith("audio/")) setAudioFile(file);
       }
@@ -44892,7 +45683,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           onChange: handleFileSelect
         }
       ),
-      /* @__PURE__ */ import_react19.default.createElement(FileShow, { imageFile, audioFile })
+      /* @__PURE__ */ import_react19.default.createElement(FileShow, { imageFile, audioFile, editArtUrl, editAudioUrl })
     );
   };
 
@@ -44901,13 +45692,30 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function getLambdaEndpoint(funcPath) {
     return funcPath;
   }
-  async function conductSubmission(info) {
-    const initUrl = getLambdaEndpoint("/initiate");
-    console.log("Posting to start", { initUrl, info });
+  async function conductSubmission(info, editId) {
+    let initPath = "/initiate";
+    if (editId) initPath += "/" + editId;
+    const initUrl = getLambdaEndpoint(initPath);
+    console.log("conductSubmissions - Posting to " + (editId ? "edit" : "start") + " at init url", initUrl);
+    console.log("info ", info);
+    const eInfo = {
+      artistId: info.artistId,
+      title: info.title,
+      description: info.description,
+      attributions: info.attributions,
+      // I don't know what happened here, but path used to pass through from File, but now not so much...
+      artFile: {
+        path: info.artFile?.path ?? info.artFile?.name ?? ""
+      },
+      audioFile: {
+        path: info.audioFile?.path ?? info.audioFile?.name ?? ""
+      }
+    };
+    console.log("Fetching at " + initUrl);
     const resp = await fetch(initUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(info)
+      body: JSON.stringify(eInfo)
     });
     let data2 = await resp.json();
     console.log("initiate response ", resp, data2);
@@ -44918,8 +45726,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     console.log("Uploading audio file", info.audioFile?.name);
     const audioUrl = await uploadFileInChunks(info.audioFile, audioId, metaId + "/audio");
     console.log("audio url is", audioUrl);
-    console.log("doing binding ", { metaId, audioUrl, artUrl });
-    const fresp = await doFinalBinding(metaId, audioUrl, artUrl);
+    const bindId = editId ?? metaId;
+    console.log("doing binding ", { bindId, audioUrl, artUrl });
+    const fresp = await doFinalBinding(bindId, info.artistName, audioUrl, artUrl);
     console.log("response from final", fresp);
   }
   async function uploadFileInChunks(file, uploadId, fileKey) {
@@ -44954,12 +45763,12 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     console.log("return from complete", { data: data2 });
     return data2.url;
   }
-  async function doFinalBinding(metaId, audioUrl, artUrl) {
+  async function doFinalBinding(metaId, artistName, audioUrl, artUrl) {
     const finalUrl = getLambdaEndpoint("/finalize");
     const resp = await fetch(finalUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ metaId, audioUrl, artUrl })
+      body: JSON.stringify({ metaId, artistName, audioUrl, artUrl })
     });
     return await resp.json();
   }
@@ -44977,10 +45786,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
 
   // app/components/uploadpage/SubmissionGuide.tsx
   var import_react20 = __toESM(require_react());
-  function SubmissionGuidelines({ onProceed }) {
+  function SubmissionGuidelines({ onProceed, active }) {
     const [acknowledged, setAcknowledged] = (0, import_react20.useState)(false);
-    if (!acknowledged) {
-      return /* @__PURE__ */ import_react20.default.createElement(Container_default, { maxWidth: "md", sx: { mt: 4 } }, /* @__PURE__ */ import_react20.default.createElement(Paper_default, { elevation: 3, sx: { p: 4, textAlign: "center" } }, /* @__PURE__ */ import_react20.default.createElement(Typography_default, { variant: "h4", gutterBottom: true }, "Submission Guidelines"), /* @__PURE__ */ import_react20.default.createElement(Typography_default, { variant: "body1", paragraph: true }, "Before submitting your content, please ensure that it adheres to the following guidelines:"), /* @__PURE__ */ import_react20.default.createElement("ul", { style: { textAlign: "left" } }, /* @__PURE__ */ import_react20.default.createElement("li", null, "Content must be original and not infringe on any copyrights."), /* @__PURE__ */ import_react20.default.createElement("li", null, "Cover material will require an assertion in the attribution section that proper copyrights have been obtained. see these sources for example: ", /* @__PURE__ */ import_react20.default.createElement("a", { target: "_blank", rel: "noopener noreferrer", href: "https://bandzoogle.com/blog/covering-a-song-legally-a-guide-to-respecting-copyright-and-creating-music" }, "Covering a song legally (bandzoogle.com)"), " and ", /* @__PURE__ */ import_react20.default.createElement("a", { target: "_blank", rel: "noopener noreferrer", href: "https://pirate.com/en/blog/cover-song-licensing/" }, "Cover Song Licensing Explained (pirate.com)")), /* @__PURE__ */ import_react20.default.createElement("li", null, "No directly offensive, harmful, or illegal material is allowed."), /* @__PURE__ */ import_react20.default.createElement("li", null, "Ensure proper formatting and clear descriptions."), /* @__PURE__ */ import_react20.default.createElement("li", null, "By submitting, you grant permission for content review."), /* @__PURE__ */ import_react20.default.createElement("li", null, "By submitting, you grant permission for (non-exclusive) public distribution via this service.")), /* @__PURE__ */ import_react20.default.createElement(
+    if (active && !acknowledged) {
+      return /* @__PURE__ */ import_react20.default.createElement(Container_default, { maxWidth: "md", sx: { mt: 4 } }, /* @__PURE__ */ import_react20.default.createElement(Paper_default, { elevation: 3, sx: { p: 4, textAlign: "center" } }, /* @__PURE__ */ import_react20.default.createElement(Typography_default, { variant: "h4", gutterBottom: true }, "Submission Guidelines"), /* @__PURE__ */ import_react20.default.createElement(Typography_default, { variant: "body1", paragraph: true }, "Before submitting your content, please ensure that it adheres to the following guidelines:"), /* @__PURE__ */ import_react20.default.createElement("ul", { style: { textAlign: "left" } }, /* @__PURE__ */ import_react20.default.createElement("li", null, "Content must not infringe on any copyrights."), /* @__PURE__ */ import_react20.default.createElement("li", null, "No directly offensive, harmful, or illegal material is allowed."), /* @__PURE__ */ import_react20.default.createElement("li", null, "Ensure proper formatting and clear descriptions."), /* @__PURE__ */ import_react20.default.createElement("li", null, "By submitting, you grant permission for content review."), /* @__PURE__ */ import_react20.default.createElement("li", null, "By submitting, you grant permission for (non-exclusive) public distribution via this service.")), /* @__PURE__ */ import_react20.default.createElement(
         FormControlLabel_default,
         {
           control: /* @__PURE__ */ import_react20.default.createElement(Checkbox_default, { checked: acknowledged, onChange: () => setAcknowledged(!acknowledged) }),
@@ -45001,7 +45810,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // app/UploadPage.tsx
-  function getAssetUrl4(idPath) {
+  function getAssetUrl3(idPath) {
     if (location.host.indexOf("localhost") !== -1) {
       return idPath;
     }
@@ -45012,18 +45821,46 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     let id = params2.get("id")?.toLowerCase().trim();
     return id;
   }
+  function getEditId() {
+    const params2 = new URLSearchParams(document.location.search);
+    let edit = params2.get("edit")?.toLowerCase().trim();
+    if (edit) {
+      let id = params2.get("id")?.toLowerCase().trim();
+      return id + "/" + edit;
+    }
+    return "";
+  }
   function UploadPage() {
     const [inputs, setInputs] = (0, import_react21.useState)({});
     const [imageFile, setImageFile] = (0, import_react21.useState)(null);
     const [audioFile, setAudioFile] = (0, import_react21.useState)(null);
     const [idInfo, setIdInfo] = (0, import_react21.useState)(null);
+    const [uploading, setUploading] = (0, import_react21.useState)(false);
+    const [editId, setEditId] = (0, import_react21.useState)(getEditId());
+    const [editFetched, setEditFetched] = (0, import_react21.useState)(false);
+    const [editArtUrl, setEditArtUrl] = (0, import_react21.useState)("");
+    const [editAudioUrl, setEditAudioUrl] = (0, import_react21.useState)("");
     async function asyncUseEffect() {
       if (!idInfo) {
         const id = getPassedId();
         const ir = await fetch(`info/${id}`);
         const info = await ir.json();
+        if (info.artistName === "undefined") info.artistName = "";
         setIdInfo(info);
-        console.log("fetched for upload form", { info, idInfo });
+      }
+      if (editId && !editFetched) {
+        const er = await fetch(`tracks/${editId}`);
+        const info = await er.json();
+        setEditFetched(true);
+        const values3 = {
+          name: info.artistName,
+          title: info.title,
+          desc: info.description,
+          attr: info.attributions
+        };
+        setInputs(values3);
+        if (info.artUrl) setEditArtUrl(info.artUrl);
+        if (info.audioUrl) setEditAudioUrl(info.audioUrl);
       }
     }
     import_react21.default.useEffect(() => {
@@ -45035,7 +45872,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       idtbd = location.href.substring(ii + 7);
     }
     const background = {
-      backgroundImage: `url(${getAssetUrl4("images/vodImage2.png")})`,
+      backgroundImage: `url(${getAssetUrl3("images/vodImage2.png")})`,
       backgroundColor: "aliceblue",
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
@@ -45072,16 +45909,51 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       setInputs((values3) => ({ ...values3, [id]: value }));
     }
     function handleSubmit(event) {
+      console.log("submitting...");
+      console.log("inputs", inputs);
+      console.log("files", { imageFile, audioFile });
+      if (editId) {
+        console.warn("Submitting an edit update for " + editId);
+      }
+      function pick(name) {
+        const idany = idInfo;
+        return idany[name] ?? inputs[name];
+      }
+      setUploading(true);
       const info = new SubmissionMetadata();
       info.artistId = getPassedId();
-      info.artistName = inputs["name"];
-      info.title = inputs["title"];
-      info.description = inputs["desc"];
-      info.attributions = inputs["attr"];
+      info.artistName = pick("artistName") ?? pick("name");
+      info.title = pick("title");
+      info.description = pick("desc");
+      info.attributions = pick("attr");
       info.artFile = imageFile;
       info.audioFile = audioFile;
-      conductSubmission(info).then((resp) => {
-        fetch(`/info/${info.artistId}/${info.artistName}`);
+      if (!info.artistName) {
+        setUploading(false);
+        alert("you must include a value for artist name");
+        return;
+      }
+      if (!info.title) {
+        setUploading(false);
+        alert("you must include a title for the content");
+        return;
+      }
+      if (!info.audioFile && !editId) {
+        setUploading(false);
+        alert("you didn't attach an audio file for your content!");
+        return;
+      }
+      conductSubmission(info, editId).then((resp) => {
+        fetch(`/info/${info.artistId}/${info.artistName}`).then(() => {
+          setUploading(false);
+          if (editId) {
+            alert("update complete!");
+            location.href = "/?page=listen&id=" + getPassedId() + "&ref=" + editId;
+          } else {
+            alert("upload complete!");
+            location.href = "/?page=listen&id=" + getPassedId();
+          }
+        });
       });
     }
     function handleUpload(file) {
@@ -45096,13 +45968,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       fontStyle: "italic"
     };
     let acceptedTypes = "images/*, audio/*";
-    return /* @__PURE__ */ import_react21.default.createElement(import_react21.default.Fragment, null, /* @__PURE__ */ import_react21.default.createElement("div", { style: background }, /* @__PURE__ */ import_react21.default.createElement("div", { style: blur }, /* @__PURE__ */ import_react21.default.createElement(SubmissionGuidelines, null), /* @__PURE__ */ import_react21.default.createElement("div", { style: content }, /* @__PURE__ */ import_react21.default.createElement("h1", null, "Upload your content!"), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Please enter the following information about your submission"), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "50px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Your name to be published"), /* @__PURE__ */ import_react21.default.createElement("form", { onSubmit: handleSubmit }, /* @__PURE__ */ import_react21.default.createElement(
+    return /* @__PURE__ */ import_react21.default.createElement(import_react21.default.Fragment, null, /* @__PURE__ */ import_react21.default.createElement("div", { style: background }, /* @__PURE__ */ import_react21.default.createElement("div", { style: blur }, /* @__PURE__ */ import_react21.default.createElement(LoadingSpinner, { active: uploading }), /* @__PURE__ */ import_react21.default.createElement(SubmissionGuidelines, { active: editId ? false : true }), /* @__PURE__ */ import_react21.default.createElement("div", { style: content }, /* @__PURE__ */ import_react21.default.createElement("h1", null, "Upload your content!"), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Please enter the following information about your submission"), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "20px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Your name to be published"), /* @__PURE__ */ import_react21.default.createElement("form", { onSubmit: handleSubmit }, /* @__PURE__ */ import_react21.default.createElement(
       TextField_default,
       {
         slotProps,
-        sx: {
+        sx: idInfo?.artistName ? {
           "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" }
-        },
+        } : {},
         defaultValue: idInfo?.artistName ?? "" ?? inputs["name"] ?? "",
         required: true,
         error: inError.name,
@@ -45112,10 +45984,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         variant: "outlined",
         onChange: handleChange
       }
-    ), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "20px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Give your creation a title"), /* @__PURE__ */ import_react21.default.createElement(
+    ), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "10px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Give your creation a title"), /* @__PURE__ */ import_react21.default.createElement(
       TextField_default,
       {
         slotProps,
+        sx: inputs["title"] ? { "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" } } : {},
         defaultValue: inputs["title"],
         required: true,
         error: inError.title,
@@ -45125,10 +45998,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         variant: "outlined",
         onChange: handleChange
       }
-    ), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "20px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Describe the material and how it came to be"), /* @__PURE__ */ import_react21.default.createElement(
+    ), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "10px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Describe the material and how it came to be"), /* @__PURE__ */ import_react21.default.createElement(
       TextField_default,
       {
         slotProps,
+        sx: inputs["desc"] ? { "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" } } : {},
         defaultValue: inputs["desc"],
         required: false,
         error: inError.desc,
@@ -45142,10 +46016,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         fullWidth: true,
         onChange: handleChange
       }
-    ), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "20px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Give any credits due here, list copyrights, etc"), /* @__PURE__ */ import_react21.default.createElement(
+    ), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "10px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Give any credits due here, list copyrights, etc"), /* @__PURE__ */ import_react21.default.createElement(
       TextField_default,
       {
         slotProps,
+        sx: inputs["attr"] ? { "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" } } : {},
         defaultValue: inputs["attr"],
         required: false,
         error: inError.attr,
@@ -45159,7 +46034,27 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         fullWidth: true,
         onChange: handleChange
       }
-    ), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "20px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Upload your content files"), /* @__PURE__ */ import_react21.default.createElement(Box_default, { sx: { display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: 3 } }, /* @__PURE__ */ import_react21.default.createElement(FileUploader, { onFileSelect: handleUpload, acceptedTypes }))), /* @__PURE__ */ import_react21.default.createElement("div", { style: { marginTop: "50px", display: "flex", justifyContent: "center" } }, /* @__PURE__ */ import_react21.default.createElement(Button_default, { variant: "contained", onClick: handleSubmit }, "Submit your creation!"))))));
+    ), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "10px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Upload your content files"), /* @__PURE__ */ import_react21.default.createElement(Box_default, { sx: { display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: 3 } }, /* @__PURE__ */ import_react21.default.createElement(
+      FileUploader,
+      {
+        editArtUrl,
+        editAudioUrl,
+        onFileSelect: handleUpload,
+        acceptedTypes
+      }
+    ))), /* @__PURE__ */ import_react21.default.createElement("div", { style: { marginTop: "20px", display: "flex", justifyContent: "center" } }, /* @__PURE__ */ import_react21.default.createElement(Button_default, { variant: "contained", onClick: handleSubmit }, editId ? "Update Your Content" : "Submit Your Creation!")), /* @__PURE__ */ import_react21.default.createElement(DeleteContent, null)))));
+  }
+  function handleDelete() {
+    const editId = getEditId();
+    console.warn("Deleting " + editId);
+    fetch("/delete/" + editId).then(() => {
+      console.log("returned from delete");
+      alert("content deleted!");
+      location.href = "/?page=listen&id=" + getPassedId();
+    });
+  }
+  function DeleteContent(props) {
+    return /* @__PURE__ */ import_react21.default.createElement(import_react21.default.Fragment, null, /* @__PURE__ */ import_react21.default.createElement("div", { style: { marginTop: "10px", display: "flex", justifyContent: "center" } }, /* @__PURE__ */ import_react21.default.createElement(Button_default, { variant: "contained", onClick: handleDelete }, "Delete this submission")));
   }
 
   // app/ListenPage.tsx
@@ -45169,15 +46064,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var import_react22 = __toESM(require_react());
 
   // node_modules/@mui/icons-material/esm/Search.js
-  var import_jsx_runtime61 = __toESM(require_jsx_runtime());
-  var Search_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime61.jsx)("path", {
+  var import_jsx_runtime63 = __toESM(require_jsx_runtime());
+  var Search_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime63.jsx)("path", {
     d: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"
   }), "Search");
+
+  // node_modules/@mui/icons-material/esm/MusicNote.js
+  var import_jsx_runtime64 = __toESM(require_jsx_runtime());
+  var MusicNote_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime64.jsx)("path", {
+    d: "M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3z"
+  }), "MusicNote");
 
   // app/components/listenpage/MusicTable.tsx
   var MusicTable = (props) => {
     const data2 = props?.data;
     const reportBack2 = props.reportBack;
+    const identity = props.identity;
     const setSelectedData = props.setSelectedData;
     const [orderBy, setOrderBy] = (0, import_react22.useState)(null);
     const [order, setOrder] = (0, import_react22.useState)(null);
@@ -45185,6 +46087,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const [selectedRow, setSelectedRow] = (0, import_react22.useState)(null);
     const [skippedIds, setSkippedIds] = (0, import_react22.useState)([]);
     const [fetchedSkip, setFetchedSkip] = (0, import_react22.useState)(false);
+    const [ref, setSongRef] = (0, import_react22.useState)(props.ref);
     const containerRef = (0, import_react22.useRef)(null);
     const itemRefs = (0, import_react22.useRef)({});
     (0, import_react22.useEffect)(() => {
@@ -45205,10 +46108,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }, [selectedRow]);
     let killTimer;
     async function updateIdentitySkips(skipArray = skippedIds, noBody = false) {
-      console.warn("------updateIdentitySkips-------", skipArray);
       if (killTimer) return;
       killTimer = setTimeout(async () => {
-        const skipsUrl = `/skips/${props.identity}`;
+        const skipsUrl = `/skips/${identity}`;
         const sids = Array.isArray(skipArray) ? skipArray : [];
         const body = { skippedIds: sids };
         const resp = await fetch(skipsUrl, {
@@ -45216,18 +46118,13 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           headers: { "Content-Type": "application/json" },
           body: noBody ? void 0 : JSON.stringify(body)
         });
-        console.log("updateIdentitySkips - ", { body, noBody, sids, skippedIds });
         const skresp = await resp.json();
         const skipped = skresp?.skipped ?? [];
-        console.warn("Skipped returned from updateIdentitySkips", skipped);
         setSkippedIds(skipped);
         killTimer = null;
-        console.warn("---------------------------------");
       }, 500);
     }
     const filteredData = (0, import_react22.useMemo)(() => {
-      console.log("DATA before filtering:", data2);
-      console.log("Current search:", search);
       if (!Array.isArray(data2) || data2.length === 0) return [];
       const result = data2.filter(
         (row) => Object.keys(search).every((key) => {
@@ -45236,7 +46133,6 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           return !searchValue || rowValue && rowValue.includes(searchValue);
         })
       );
-      console.log("Filtered Data:", result);
       return result;
     }, [data2, search]);
     const sortedData = (0, import_react22.useMemo)(() => {
@@ -45267,17 +46163,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }, 1e3);
     }
     function isSkipped(row) {
+      if (!identity) return false;
       const i = Array(...skippedIds).findIndex((id) => id === row.id);
       const skip = i !== -1;
       return skip;
     }
     function toggleSkip(row) {
-      console.log("toggleSkip", row.id, { skippedIds });
+      if (!identity) return;
       setSkippedIds((prevSkipped) => {
         const prev2 = Array(...prevSkipped).filter((id) => typeof id === "string");
-        console.log("setSkippedIds", prev2);
         const newSkipped = prev2.includes(row.id) ? prev2.filter((id) => id !== row.id) : [...prev2, row.id];
-        console.log("Updated skippedIds", { newSkipped });
         setTimeout(() => updateIdentitySkips(newSkipped), 1e3);
         return newSkipped;
       });
@@ -45291,14 +46186,19 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       setSearch((prev2) => ({ ...prev2, [column2]: value.toLowerCase() }));
     };
     const handleRowClick = (e, id) => {
-      const onSkip = e.target.nodeName === "INPUT";
-      console.log("handleRowClick", onSkip);
+      const onSkip = e?.target?.nodeName === "INPUT";
       if (onSkip) return;
       const selectedData = sortedData.find((row) => row.id === id) || {};
       setSelectedRow(id);
       setSelectedData(selectedData);
     };
-    console.log(">>> ", { data: data2, filteredData, sortedData });
+    if (ref && sortedData?.length) {
+      const sr = ref;
+      setSongRef("");
+      setTimeout(() => {
+        handleRowClick(null, sr);
+      }, 500);
+    }
     return /* @__PURE__ */ import_react22.default.createElement("div", { style: { minHeight: 420, maxHeight: 420, overflowY: "scroll" }, ref: containerRef }, /* @__PURE__ */ import_react22.default.createElement(Table_default, { stickyHeader: true }, /* @__PURE__ */ import_react22.default.createElement(TableHead_default, null, /* @__PURE__ */ import_react22.default.createElement(TableRow_default, null, /* @__PURE__ */ import_react22.default.createElement(TableCell_default, null, "Cover"), ["artist", "title", "description"].map((column2) => /* @__PURE__ */ import_react22.default.createElement(TableCell_default, { key: column2 }, /* @__PURE__ */ import_react22.default.createElement(
       TableSortLabel_default,
       {
@@ -45326,10 +46226,22 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         onClick: (e) => handleRowClick(e, row.id),
         sx: { backgroundColor: selectedRow === row.id ? "pink" : "inherit" }
       },
-      /* @__PURE__ */ import_react22.default.createElement(TableCell_default, null, /* @__PURE__ */ import_react22.default.createElement(Avatar_default, { src: row.artUrl, variant: "square" })),
+      /* @__PURE__ */ import_react22.default.createElement(TableCell_default, null, /* @__PURE__ */ import_react22.default.createElement(Avatar_default, { src: row.artUrl || void 0, variant: "square" }, !row.artUrl && /* @__PURE__ */ import_react22.default.createElement(MusicNote_default, null))),
       /* @__PURE__ */ import_react22.default.createElement(TableCell_default, null, row.artistName),
       /* @__PURE__ */ import_react22.default.createElement(TableCell_default, null, row.title),
-      /* @__PURE__ */ import_react22.default.createElement(TableCell_default, null, row.description),
+      /* @__PURE__ */ import_react22.default.createElement(TableCell_default, null, /* @__PURE__ */ import_react22.default.createElement(
+        Typography_default,
+        {
+          sx: {
+            display: "-webkit-box",
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+            textOverflow: "ellipsis"
+          }
+        },
+        row.description
+      )),
       /* @__PURE__ */ import_react22.default.createElement(TableCell_default, null, /* @__PURE__ */ import_react22.default.createElement(Checkbox_default, { checked: isSkipped(row), onClick: () => {
         toggleSkip(row);
       } }))
@@ -45353,12 +46265,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
   var advanceRowHandler;
   function NowPlaying(props) {
-    console.log("NowPlaying", { props });
     const audioUrl = props.selectedData?.audioUrl ?? null;
     const imageUrl = props.selectedData?.artUrl ?? null;
     if (props.doAdvanceRow) {
       advanceRowHandler = props.doAdvanceRow;
-      console.log("advanceRowHandler set", advanceRowHandler);
     }
     setTimeout(attachListeners, 1e3);
     return /* @__PURE__ */ import_react23.default.createElement(import_react23.default.Fragment, null, /* @__PURE__ */ import_react23.default.createElement("div", { style: npLayout }, /* @__PURE__ */ import_react23.default.createElement("div", { style: npContainer }, /* @__PURE__ */ import_react23.default.createElement("img", { src: imageUrl, width: "380", height: "380" }), /* @__PURE__ */ import_react23.default.createElement("audio", { controls: true, id: "vod-audio-player", src: audioUrl }))));
@@ -45393,9 +46303,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     }
   }
   function onAudioEvent(event) {
-    console.log("audio event seen", { type: event.type, target: this });
     if (event.type === "ended") {
-      console.log("calling advanceRowHandler", advanceRowHandler);
       advanceRowHandler();
     }
   }
@@ -45404,14 +46312,14 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   var import_react24 = __toESM(require_react());
 
   // node_modules/@mui/icons-material/esm/ThumbUp.js
-  var import_jsx_runtime62 = __toESM(require_jsx_runtime());
-  var ThumbUp_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime62.jsx)("path", {
+  var import_jsx_runtime65 = __toESM(require_jsx_runtime());
+  var ThumbUp_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime65.jsx)("path", {
     d: "M1 21h4V9H1zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73z"
   }), "ThumbUp");
 
   // node_modules/@mui/icons-material/esm/ThumbUpOffAlt.js
-  var import_jsx_runtime63 = __toESM(require_jsx_runtime());
-  var ThumbUpOffAlt_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime63.jsx)("path", {
+  var import_jsx_runtime66 = __toESM(require_jsx_runtime());
+  var ThumbUpOffAlt_default = createSvgIcon(/* @__PURE__ */ (0, import_jsx_runtime66.jsx)("path", {
     d: "m13.11 5.72-.57 2.89c-.12.59.04 1.2.42 1.66s.94.73 1.54.73H20v1.08L17.43 18H9.34c-.18 0-.34-.16-.34-.34V9.82zM14 2 7.59 8.41C7.21 8.79 7 9.3 7 9.83v7.83C7 18.95 8.05 20 9.34 20h8.1c.71 0 1.36-.37 1.72-.97l2.67-6.15c.11-.25.17-.52.17-.8V11c0-1.1-.9-2-2-2h-5.5l.92-4.65c.05-.22.02-.46-.08-.66-.23-.45-.52-.86-.88-1.22zM4 9H2v11h2c.55 0 1-.45 1-1v-9c0-.55-.45-1-1-1"
   }), "ThumbUpOffAlt");
 
@@ -45464,27 +46372,53 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     alignItems: "center",
     width: "100%"
   };
+  var shareAndEdit = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    // alignItems: "center",
+    width: "100%"
+  };
   var likeStyle = {
     color: "gray"
   };
+  var shareButtonSx = {
+    backgroundColor: "white",
+    color: "gray",
+    border: "1px solid gray",
+    fontSize: "0.75rem",
+    // Smaller font
+    padding: "2px",
+    // Smaller padding
+    marginTop: "2px",
+    marginLeft: "5px",
+    minWidth: "auto",
+    // Prevents excessive width
+    "&:hover": {
+      backgroundColor: "#f0f0f0"
+    }
+  };
+  function handleEdit(contentId) {
+    console.log("Handle Edit", { contentId });
+    if (contentId) {
+      const parts = contentId.split("/");
+      location.href = "/?page=upload&id=" + parts[0] + "&edit=" + parts[1];
+    }
+  }
   function TrackInfo(props) {
-    console.log("selectedData passed into TrackInfo", props.selectedData);
+    const [openSnack, setOpenSnack] = (0, import_react24.useState)(false);
+    const [snackMessage, setSnackMessage] = (0, import_react24.useState)("");
     function LikeButton() {
-      console.log("selectedData passed into LikeButton", props.selectedData);
       const [numLikes, setNumLikes] = import_react24.default.useState(0);
       const [liked, setLiked] = import_react24.default.useState(false);
       async function updateLike(likeType = "") {
-        console.log("updateLike", { likeType, props });
-        let parts = props?.selectedData?.id.split("/") ?? [];
+        let parts = props?.selectedData?.id?.split("/") ?? [];
         let artistId = parts[0] ?? "";
         let contentId = parts[1] ?? "";
-        console.log("parts", { artistId, contentId });
         let likerId = props?.identity ?? "";
         if (!likerId || !contentId || contentId === "undefined") contentId = "";
         if (!likerId || !contentId) likeType = "";
-        console.log("like properties", { likerId, artistId, contentId, likeType });
         const likeUrl = `/like/${likerId}/${artistId}/${contentId}/${likeType}`;
-        console.log("Fetching like", { props, likeUrl });
         const resp = await fetch(likeUrl, {
           method: "PUT",
           headers: { "Content-Type": "application/json" }
@@ -45503,41 +46437,98 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }
       return /* @__PURE__ */ import_react24.default.createElement(import_react24.default.Fragment, null, /* @__PURE__ */ import_react24.default.createElement(IconButton_default, { onClick: clickedLike, color: liked ? "primary" : "default" }, liked ? /* @__PURE__ */ import_react24.default.createElement(ThumbUp_default, null) : /* @__PURE__ */ import_react24.default.createElement(ThumbUpOffAlt_default, null)), /* @__PURE__ */ import_react24.default.createElement("span", { style: likeStyle }, numLikes, " likes"));
     }
-    return /* @__PURE__ */ import_react24.default.createElement(import_react24.default.Fragment, null, /* @__PURE__ */ import_react24.default.createElement("div", { style: tiLayout }, /* @__PURE__ */ import_react24.default.createElement("div", { style: tiContainer }, /* @__PURE__ */ import_react24.default.createElement("div", { style: titleAndLike }, /* @__PURE__ */ import_react24.default.createElement("div", null, /* @__PURE__ */ import_react24.default.createElement(InfoLabel, { text: "title" }), /* @__PURE__ */ import_react24.default.createElement("div", { style: title }, props?.selectedData?.title ?? "")), /* @__PURE__ */ import_react24.default.createElement("div", { style: likeStyle }, /* @__PURE__ */ import_react24.default.createElement(LikeButton, null))), /* @__PURE__ */ import_react24.default.createElement("div", null, /* @__PURE__ */ import_react24.default.createElement(InfoLabel, { text: "artist" }), /* @__PURE__ */ import_react24.default.createElement("div", { style: artist }, props?.selectedData?.artistName ?? "")), /* @__PURE__ */ import_react24.default.createElement("div", null, /* @__PURE__ */ import_react24.default.createElement(InfoLabel, { text: "description" }), /* @__PURE__ */ import_react24.default.createElement("div", { style: description }, props?.selectedData?.description ?? "")), /* @__PURE__ */ import_react24.default.createElement("div", null, /* @__PURE__ */ import_react24.default.createElement(InfoLabel, { text: "attributions" }), /* @__PURE__ */ import_react24.default.createElement("div", { style: attributions }, props?.selectedData?.attributions ?? "")))));
+    function copyShareUrl(type, data2) {
+      if (!data2) return "";
+      const url = type === "song" ? location.protocol + "//" + location.host + "/?page=listen&ref=" + (data2?.id ?? "") : data2?.audioUrl ?? "";
+      navigator.clipboard.writeText(url);
+      setSnackMessage(
+        type === "song" ? "Song page link copied to clipboard for sharing" : "Audio url link copied to clipboard for sharing"
+      );
+      setOpenSnack(true);
+    }
+    function handleSnackClose(_, reason) {
+      if (reason === "clickaway") return;
+      setOpenSnack(false);
+    }
+    return /* @__PURE__ */ import_react24.default.createElement(import_react24.default.Fragment, null, /* @__PURE__ */ import_react24.default.createElement("div", { style: tiLayout }, /* @__PURE__ */ import_react24.default.createElement("div", { style: tiContainer }, /* @__PURE__ */ import_react24.default.createElement("div", { style: titleAndLike }, /* @__PURE__ */ import_react24.default.createElement("div", null, /* @__PURE__ */ import_react24.default.createElement(InfoLabel, { text: "title" }), /* @__PURE__ */ import_react24.default.createElement("div", { style: title }, props?.selectedData?.title ?? "")), /* @__PURE__ */ import_react24.default.createElement("div", { style: likeStyle }, /* @__PURE__ */ import_react24.default.createElement(LikeButton, null))), /* @__PURE__ */ import_react24.default.createElement("div", null, /* @__PURE__ */ import_react24.default.createElement(InfoLabel, { text: "artist" }), /* @__PURE__ */ import_react24.default.createElement("div", { style: artist }, props?.selectedData?.artistName ?? "")), /* @__PURE__ */ import_react24.default.createElement("div", null, /* @__PURE__ */ import_react24.default.createElement(InfoLabel, { text: "description" }), /* @__PURE__ */ import_react24.default.createElement("div", { style: description }, props?.selectedData?.description ?? "")), /* @__PURE__ */ import_react24.default.createElement("div", null, /* @__PURE__ */ import_react24.default.createElement(InfoLabel, { text: "attributions" }), /* @__PURE__ */ import_react24.default.createElement("div", { style: attributions }, props?.selectedData?.attributions ?? "")), /* @__PURE__ */ import_react24.default.createElement("div", { style: { ...shareAndEdit, display: props?.selectedData ? shareAndEdit.display : "none" } }, /* @__PURE__ */ import_react24.default.createElement(InfoLabel, { text: "Copy Sharable Links" }), /* @__PURE__ */ import_react24.default.createElement(
+      Snackbar_default,
+      {
+        open: openSnack,
+        autoHideDuration: 3e3,
+        onClose: handleSnackClose,
+        message: snackMessage,
+        anchorOrigin: { vertical: "bottom", horizontal: "center" }
+      }
+    ), /* @__PURE__ */ import_react24.default.createElement("div", null, /* @__PURE__ */ import_react24.default.createElement(
+      Button_default,
+      {
+        variant: "contained",
+        onClick: () => copyShareUrl("song", props?.selectedData),
+        sx: shareButtonSx
+      },
+      "Song Page"
+    ), /* @__PURE__ */ import_react24.default.createElement(
+      Button_default,
+      {
+        variant: "contained",
+        onClick: () => copyShareUrl("audio", props?.selectedData),
+        sx: shareButtonSx
+      },
+      "Audio link only"
+    )), /* @__PURE__ */ import_react24.default.createElement(EditIfOurs, { identity: props?.identity, contentId: props?.selectedData?.id })))));
+  }
+  function EditIfOurs(props) {
+    if (props) {
+      const trackId = (props.contentId ?? "").split("/")[0].trim();
+      if (trackId && props.identity !== trackId) {
+        return;
+      }
+    }
+    return /* @__PURE__ */ import_react24.default.createElement(import_react24.default.Fragment, null, /* @__PURE__ */ import_react24.default.createElement("div", null, /* @__PURE__ */ import_react24.default.createElement(
+      Button_default,
+      {
+        variant: "contained",
+        onClick: () => {
+          handleEdit(props?.contentId);
+        },
+        sx: { ...shareButtonSx, color: "blue" }
+      },
+      "Edit"
+    )));
   }
 
   // app/ListenPage.tsx
   var reported;
   function reportBack(n) {
     reported = n;
-    console.warn("reported", { reported });
   }
   function ListenPage(props) {
     const [trackData, setTrackData] = (0, import_react25.useState)([]);
     const [identity, setIdentity] = (0, import_react25.useState)(getPassedId2());
     const [selectedData, setSelectedData] = (0, import_react25.useState)(props.selectedData);
     function advanceRow() {
-      console.warn("sanity check called", { reported });
       reported?.advanceToNextRow();
     }
     function getPassedId2() {
       const params2 = new URLSearchParams(document.location.search);
       let id = params2.get("id")?.toLowerCase().trim();
+      console.log("ListenPage was passed Id= " + id);
       return id;
+    }
+    function getPassedTrackRef() {
+      const params2 = new URLSearchParams(document.location.search);
+      let ref = params2.get("ref")?.toLowerCase().trim();
+      return ref;
     }
     (0, import_react25.useEffect)(() => {
       if (!trackData?.length) {
-        console.log("fetching tracks");
         fetch("/tracks/").then(async (resp) => {
           const data2 = await resp.json();
-          console.log(`${data2.length} tracks returned`, { data: data2 });
           setTrackData(data2);
-          console.log("tracks set", { trackData });
         });
       }
     });
-    console.log(">> tracks set", { trackData });
-    return /* @__PURE__ */ import_react25.default.createElement(import_react25.default.Fragment, null, /* @__PURE__ */ import_react25.default.createElement("h1", null, "Voices of Dissent"), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { container: true, spacing: 2, sx: { p: 2 } }, /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }, /* @__PURE__ */ import_react25.default.createElement(Paper_default, { sx: { p: 2, minHeight: 150 } }, /* @__PURE__ */ import_react25.default.createElement(MusicTable, { data: trackData, identity: getPassedId2(), setSelectedData, reportBack }))), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }, /* @__PURE__ */ import_react25.default.createElement(Paper_default, { sx: { p: 2, minHeight: 150 } }, /* @__PURE__ */ import_react25.default.createElement(NowPlaying, { doAdvanceRow: advanceRow, selectedData }))), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }, /* @__PURE__ */ import_react25.default.createElement(Paper_default, { sx: { p: 2, minHeight: 200 } }, /* @__PURE__ */ import_react25.default.createElement("div", { style: { width: "50%" } }, "Possible future home of comments"))), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }, /* @__PURE__ */ import_react25.default.createElement(Paper_default, { sx: { p: 2, minHeight: 200 } }, /* @__PURE__ */ import_react25.default.createElement(TrackInfo, { identity: getPassedId2(), selectedData })))));
+    return /* @__PURE__ */ import_react25.default.createElement(import_react25.default.Fragment, null, /* @__PURE__ */ import_react25.default.createElement("h1", null, "Voices of Dissent"), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { container: true, spacing: 2, sx: { p: 2 } }, /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }, /* @__PURE__ */ import_react25.default.createElement(Paper_default, { sx: { p: 2, minHeight: 150 } }, /* @__PURE__ */ import_react25.default.createElement(MusicTable, { ref: getPassedTrackRef(), data: trackData, identity: getPassedId2(), setSelectedData, reportBack }))), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }, /* @__PURE__ */ import_react25.default.createElement(Paper_default, { sx: { p: 2, minHeight: 150 } }, /* @__PURE__ */ import_react25.default.createElement(NowPlaying, { doAdvanceRow: advanceRow, selectedData }))), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }, /* @__PURE__ */ import_react25.default.createElement(Paper_default, { sx: { p: 2, minHeight: 200 } }, /* @__PURE__ */ import_react25.default.createElement(TrackInfo, { identity: getPassedId2(), selectedData })))));
   }
 
   // app/app.tsx

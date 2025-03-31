@@ -47,13 +47,13 @@ export default function MainPage() {
             })
         }
         if(secrets && !identity) {
-            console.log("doing IDTBD load")
+            // console.log("doing IDTBD load")
             // console.log("Secrets used as ", secrets)
             const rapidapikey = secrets.vod.key.rapidapi
             // console.log("rapidapikey=", rapidapikey)
             IDTBD.allowCookie = true
             IDTBD.onLoad(rapidapikey, appId, callback, statusCallback).then(() => {
-                console.log("return from onLoad", IDTBD)
+                // console.log("return from onLoad", IDTBD)
                 setLoaded(true)
                 // setShowLoading(false)
             })
@@ -61,7 +61,7 @@ export default function MainPage() {
     })
 
     async function setLoggedInUser(identity:any) {
-        console.warn("SetLoggedInUser", identity)
+        // console.warn("SetLoggedInUser", identity)
         setIdentity(identity)
         // you can now do what you may need to do for your own app with this identity
         const params = new URLSearchParams(document.location.search)
@@ -87,7 +87,7 @@ export default function MainPage() {
     }
 
     function ready() {
-        console.log("ready check", {status, loaded})
+        // console.log("ready check", {status, loaded})
         return !status && loaded
     }
 

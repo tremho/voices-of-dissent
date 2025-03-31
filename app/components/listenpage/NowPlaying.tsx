@@ -18,13 +18,13 @@ const npContainer:any = {
 let advanceRowHandler: any
 
 export function NowPlaying(props) {
-    console.log("NowPlaying", {props})
+    // console.log("NowPlaying", {props})
     const audioUrl = props.selectedData?.audioUrl ?? null
     const imageUrl = props.selectedData?.artUrl ?? null
 
     if(props.doAdvanceRow) {
         advanceRowHandler=props.doAdvanceRow
-        console.log("advanceRowHandler set", advanceRowHandler)
+        // console.log("advanceRowHandler set", advanceRowHandler)
     }
 
     setTimeout(attachListeners, 1000)
@@ -51,9 +51,9 @@ function attachListeners() {
 }
 
 function onAudioEvent(event) {
-    console.log("audio event seen", {type: event.type, target: this})
+    // console.log("audio event seen", {type: event.type, target: this})
     if(event.type === 'ended') {
-        console.log("calling advanceRowHandler", advanceRowHandler)
+        // console.log("calling advanceRowHandler", advanceRowHandler)
         advanceRowHandler()
     }
 }

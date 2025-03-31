@@ -12,6 +12,30 @@ paths:
           description: successful response.
           content:
             text/plain: {}
+  /delete/{artist}/{id}:
+    get:
+      summary: Delete
+      description: deletes the designated submission
+      responses:
+        "200":
+          description: successful response.
+          content:
+            text/plain: {}
+    parameters:
+      - in: path
+        name: artist
+        description: the artist id part of info identification
+        example: ""
+        schema:
+          type: string
+          example: ""
+      - in: path
+        name: id
+        description: the timestamp/id key of the info object
+        example: ""
+        schema:
+          type: string
+          example: ""
   /info/{id}/{name}/{email}:
     get:
       summary: Info
@@ -112,7 +136,8 @@ paths:
   /tracks/{artist}/{id}:
     get:
       summary: Tracks
-      description: returns
+      description: returns the list of tracks currently available. each invocation is
+        a new shuffled order
       responses:
         "200":
           description: successful response.
@@ -220,10 +245,36 @@ paths:
         schema:
           type: string
           example: ""
-  /initiate:
+  /initiate/{artistId}/{id}:
     post:
       summary: UploadInitiate
       description: Initiates the start of a new file upload
+      responses:
+        "200":
+          description: successful response.
+          content:
+            text/plain: {}
+    parameters:
+      - in: path
+        name: editArtist
+        description: the artist component of the edit id. passed only if we are editing
+          an existing submission.
+        example: ""
+        schema:
+          type: string
+          example: ""
+      - in: path
+        name: editId
+        description: the content id component of the edit id. passed only if we are
+          editing an existing submission.
+        example: ""
+        schema:
+          type: string
+          example: ""
+  /hello:
+    get:
+      summary: hello
+      description: ""
       responses:
         "200":
           description: successful response.

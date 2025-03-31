@@ -1,8 +1,8 @@
 {
-  "name": "Tracks",
-  "description": "returns the list of tracks currently available. each invocation is a new shuffled order",
+  "name": "Delete",
+  "description": "deletes the designated submission",
   "version": "1.0.0",
-  "pathMap": "/tracks/{artist}/{id}",
+  "pathMap": "/delete/{artist}/{id}",
   "method": "GET",
   "timeoutSeconds": 0,
   "memorySize": 0,
@@ -13,13 +13,13 @@
       "name": "artist",
       "in": "path",
       "type": "string",
-      "description": "if defined, it's the artist id part of info identification"
+      "description": "the artist id part of info identification"
     },
     {
       "name": "id",
       "in": "path",
       "type": "string",
-      "description": "must be defined if artist is defined and is the timestamp/id key of the info object"
+      "description": "the timestamp/id key of the info object"
     }
   ],
   "returns": {
