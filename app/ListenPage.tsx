@@ -53,10 +53,13 @@ export default function ListenPage(props:any) {
 
         }
     })
+    function goHome() {
+        location.href = '/'
+    }
     // console.log(">> tracks set", {trackData})
     return(
         <>
-            <h1>Voices of Dissent</h1>
+            <h1 style={{cursor:"hand"}} onClick={goHome}>Voices of Dissent</h1>
 
             <Grid container spacing={2} sx={{ p: 2 }}>
                 {/* Top Sections */}

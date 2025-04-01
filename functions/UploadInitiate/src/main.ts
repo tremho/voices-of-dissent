@@ -34,11 +34,11 @@ const service = new LambdaApi<any>(def,
         const info:SubmissionMetadata = event.body
 
         Log.Info("Entering Initiate", {info});
-        const {editArtist, editId} = event.parameters
-        console.log("parameters", {editArtist, editId})
+        const {artistId, id} = event.parameters
+        console.log("parameters", {artistId, id})
         let editContentId = ''
-        if(editArtist && editId) {
-            editContentId = editArtist+'/'+editId
+        if(artistId && id) {
+            editContentId = artistId+'/'+id
         }
         let metaId;
         if(editContentId) {
@@ -50,6 +50,7 @@ const service = new LambdaApi<any>(def,
             update.attributions = info.attributions ?? update.attributions
             Log.Info("updating data with edit", {record: update})
             await s3PutObject(VOD_METADATA_BUCKET, editContentId, update, true)
+            metaId = editContentId
         } else {
             await insureBucketsAvailable()
             // create metadata S3 object and remember the identifier

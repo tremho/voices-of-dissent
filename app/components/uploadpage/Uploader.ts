@@ -20,8 +20,8 @@ function getLambdaEndpoint(funcPath) {
  * @param info -- the SubmissionMetadata object that contains submission data
  */
 export async function conductSubmission(info:SubmissionMetadata, editId?:string) {
-    let initPath = '/initiate'
-    if(editId) initPath += '/'+editId
+    let initPath = '/initiate/'
+    if(editId) initPath += editId
     const initUrl = getLambdaEndpoint(initPath)
     console.log("conductSubmissions - Posting to "+(editId?"edit":"start")+" at init url", initUrl)
     console.log("info ", info)
@@ -36,7 +36,9 @@ export async function conductSubmission(info:SubmissionMetadata, editId?:string)
         },
         audioFile: {
             path: (info.audioFile as any)?.path ?? info.audioFile?.name ?? ''
-        }
+        },
+        artUrl: (info as any).artUrl,
+        audioUrl: (info as any).audioUrl
     }
     console.log("Fetching at "+initUrl)
     const resp:any = await fetch(initUrl, {
@@ -47,7 +49,13 @@ export async function conductSubmission(info:SubmissionMetadata, editId?:string)
     let data = await resp.json()
     console.log("initiate response ", resp, data)
 
-    const {metaId, artId, audioId} = data
+    let {metaId, artId, audioId} = data
+    if(editId) metaId = editId
+
+    if(metaId) console.log("metaId is "+metaId)
+    else {
+        throw new Error("No META in upload process")
+    }
 
     // upload chunks for art
     console.log("Uploading art file", info.artFile?.name)
@@ -58,10 +66,11 @@ export async function conductSubmission(info:SubmissionMetadata, editId?:string)
     const audioUrl = await uploadFileInChunks(info.audioFile, audioId, metaId+'/audio')
     console.log("audio url is", audioUrl)
     // do final binding
-    const bindId = editId ?? metaId
+    const bindId = metaId
     console.log("doing binding ", {bindId, audioUrl, artUrl})
     const fresp:any = await doFinalBinding(bindId, info.artistName, audioUrl, artUrl)
     console.log("response from final", fresp)
+    return fresp
 
 }
 
@@ -122,7 +131,7 @@ async function uploadFileInChunks(file:File, uploadId:string, fileKey:string) : 
  */
 async function doFinalBinding(metaId:string, artistName:string, audioUrl?:string, artUrl?:string) {
 
-    const finalUrl = getLambdaEndpoint('/finalize')
+    const finalUrl = getLambdaEndpoint('/finalize/')
     const resp:any = await fetch(finalUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

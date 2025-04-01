@@ -35,24 +35,33 @@ export function start(e:any, c:any, cb:any) {
 }
 
 async function getCovers(num) :Promise<string[]> {
-    let outTracks:any[] = []
+    Log.Info('getCovers '+num)
+    const out:string[] = []
     let tracks: string[] = []
     try {
         tracks = await s3ListObjects(dataBucket)
     } catch(e:any) {
-
+        Log.Exception(e)
     }
+    Log.Info("getting picks")
     const picks:number[] = []
+    let t = Math.min(3, tracks.length)
     let i = 0;
-    while(i < 3) {
+    while(i < t) {
         const pick = Math.floor(Math.random() * tracks.length)
         if(!picks.includes(pick)) {
             picks.push(pick)
             i++
         }
     }
+    if(tracks.length < 4) {
+        for(let i=0; i<3; i++) {
+            out.push( await getArtUrl(tracks[i]) )
+        }
+        picks.splice(0,picks.length)
+    }
     Log.Info(`${tracks.length} tracks `, {picks} )
-    const out:string[] = []
+
     async function getArtUrl(item) {
         if(!item) return ''
         const [artist, id] = item.split('/')
@@ -67,9 +76,10 @@ async function getCovers(num) :Promise<string[]> {
             url = await getArtUrl(item)
             Log.Info("picked", {item, url})
             if (url) out.push(url)
-            else { // if pick results in a null url, find the next one that isn't empty
+            else {
                 Log.Info("Dupe handling starting at "+p)
-                while(picks.includes(p)) {
+                let maxloops = 3
+                while(picks.includes(p) && --maxloops) {
                     if (++p >= tracks.length) p = 0
                 }
                 picks.push(p)

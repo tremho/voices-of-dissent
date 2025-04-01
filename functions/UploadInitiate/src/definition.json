@@ -25,13 +25,13 @@
   },
   "parameters": [
     {
-      "name": "editArtist",
+      "name": "artistId",
       "type": "string",
       "in": "path",
       "description": "the artist component of the edit id. passed only if we are editing an existing submission."
     },
     {
-      "name": "editId",
+      "name": "id",
       "type": "string",
       "in": "path",
       "description": "the content id component of the edit id. passed only if we are editing an existing submission."

@@ -256,7 +256,7 @@ paths:
             text/plain: {}
     parameters:
       - in: path
-        name: editArtist
+        name: artistId
         description: the artist component of the edit id. passed only if we are editing
           an existing submission.
         example: ""
@@ -264,7 +264,7 @@ paths:
           type: string
           example: ""
       - in: path
-        name: editId
+        name: id
         description: the content id component of the edit id. passed only if we are
           editing an existing submission.
         example: ""

@@ -45615,8 +45615,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const handleDrop = (event) => {
       event.preventDefault();
       setDragging(false);
-      if (event.dataTransfer.files.length > 0) {
-        const file = event.dataTransfer.files[0];
+      for (let file of event?.dataTransfer?.files ?? []) {
         onFileSelect(file);
         if (file?.type.startsWith("image/")) setImageFile(file);
         if (file?.type.startsWith("audio/")) setAudioFile(file);
@@ -45693,8 +45692,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return funcPath;
   }
   async function conductSubmission(info, editId) {
-    let initPath = "/initiate";
-    if (editId) initPath += "/" + editId;
+    let initPath = "/initiate/";
+    if (editId) initPath += editId;
     const initUrl = getLambdaEndpoint(initPath);
     console.log("conductSubmissions - Posting to " + (editId ? "edit" : "start") + " at init url", initUrl);
     console.log("info ", info);
@@ -45709,7 +45708,9 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       },
       audioFile: {
         path: info.audioFile?.path ?? info.audioFile?.name ?? ""
-      }
+      },
+      artUrl: info.artUrl,
+      audioUrl: info.audioUrl
     };
     console.log("Fetching at " + initUrl);
     const resp = await fetch(initUrl, {
@@ -45719,17 +45720,23 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     });
     let data2 = await resp.json();
     console.log("initiate response ", resp, data2);
-    const { metaId, artId, audioId } = data2;
+    let { metaId, artId, audioId } = data2;
+    if (editId) metaId = editId;
+    if (metaId) console.log("metaId is " + metaId);
+    else {
+      throw new Error("No META in upload process");
+    }
     console.log("Uploading art file", info.artFile?.name);
     const artUrl = await uploadFileInChunks(info.artFile, artId, metaId + "/art");
     console.log("art url is ", artUrl);
     console.log("Uploading audio file", info.audioFile?.name);
     const audioUrl = await uploadFileInChunks(info.audioFile, audioId, metaId + "/audio");
     console.log("audio url is", audioUrl);
-    const bindId = editId ?? metaId;
+    const bindId = metaId;
     console.log("doing binding ", { bindId, audioUrl, artUrl });
     const fresp = await doFinalBinding(bindId, info.artistName, audioUrl, artUrl);
     console.log("response from final", fresp);
+    return fresp;
   }
   async function uploadFileInChunks(file, uploadId, fileKey) {
     if (!file?.name) return void 0;
@@ -45764,7 +45771,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     return data2.url;
   }
   async function doFinalBinding(metaId, artistName, audioUrl, artUrl) {
-    const finalUrl = getLambdaEndpoint("/finalize");
+    const finalUrl = getLambdaEndpoint("/finalize/");
     const resp = await fetch(finalUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -45810,6 +45817,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   }
 
   // app/UploadPage.tsx
+  console.log("-------------loading UploadPage-----------");
   function getAssetUrl3(idPath) {
     if (location.host.indexOf("localhost") !== -1) {
       return idPath;
@@ -45943,16 +45951,17 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         alert("you didn't attach an audio file for your content!");
         return;
       }
+      console.warn("calling conductSubmission now", { info, editId });
       conductSubmission(info, editId).then((resp) => {
-        fetch(`/info/${info.artistId}/${info.artistName}`).then(() => {
-          setUploading(false);
-          if (editId) {
-            alert("update complete!");
-            location.href = "/?page=listen&id=" + getPassedId() + "&ref=" + editId;
-          } else {
-            alert("upload complete!");
-            location.href = "/?page=listen&id=" + getPassedId();
-          }
+        fetch(`/info/${info.artistId}/${info.artistName}`).then((fresp) => {
+          fresp.json().then((data2) => {
+            setUploading(false);
+            if (editId) {
+              location.href = "/?page=listen&id=" + getPassedId() + "&ref=" + editId;
+            } else {
+              location.href = "/?page=listen&id=" + getPassedId() + "&ref=" + data2.metaId;
+            }
+          });
         });
       });
     }
@@ -45968,7 +45977,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       fontStyle: "italic"
     };
     let acceptedTypes = "images/*, audio/*";
-    return /* @__PURE__ */ import_react21.default.createElement(import_react21.default.Fragment, null, /* @__PURE__ */ import_react21.default.createElement("div", { style: background }, /* @__PURE__ */ import_react21.default.createElement("div", { style: blur }, /* @__PURE__ */ import_react21.default.createElement(LoadingSpinner, { active: uploading }), /* @__PURE__ */ import_react21.default.createElement(SubmissionGuidelines, { active: editId ? false : true }), /* @__PURE__ */ import_react21.default.createElement("div", { style: content }, /* @__PURE__ */ import_react21.default.createElement("h1", null, "Upload your content!"), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Please enter the following information about your submission"), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "20px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Your name to be published"), /* @__PURE__ */ import_react21.default.createElement("form", { onSubmit: handleSubmit }, /* @__PURE__ */ import_react21.default.createElement(
+    function goHome() {
+      location.href = "/";
+    }
+    return /* @__PURE__ */ import_react21.default.createElement(import_react21.default.Fragment, null, /* @__PURE__ */ import_react21.default.createElement("div", { style: background }, /* @__PURE__ */ import_react21.default.createElement("div", { style: blur }, /* @__PURE__ */ import_react21.default.createElement(LoadingSpinner, { active: uploading }), /* @__PURE__ */ import_react21.default.createElement(SubmissionGuidelines, { active: editId ? false : true }), /* @__PURE__ */ import_react21.default.createElement("div", { style: content }, /* @__PURE__ */ import_react21.default.createElement("h1", { style: { cursor: "hand" }, onClick: goHome }, editId ? "Update Your Content" : "Enter Your Submission!"), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Please enter the following information about your submission"), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "20px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Your name to be published"), /* @__PURE__ */ import_react21.default.createElement("form", { onSubmit: handleSubmit }, /* @__PURE__ */ import_react21.default.createElement(
       TextField_default,
       {
         slotProps,
@@ -46049,7 +46061,6 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     console.warn("Deleting " + editId);
     fetch("/delete/" + editId).then(() => {
       console.log("returned from delete");
-      alert("content deleted!");
       location.href = "/?page=listen&id=" + getPassedId();
     });
   }
@@ -46528,7 +46539,10 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         });
       }
     });
-    return /* @__PURE__ */ import_react25.default.createElement(import_react25.default.Fragment, null, /* @__PURE__ */ import_react25.default.createElement("h1", null, "Voices of Dissent"), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { container: true, spacing: 2, sx: { p: 2 } }, /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }, /* @__PURE__ */ import_react25.default.createElement(Paper_default, { sx: { p: 2, minHeight: 150 } }, /* @__PURE__ */ import_react25.default.createElement(MusicTable, { ref: getPassedTrackRef(), data: trackData, identity: getPassedId2(), setSelectedData, reportBack }))), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }, /* @__PURE__ */ import_react25.default.createElement(Paper_default, { sx: { p: 2, minHeight: 150 } }, /* @__PURE__ */ import_react25.default.createElement(NowPlaying, { doAdvanceRow: advanceRow, selectedData }))), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }, /* @__PURE__ */ import_react25.default.createElement(Paper_default, { sx: { p: 2, minHeight: 200 } }, /* @__PURE__ */ import_react25.default.createElement(TrackInfo, { identity: getPassedId2(), selectedData })))));
+    function goHome() {
+      location.href = "/";
+    }
+    return /* @__PURE__ */ import_react25.default.createElement(import_react25.default.Fragment, null, /* @__PURE__ */ import_react25.default.createElement("h1", { style: { cursor: "hand" }, onClick: goHome }, "Voices of Dissent"), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { container: true, spacing: 2, sx: { p: 2 } }, /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }, /* @__PURE__ */ import_react25.default.createElement(Paper_default, { sx: { p: 2, minHeight: 150 } }, /* @__PURE__ */ import_react25.default.createElement(MusicTable, { ref: getPassedTrackRef(), data: trackData, identity: getPassedId2(), setSelectedData, reportBack }))), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }, /* @__PURE__ */ import_react25.default.createElement(Paper_default, { sx: { p: 2, minHeight: 150 } }, /* @__PURE__ */ import_react25.default.createElement(NowPlaying, { doAdvanceRow: advanceRow, selectedData }))), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }), /* @__PURE__ */ import_react25.default.createElement(Grid_default, { item: true, xs: 12, md: 6 }, /* @__PURE__ */ import_react25.default.createElement(Paper_default, { sx: { p: 2, minHeight: 200 } }, /* @__PURE__ */ import_react25.default.createElement(TrackInfo, { identity: getPassedId2(), selectedData })))));
   }
 
   // app/app.tsx

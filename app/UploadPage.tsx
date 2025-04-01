@@ -1,3 +1,4 @@
+console.log("-------------loading UploadPage-----------")
 import React, {useState, useEffect, useCallback} from 'react'
 import { useDropzone } from "react-dropzone";
 import {Autocomplete, TextField, Button, Box, Paper, Typography} from '@mui/material'
@@ -173,18 +174,21 @@ export default function UploadPage() {
             return
         }
 
+        console.warn('calling conductSubmission now', {info, editId})
         conductSubmission(info, editId).then(resp => {
             // console.warn('conductSubmission completes with response', {resp})
             // console.log(`writing artistName via /info/${info.artistId}/${info.artistName}`)
-            fetch(`/info/${info.artistId}/${info.artistName}`).then(() => { // update artist name
-                setUploading(false)
-                if(editId) {
-                    alert('update complete!')
-                    location.href = '/?page=listen&id='+getPassedId()+"&ref="+editId
-                } else {
-                    alert('upload complete!')
-                    location.href = '/?page=listen&id='+getPassedId()
-                }
+            fetch(`/info/${info.artistId}/${info.artistName}`).then((fresp) => {
+                fresp.json().then(data => {
+                    setUploading(false)
+                    if(editId) {
+                        // alert('update complete!')
+                        location.href = '/?page=listen&id='+getPassedId()+"&ref="+editId
+                    } else {
+                        // alert('upload complete!')
+                        location.href = '/?page=listen&id='+getPassedId()+"&ref="+data.metaId
+                    }
+                })
             })
         })
     }
@@ -222,6 +226,10 @@ export default function UploadPage() {
     // acceptedImageTypes = it.join(',')
     // acceptedAudioTypes = at.join(',')
 
+    function goHome() {
+        location.href = '/'
+    }
+
     // console.log("UploadPage rendering")
     return (
         <>
@@ -230,7 +238,9 @@ export default function UploadPage() {
                     <LoadingSpinner active={uploading}/>
                     <SubmissionGuidelines active={editId ? false : true}/>
                     <div style={content}>
-                        <h1>Upload your content!</h1>
+                        <h1 style={{cursor:"hand"}} onClick={goHome}>
+                            {editId ? "Update Your Content" : "Enter Your Submission!"}
+                        </h1>
                         <Typography style={heading} variant={"h6"}>
                             Please enter the following information about your submission
                         </Typography>
@@ -331,7 +341,7 @@ function handleDelete() {
     console.warn("Deleting "+editId)
     fetch('/delete/'+editId).then(() =>{
         console.log("returned from delete")
-        alert('content deleted!')
+        // alert('content deleted!')
         location.href = '/?page=listen&id='+getPassedId()
 
     })

@@ -21,8 +21,7 @@ export const FileUploader = (props) => {
         event.preventDefault();
         setDragging(false);
 
-        if (event.dataTransfer.files.length > 0) {
-            const file:File = event.dataTransfer.files[0]
+        for(let file of event?.dataTransfer?.files ?? []) {
             // console.log("onDrop")
             onFileSelect(file);
             // console.log("onDrop2")
