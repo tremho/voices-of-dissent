@@ -12,6 +12,7 @@ import React  from 'react'
 import { Button } from "@mui/material"
 import IDTBD from '@tremho/idtbd'
 import {LoadingSpinner} from "./components/LoadingSpinner";
+import ServiceEndpoint from "../commonLib/ServiceEndpoint"
 
 
 
@@ -25,11 +26,11 @@ export default function MainPage() {
     const appId = 'com.tremho.vod'
 
     function callback(identity) {
-        // console.warn('callback called with', identity)
+        console.warn('callback called with', identity)
         setLoggedInUser(identity)
     }
     function statusCallback(astatus) {
-        // console.log("status", astatus)
+        console.log("status", astatus)
         setStatus(astatus)
         if(status) {
             setShowLoading(status === "Processing")
@@ -39,21 +40,28 @@ export default function MainPage() {
     useEffect( () => {
         if(!secrets) {
             console.log("fetching secrets")
-            fetch('/secrets').then(r => {
+            fetch(ServiceEndpoint('/secrets')).then(r => {
                 r.json().then(s => {
+                    if(s.message) {
+                        alert("Error retrieving critical starting values")
+                        location.href = ServiceEndpoint('/'); //restart
+                    }
                     // console.log("Setting secrets to ",s)
                     setSecrets(s)
                 })
             })
         }
         if(secrets && !identity) {
-            // console.log("doing IDTBD load")
+            console.log("doing IDTBD load")
             // console.log("Secrets used as ", secrets)
+            const ourHome = location.protocol+'//'+location.host+ServiceEndpoint('/index.html')
+            console.log("ServiceEndpoint for  home page = "+ourHome)
             const rapidapikey = secrets.vod.key.rapidapi
             // console.log("rapidapikey=", rapidapikey)
             IDTBD.allowCookie = true
+            IDTBD.redirect = ourHome
             IDTBD.onLoad(rapidapikey, appId, callback, statusCallback).then(() => {
-                // console.log("return from onLoad", IDTBD)
+                console.log("return from onLoad", IDTBD)
                 setLoaded(true)
                 // setShowLoading(false)
             })
@@ -61,13 +69,13 @@ export default function MainPage() {
     })
 
     async function setLoggedInUser(identity:any) {
-        // console.warn("SetLoggedInUser", identity)
+        console.warn("SetLoggedInUser", identity)
         setIdentity(identity)
         // you can now do what you may need to do for your own app with this identity
         const params = new URLSearchParams(document.location.search)
-        // console.log('search params', params)
+        console.log('search params', params)
         let page = params.get("page")?.toLowerCase().trim()
-        // console.log("page="+page)
+        console.log("page="+page)
         if(!page) {
             setStatus(undefined)
         }
@@ -81,17 +89,17 @@ export default function MainPage() {
     }
 
     function startLogin() {
-        // console.log("startLogin")
+        console.log("startLogin")
         setShowLoading(true)
         setTimeout(IDTBD.login, 1000)
     }
 
     function ready() {
-        // console.log("ready check", {status, loaded})
+        console.log("ready check", {status, loaded})
         return !status && loaded
     }
 
-    // console.log("showLoading=", showLoading)
+    console.log("showLoading=", showLoading)
 
     let page
     if(ready()) {
@@ -100,42 +108,46 @@ export default function MainPage() {
                 <LoadingSpinner active={showLoading}/>
                 <Grid container spacing={2} sx={{height: "100vh", padding: 2}}>
                     {/* Top Row: Title & Avatar */}
-                    <Grid item xs={10}>
+                    <Grid item xs={6}>
                         <Typography variant="h4">Voices of Dissent</Typography>
                     </Grid>
-                    <Grid item xs={2} sx={{ display: "flex", justifyContent: "flex-end" }}>
+                    <Grid item xs={6} sx={{ display: "flex", justifyContent: "flex-end" }}>
                         <AccountControl login={startLogin} logout={IDTBD.logout} identity={identity} />
                     </Grid>
-                    {/* Left Section (3 vertical sections) */}
-                    <Grid item xs={12} md={5} container spacing={2} direction="column">
-                        <Grid item>
-                            <Paper sx={{padding: 2, height: "33%", backgroundColor: "#f5f5f5"}}>
-                                {/*<Typography variant="h6">Left Section 1</Typography>*/}
-                                <SharePrompt userIdentity={identity?.userIdentity}/>
-                            </Paper>
-                        </Grid>
-                        <Grid item>
-                            <Paper sx={{padding: 2}}>
-                                {/*<Typography variant="h6">Left Section 2</Typography>*/}
-                                <SampleCovers/>
-                            </Paper>
-                        </Grid>
-                        <Grid item>
-                            <Paper sx={{padding: 2, backgroundColor: "#bdbdbd"}}>
-                                {/*<Typography variant="h6">Left Section 3</Typography>*/}
-                                <ListenPrompt userIdentity={identity?.userIdentity}/>
-                            </Paper>
+                    { /* Main content row */}
+                    <Grid item xs={6}>
+                        {/* Left Section (3 vertical sections) */}
+                        <Grid container spacing={2} direction="column">
+                            <Grid item>
+                                <Paper sx={{padding: 2, height: "33%", backgroundColor: "#f5f5f5"}}>
+                                    {/*<Typography variant="h6">Left Section 1</Typography>*/}
+                                    <SharePrompt userIdentity={identity?.userIdentity}/>
+                                </Paper>
+                            </Grid>
+                            <Grid item>
+                                <Paper sx={{padding: 2}}>
+                                    {/*<Typography variant="h6">Left Section 2</Typography>*/}
+                                    <SampleCovers/>
+                                </Paper>
+                            </Grid>
+                            <Grid item>
+                                <Paper sx={{padding: 2, backgroundColor: "#bdbdbd"}}>
+                                    {/*<Typography variant="h6">Left Section 3</Typography>*/}
+                                    <ListenPrompt userIdentity={identity?.userIdentity}/>
+                                </Paper>
+                            </Grid>
                         </Grid>
                     </Grid>
 
                     {/* Right Section (single vertical section) */}
-                    <Grid item xs={12} md={7}>
+                    <Grid item xs={6}>
                         <Paper sx={{padding: 2, height: "80%", backgroundColor: "#90caf9"}}>
                             {/*<Typography variant="h6">Right Section</Typography>*/}
                             <SiteImage/>
                         </Paper>
                     </Grid>
-                    <p>
+                    <Grid item xs={12}>
+                        <Typography variant="body1">
                         Voices of Dissent is intended to be a forum where common musicians - amateur, professional,
                         beginner, or seasoned -
                         can share their music in opposition to the actions and policies of the current administration.
@@ -144,7 +156,8 @@ export default function MainPage() {
                         times.
                         <br/>
                         Please Listen -- and please contribute -- LET'S LIFT OUR VOICES TOGETHER!
-                    </p>
+                        </Typography>
+                    </Grid>
                 </Grid>
             </>
         )

@@ -10,6 +10,7 @@ import {TrackData} from '../commonLib/TrackData'
 import {MusicTable} from "./components/listenpage/MusicTable"
 import {NowPlaying} from "./components/listenpage/NowPlaying"
 import {TrackInfo} from "./components/listenpage/TrackInfo"
+import ServiceEndpoint from "../commonLib/ServiceEndpoint";
 
 let reported:any
 function reportBack(n:any) {
@@ -43,38 +44,38 @@ export default function ListenPage(props:any) {
 
     useEffect(() => {
         if(!trackData?.length) {
-            // console.log('fetching tracks')
-            fetch('/tracks/').then(async resp => {
+            console.log('fetching tracks')
+            fetch(ServiceEndpoint('/tracks/~/~')).then(async resp => {
                 const data = await resp.json()
-                // console.log(`${data.length} tracks returned`, {data})
+                console.log(`${data.length} tracks returned`, {data})
                 setTrackData(data)
-                // console.log("tracks set", {trackData})
+                console.log("tracks set", {trackData})
             })
 
         }
     })
     function goHome() {
-        location.href = '/'
+        location.href = ServiceEndpoint('/')
     }
     // console.log(">> tracks set", {trackData})
-    return(
+    return (
         <>
             <h1 style={{cursor:"hand"}} onClick={goHome}>Voices of Dissent</h1>
 
             <Grid container spacing={2} sx={{ p: 2 }}>
                 {/* Top Sections */}
                 <Grid item xs={12} md={6}>
-                <Paper sx={{ p: 2, minHeight: 150 }}>
-                    <MusicTable ref={getPassedTrackRef()} data={trackData} identity={getPassedId()} setSelectedData={setSelectedData}  reportBack={reportBack} />
-                </Paper>
+                    <Paper sx={{ p: 2, minHeight: 150 }}>
+                        <MusicTable ref={getPassedTrackRef()} data={trackData} identity={getPassedId()} setSelectedData={setSelectedData}  reportBack={reportBack} />
+                    </Paper>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                <Paper sx={{ p: 2, minHeight: 150 }}>
-                    <NowPlaying doAdvanceRow={advanceRow} selectedData={selectedData}/>
-                </Paper>
+                    <Paper sx={{ p: 2, minHeight: 150 }}>
+                        <NowPlaying doAdvanceRow={advanceRow} selectedData={selectedData}/>
+                    </Paper>
                 </Grid>
 
-            {/* Bottom Sections */}
+                {/* Bottom Sections */}
                 <Grid item xs={12} md={6}>
                     {/*<Paper sx={{ p: 2, minHeight: 200 }}>*/}
                     {/*    <div style={{width:"50%"}}>*/}
@@ -83,13 +84,13 @@ export default function ListenPage(props:any) {
                     {/*</Paper>*/}
                 </Grid>
                 <Grid item xs={12} md={6}>
-                <Paper sx={{ p: 2, minHeight: 200 }}>
-                    <TrackInfo identity={getPassedId()} selectedData={selectedData}/>
-                </Paper>
+                    <Paper sx={{ p: 2, minHeight: 200 }}>
+                        <TrackInfo identity={getPassedId()} selectedData={selectedData}/>
+                    </Paper>
                 </Grid>
             </Grid>
-            </>
-        )
+        </>
+    )
 }
 
 

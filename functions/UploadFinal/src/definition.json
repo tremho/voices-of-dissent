@@ -1,37 +1,67 @@
 {
   "name": "UploadFinal",
-  "description": "",
+  "description": "finalizes the binding of uploaded urls to the main",
   "version": "1.0.0",
   "pathMap": "/finalize",
   "method": "POST",
-  "timeoutSeconds": 0,
+  "bodyType": "json",
+  "timeoutSeconds": 5,
   "memorySize": 0,
   "schemas": {
+    "FinalizeResponse": {
+      "properties": {
+        "metaId": {
+          "type": "string",
+          "description": "the top level id that was set"
+        },
+        "artistName": {
+          "type": "string",
+          "description": "the name of the artist set"
+        },
+        "artUrl": {
+          "type": "string",
+          "description": "the art asset url set"
+        },
+        "audioUrl": {
+          "type": "string",
+          "description": "the audio asset url set"
+        }
+      }
+    }
   },
   "parameters": [
     {
       "name": "metaId",
       "in": "body",
+      "required": true,
       "type": "string",
-      "description": "the metaId of the top level object to bind to"
+      "description": "the top-level identifier we are placing this info to"
+    },
+    {
+      "name": "artistName",
+      "in": "body",
+      "required": false,
+      "type": "string",
+      "description": "set or update the artistName, if defined"
     },
     {
       "name": "audioUrl",
       "in": "body",
+      "required": false,
       "type": "string",
-      "description": "the url of the audio asset"
+      "description": "set or update the url for the audio, if defined"
     },
     {
       "name": "artUrl",
       "in": "body",
+      "required": false,
       "type": "string",
-      "description": "the url of the cover art asset"
+      "description": "set or update the url for the cover art, if defined"
     }
-
   ],
   "returns": {
     "200": {
-      "type": "empty",
+      "type": "FinalizeResponse",
       "description": "successful response."
     },
     "500": {

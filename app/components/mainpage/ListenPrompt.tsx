@@ -1,13 +1,14 @@
 import React from 'react'
 
 import {Button} from '@mui/material'
+import ServiceEndpoint from "../../../commonLib/ServiceEndpoint";
 
 
 let userIdentity = ''
 
 function goListen() {
     // console.log("Oh, Oh, Oh... Listen to the music")
-    location.href='/?page=listen&id='+(userIdentity ?? '')
+    location.href=ServiceEndpoint('/?page=listen&id='+(userIdentity ?? ''))
 }
 
 export function ListenPrompt(props) {

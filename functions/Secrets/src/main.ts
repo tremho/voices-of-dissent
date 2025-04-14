@@ -36,7 +36,16 @@ const service = new LambdaApi<any>(def,
             }
         }
         Log.Info("returning", {domkeys})
-        return Success(domkeys)
+        const resp:any = Success(JSON.stringify(domkeys), 'text/plain')
+        if(!resp.headers) resp.headers = {}
+        // Add CORS Headers explicitly
+        resp.headers = Object.assign(resp.headers, {
+            "Access-Control-Allow-Headers" : "*",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,GET"
+        })
+        return resp
+
     }
 )
 export function start(e:any, c:any, cb:any) {

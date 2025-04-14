@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 
 import {Button} from '@mui/material'
 import Typography from '@mui/material/Typography'
+import ServiceEndpoint from "../../../commonLib/ServiceEndpoint";
 
 
 function LoginRequired() {
@@ -37,7 +38,7 @@ export function SharePrompt(props) {
             // TODO: You must be logged in
             setShowAlert(true)
         } else {
-            location.href = '/?page=upload&id='+props.userIdentity
+            location.href = ServiceEndpoint('/?page=upload&id='+props.userIdentity)
         }
     }
 

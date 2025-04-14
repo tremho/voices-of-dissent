@@ -1,3 +1,5 @@
+import ServiceEndpoint from "../commonLib/ServiceEndpoint";
+
 console.log("-------------loading UploadPage-----------")
 import React, {useState, useEffect, useCallback} from 'react'
 import { useDropzone } from "react-dropzone";
@@ -11,15 +13,7 @@ import {SubmissionGuidelines} from "./components/uploadpage/SubmissionGuide";
 
 import {mimeMatch} from "../commonLib/MimeType";
 import {LoadingSpinner} from "./components/LoadingSpinner";
-
-// TODO: Need to find a better, global way to do this. Maybe inverse-y can fetch JSON from self instead of using 'fs'
-function getAssetUrl(idPath) {
-    // console.log('getAssetUrl', {host: location.host, idPath})
-    if(location.host.indexOf('localhost') !== -1) {
-        return idPath
-    }
-    return "https://tremho-voices-of-dissent.s3.us-west-1.amazonaws.com/"+idPath
-}
+import {getAssetUrl} from "../commonLib/ServiceEndpoint";
 
 function getPassedId() {
     const params = new URLSearchParams(document.location.search)
@@ -56,18 +50,21 @@ export default function UploadPage() {
         // console.log("UploadPage asyncUseEffect", {idInfo, editId, editFetched})
         if(!idInfo) {
             const id = getPassedId()
-            // console.log("Upload Page Fetching info/"+id);
-            const ir = await fetch(`info/${id}`)
+            console.log("Upload Page Fetching info/"+id);
+            const ir = await fetch(ServiceEndpoint(`/info/${id}/undefined/undefined`))
             const info = await ir.json()
+            console.log("received info ", info)
             if(info.artistName === 'undefined') info.artistName = ''
+            console.log("realized info ", info)
             setIdInfo(info)
-            // console.log("fetched for upload form", {info, idInfo})
+            console.log("fetched for upload form", {info, idInfo})
         }
         if(editId && !editFetched) {
-            // console.log("getting edit info for "+editId)
-            const er = await fetch(`tracks/${editId}`)
+            console.log("getting edit info for "+editId)
+            const er = await fetch(ServiceEndpoint(`/tracks/${editId}`))
             const info = await er.json()
-            // console.log("edit info returned ", {info})
+            console.log("edit info returned ", info)
+            console.log("edit info as json ", JSON.stringify(info))
             setEditFetched(true)
             const values = {
                 name: info.artistName,
@@ -76,9 +73,10 @@ export default function UploadPage() {
                 attr: info.attributions
             }
             setInputs(values)
-            // console.log("assets urls ", {art: info.artUrl, audio: info.audioUrl})
+            console.log("assets urls ", {art: info.artUrl, audio: info.audioUrl})
             if(info.artUrl) setEditArtUrl(info.artUrl)
             if(info.audioUrl) setEditAudioUrl(info.audioUrl)
+            console.log("inputs set to values ", values)
         }
         // console.log("done with asyncUseEffect")
     }
@@ -151,12 +149,14 @@ export default function UploadPage() {
         setUploading(true)
         const info:SubmissionMetadata = new SubmissionMetadata()
         info.artistId = getPassedId()
-        info.artistName = pick('artistName') ?? pick('name')
+        info.artistName = pick('name') ?? pick('artistName')
         info.title = pick('title')
         info.description = pick('desc')
         info.attributions = pick('attr')
         info.artFile = imageFile
         info.audioFile = audioFile
+
+        if(inputs['name']) info.artistName = inputs['name']
 
         if(!info.artistName) {
             setUploading(false)
@@ -173,20 +173,23 @@ export default function UploadPage() {
             alert("you didn't attach an audio file for your content!")
             return
         }
-
-        console.warn('calling conductSubmission now', {info, editId})
+        if(inputs['name']) info.artistName = inputs['name']
+        console.warn('calling conductSubmission now')
+        console.log("with info ", info)
+        console.log("and editId ", editId)
         conductSubmission(info, editId).then(resp => {
             // console.warn('conductSubmission completes with response', {resp})
-            // console.log(`writing artistName via /info/${info.artistId}/${info.artistName}`)
-            fetch(`/info/${info.artistId}/${info.artistName}`).then((fresp) => {
+            console.log(`writing artistName via /info/${info.artistId}/${info.artistName}`)
+            fetch(ServiceEndpoint(`/info/${info.artistId}/${info.artistName}/~`)).then((fresp) => {
                 fresp.json().then(data => {
                     setUploading(false)
                     if(editId) {
                         // alert('update complete!')
-                        location.href = '/?page=listen&id='+getPassedId()+"&ref="+editId
+                        location.href = ServiceEndpoint('/?page=listen&id='+getPassedId()+"&ref="+editId)
                     } else {
-                        // alert('upload complete!')
-                        location.href = '/?page=listen&id='+getPassedId()+"&ref="+data.metaId
+                        console.log("data from info: ", data)
+                        // alert('upload complete! data.metaId="'+resp.metaId+'"')
+                        location.href = ServiceEndpoint('/?page=listen&id='+getPassedId()+"&ref="+resp.metaId)
                     }
                 })
             })
@@ -227,7 +230,7 @@ export default function UploadPage() {
     // acceptedAudioTypes = at.join(',')
 
     function goHome() {
-        location.href = '/'
+        location.href = ServiceEndpoint('/')
     }
 
     // console.log("UploadPage rendering")
@@ -313,7 +316,7 @@ export default function UploadPage() {
                             />
                             <p style={{height:"10px"}}/>
                             <Typography style={heading} variant={"h6"}>Upload your content files</Typography>
-                            <Box sx={{ display: "flex", flexDirection: "column", justifyContent:"center", alignItems:"center", gap: 3 }}>
+                            <Box sx={{ marginTop: "10px", display: "flex", flexDirection: "column", justifyContent:"center", alignItems:"center", gap: 3 }}>
                                 <FileUploader
                                     editArtUrl={editArtUrl}
                                     editAudioUrl={editAudioUrl}
@@ -323,7 +326,7 @@ export default function UploadPage() {
                                 {/*<FileUpload onFileUpload={handleAudioUpload} acceptedTypes={acceptedAudioTypes} label="Upload Audio File" />*/}
                             </Box>
                         </form>
-                        <div style={{ marginTop: "20px", display: "flex", justifyContent: "center" }}>
+                        <div style={{ marginTop: "30px", display: "flex", justifyContent: "center" }}>
                             <Button variant={"contained"} onClick={handleSubmit}>{
                                 editId ? "Update Your Content" : "Submit Your Creation!"
                             }</Button>
@@ -339,20 +342,23 @@ export default function UploadPage() {
 function handleDelete() {
     const editId = getEditId()
     console.warn("Deleting "+editId)
-    fetch('/delete/'+editId).then(() =>{
+    fetch(ServiceEndpoint('/delete/'+editId), {method:"DELETE"}).then(() =>{
+
         console.log("returned from delete")
         // alert('content deleted!')
-        location.href = '/?page=listen&id='+getPassedId()
+        location.href = ServiceEndpoint('/?page=listen&id='+getPassedId())
 
     })
 }
 
 function DeleteContent(props) {
-    return(
-        <>
-            <div style={{marginTop: "10px", display: "flex", justifyContent: "center"}}>
-                <Button variant={"contained"} onClick={handleDelete}>Delete this submission</Button>
-            </div>
-        </>
-    )
+    if(getEditId()) { // only show if we are editing
+        return (
+            <>
+                <div style={{marginTop: "15px", display: "flex", justifyContent: "center"}}>
+                    <Button variant={"contained"} onClick={handleDelete}>Delete this submission</Button>
+                </div>
+            </>
+        )
+    }
 }

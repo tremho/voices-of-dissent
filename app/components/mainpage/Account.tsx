@@ -9,15 +9,8 @@ Create the UI for account info
 import React from 'react'
 import {Button} from "@mui/material";
 import {LoadingSpinner} from "../LoadingSpinner";
-
-// TODO: Need to find a better, global way to do this. Maybe inverse-y can fetch JSON from self instead of using 'fs'
-function getAssetUrl(idPath) {
-    // console.log('getAssetUrl', {host: location.host, idPath})
-    if(location.host.indexOf('localhost') !== -1) {
-        return idPath
-    }
-    return "https://tremho-voices-of-dissent.s3.us-west-1.amazonaws.com/"+idPath
-}
+import ServiceEndpoint from "../../../commonLib/ServiceEndpoint";
+import {getAssetUrl} from "../../../commonLib/ServiceEndpoint";
 
 
 export function AccountControl(props) {
@@ -65,7 +58,7 @@ function LogoutAction(props) {
     function doLogout() {
         // console.log("Doing logout")
         props.logout()
-        location.href = '/'
+        location.href = ServiceEndpoint('/')
     }
     const buttonPlacement:any = {
         height: "50px"
@@ -217,7 +210,8 @@ async function extractIdentityInfo(identity:any) {
     if(avatar) out.avatar = avatar
 
     // record the email and the default name for this user. If they have set an artist name, we'll get that back as name
-    const aiResp = await fetch(`/info/${identity?.userIdentity}/${out.name}/${email}`)
+    console.log("fetch info for default")
+    const aiResp = await fetch(ServiceEndpoint(`/info/${identity?.userIdentity}/${out.name}/${email?email:'~'}`))
     const addInfo:any = await aiResp.json()
     out.artistName = addInfo.artistName
 

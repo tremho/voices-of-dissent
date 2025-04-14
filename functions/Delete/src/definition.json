@@ -3,28 +3,16 @@
   "description": "deletes the designated submission",
   "version": "1.0.0",
   "pathMap": "/delete/{artist}/{id}",
-  "method": "GET",
+  "method": "DELETE",
   "timeoutSeconds": 0,
   "memorySize": 0,
   "schemas": {
   },
   "parameters": [
-    {
-      "name": "artist",
-      "in": "path",
-      "type": "string",
-      "description": "the artist id part of info identification"
-    },
-    {
-      "name": "id",
-      "in": "path",
-      "type": "string",
-      "description": "the timestamp/id key of the info object"
-    }
   ],
   "returns": {
     "200": {
-      "type": "empty",
+      "type": "Empty",
       "description": "successful response."
     },
     "500": {

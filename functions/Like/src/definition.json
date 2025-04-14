@@ -3,45 +3,57 @@
   "description": "(PUT) return number of likes, optionally adding or subtracting to count",
   "version": "1.0.0",
   "pathMap": "/like/{likerId}/{artistId}/{contentId}/{likeType}",
-  "method": "PUT",
+  "method": "GET",
   "timeoutSeconds": 0,
   "memorySize": 0,
   "schemas": {
-    "Response": {
-      "like": "boolean",
-      "numLikes": "number"
+    "LikeResponse": {
+      "description": "response of Like operation",
+      "properties": {
+        "like": {
+          "type": "boolean",
+          "description": "is this currently liked by likerId?"
+        },
+        "numLikes": {
+          "type": "number",
+          "description": "total number of likes associated with this content"
+        }
+      }
     }
-  },
+ },
   "parameters": [
     {
       "name": "likerId",
-      "in": "path",
       "type": "string",
-      "description": "the userIdentity of the one doing the liking"
+      "in": "path",
+      "description": "the user Id of the person doing the liking"
     },
     {
       "name": "artistId",
-      "in": "path",
       "type": "string",
-      "description": "the id of the artist (metaId)"
+      "in": "path",
+      "description": "the artistId of the content being liked"
     },
     {
       "name": "contentId",
-      "in": "path",
       "type": "string",
-      "description": "the id of the content data"
+      "in": "path",
+      "description": "the contentId of the content being liked"
     },
     {
       "name": "likeType",
-      "in": "path",
       "type": "string",
-      "description": "'like' to add, 'dislike' to subtract, other to return without adding or subtracting first"
+      "in": "path",
+      "description": "type of like operation",
+      "constraints": [
+        "oneOf=like|dislike"
+      ]
     }
 
   ],
   "returns": {
     "200": {
-      "type": "Response",
+      "type": "LikeResponse",
       "description": "successful response."
     },
     "500": {

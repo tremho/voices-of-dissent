@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { IconButton, Button, Snackbar } from "@mui/material";
 import { ThumbUp, ThumbUpOffAlt } from "@mui/icons-material";
+import ServiceEndpoint from "../../../commonLib/ServiceEndpoint";
 
 const tiLayout:any = {
     display:"flex",
@@ -92,7 +93,7 @@ function handleEdit(contentId) {
     console.log("Handle Edit", {contentId})
     if(contentId) {
         const parts = contentId.split('/')
-        location.href = '/?page=upload&id='+parts[0]+'&edit='+parts[1]
+        location.href = ServiceEndpoint('/?page=upload&id='+parts[0]+'&edit='+parts[1])
     }
 
 }
@@ -103,6 +104,8 @@ export function TrackInfo(props) {
     const [snackMessage, setSnackMessage] = useState('')
     // console.log("selectedData passed into TrackInfo", props.selectedData)
     function LikeButton() {
+
+        if(!props?.identity) return
 
         // console.log("selectedData passed into LikeButton", props.selectedData)
 
@@ -120,16 +123,14 @@ export function TrackInfo(props) {
 
             // note that 'id' is both artistId and contentId combined already...
             let likerId = props?.identity ?? ''
-            if(!likerId || !contentId || contentId === 'undefined') contentId = ''
+            if(!likerId || !contentId) contentId = ''
             if(!likerId || !contentId) likeType = ''
 
-            // console.log("like properties", {likerId, artistId, contentId, likeType})
-            const likeUrl = `/like/${likerId}/${artistId}/${contentId}/${likeType}`
-            // console.log("Fetching like", {props, likeUrl})
-            const resp = await fetch(likeUrl, {
-                method:"PUT",
-                headers: { "Content-Type": "application/json" }
-            })
+            console.log("like properties", {likerId, artistId, contentId, likeType})
+            let likeUrl = ServiceEndpoint(`/like/${likerId ? likerId : '~'}/${artistId ? artistId : '~'}/${contentId ? contentId : '~'}/${likeType ? likeType : '~'}`)
+
+            console.log("Fetching like", {props, likeUrl})
+            const resp = await fetch(likeUrl)
             const likeInfo = await resp.json()
             setNumLikes(likeInfo.numLikes)
             setLiked(likeInfo.like)
@@ -154,7 +155,7 @@ export function TrackInfo(props) {
 
     function copyShareUrl(type, data) {
         if(!data) return ''
-        const url = type === 'song' ? location.protocol+'//'+location.host+'/?page=listen&ref='+(data?.id ?? '')
+        const url = type === 'song' ? location.protocol+'//'+location.host+ServiceEndpoint('/?page=listen&ref='+(data?.id ?? ''))
             : data?.audioUrl ?? ''
         navigator.clipboard.writeText(url)
         // console.log("to clipboard ", url)

@@ -4,36 +4,50 @@
   "version": "1.0.0",
   "pathMap": "/info/{id}/{name}/{email}",
   "method": "GET",
-  "timeoutSeconds": 0,
+  "timeoutSeconds": 5,
   "memorySize": 0,
   "schemas": {
-    "Response": {
-      "artistName": "string"
+    "InfoResponse": {
+      "description": "Data returned for user info",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "name of the user"
+        },
+        "artistName": {
+          "type": "string",
+          "description": "artist name of the user"
+        },
+        "email": {
+          "type": "string",
+          "description": "user email"
+        }
+      }
     }
   },
   "parameters": [
     {
       "name": "id",
-      "type": "string",
       "in": "path",
-      "description": "id of logged in user"
+      "type": "string",
+      "description": "the UserIdentity string for this user from login"
     },
     {
       "name": "name",
-      "type": "string",
       "in": "path",
-      "description": "name of user as returned by identity (may be empty)"
+      "type": "string",
+      "description": "the name of this user"
     },
     {
       "name": "email",
-      "type": "string",
       "in": "path",
-      "description": "email of logged in user as returned by identity"
+      "type": "string",
+      "description": "the email of this user"
     }
   ],
   "returns": {
     "200": {
-      "type": "Response",
+      "type": "InfoResponse",
       "description": "successful response."
     },
     "500": {

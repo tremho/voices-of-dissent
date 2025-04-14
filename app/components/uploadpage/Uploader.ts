@@ -1,18 +1,7 @@
 
 import {SubmissionMetadata} from "../../../commonLib/SubmissionMetadata";
 import base64 from 'base64-js'
-
-/**
- * Returns the endpoint for the requested function
- * depending upon deployment environment
- * in case host needs to be adjusted
- *
- * @param funcPath -- the relative path
- */
-function getLambdaEndpoint(funcPath) {
-    // no host adjustment
-    return funcPath
-}
+import ServiceEndpoint from "../../../commonLib/ServiceEndpoint";
 
 /**
  * Handles the complete submission process
@@ -20,9 +9,10 @@ function getLambdaEndpoint(funcPath) {
  * @param info -- the SubmissionMetadata object that contains submission data
  */
 export async function conductSubmission(info:SubmissionMetadata, editId?:string) {
-    let initPath = '/initiate/'
+    let initPath = '/upstart/'
     if(editId) initPath += editId
-    const initUrl = getLambdaEndpoint(initPath)
+    else initPath += 'undefined/undefined'
+    const initUrl = ServiceEndpoint(initPath)
     console.log("conductSubmissions - Posting to "+(editId?"edit":"start")+" at init url", initUrl)
     console.log("info ", info)
     const eInfo:any = {
@@ -40,14 +30,20 @@ export async function conductSubmission(info:SubmissionMetadata, editId?:string)
         artUrl: (info as any).artUrl,
         audioUrl: (info as any).audioUrl
     }
-    console.log("Fetching at "+initUrl)
-    const resp:any = await fetch(initUrl, {
-        method: "POST",
-        headers: {"Content-Type":"application/json"},
-        body:  JSON.stringify(eInfo)
-    })
-    let data = await resp.json()
-    console.log("initiate response ", resp, data)
+    console.log("Fetching init at "+initUrl)
+    console.log("einfo", eInfo)
+    let data:any = {}
+    try {
+        const resp: any = await fetch(initUrl, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(eInfo)
+        })
+        data = await resp.json()
+    } catch(e:any) {
+        console.error(">>> at upload start fetch: ", e)
+    }
+    console.log("initiate response data", data)
 
     let {metaId, artId, audioId} = data
     if(editId) metaId = editId
@@ -60,16 +56,20 @@ export async function conductSubmission(info:SubmissionMetadata, editId?:string)
     // upload chunks for art
     console.log("Uploading art file", info.artFile?.name)
     const artUrl = await uploadFileInChunks(info.artFile, artId, metaId+'/art')
-    console.log("art url is ", artUrl)
+    console.log("+>+>+>+>+>+>> art url is ", artUrl)
+    // alert("pausing after art upload")
     // upload chunks for audio
     console.log("Uploading audio file", info.audioFile?.name)
     const audioUrl = await uploadFileInChunks(info.audioFile, audioId, metaId+'/audio')
-    console.log("audio url is", audioUrl)
+    console.log("+>+>+>+>+>+>> audio url is", audioUrl)
+    // alert("pausing after audio upload")
     // do final binding
     const bindId = metaId
     console.log("doing binding ", {bindId, audioUrl, artUrl})
+    console.log("final artist name ", info.artistName)
     const fresp:any = await doFinalBinding(bindId, info.artistName, audioUrl, artUrl)
     console.log("response from final", fresp)
+    // alert("pause to take this in")
     return fresp
 
 }
@@ -90,32 +90,32 @@ async function uploadFileInChunks(file:File, uploadId:string, fileKey:string) : 
 
     const fk = fileKey.replace('/', ':').replace('/', ':') // There are two
 
+    console.log("values", {uploadId, fileKey, fk, totalChunks, name:file?.name})
+
     console.log(`Starting upload of ${totalChunks} chunks`)
     for(let chunkIndex=0; chunkIndex<totalChunks; chunkIndex++) {
-        const start = chunkIndex * CHUNK_SIZE;
-        const end = Math.min(start + CHUNK_SIZE, file.size);
-        const chunk = file.slice(start, end);
-        const chunkArrayBuffer = await chunk.arrayBuffer();
-        // const chunkBase64 = Buffer.from(chunkArrayBuffer).toString("base64")
-        const chunkUint8Array = new Uint8Array(chunkArrayBuffer);
-        const chunkBase64 = base64.fromByteArray(chunkUint8Array)
-        const chunkUrl = getLambdaEndpoint(`/chunk/${uploadId}/${fk}/${chunkIndex}`)
+            const chunkUrl = ServiceEndpoint(`/chunk/${uploadId?uploadId:'~'}/${fk?fk:'~'}/${chunkIndex}`)
+            const start = chunkIndex * CHUNK_SIZE
+            const end = Math.min(start + CHUNK_SIZE, file.size);
+            const chunk = file.slice(start, end);
+            const chunkArrayBuffer = await chunk.arrayBuffer();
+            // const chunkUint8Array = new Uint8Array(chunkArrayBuffer);
 
+        console.log("fetching chunk @ ", chunkUrl)
+        console.log("with", {uploadId, fk, chunkIndex, totalChunks})
+        const range = end-start
+        console.log("sizes", {range, CHUNK_SIZE})
         const resp:any = await fetch(chunkUrl, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                base64: chunkBase64,
-                chunkIndex,
-                totalChunks
-            })
+            headers: { "Content-Type": "application/octet-stream" },
+            body: chunkArrayBuffer
         });
-        console.log(`chunk index ${chunkIndex} uploaded size ${chunkBase64.length}`)
+        console.log(`chunk index ${chunkIndex} uploaded size ${chunkArrayBuffer.byteLength}`)
     }
     console.log("done uploading... now doing completion")
 
     // now complete it
-    const completeUrl = getLambdaEndpoint(`/complete/${uploadId}/${fk}`)
+    const completeUrl = ServiceEndpoint(`/complete/${uploadId}/${fk}`)
     const resp:any = await fetch(completeUrl)
     const data = await resp.json()
     console.log("return from complete", {data})
@@ -131,7 +131,8 @@ async function uploadFileInChunks(file:File, uploadId:string, fileKey:string) : 
  */
 async function doFinalBinding(metaId:string, artistName:string, audioUrl?:string, artUrl?:string) {
 
-    const finalUrl = getLambdaEndpoint('/finalize/')
+    const finalUrl = ServiceEndpoint('/finalize')
+    console.log("fetching final @ ", finalUrl)
     const resp:any = await fetch(finalUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

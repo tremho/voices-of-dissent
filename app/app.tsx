@@ -35,6 +35,8 @@ root.render(
                 <Route path = '/' element= {pageComp} />
                 <Route path = '/Dev/index.html' element= {pageComp} />
                 <Route path = '/Dev/+' element= {pageComp} />
+                <Route path = '/vod/index.html' element= {pageComp} />
+                <Route path = '/vod/+' element= {pageComp} />
             </Routes>
         </BrowserRouter>
     </>

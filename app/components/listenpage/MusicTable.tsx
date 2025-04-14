@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import MusicNoteIcon from "@mui/icons-material/MusicNote"
+import ServiceEndpoint from "../../../commonLib/ServiceEndpoint";
 
 export const MusicTable = (props) => {
     const data = props?.data
@@ -60,18 +61,30 @@ export const MusicTable = (props) => {
     let killTimer:any
     async function updateIdentitySkips(skipArray = skippedIds, noBody = false, ) {
         // console.warn('------updateIdentitySkips-------', skipArray)
-        if(killTimer) return
+        if(killTimer || !identity) return
         killTimer = setTimeout(async () => {
-            const skipsUrl = `/skips/${identity}`
+            let skipPath = '/skips/'
+            if(identity) skipPath += identity
+            else skipPath += 'undefined'
+            const skipsUrl = ServiceEndpoint(skipPath)
             const sids = Array.isArray(skipArray) ? skipArray : []
             const body = {skippedIds: sids}
+            console.log("fetching skips ", skipsUrl)
+            if(!noBody) console.log("skipped body ", body)
             const resp = await fetch(skipsUrl, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: noBody ? undefined : JSON.stringify(body)
             })
             // console.log("updateIdentitySkips - ", {body, noBody, sids, skippedIds})
-            const skresp:any = await resp.json()
+            const skresptext:string = await resp.text()
+            console.log("skips response text", {skresptext})
+            let skresp:any = {}
+            try {
+                skresp = JSON.parse(skresptext)
+            } catch(e:any) {
+                console.error("Parse error reading skip response ", skresptext)
+            }
             const skipped = skresp?.skipped ?? []
             // console.warn("Skipped returned from updateIdentitySkips", skipped)
             setSkippedIds(skipped)

@@ -4,37 +4,42 @@
   "version": "1.0.0",
   "pathMap": "/chunk/{uploadId}/{fileKey}/{chunkIndex}",
   "method": "POST",
-  "timeoutSeconds": 0,
-  "memorySize": 0,
+  "bodyType": "application/octet-stream",
+  "timeoutSeconds": 10,
+  "memorySize": 200,
   "schemas": {
-    "Response": {
-      "etag": "string",
-      "index": "number"
-    }
   },
   "parameters": [
     {
       "name": "uploadId",
       "type": "string",
       "in": "path",
-      "description": "The uploadId for this asset obtained from UploadInitiate action"
+      "description": "The upload Id returned from UploadStart"
     },
     {
       "name": "fileKey",
       "type": "string",
       "in": "path",
-      "description": "the key for this file. use ':' as a substitute for '/'"
+      "description": "fileKey - replace / characters with : before submitting",
+      "constraints": [
+        "contains=:"
+      ]
     },
     {
       "name": "chunkIndex",
       "type": "number",
       "in": "path",
-      "description": "the index of the chunk order for this chunk"
+      "description": "which number chunk this is in sequence",
+      "constraints": [
+        "positive",
+        "integer",
+        "min=0"
+      ]
     }
   ],
   "returns": {
     "200": {
-      "type": "Response",
+      "type": "empty",
       "description": "successful response."
     },
     "500": {

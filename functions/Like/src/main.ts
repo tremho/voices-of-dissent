@@ -18,19 +18,28 @@ const def = JSON.parse(fs.readFileSync(path.join(__dirname, "definition.json")).
 
 const service = new LambdaApi<any>(def,
     async (event:any) => {
-        Log.Info("Entering Like");
-        let {likerId, artistId, contentId, likeType} = event.parameters
+        Log.Info("Entering Like", {event});
 
-        Log.Info("raw parameters", {likerId, artistId, contentId, likeType})
+        // let index = 1; // skip name
+        // if(event.request.originalUrl.indexOf("tremho.com") !== -1) index++ // skip pfx
+        // let [likerId, artistId, contentId, likeType] = event.pathParts.slice(index)
+        //
+        // Log.Info("raw parameters", {likerId, artistId, contentId, likeType})
+        //
+        // if(likerId === 'undefined') likerId = ''
+        // if(artistId === 'undefined') artistId = ''
+        // if(contentId === 'undefined') contentId = ''
+        // if(likeType === 'undefined') likeType = ''
 
-        if(likerId === 'undefined') likerId = ''
-        if(artistId === 'undefined') artistId = ''
-        if(contentId === 'undefined') contentId = ''
-        if(likeType === 'undefined') likeType = ''
+        const {likerId, artistId, contentId, likeType} = event.parameters
 
         Log.Info("parameters", {likerId, artistId, contentId, likeType})
 
-        if(!artistId || !contentId) return Success({like:false, numLikes: 0})
+        if(!artistId || !contentId) {
+            Log.Info("early return")
+            return Success({like:false, numLikes: 0})
+        }
+        Log.Info("continuing to process likeType "+likeType+" for "+artistId+'/'+contentId)
 
         const bucket = 'tremho-vod-data'
         const key = artistId+'/'+contentId
@@ -61,7 +70,16 @@ const service = new LambdaApi<any>(def,
             like: likeNow,
             numLikes: data.likers.length
         }
-        return Success( out)
+        const resp:any = Success(out)
+        if(!resp.headers) resp.headers = {}
+        // Add CORS Headers explicitly
+        resp.headers = Object.assign(resp.headers, {
+            "Access-Control-Allow-Headers" : "*",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,GET"
+        })
+        return resp
+
     }
 )
 export function start(e:any, c:any, cb:any) {

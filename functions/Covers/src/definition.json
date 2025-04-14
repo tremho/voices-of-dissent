@@ -4,16 +4,20 @@
   "version": "1.0.0",
   "pathMap": "/covers",
   "method": "GET",
-  "timeoutSeconds": 0,
+  "timeoutSeconds": 12,
   "memorySize": 0,
   "schemas": {
+    "CoversResponse": {
+      "type": "string[]",
+      "description": "An array of urls to selected covers"
+    }
   },
   "parameters": [
   ],
   "returns": {
     "200": {
-      "type": "empty",
-      "description": "successful response."
+      "type": "CoversResponse",
+      "description": "successful response will have the cover urls chosen"
     },
     "500": {
       "type": "string",

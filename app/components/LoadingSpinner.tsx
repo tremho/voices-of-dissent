@@ -1,4 +1,5 @@
 import React from 'react'
+import {getAssetUrl} from "../../commonLib/ServiceEndpoint";
 
 const overlay:any = {
     position:"absolute",
@@ -14,7 +15,7 @@ export function LoadingSpinner(props) {
         return (
             <>
                 <div style={overlay}>
-                    <img src={"images/blue_spinner.gif"}/>
+                    <img src={getAssetUrl("images/blue_spinner.gif")}/>
                 </div>
             </>
         )

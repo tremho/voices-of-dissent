@@ -20,16 +20,39 @@ const def = JSON.parse(fs.readFileSync(path.join(__dirname, "definition.json")).
 const service = new LambdaApi<any>(def,
     async (event:any) => {
         let resp
-        Log.Info("Entering Tracks");
-        const {artist, id} = event.parameters
+        Log.Info("Entering Tracks", {event});
+        // let index = 1; // skip name
+        // if(event.request.originalUrl.indexOf("tremho.com") !== -1) {
+        //     index++ // skip prefix before name
+        // }
+        // let pathParts = event.pathParts
+        // if(pathParts.length === 0) {
+        //     pathParts = event.request.originalUrl.split('/')
+        //     index = pathParts.indexOf('tracks')+1
+        // }
+        // let [artist, id] = pathParts.slice(index)
+        // if(!artist || artist === 'undefined') artist = ''
+
+        let {artist, id} = event.parameters
+
+        if(!id || id === 'undefined') id = ''
         console.log("parameters passed", {artist, id})
-        if(artist && id) {
+        if(artist?.length && id?.length) {
             resp = await getTopLevelInfo(artist, id)
         } else {
             resp = await getAllTracks()
         }
-        // console.log("returning", {resp})
-        return Success(resp)
+        console.log("returning", {resp})
+        const respx:any = Success(resp)
+        if(!respx.headers) respx.headers = {}
+        // Add CORS Headers explicitly
+        respx.headers = Object.assign(respx.headers, {
+            "Access-Control-Allow-Headers" : "*",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,GET"
+        })
+        return respx
+
     }
 )
 export function start(e:any, c:any, cb:any) {
@@ -41,6 +64,7 @@ const infoBucket = 'tremho-vod-info'
 
 let tlName = ''
 async function getAllTracks() :Promise<TrackData[]> {
+    console.log("getAllTracks")
     let outTracks:any[] = []
     let tracks: string[] = []
     try {
@@ -52,20 +76,27 @@ async function getAllTracks() :Promise<TrackData[]> {
     const out:TrackData[] = []
     for(let item of tracks) {
         const [artist, id] = item.split('/')
+        console.log("getting tl info for "+ artist +'/' + id)
         const tl = await getTopLevelInfo(artist, id)
         if(tl.artistName) tlName = tl.artistName
-        out.push(tl)
+        if(tl.artistId) out.push(tl)
     }
     return out
 }
 async function getTopLevelInfo(artist:string, id:string) : Promise<TrackData> {
 
     Log.Info("toplevel name ", tlName)
-    const info = await s3GetObject(infoBucket, artist)
+    if(artist === 'undefined') artist = ''
+    if(id === 'undefined') id = ''
+    if(!tlName) {
+        Log.Info("getting tlName")
+        const info = artist ? await s3GetObject(infoBucket, artist) : {}
+        tlName = info?.artistName ?? ''
+    }
+    if(!artist) return {} as TrackData
     const trackInfo:TrackData = await s3GetObject(dataBucket, artist+'/'+id)
     Log.Info('trackInfo in', {trackInfo})
     trackInfo.id = artist+'/'+id
-    trackInfo.artistName = info.artistName ?? tlName
     if(trackInfo.artistName === 'undefined') trackInfo.artistName = tlName
     trackInfo.artFileName = (trackInfo as any).artFile?.path?.substring(1) ?? ''
     trackInfo.audioFileName = (trackInfo as any).audioFile?.path?.substring(1) ?? ''

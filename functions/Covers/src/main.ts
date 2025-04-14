@@ -65,13 +65,17 @@ async function getCovers(num) :Promise<string[]> {
     async function getArtUrl(item) {
         if(!item) return ''
         const [artist, id] = item.split('/')
+        Log.Info("getArtUrl ", {item, artist, id})
+        if(!artist || artist === 'undefined' || !id || id === 'undefined') return ''
         const tl = await getTopLevelInfo(artist, id)
+        Log.Info("topLevel info", {tl})
         return tl.artUrl
     }
     for(let p of picks) {
         Log.Info("processing pick ", p)
         let url = ''
-        while(!url) {
+        let maxtoploops = 3
+        while(!url && --maxtoploops) {
             let item = tracks[p]
             url = await getArtUrl(item)
             Log.Info("picked", {item, url})
@@ -88,11 +92,23 @@ async function getCovers(num) :Promise<string[]> {
         }
     }
     Log.Info("returning cover results ", out)
-    return out
+    const resp:any = Success(JSON.stringify(out), 'text/plain')
+    if(!resp.headers) resp.headers = {}
+    // Add CORS Headers explicitly
+    resp.headers = Object.assign(resp.headers, {
+        "Access-Control-Allow-Headers" : "*",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "OPTIONS,GET"
+    })
+    return resp
 }
 async function getTopLevelInfo(artist:string, id:string) : Promise<TrackData> {
 
-    const info = await s3GetObject(infoBucket, artist)
+    let info:any = {}
+    try {
+        info = await s3GetObject(infoBucket, artist)
+    } catch(e:any) {}
+
     const trackInfo:TrackData = await s3GetObject(dataBucket, artist+'/'+id)
     trackInfo.id = artist+'/'+id
     trackInfo.artistName = info.artistName

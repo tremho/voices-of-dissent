@@ -31,7 +31,16 @@ const service = new LambdaApi<any>(def,
         Log.Info("deleting audio object "+ contentId)
         await s3Delete(audioBucket, contentId+'/audio')
 
-        return Success("Hello, World!")
+        const resp:any = Success('')
+        if(!resp.headers) resp.headers = {}
+        // Add CORS Headers explicitly
+        resp.headers = Object.assign(resp.headers, {
+            "Access-Control-Allow-Headers" : "*",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "OPTIONS,GET"
+        })
+        return resp
+
     }
 )
 export function start(e:any, c:any, cb:any) {

@@ -4,27 +4,71 @@
   "version": "1.0.0",
   "pathMap": "/tracks/{artist}/{id}",
   "method": "GET",
-  "timeoutSeconds": 0,
-  "memorySize": 0,
+  "timeoutSeconds": 8,
+  "memorySize": 256,
   "schemas": {
+    "TrackInfo": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "the full content id of this track"
+        },
+        "artistId":{
+          "type": "string",
+          "description": "the artistId for this track"
+        },
+        "artistName" :{
+          "type": "string",
+          "description": "the artist name associated with this track"
+        },
+        "title": {
+          "type": "string",
+          "description": "the title of the track"
+        },
+        "description": {
+          "type": "string",
+          "description": "the description text for the track"
+        },
+        "attributions": {
+          "type": "string",
+          "description": "attributions given"
+        },
+        "artUrl": {
+          "type": "string",
+          "description": "if defined, the s3 url for the cover art"
+        },
+        "audioUrl": {
+          "type": "string",
+          "description": "if defined, the s3 url for the audio"
+        },
+        "artFileName": {
+          "type": "string",
+          "description": "name of the uploaded cover art file"
+        },
+        "audioFileName": {
+          "type": "string",
+          "description": "name of the uploaded audio file"
+        }
+      }
+    }
   },
   "parameters": [
     {
       "name": "artist",
-      "in": "path",
       "type": "string",
-      "description": "if defined, it's the artist id part of info identification"
+      "description": "the id of the artist for a specific track,, undefined for all tracks",
+      "in": "path"
     },
     {
       "name": "id",
-      "in": "path",
       "type": "string",
-      "description": "must be defined if artist is defined and is the timestamp/id key of the info object"
+      "description": "the id of a specific piece of content for a specific track, undefined for all tracks",
+      "in": "path"
     }
   ],
   "returns": {
     "200": {
-      "type": "empty",
+      "type": "TrackInfo[]",
       "description": "successful response."
     },
     "500": {

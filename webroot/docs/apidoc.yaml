@@ -1,350 +1,418 @@
 openapi: 3.0.0
 info:
-  title: voices-of-dissent
+  title: AprilFools
   version: 1.0.0-prerelease.1
 paths:
   /covers:
     get:
       summary: Covers
-      description: returns array of at least three cover art selections to use for main page
+      description: >-
+        returns array of at least three cover art selections to use for main
+        page
       responses:
-        "200":
-          description: successful response.
+        '200':
+          description: successful response will have the cover urls chosen
           content:
-            text/plain: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CoversResponse'
+        '500':
+          type: string
+          description: Error details
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Covers_-__AprilFools_1cbb6659/invocations
+        passthroughbehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
   /delete/{artist}/{id}:
-    get:
+    delete:
       summary: Delete
       description: deletes the designated submission
       responses:
-        "200":
+        '200':
           description: successful response.
           content:
-            text/plain: {}
-    parameters:
-      - in: path
-        name: artist
-        description: the artist id part of info identification
-        example: ""
-        schema:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+        '500':
           type: string
-          example: ""
-      - in: path
-        name: id
-        description: the timestamp/id key of the info object
-        example: ""
-        schema:
-          type: string
-          example: ""
+          description: Error details
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Delete_-__AprilFools_1cbb6659/invocations
+        passthroughbehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
   /info/{id}/{name}/{email}:
     get:
       summary: Info
       description: sets and returns information recorded for a logged in user
       responses:
-        "200":
+        '200':
           description: successful response.
           content:
-            text/plain: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InfoResponse'
+        '500':
+          type: string
+          description: Error details
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Info_-__AprilFools_1cbb6659/invocations
+        passthroughbehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
     parameters:
       - in: path
         name: id
-        description: id of logged in user
-        example: ""
+        description: the UserIdentity string for this user from login
+        required: true
         schema:
           type: string
-          example: ""
       - in: path
         name: name
-        description: name of user as returned by identity (may be empty)
-        example: ""
+        description: the name of this user
+        required: true
         schema:
           type: string
-          example: ""
       - in: path
         name: email
-        description: email of logged in user as returned by identity
-        example: ""
+        description: the email of this user
+        required: true
         schema:
           type: string
-          example: ""
   /like/{likerId}/{artistId}/{contentId}/{likeType}:
-    put:
+    get:
       summary: Like
       description: (PUT) return number of likes, optionally adding or subtracting to count
       responses:
-        "200":
+        '200':
           description: successful response.
           content:
-            text/plain: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LikeResponse'
+        '500':
+          type: string
+          description: Error details
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Like_-__AprilFools_1cbb6659/invocations
+        passthroughbehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
     parameters:
       - in: path
         name: likerId
-        description: the userIdentity of the one doing the liking
-        example: ""
+        description: the user Id of the person doing the liking
+        required: true
         schema:
           type: string
-          example: ""
       - in: path
         name: artistId
-        description: the id of the artist (metaId)
-        example: ""
+        description: the artistId of the content being liked
+        required: true
         schema:
           type: string
-          example: ""
       - in: path
         name: contentId
-        description: the id of the content data
-        example: ""
+        description: the contentId of the content being liked
+        required: true
         schema:
           type: string
-          example: ""
       - in: path
         name: likeType
-        description: "'like' to add, 'dislike' to subtract, other to return without
-          adding or subtracting first"
-        example: ""
+        description: |-
+          type of like operation
+            - "oneof" is not a recognized constraint for string
+        required: true
         schema:
           type: string
-          example: ""
   /secrets:
     get:
       summary: Secrets
       description: Returns the secrets for this app as a full json object
       responses:
-        "200":
-          description: json object
+        '200':
+          description: json object containing secret keys and values for this app
           content:
-            text/plain: {}
+            text/plain:
+              schema:
+                type: object
+        '500':
+          type: string
+          description: Error details
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Secrets_-__AprilFools_1cbb6659/invocations
+        passthroughbehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
   /skips/{identity}:
     post:
       summary: Skips
-      description: Records the items marked as skipped for this user. array of skip
-        ids is in body
+      description: >-
+        Records the items marked as skipped for this user. array of skip ids is
+        in body
       responses:
-        "200":
+        '200':
           description: successful response.
           content:
-            text/plain: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+        '500':
+          type: string
+          description: Error details
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Skips_-__AprilFools_1cbb6659/invocations
+        passthroughbehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
     parameters:
       - in: path
         name: identity
-        description: defines the user to record skips for
-        example: ""
+        description: The identity of the logged in user
+        required: true
         schema:
           type: string
-          example: ""
   /tracks/{artist}/{id}:
     get:
       summary: Tracks
-      description: returns the list of tracks currently available. each invocation is
-        a new shuffled order
+      description: >-
+        returns the list of tracks currently available. each invocation is a new
+        shuffled order
       responses:
-        "200":
+        '200':
           description: successful response.
           content:
-            text/plain: {}
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TrackInfo'
+        '500':
+          type: string
+          description: Error details
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Tracks_-__AprilFools_1cbb6659/invocations
+        passthroughbehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
     parameters:
       - in: path
         name: artist
-        description: if defined, it's the artist id part of info identification
-        example: ""
+        description: the id of the artist for a specific track,, undefined for all tracks
+        required: true
         schema:
           type: string
-          example: ""
       - in: path
         name: id
-        description: must be defined if artist is defined and is the timestamp/id key of
-          the info object
-        example: ""
+        description: >-
+          the id of a specific piece of content for a specific track, undefined
+          for all tracks
+        required: true
         schema:
           type: string
-          example: ""
   /chunk/{uploadId}/{fileKey}/{chunkIndex}:
     post:
       summary: UploadChunk
       description: uploads a chunk of data in a multi-chunk file transfer. data in body
       responses:
-        "200":
+        '200':
           description: successful response.
           content:
-            text/plain: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+        '500':
+          type: string
+          description: Error details
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadChunk_-__AprilFools_1cbb6659/invocations
+        passthroughbehavior: when_no_match
+        contentHandling: CONVERT_TO_BINARY
+        httpMethod: POST
+        type: aws_proxy
     parameters:
       - in: path
         name: uploadId
-        description: The uploadId for this asset obtained from UploadInitiate action
-        example: ""
+        description: The upload Id returned from UploadStart
+        required: true
         schema:
           type: string
-          example: ""
       - in: path
         name: fileKey
-        description: the key for this file. use ':' as a substitute for '/'
-        example: ""
+        description: |-
+          fileKey - replace / characters with : before submitting
+            - must contain substring ":"
+        required: true
         schema:
           type: string
-          example: ""
       - in: path
         name: chunkIndex
-        description: the index of the chunk order for this chunk
-        example: ""
+        description: |-
+          which number chunk this is in sequence
+            - number must be an integer
+            - number must be positive
+            - Minimum value is 0
+        required: true
         schema:
           type: number
-          example: ""
   /complete/{uploadId}/{fileKey}:
     get:
       summary: UploadComplete
-      description: ""
+      description: Completes the upload of an asset
       responses:
-        "200":
-          description: successful response. Url will be the accessible url of the asset
+        '200':
+          description: successful response.
           content:
-            text/plain: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+        '500':
+          type: string
+          description: Error details
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadComplete_-__AprilFools_1cbb6659/invocations
+        passthroughbehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
     parameters:
       - in: path
         name: uploadId
-        description: The uploadId for this asset obtained from UploadInitiate action
-        example: ""
+        description: the uploadId we have completed chunk transfer for
+        required: true
         schema:
           type: string
-          example: ""
       - in: path
         name: fileKey
-        description: the key for this file. use ':' as a substitute for '/'
-        example: ""
+        description: |-
+          fileKey - replace / characters with : before submitting
+            - must contain substring ":"
+        required: true
         schema:
           type: string
-          example: ""
   /finalize:
     post:
       summary: UploadFinal
-      description: ""
+      description: finalizes the binding of uploaded urls to the main
       responses:
-        "200":
+        '200':
           description: successful response.
           content:
-            text/plain: {}
-    parameters:
-      - in: body
-        name: metaId
-        description: the metaId of the top level object to bind to
-        example: ""
-        schema:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FinalizeResponse'
+        '500':
           type: string
-          example: ""
-      - in: body
-        name: audioUrl
-        description: the url of the audio asset
-        example: ""
-        schema:
-          type: string
-          example: ""
-      - in: body
-        name: artUrl
-        description: the url of the cover art asset
-        example: ""
-        schema:
-          type: string
-          example: ""
-  /initiate/{artistId}/{id}:
+          description: Error details
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadFinal_-__AprilFools_1cbb6659/invocations
+        passthroughbehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
+    parameters: []
+  /upstart/{artistId}/{id}:
     post:
-      summary: UploadInitiate
-      description: Initiates the start of a new file upload
+      summary: UploadStart
+      description: inititates the start of an upload
       responses:
-        "200":
+        '200':
           description: successful response.
           content:
-            text/plain: {}
-    parameters:
-      - in: path
-        name: artistId
-        description: the artist component of the edit id. passed only if we are editing
-          an existing submission.
-        example: ""
-        schema:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+        '500':
           type: string
-          example: ""
-      - in: path
-        name: id
-        description: the content id component of the edit id. passed only if we are
-          editing an existing submission.
-        example: ""
-        schema:
-          type: string
-          example: ""
-  /hello:
-    get:
-      summary: hello
-      description: ""
-      responses:
-        "200":
-          description: successful response.
+          description: Error details
           content:
-            text/plain: {}
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadStart_-__AprilFools_1cbb6659/invocations
+        passthroughbehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
 components:
   schemas:
+    CoversResponse:
+      type: array
+      items:
+        type: string
+      title: CoversResponse
+      description: An array of urls to selected covers
     Empty:
       title: Empty Schema
       type: object
-    Response:
-      title: Response
-      type: object
-      properties:
-        url:
-          schema:
-            type: string
-            example: ""
-        uploadId:
-          schema:
-            type: string
-            example: ""
-    Metadata:
-      title: Metadata
-      type: object
-      properties:
-        artistId:
-          schema:
-            type: string
-            example: ""
-        artistName:
-          schema:
-            type: string
-            example: ""
-        title:
-          schema:
-            type: string
-            example: ""
-        description:
-          schema:
-            type: string
-            example: ""
-        attributions:
-          schema:
-            type: string
-            example: ""
-        artFileName:
-          schema:
-            type: string
-            example: ""
-        audioFileName:
-          schema:
-            type: string
-            example: ""
-    IdResponse:
-      title: IdResponse
-      type: object
-      properties:
-        metaId:
-          schema:
-            type: string
-            example: ""
-        artId:
-          schema:
-            type: string
-            example: ""
-        audioId:
-          schema:
-            type: string
-            example: ""
+    InfoResponse:
+      $ref: '#/components/schemas/Empty'
+      title: InfoResponse
+      description: Data returned for user info
+    LikeResponse:
+      $ref: '#/components/schemas/Empty'
+      title: LikeResponse
+      description: response of Like operation
+    SkipsResponse:
+      $ref: '#/components/schemas/Empty'
+      title: SkipsResponse
+    TrackInfo:
+      $ref: '#/components/schemas/Empty'
+      title: TrackInfo
+    FinalizeResponse:
+      $ref: '#/components/schemas/Empty'
+      title: FinalizeResponse
   responses: {}
   parameters: {}
   examples: {}
@@ -355,3 +423,7 @@ components:
   callbacks: {}
 tags: []
 servers: []
+x-amazon-apigateway-binary-media-types:
+  - application/octet-stream
+  - image/*
+  - audio/*

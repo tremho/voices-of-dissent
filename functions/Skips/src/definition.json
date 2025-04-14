@@ -4,16 +4,31 @@
   "version": "1.0.0",
   "pathMap": "/skips/{identity}",
   "method": "POST",
+  "bodyType": "application/json",
   "timeoutSeconds": 0,
   "memorySize": 0,
   "schemas": {
+    "SkipsResponse": {
+      "properties": {
+        "skipped": {
+          "type": "string[]",
+          "description": "the ids of songs that are skipped for this user"
+        }
+      }
+    }
   },
   "parameters": [
     {
       "name": "identity",
-      "type": "string",
       "in": "path",
-      "description": "defines the user to record skips for"
+      "type": "string",
+      "description": "The identity of the logged in user"
+    },
+    {
+      "name": "skippedIds",
+      "in": "body",
+      "type": "string[]",
+      "description": "the ids of songs this user wants skipped"
     }
   ],
   "returns": {

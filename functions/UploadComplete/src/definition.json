@@ -1,35 +1,34 @@
 {
   "name": "UploadComplete",
-  "description": "",
+  "description": "Completes the upload of an asset",
   "version": "1.0.0",
   "pathMap": "/complete/{uploadId}/{fileKey}",
   "method": "GET",
-  "timeoutSeconds": 0,
+  "timeoutSeconds": 8,
   "memorySize": 0,
   "schemas": {
-    "Response": {
-      "url": "string",
-      "uploadId": "string"
-    }
   },
   "parameters": [
     {
       "name": "uploadId",
-      "type": "string",
       "in": "path",
-      "description": "The uploadId for this asset obtained from UploadInitiate action"
+      "type": "string",
+      "description": "the uploadId we have completed chunk transfer for"
     },
     {
       "name": "fileKey",
       "type": "string",
       "in": "path",
-      "description": "the key for this file. use ':' as a substitute for '/'"
+      "description": "fileKey - replace / characters with : before submitting",
+      "constraints": [
+        "contains=:"
+      ]
     }
   ],
   "returns": {
     "200": {
-      "type": "Response",
-      "description": "successful response. Url will be the accessible url of the asset"
+      "type": "empty",
+      "description": "successful response."
     },
     "500": {
       "type": "string",
