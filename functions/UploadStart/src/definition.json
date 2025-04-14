@@ -1,0 +1,24 @@
+{
+  "name": "UploadStart",
+  "description": "inititates the start of an upload",
+  "version": "1.0.0",
+  "pathMap": "/upstart/{artistId}/{id}",
+  "method": "POST",
+  "bodyType": "json",
+  "timeoutSeconds": 10,
+  "memorySize": 0,
+  "schemas": {
+  },
+  "parameters": [
+  ],
+  "returns": {
+    "200": {
+      "type": "empty",
+      "description": "successful response."
+    },
+    "500": {
+      "type": "string",
+      "description": "Error details"
+    }
+  }
+}
