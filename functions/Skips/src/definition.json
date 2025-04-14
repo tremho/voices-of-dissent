@@ -5,7 +5,7 @@
   "pathMap": "/skips/{identity}",
   "method": "POST",
   "bodyType": "application/json",
-  "timeoutSeconds": 0,
+  "timeoutSeconds": 5,
   "memorySize": 0,
   "schemas": {
     "SkipsResponse": {

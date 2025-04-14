@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: AprilFools
-  version: 1.0.0-prerelease.1
+  title: voices-of-dissent
+  version: 1.0.0
 paths:
   /covers:
     get:
@@ -25,7 +25,7 @@ paths:
                 type: string
       x-amazon-apigateway-integration:
         uri: >-
-          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Covers_-__AprilFools_1cbb6659/invocations
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Covers_-__voices-of-dissent_b8bd483b/invocations
         passthroughbehavior: when_no_match
         httpMethod: POST
         type: aws_proxy
@@ -49,7 +49,7 @@ paths:
                 type: string
       x-amazon-apigateway-integration:
         uri: >-
-          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Delete_-__AprilFools_1cbb6659/invocations
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Delete_-__voices-of-dissent_b8bd483b/invocations
         passthroughbehavior: when_no_match
         httpMethod: POST
         type: aws_proxy
@@ -73,7 +73,7 @@ paths:
                 type: string
       x-amazon-apigateway-integration:
         uri: >-
-          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Info_-__AprilFools_1cbb6659/invocations
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Info_-__voices-of-dissent_b8bd483b/invocations
         passthroughbehavior: when_no_match
         httpMethod: POST
         type: aws_proxy
@@ -116,7 +116,7 @@ paths:
                 type: string
       x-amazon-apigateway-integration:
         uri: >-
-          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Like_-__AprilFools_1cbb6659/invocations
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Like_-__voices-of-dissent_b8bd483b/invocations
         passthroughbehavior: when_no_match
         httpMethod: POST
         type: aws_proxy
@@ -167,7 +167,7 @@ paths:
                 type: string
       x-amazon-apigateway-integration:
         uri: >-
-          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Secrets_-__AprilFools_1cbb6659/invocations
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Secrets_-__voices-of-dissent_b8bd483b/invocations
         passthroughbehavior: when_no_match
         httpMethod: POST
         type: aws_proxy
@@ -193,7 +193,7 @@ paths:
                 type: string
       x-amazon-apigateway-integration:
         uri: >-
-          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Skips_-__AprilFools_1cbb6659/invocations
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Skips_-__voices-of-dissent_b8bd483b/invocations
         passthroughbehavior: when_no_match
         httpMethod: POST
         type: aws_proxy
@@ -228,7 +228,7 @@ paths:
                 type: string
       x-amazon-apigateway-integration:
         uri: >-
-          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Tracks_-__AprilFools_1cbb6659/invocations
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:Tracks_-__voices-of-dissent_b8bd483b/invocations
         passthroughbehavior: when_no_match
         httpMethod: POST
         type: aws_proxy
@@ -267,7 +267,7 @@ paths:
                 type: string
       x-amazon-apigateway-integration:
         uri: >-
-          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadChunk_-__AprilFools_1cbb6659/invocations
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadChunk_-__voices-of-dissent_b8bd483b/invocations
         passthroughbehavior: when_no_match
         contentHandling: CONVERT_TO_BINARY
         httpMethod: POST
@@ -317,7 +317,7 @@ paths:
                 type: string
       x-amazon-apigateway-integration:
         uri: >-
-          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadComplete_-__AprilFools_1cbb6659/invocations
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadComplete_-__voices-of-dissent_b8bd483b/invocations
         passthroughbehavior: when_no_match
         httpMethod: POST
         type: aws_proxy
@@ -356,7 +356,7 @@ paths:
                 type: string
       x-amazon-apigateway-integration:
         uri: >-
-          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadFinal_-__AprilFools_1cbb6659/invocations
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadFinal_-__voices-of-dissent_b8bd483b/invocations
         passthroughbehavior: when_no_match
         httpMethod: POST
         type: aws_proxy
@@ -381,7 +381,7 @@ paths:
                 type: string
       x-amazon-apigateway-integration:
         uri: >-
-          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadStart_-__AprilFools_1cbb6659/invocations
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadStart_-__voices-of-dissent_b8bd483b/invocations
         passthroughbehavior: when_no_match
         httpMethod: POST
         type: aws_proxy

@@ -1,7 +1,7 @@
 {
-  "name": "AprilFools",
-  "version": "1.0.0-prerelease.1",
-  "description": "Sanity check",
+  "name": "voices-of-dissent",
+  "version": "1.0.0",
+  "description": "A Music Sharing site for Dissenting Musicians",
   "author": "tremho",
   "copyright": "(C) 2025 tremho. All rights reserved.",
   "license": "MIT",
