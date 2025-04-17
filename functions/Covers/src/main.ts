@@ -79,16 +79,16 @@ async function getCovers(num) :Promise<string[]> {
             let item = tracks[p]
             url = await getArtUrl(item)
             Log.Info("picked", {item, url})
-            if (url) out.push(url)
-            else {
-                Log.Info("Dupe handling starting at "+p)
-                let maxloops = 3
-                while(picks.includes(p) && --maxloops) {
-                    if (++p >= tracks.length) p = 0
-                }
-                picks.push(p)
-                Log.Info("out of dupe while loop at "+p)
-            }
+            out.push(url)
+            // else {
+            //     Log.Info("Dupe handling starting at "+p)
+            //     let maxloops = 3
+            //     while(picks.includes(p) && --maxloops) {
+            //         if (++p >= tracks.length) p = 0
+            //     }
+            //     picks.push(p)
+            //     Log.Info("out of dupe while loop at "+p)
+            // }
         }
     }
     Log.Info("returning cover results ", out)

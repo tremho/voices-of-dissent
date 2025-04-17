@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { IconButton, Button, Snackbar } from "@mui/material";
+import { IconButton, Button, Snackbar, Modal, Box, Typography, TextField } from "@mui/material";
 import { ThumbUp, ThumbUpOffAlt } from "@mui/icons-material";
 import ServiceEndpoint from "../../../commonLib/ServiceEndpoint";
 
@@ -102,6 +102,8 @@ function handleEdit(contentId) {
 export function TrackInfo(props) {
     const [openSnack, setOpenSnack] = useState(false);
     const [snackMessage, setSnackMessage] = useState('')
+    const [showModal, setShowModal] = useState(false);
+    const [textToCopy, setTextToCopy] = useState('')
     // console.log("selectedData passed into TrackInfo", props.selectedData)
     function LikeButton() {
 
@@ -153,16 +155,22 @@ export function TrackInfo(props) {
         )
     }
 
+
     function copyShareUrl(type, data) {
         if(!data) return ''
         const url = type === 'song' ? location.protocol+'//'+location.host+ServiceEndpoint('/?page=listen&ref='+(data?.id ?? ''))
             : data?.audioUrl ?? ''
-        navigator.clipboard.writeText(url)
-        // console.log("to clipboard ", url)
-        setSnackMessage(type === 'song' ? 'Song page link copied to clipboard for sharing'
-            : 'Audio url link copied to clipboard for sharing'
-        )
-        setOpenSnack(true)
+        if(navigator.clipboard) {
+            navigator.clipboard.writeText(url)
+            // console.log("to clipboard ", url)
+            setSnackMessage(type === 'song' ? 'Song page link copied to clipboard for sharing'
+                : 'Audio url link copied to clipboard for sharing'
+            )
+            setOpenSnack(true)
+        } else {
+            setTextToCopy(url)
+            setShowModal(true)
+        }
     }
     function handleSnackClose(_, reason) {
         if( reason === 'clickaway') return
@@ -226,6 +234,33 @@ export function TrackInfo(props) {
                                 Audio link only
                             </Button>
                         </div>
+                        <Modal open={showModal} onClose={() => setShowModal(false)}>
+                            <Box sx={{
+                                position: 'absolute',
+                                top: '50%', left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                bgcolor: 'background.paper',
+                                borderRadius: 2,
+                                boxShadow: 24,
+                                p: 3,
+                                minWidth: 300
+                            }}>
+                                <Typography variant="h6" gutterBottom>
+                                    Clipboard API not available.<br/>Select and copy this url manually:
+                                </Typography>
+                                <TextField
+                                    fullWidth
+                                    multiline
+                                    value={textToCopy}
+                                    variant="outlined"
+                                    InputProps={{ readOnly: true }}
+                                    onFocus={(e) => e.target.select()}
+                                />
+                                <Box sx={{ mt: 2, textAlign: 'right' }}>
+                                    <Button onClick={() => setShowModal(false)}>Close</Button>
+                                </Box>
+                            </Box>
+                        </Modal>
                         <EditIfOurs identity={props?.identity} contentId={props?.selectedData?.id}/>
                     </div>
                 </div>

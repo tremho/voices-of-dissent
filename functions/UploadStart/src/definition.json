@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "pathMap": "/upstart/{artistId}/{id}",
   "method": "POST",
-  "bodyType": "json",
+  "bodyType": "text",
   "timeoutSeconds": 10,
   "memorySize": 0,
   "schemas": {

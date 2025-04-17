@@ -104,6 +104,15 @@ export default function UploadPage() {
         zIndex: "-1",
         pointerEffects: "auto"
     }
+    const overlay:any = {
+        position: "fixed",
+        top: 0, left: 0,
+        width: "100%",
+        height: "100%",
+        backgroundColor: "rgba(0,0,0,0.4)",
+        zIndex: 0
+    }
+
     const blur:any = {
         // position: "absolute",
         // left: "0",
@@ -133,7 +142,9 @@ export default function UploadPage() {
         // console.log("handle change", {id, value, target:event.target})
         setInputs(values => ({...values, [id]: value}))
     }
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
+        event.preventDefault()
+
         console.log("submitting...")
         console.log("inputs", inputs)
         console.log("files", {imageFile, audioFile})
@@ -177,24 +188,32 @@ export default function UploadPage() {
         console.warn('calling conductSubmission now')
         console.log("with info ", info)
         console.log("and editId ", editId)
-        conductSubmission(info, editId).then(resp => {
-            // console.warn('conductSubmission completes with response', {resp})
-            console.log(`writing artistName via /info/${info.artistId}/${info.artistName}`)
-            fetch(ServiceEndpoint(`/info/${info.artistId}/${info.artistName}/~`)).then((fresp) => {
-                fresp.json().then(data => {
-                    setUploading(false)
-                    if(editId) {
-                        // alert('update complete!')
-                        location.href = ServiceEndpoint('/?page=listen&id='+getPassedId()+"&ref="+editId)
-                    } else {
-                        console.log("data from info: ", data)
-                        // alert('upload complete! data.metaId="'+resp.metaId+'"')
-                        location.href = ServiceEndpoint('/?page=listen&id='+getPassedId()+"&ref="+resp.metaId)
-                    }
-                })
-            })
-        })
+        // alert("in page responder")
+        let resp:any
+        try {
+            resp = await conductSubmission(info, editId)
+        } catch(e:any) {
+            console.error("---------- bad juju --------")
+            console.error(e)
+            console.error("------------")
+        }
+        // alert("return from conductSubmission")
+        // console.warn('conductSubmission completes with response', {resp})
+        console.log(`writing artistName via /info/${info.artistId}/${info.artistName}`)
+        const fresp = await fetch(ServiceEndpoint(`/info/${info.artistId}/${info.artistName}/~`)) //.then((fresp) => {
+        console.log('fresp ', fresp)
+        const data = await fresp.json()
+        setUploading(false)
+        if(editId) {
+            // alert('update complete!')
+            location.href = ServiceEndpoint('/?page=listen&id='+getPassedId()+"&ref="+editId)
+        } else {
+            console.log("data from info: ", data)
+            // alert('upload complete! data.metaId="'+resp.metaId+'"')
+            location.href = ServiceEndpoint('/?page=listen&id='+getPassedId()+"&ref="+resp.metaId)
+        }
     }
+
     function handleUpload(file:File) {
         if(file?.type.startsWith('image/')) setImageFile(file)
         if(file?.type.startsWith('audio/')) setAudioFile(file)
@@ -209,7 +228,7 @@ export default function UploadPage() {
     // }
 
     const slotProps:any = {
-        input: { style: { color: "cyan", fontSize: "20px" } },
+        input: { style: { color: "black", fontSize: "20px" } },
     }
     const heading:any = {
         color: 'darkblue',
@@ -237,101 +256,124 @@ export default function UploadPage() {
     return (
         <>
             <div style={background}>
+                <div style={overlay} />
                 <div style={blur}>
                     <LoadingSpinner active={uploading}/>
-                    <SubmissionGuidelines active={editId ? false : true}/>
+                    <SubmissionGuidelines active={!editId}/>
                     <div style={content}>
-                        <h1 style={{cursor:"hand"}} onClick={goHome}>
-                            {editId ? "Update Your Content" : "Enter Your Submission!"}
-                        </h1>
-                        <Typography style={heading} variant={"h6"}>
-                            Please enter the following information about your submission
-                        </Typography>
-                        <p style={{height:"20px"}}/>
-                        <Typography style={heading} variant={"h6"}>Your name to be published</Typography>
-                        <form onSubmit={handleSubmit}>
-                            <TextField
-                                slotProps={slotProps}
-                                sx={idInfo?.artistName ? {
-                                    "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" },
-                                } : {}}
-                                defaultValue={idInfo?.artistName ?? '' ?? inputs['name'] ?? ''}
-                                required={true}
-                                error={inError.name}
-                                style={fieldStyle}
-                                id="name"
-                                label="artist name to display"
-                                variant="outlined"
-                                onChange={handleChange}
-                            />
-                            <p style={{height:"10px"}}/>
-                            <Typography style={heading} variant={"h6"}>Give your creation a title</Typography>
-                            <TextField
-                                slotProps={slotProps}
-                                sx = {inputs['title'] ? {"& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" }} : {}}
-                                defaultValue={inputs['title']}
-                                required={true}
-                                error={inError.title}
-                                style={fieldStyle}
-                                id="title"
-                                label="track title"
-                                variant="outlined"
-                                onChange={handleChange}
-                            />
-                            <p style={{height:"10px"}}/>
-                            <Typography style={heading} variant={"h6"}>Describe the material and how it came to be</Typography>
-                            <TextField
-                                slotProps={slotProps}
-                                sx = {inputs['desc'] ? {"& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" }} : {}}
-                                defaultValue={inputs['desc']}
-                                required={false}
-                                error={inError.desc}
-                                style={fieldStyle}
-                                id="desc"
-                                label="description"
-                                variant="outlined"
-                                minRows="2"
-                                maxRows="8"
-                                multiline={true}
-                                fullWidth={true}
-                                onChange={handleChange}
-                            />
-                            <p style={{height:"10px"}}/>
-                            <Typography style={heading} variant={"h6"}>Give any credits due here, list copyrights, etc</Typography>
-                            <TextField
-                                slotProps={slotProps}
-                                sx = {inputs['attr'] ? {"& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" }} : {}}
-                                defaultValue={inputs['attr']}
-                                required={false}
-                                error={inError.attr}
-                                style={fieldStyle}
-                                id="attr"
-                                label="attributions"
-                                variant="outlined"
-                                minRows="1"
-                                maxRows="8"
-                                multiline={true}
-                                fullWidth={true}
-                                onChange={handleChange}
-                            />
-                            <p style={{height:"10px"}}/>
-                            <Typography style={heading} variant={"h6"}>Upload your content files</Typography>
-                            <Box sx={{ marginTop: "10px", display: "flex", flexDirection: "column", justifyContent:"center", alignItems:"center", gap: 3 }}>
-                                <FileUploader
-                                    editArtUrl={editArtUrl}
-                                    editAudioUrl={editAudioUrl}
-                                    onFileSelect={handleUpload}
-                                    acceptedTypes={acceptedTypes}
-                                />
-                                {/*<FileUpload onFileUpload={handleAudioUpload} acceptedTypes={acceptedAudioTypes} label="Upload Audio File" />*/}
-                            </Box>
-                        </form>
-                        <div style={{ marginTop: "30px", display: "flex", justifyContent: "center" }}>
-                            <Button variant={"contained"} onClick={handleSubmit}>{
-                                editId ? "Update Your Content" : "Submit Your Creation!"
-                            }</Button>
-                        </div>
-                        <DeleteContent />
+                        <Box display="flex" justifyContent="center" paddingTop={4}>
+                            <Paper elevation={4} sx={{
+                                backgroundColor: "rgba(255,255,255,0.85)",
+                                padding: 4,
+                                borderRadius: 2,
+                                maxWidth: 700,
+                                width: "90%",
+                                zIndex: 2
+                            }}>
+                                <h1
+                                    style={{
+                                        cursor: "pointer",
+                                        textShadow: "0 2px 4px rgba(0,0,0,0.5)"
+                                    }}
+                                    onClick={goHome}
+                                >
+                                    {editId ? "Update Your Content" : "Enter Your Submission!"}
+                                </h1>
+                                <Typography style={heading} variant="h6" gutterBottom>
+                                    Please enter the following information about your submission
+                                </Typography>
+
+                                <form onSubmit={handleSubmit}>
+                                    <TextField
+                                        slotProps={slotProps}
+                                        sx={idInfo?.artistName ? {
+                                            "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" },
+                                        } : {}}
+                                        defaultValue={idInfo?.artistName ?? '' ?? inputs['name'] ?? ''}
+                                        required={true}
+                                        error={inError.name}
+                                        fullWidth
+                                        margin="normal"
+                                        id="name"
+                                        label="Artist name to display"
+                                        variant="outlined"
+                                        onChange={handleChange}
+                                    />
+
+                                    <TextField
+                                        slotProps={slotProps}
+                                        sx={inputs[`title`] ? {
+                                            "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" },
+                                        } : {}}
+                                        defaultValue={inputs['title']}
+                                        required
+                                        error={inError.title}
+                                        fullWidth
+                                        margin="normal"
+                                        id="title"
+                                        label="Track title"
+                                        variant="outlined"
+                                        onChange={handleChange}
+                                    />
+
+                                    <TextField
+                                        slotProps={slotProps}
+                                        sx={inputs[`desc`] ? {
+                                            "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" },
+                                        } : {}}
+                                        defaultValue={inputs['desc']}
+                                        error={inError.desc}
+                                        fullWidth
+                                        margin="normal"
+                                        multiline
+                                        minRows={2}
+                                        maxRows={8}
+                                        id="desc"
+                                        label="Description"
+                                        variant="outlined"
+                                        onChange={handleChange}
+                                    />
+
+                                    <TextField
+                                        slotProps={slotProps}
+                                        sx={inputs[`attr`] ? {
+                                            "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" },
+                                        } : {}}
+                                        defaultValue={inputs['attr']}
+                                        error={inError.attr}
+                                        fullWidth
+                                        margin="normal"
+                                        multiline
+                                        minRows={1}
+                                        maxRows={8}
+                                        id="attr"
+                                        label="Attributions / Copyright"
+                                        variant="outlined"
+                                        onChange={handleChange}
+                                    />
+
+                                    <Typography style={heading} variant="h6" sx={{ mt: 3 }}>
+                                        Upload your content files
+                                    </Typography>
+                                    <Box sx={{ mt: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
+                                        <FileUploader
+                                            editArtUrl={editArtUrl}
+                                            editAudioUrl={editAudioUrl}
+                                            onFileSelect={handleUpload}
+                                            acceptedTypes={acceptedTypes}
+                                        />
+                                    </Box>
+
+                                    <Box mt={4} display="flex" justifyContent="center">
+                                        <Button variant="contained" type="submit">
+                                            {editId ? "Update Your Content" : "Submit Your Creation!"}
+                                        </Button>
+                                    </Box>
+                                </form>
+
+                                <DeleteContent />
+                            </Paper>
+                        </Box>
                     </div>
                 </div>
             </div>

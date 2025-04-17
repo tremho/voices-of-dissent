@@ -45362,7 +45362,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       title: info.title,
       description: info.description,
       attributions: info.attributions,
-      // I don't know what happened here, but path used to pass through from File, but now not so much...
+      // I don't know what happened here, but path used to pass through from File, but now not so much... use name instead
       artFile: {
         path: info.artFile?.path ?? info.artFile?.name ?? ""
       },
@@ -45373,16 +45373,31 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       audioUrl: info.audioUrl
     };
     console.log("Fetching init at " + initUrl);
-    console.log("einfo", eInfo);
+    console.log("einfo", JSON.stringify(eInfo, null, 2));
+    console.log("file info", info.audioFile);
     let data2 = {};
     try {
       const resp = await fetch(initUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "text/plain",
+          // json will blow us up for some reason
+          "Cache-Control": "no-store",
+          "Connection": "close"
+        },
         body: JSON.stringify(eInfo)
       });
-      data2 = await resp.json();
+      console.log("Fetch completed", resp);
+      data2 = await resp.text();
+      if (typeof data2 === "string") data2 = JSON.parse(data2);
+      console.log("data retrieved: ", data2);
     } catch (e) {
+      console.error("----- Looks like we blew up here -----");
+      console.error("Full error object:", e);
+      console.error("error.name:", e.name);
+      console.error("error.code:", e.code);
+      console.error("error.stack:", e.stack);
+      console.error("initUrl is " + initUrl);
       console.error(">>> at upload start fetch: ", e);
     }
     console.log("initiate response data", data2);
@@ -45562,6 +45577,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       zIndex: "-1",
       pointerEffects: "auto"
     };
+    const overlay2 = {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0,0,0,0.4)",
+      zIndex: 0
+    };
     const blur = {
       // position: "absolute",
       // left: "0",
@@ -45586,7 +45610,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       const { id, value } = event.target;
       setInputs((values3) => ({ ...values3, [id]: value }));
     }
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
+      event.preventDefault();
       console.log("submitting...");
       console.log("inputs", inputs);
       console.log("files", { imageFile, audioFile });
@@ -45626,27 +45651,32 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       console.warn("calling conductSubmission now");
       console.log("with info ", info);
       console.log("and editId ", editId);
-      conductSubmission(info, editId).then((resp) => {
-        console.log(`writing artistName via /info/${info.artistId}/${info.artistName}`);
-        fetch(ServiceEndpoint(`/info/${info.artistId}/${info.artistName}/~`)).then((fresp) => {
-          fresp.json().then((data2) => {
-            setUploading(false);
-            if (editId) {
-              location.href = ServiceEndpoint("/?page=listen&id=" + getPassedId() + "&ref=" + editId);
-            } else {
-              console.log("data from info: ", data2);
-              location.href = ServiceEndpoint("/?page=listen&id=" + getPassedId() + "&ref=" + resp.metaId);
-            }
-          });
-        });
-      });
+      let resp;
+      try {
+        resp = await conductSubmission(info, editId);
+      } catch (e) {
+        console.error("---------- bad juju --------");
+        console.error(e);
+        console.error("------------");
+      }
+      console.log(`writing artistName via /info/${info.artistId}/${info.artistName}`);
+      const fresp = await fetch(ServiceEndpoint(`/info/${info.artistId}/${info.artistName}/~`));
+      console.log("fresp ", fresp);
+      const data2 = await fresp.json();
+      setUploading(false);
+      if (editId) {
+        location.href = ServiceEndpoint("/?page=listen&id=" + getPassedId() + "&ref=" + editId);
+      } else {
+        console.log("data from info: ", data2);
+        location.href = ServiceEndpoint("/?page=listen&id=" + getPassedId() + "&ref=" + resp.metaId);
+      }
     }
     function handleUpload(file) {
       if (file?.type.startsWith("image/")) setImageFile(file);
       if (file?.type.startsWith("audio/")) setAudioFile(file);
     }
     const slotProps = {
-      input: { style: { color: "cyan", fontSize: "20px" } }
+      input: { style: { color: "black", fontSize: "20px" } }
     };
     const heading = {
       color: "darkblue",
@@ -45656,7 +45686,24 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     function goHome() {
       location.href = ServiceEndpoint("/");
     }
-    return /* @__PURE__ */ import_react21.default.createElement(import_react21.default.Fragment, null, /* @__PURE__ */ import_react21.default.createElement("div", { style: background }, /* @__PURE__ */ import_react21.default.createElement("div", { style: blur }, /* @__PURE__ */ import_react21.default.createElement(LoadingSpinner, { active: uploading }), /* @__PURE__ */ import_react21.default.createElement(SubmissionGuidelines, { active: editId ? false : true }), /* @__PURE__ */ import_react21.default.createElement("div", { style: content }, /* @__PURE__ */ import_react21.default.createElement("h1", { style: { cursor: "hand" }, onClick: goHome }, editId ? "Update Your Content" : "Enter Your Submission!"), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Please enter the following information about your submission"), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "20px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Your name to be published"), /* @__PURE__ */ import_react21.default.createElement("form", { onSubmit: handleSubmit }, /* @__PURE__ */ import_react21.default.createElement(
+    return /* @__PURE__ */ import_react21.default.createElement(import_react21.default.Fragment, null, /* @__PURE__ */ import_react21.default.createElement("div", { style: background }, /* @__PURE__ */ import_react21.default.createElement("div", { style: overlay2 }), /* @__PURE__ */ import_react21.default.createElement("div", { style: blur }, /* @__PURE__ */ import_react21.default.createElement(LoadingSpinner, { active: uploading }), /* @__PURE__ */ import_react21.default.createElement(SubmissionGuidelines, { active: !editId }), /* @__PURE__ */ import_react21.default.createElement("div", { style: content }, /* @__PURE__ */ import_react21.default.createElement(Box_default, { display: "flex", justifyContent: "center", paddingTop: 4 }, /* @__PURE__ */ import_react21.default.createElement(Paper_default, { elevation: 4, sx: {
+      backgroundColor: "rgba(255,255,255,0.85)",
+      padding: 4,
+      borderRadius: 2,
+      maxWidth: 700,
+      width: "90%",
+      zIndex: 2
+    } }, /* @__PURE__ */ import_react21.default.createElement(
+      "h1",
+      {
+        style: {
+          cursor: "pointer",
+          textShadow: "0 2px 4px rgba(0,0,0,0.5)"
+        },
+        onClick: goHome
+      },
+      editId ? "Update Your Content" : "Enter Your Submission!"
+    ), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6", gutterBottom: true }, "Please enter the following information about your submission"), /* @__PURE__ */ import_react21.default.createElement("form", { onSubmit: handleSubmit }, /* @__PURE__ */ import_react21.default.createElement(
       TextField_default,
       {
         slotProps,
@@ -45666,63 +45713,69 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         defaultValue: idInfo?.artistName ?? "" ?? inputs["name"] ?? "",
         required: true,
         error: inError.name,
-        style: fieldStyle,
+        fullWidth: true,
+        margin: "normal",
         id: "name",
-        label: "artist name to display",
+        label: "Artist name to display",
         variant: "outlined",
         onChange: handleChange
       }
-    ), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "10px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Give your creation a title"), /* @__PURE__ */ import_react21.default.createElement(
+    ), /* @__PURE__ */ import_react21.default.createElement(
       TextField_default,
       {
         slotProps,
-        sx: inputs["title"] ? { "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" } } : {},
+        sx: inputs[`title`] ? {
+          "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" }
+        } : {},
         defaultValue: inputs["title"],
         required: true,
         error: inError.title,
-        style: fieldStyle,
+        fullWidth: true,
+        margin: "normal",
         id: "title",
-        label: "track title",
+        label: "Track title",
         variant: "outlined",
         onChange: handleChange
       }
-    ), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "10px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Describe the material and how it came to be"), /* @__PURE__ */ import_react21.default.createElement(
+    ), /* @__PURE__ */ import_react21.default.createElement(
       TextField_default,
       {
         slotProps,
-        sx: inputs["desc"] ? { "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" } } : {},
+        sx: inputs[`desc`] ? {
+          "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" }
+        } : {},
         defaultValue: inputs["desc"],
-        required: false,
         error: inError.desc,
-        style: fieldStyle,
-        id: "desc",
-        label: "description",
-        variant: "outlined",
-        minRows: "2",
-        maxRows: "8",
-        multiline: true,
         fullWidth: true,
+        margin: "normal",
+        multiline: true,
+        minRows: 2,
+        maxRows: 8,
+        id: "desc",
+        label: "Description",
+        variant: "outlined",
         onChange: handleChange
       }
-    ), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "10px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Give any credits due here, list copyrights, etc"), /* @__PURE__ */ import_react21.default.createElement(
+    ), /* @__PURE__ */ import_react21.default.createElement(
       TextField_default,
       {
         slotProps,
-        sx: inputs["attr"] ? { "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" } } : {},
+        sx: inputs[`attr`] ? {
+          "& .MuiInputLabel-root": { transform: "translate(14px, -6px) scale(0.75)" }
+        } : {},
         defaultValue: inputs["attr"],
-        required: false,
         error: inError.attr,
-        style: fieldStyle,
-        id: "attr",
-        label: "attributions",
-        variant: "outlined",
-        minRows: "1",
-        maxRows: "8",
-        multiline: true,
         fullWidth: true,
+        margin: "normal",
+        multiline: true,
+        minRows: 1,
+        maxRows: 8,
+        id: "attr",
+        label: "Attributions / Copyright",
+        variant: "outlined",
         onChange: handleChange
       }
-    ), /* @__PURE__ */ import_react21.default.createElement("p", { style: { height: "10px" } }), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6" }, "Upload your content files"), /* @__PURE__ */ import_react21.default.createElement(Box_default, { sx: { marginTop: "10px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", gap: 3 } }, /* @__PURE__ */ import_react21.default.createElement(
+    ), /* @__PURE__ */ import_react21.default.createElement(Typography_default, { style: heading, variant: "h6", sx: { mt: 3 } }, "Upload your content files"), /* @__PURE__ */ import_react21.default.createElement(Box_default, { sx: { mt: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: 3 } }, /* @__PURE__ */ import_react21.default.createElement(
       FileUploader,
       {
         editArtUrl,
@@ -45730,7 +45783,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         onFileSelect: handleUpload,
         acceptedTypes
       }
-    ))), /* @__PURE__ */ import_react21.default.createElement("div", { style: { marginTop: "30px", display: "flex", justifyContent: "center" } }, /* @__PURE__ */ import_react21.default.createElement(Button_default, { variant: "contained", onClick: handleSubmit }, editId ? "Update Your Content" : "Submit Your Creation!")), /* @__PURE__ */ import_react21.default.createElement(DeleteContent, null)))));
+    )), /* @__PURE__ */ import_react21.default.createElement(Box_default, { mt: 4, display: "flex", justifyContent: "center" }, /* @__PURE__ */ import_react21.default.createElement(Button_default, { variant: "contained", type: "submit" }, editId ? "Update Your Content" : "Submit Your Creation!"))), /* @__PURE__ */ import_react21.default.createElement(DeleteContent, null)))))));
   }
   function handleDelete() {
     const editId = getEditId();
@@ -45777,6 +45830,11 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     const [skippedIds, setSkippedIds] = (0, import_react22.useState)([]);
     const [fetchedSkip, setFetchedSkip] = (0, import_react22.useState)(false);
     const [ref, setSongRef] = (0, import_react22.useState)(props.ref);
+    const columnMap = {
+      artist: "artistName",
+      title: "title",
+      description: "description"
+    };
     const containerRef = (0, import_react22.useRef)(null);
     const itemRefs = (0, import_react22.useRef)({});
     (0, import_react22.useEffect)(() => {
@@ -45826,6 +45884,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       }, 500);
     }
     const filteredData = (0, import_react22.useMemo)(() => {
+      console.log("DATA before filtering:", data2);
+      console.log("Current search:", search);
       if (!Array.isArray(data2) || data2.length === 0) return [];
       const result = data2.filter(
         (row) => Object.keys(search).every((key) => {
@@ -45834,13 +45894,15 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           return !searchValue || rowValue && rowValue.includes(searchValue);
         })
       );
+      console.log("Filtered Data:", result);
       return result;
     }, [data2, search]);
     const sortedData = (0, import_react22.useMemo)(() => {
       if (!orderBy || filteredData.length === 0) return filteredData;
       return [...filteredData].sort((a, b) => {
-        const valA = a[orderBy]?.toString().toLowerCase() || "";
-        const valB = b[orderBy]?.toString().toLowerCase() || "";
+        const key = columnMap[orderBy] || orderBy;
+        const valA = a[key]?.toString().toLowerCase() || "";
+        const valB = b[key]?.toString().toLowerCase() || "";
         if (valA < valB) return order === "asc" ? -1 : 1;
         if (valA > valB) return order === "asc" ? 1 : -1;
         return 0;
@@ -45879,11 +45941,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       });
     }
     if (reportBack2) reportBack2({ advanceToNextRow });
-    const handleSort = (column2) => {
+    const handleSort = (inColumn) => {
+      let column2 = columnMap[inColumn];
+      console.log("handleSort ", column2);
       setOrderBy((prev2) => prev2 === column2 ? null : column2);
       setOrder((prev2) => prev2 === "asc" ? "desc" : prev2 === "desc" ? null : "asc");
     };
-    const handleSearch = (column2, value) => {
+    const handleSearch = (inColumn, value) => {
+      let column2 = columnMap[inColumn];
+      console.log("handleSort ", column2);
+      console.log("handleSearch ", column2, value);
       setSearch((prev2) => ({ ...prev2, [column2]: value.toLowerCase() }));
     };
     const handleRowClick = (e, id) => {
@@ -45900,6 +45967,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         handleRowClick(null, sr);
       }, 500);
     }
+    console.log(">>> ", { data: data2, filteredData, sortedData });
     return /* @__PURE__ */ import_react22.default.createElement("div", { style: { minHeight: 420, maxHeight: 420, overflowY: "scroll" }, ref: containerRef }, /* @__PURE__ */ import_react22.default.createElement(Table_default, { stickyHeader: true }, /* @__PURE__ */ import_react22.default.createElement(TableHead_default, null, /* @__PURE__ */ import_react22.default.createElement(TableRow_default, null, /* @__PURE__ */ import_react22.default.createElement(TableCell_default, null, "Cover"), ["artist", "title", "description"].map((column2) => /* @__PURE__ */ import_react22.default.createElement(TableCell_default, { key: column2 }, /* @__PURE__ */ import_react22.default.createElement(
       TableSortLabel_default,
       {
@@ -45919,7 +45987,7 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
           startAdornment: /* @__PURE__ */ import_react22.default.createElement(InputAdornment_default, { position: "start" }, /* @__PURE__ */ import_react22.default.createElement(Search_default, { fontSize: "small" }))
         }
       }
-    ))), /* @__PURE__ */ import_react22.default.createElement(TableCell_default, null, "Skip"))), /* @__PURE__ */ import_react22.default.createElement(TableBody_default, null, sortedData.map((row) => /* @__PURE__ */ import_react22.default.createElement(
+    ))), /* @__PURE__ */ import_react22.default.createElement(TableCell_default, null, "Skip"))), /* @__PURE__ */ import_react22.default.createElement(TableBody_default, null, (sortedData ?? []).map((row) => /* @__PURE__ */ import_react22.default.createElement(
       TableRow_default,
       {
         key: row.id,
@@ -46109,6 +46177,8 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   function TrackInfo(props) {
     const [openSnack, setOpenSnack] = (0, import_react24.useState)(false);
     const [snackMessage, setSnackMessage] = (0, import_react24.useState)("");
+    const [showModal, setShowModal] = (0, import_react24.useState)(false);
+    const [textToCopy, setTextToCopy] = (0, import_react24.useState)("");
     function LikeButton() {
       if (!props?.identity) return;
       const [numLikes, setNumLikes] = import_react24.default.useState(0);
@@ -46141,11 +46211,16 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
     function copyShareUrl(type, data2) {
       if (!data2) return "";
       const url = type === "song" ? location.protocol + "//" + location.host + ServiceEndpoint("/?page=listen&ref=" + (data2?.id ?? "")) : data2?.audioUrl ?? "";
-      navigator.clipboard.writeText(url);
-      setSnackMessage(
-        type === "song" ? "Song page link copied to clipboard for sharing" : "Audio url link copied to clipboard for sharing"
-      );
-      setOpenSnack(true);
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url);
+        setSnackMessage(
+          type === "song" ? "Song page link copied to clipboard for sharing" : "Audio url link copied to clipboard for sharing"
+        );
+        setOpenSnack(true);
+      } else {
+        setTextToCopy(url);
+        setShowModal(true);
+      }
     }
     function handleSnackClose(_, reason) {
       if (reason === "clickaway") return;
@@ -46176,7 +46251,27 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
         sx: shareButtonSx
       },
       "Audio link only"
-    )), /* @__PURE__ */ import_react24.default.createElement(EditIfOurs, { identity: props?.identity, contentId: props?.selectedData?.id })))));
+    )), /* @__PURE__ */ import_react24.default.createElement(Modal_default, { open: showModal, onClose: () => setShowModal(false) }, /* @__PURE__ */ import_react24.default.createElement(Box_default, { sx: {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      bgcolor: "background.paper",
+      borderRadius: 2,
+      boxShadow: 24,
+      p: 3,
+      minWidth: 300
+    } }, /* @__PURE__ */ import_react24.default.createElement(Typography_default, { variant: "h6", gutterBottom: true }, "Clipboard API not available.", /* @__PURE__ */ import_react24.default.createElement("br", null), "Select and copy this url manually:"), /* @__PURE__ */ import_react24.default.createElement(
+      TextField_default,
+      {
+        fullWidth: true,
+        multiline: true,
+        value: textToCopy,
+        variant: "outlined",
+        InputProps: { readOnly: true },
+        onFocus: (e) => e.target.select()
+      }
+    ), /* @__PURE__ */ import_react24.default.createElement(Box_default, { sx: { mt: 2, textAlign: "right" } }, /* @__PURE__ */ import_react24.default.createElement(Button_default, { onClick: () => setShowModal(false) }, "Close")))), /* @__PURE__ */ import_react24.default.createElement(EditIfOurs, { identity: props?.identity, contentId: props?.selectedData?.id })))));
   }
   function EditIfOurs(props) {
     if (props) {

@@ -3,24 +3,28 @@ import {SubmissionMetadata} from "../../../commonLib/SubmissionMetadata";
 import base64 from 'base64-js'
 import ServiceEndpoint from "../../../commonLib/ServiceEndpoint";
 
+import debugTheProblem from './DebugProblem'
+
 /**
  * Handles the complete submission process
  *
  * @param info -- the SubmissionMetadata object that contains submission data
  */
 export async function conductSubmission(info:SubmissionMetadata, editId?:string) {
+
     let initPath = '/upstart/'
     if(editId) initPath += editId
     else initPath += 'undefined/undefined'
     const initUrl = ServiceEndpoint(initPath)
     console.log("conductSubmissions - Posting to "+(editId?"edit":"start")+" at init url", initUrl)
     console.log("info ", info)
+    // alert("Pause before even starting")
     const eInfo:any = {
         artistId: info.artistId,
         title: info.title,
         description: info.description,
         attributions: info.attributions,
-        // I don't know what happened here, but path used to pass through from File, but now not so much...
+        // I don't know what happened here, but path used to pass through from File, but now not so much... use name instead
         artFile: {
             path: (info.artFile as any)?.path ?? info.artFile?.name ?? ''
         },
@@ -31,19 +35,37 @@ export async function conductSubmission(info:SubmissionMetadata, editId?:string)
         audioUrl: (info as any).audioUrl
     }
     console.log("Fetching init at "+initUrl)
-    console.log("einfo", eInfo)
+    console.log("einfo", JSON.stringify(eInfo,null,2))
+    console.log("file info", info.audioFile as any)
+    // alert("Pause 2")
     let data:any = {}
+
     try {
-        const resp: any = await fetch(initUrl, {
+        const resp = await fetch(initUrl, {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
+            headers: {
+                "Content-Type": "text/plain", // json will blow us up for some reason
+                "Cache-Control": "no-store",
+                "Connection": "close"
+            },
             body: JSON.stringify(eInfo)
-        })
-        data = await resp.json()
+        });
+        console.log("Fetch completed", resp);
+        data = await resp.text()
+        if(typeof data === 'string') data = JSON.parse(data)
+        console.log("data retrieved: ", data)
+
     } catch(e:any) {
+        console.error("----- Looks like we blew up here -----")
+        console.error("Full error object:", e);
+        console.error("error.name:", e.name);
+        console.error("error.code:", e.code);
+        console.error("error.stack:", e.stack);
+        console.error("initUrl is "+initUrl)
         console.error(">>> at upload start fetch: ", e)
     }
     console.log("initiate response data", data)
+    // alert("Pause 3")
 
     let {metaId, artId, audioId} = data
     if(editId) metaId = editId
@@ -52,6 +74,8 @@ export async function conductSubmission(info:SubmissionMetadata, editId?:string)
     else {
         throw new Error("No META in upload process")
     }
+
+    // alert("Pause after starting init")
 
     // upload chunks for art
     console.log("Uploading art file", info.artFile?.name)

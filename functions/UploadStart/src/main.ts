@@ -26,21 +26,36 @@ const VOD_AUDIO_BUCKET = 'tremho-vod-audio' // all the audio objects
 
 const def = JSON.parse(fs.readFileSync(path.join(__dirname, "definition.json")).toString());
 
+async function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve,ms))
+}
+
 const service = new LambdaApi<any>(def,
     async (event:any) => {
         let artId:string = ''
         let audioId:string = ''
 
-        let info:SubmissionMetadata = event.body
 
-        Log.Info("Entering Initiate", {event, info});
+        let info:any = event.body
+
+        Log.Info("Entering Initiate", {info});
 
         Log.Debug("type of info ", typeof info)
+        // Log.Debug("type of event.body ", typeof event.body)
         if(typeof info === 'string') {
-            info = JSON.parse(info)
+            try {
+                info = JSON.parse(info)
+            } catch(e:any) {
+                Log.Exception(e)
+                return ServerError(e.message)
+            }
         }
+
+        // }
         Log.Debug("type of info now ", typeof info)
         Log.Debug("infoArtistId = " + info.artistId)
+        //
+        // return Success({message: "Hello debugging!"})
 
         let {artistId, id} = event.parameters
         // let index = 1; // skip name
@@ -52,6 +67,8 @@ const service = new LambdaApi<any>(def,
         if(artistId && id) {
             editContentId = artistId+'/'+id
         }
+
+
         let metaId;
         console.log("Sanity check incoming ", {infoArtistId:info.artistId, editContentId})
         console.log("Second sanity check body passes ", {bodyArtistId: (event.body as any)?.artistId, info})
@@ -93,6 +110,7 @@ const service = new LambdaApi<any>(def,
         }
         Log.Info("all Ids",  {metaId, artId, audioId})
         Log.Info("-----------------")
+
         // return the identifiers
         const resp:any = Success(JSON.stringify({metaId, artId, audioId}), 'application/json')
         if(!resp.headers) resp.headers = {}
@@ -102,6 +120,7 @@ const service = new LambdaApi<any>(def,
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "OPTIONS,GET"
         })
+        console.log("returning response ", resp)
         return resp
 
     }

@@ -30,6 +30,12 @@ export const MusicTable = (props) => {
     const [fetchedSkip, setFetchedSkip] = useState(false)
     const [ref, setSongRef] = useState(props.ref)
 
+    const columnMap = {
+        artist: "artistName",
+        title: "title",
+        description: "description"
+    };
+
     // console.log("-------------REF---------")
     // console.log(ref)
     // console.log("-------------------------")
@@ -95,8 +101,8 @@ export const MusicTable = (props) => {
 
 
     const filteredData = useMemo(() => {
-        // console.log("DATA before filtering:", data);
-        // console.log("Current search:", search);
+        console.log("DATA before filtering:", data);
+        console.log("Current search:", search);
 
         if (!Array.isArray(data) || data.length === 0) return [];
 
@@ -109,16 +115,19 @@ export const MusicTable = (props) => {
             })
         );
 
-        // console.log("Filtered Data:", result);
+        console.log("Filtered Data:", result);
         return result;
     }, [data, search]);
 
     const sortedData = useMemo(() => {
         if (!orderBy || filteredData.length === 0) return filteredData;
 
+        // return filteredData
+
         return [...filteredData].sort((a, b) => {
-            const valA = a[orderBy]?.toString().toLowerCase() || "";
-            const valB = b[orderBy]?.toString().toLowerCase() || "";
+            const key = columnMap[orderBy] || orderBy;
+            const valA = a[key]?.toString().toLowerCase() || "";
+            const valB = b[key]?.toString().toLowerCase() || "";
 
             if (valA < valB) return order === "asc" ? -1 : 1;
             if (valA > valB) return order === "asc" ? 1 : -1;
@@ -171,12 +180,17 @@ export const MusicTable = (props) => {
 
     if (reportBack) reportBack({ advanceToNextRow });
 
-    const handleSort = (column) => {
+    const handleSort = (inColumn) => {
+        let column = columnMap[inColumn]
+        console.log("handleSort ",column)
         setOrderBy((prev) => (prev === column ? null : column));
         setOrder((prev) => (prev === "asc" ? "desc" : prev === "desc" ? null : "asc"));
     };
 
-    const handleSearch = (column, value) => {
+    const handleSearch = (inColumn, value) => {
+        let column = columnMap[inColumn]
+        console.log("handleSort ",column)
+        console.log("handleSearch ", column, value)
         setSearch((prev) => ({ ...prev, [column]: value.toLowerCase() }));
     };
 
@@ -199,7 +213,7 @@ export const MusicTable = (props) => {
         },500)
     }
 
-    // console.log(">>> ", {data, filteredData, sortedData})
+    console.log(">>> ", {data, filteredData, sortedData})
     return (
         <div style={{ minHeight: 420, maxHeight: 420, overflowY: "scroll" }} ref={containerRef}>
             <Table stickyHeader>
@@ -234,7 +248,7 @@ export const MusicTable = (props) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {sortedData.map((row) => (
+                    {(sortedData ?? []).map((row) => (
                         <TableRow
                             key={row.id}
                             ref={(el) => (itemRefs.current[row.id] = el)}
