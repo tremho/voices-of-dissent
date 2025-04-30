@@ -1,0 +1,42 @@
+{
+  "name": "XferChunk",
+  "description": "",
+  "version": "1.0.0",
+  "pathMap": "/xferchunk",
+  "method": "POST",
+  "bodyType": "application/json",
+  "timeoutSeconds": 8,
+  "memorySize": 0,
+  "schemas": {
+  },
+  "parameters": [
+    {
+      "name": "id",
+      "description":"xfer Id (bucket Id) from start",
+      "in":"body",
+      "type": "string"
+    },
+    {
+      "name": "chunkIndex",
+      "description": "0-based index of chunk number",
+      "type": "number",
+      "in": "body"
+    },
+    {
+      "name": "data",
+      "description": "base64 of chunk data",
+      "type": "string",
+      "in": "body"
+    }
+  ],
+  "returns": {
+    "200": {
+      "type": "empty",
+      "description": "successful response."
+    },
+    "500": {
+      "type": "string",
+      "description": "Error details"
+    }
+  }
+}

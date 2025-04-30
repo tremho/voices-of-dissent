@@ -1,0 +1,43 @@
+{
+  "name": "XferFinish",
+  "description": "",
+  "version": "1.0.0",
+  "pathMap": "/xferfinish/{id}/{type}",
+  "method": "GET",
+  "timeoutSeconds": 15,
+  "memorySize": 0,
+  "schemas": {
+    "Response": [
+      {
+        "name": "url",
+        "type": "string",
+        "description": "url of resulting upload"
+      }
+    ]
+
+  },
+  "parameters": [
+    {
+      "name": "id",
+      "type": "string",
+      "in": "path",
+      "description": "the xfer id that is completing"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "in": "path",
+      "description": "the mime type of the upload"
+    }
+  ],
+  "returns": {
+    "200": {
+      "type": "Response",
+      "description": "succcessful response "
+    },
+    "500": {
+      "type": "string",
+      "description": "Error details"
+    }
+  }
+}

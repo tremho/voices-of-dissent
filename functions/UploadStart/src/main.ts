@@ -32,9 +32,6 @@ async function delay(ms) {
 
 const service = new LambdaApi<any>(def,
     async (event:any) => {
-        let artId:string = ''
-        let audioId:string = ''
-
 
         let info:any = event.body
 
@@ -89,30 +86,10 @@ const service = new LambdaApi<any>(def,
             metaId = await createMetadataObject(info)
         }
         Log.Info("metaId", {metaId})
-        Log.Info("now getting upload ids...", {artFile: info.artFile, audioFile: info.audioFile})
-        // initiate the upload for the art and remember the identifier
-        if((info.artFile as any)?.path) {
-            Log.Info('--- art mime type ---')
-            Log.Info('art file path= ', (info.artFile as any)?.path)
-            const mimeType = getMimeType((info.artFile as any)?.path)
-            Log.Info('mime type= ', mimeType)
-            Log.Info( "initiate art", {artFile: info.artFile, mimeType})
-            artId = await initiateArtUpload(metaId, mimeType)
-        }
-        // initiate the upload for the audio and remember the  identifier
-        if((info.audioFile as any)?.path) {
-            Log.Info('--- audio mime type ---')
-            Log.Info('audio file path= ', (info.audioFile as any)?.path)
-            const mimeType = getMimeType((info.audioFile as any)?.path)
-            Log.Info('mime type= ', mimeType)
-            Log.Info("initiate audio", {audioFile: info.audioFile, mimeType})
-            audioId = await initiateAudioUpload(metaId, mimeType)
-        }
-        Log.Info("all Ids",  {metaId, artId, audioId})
         Log.Info("-----------------")
 
         // return the identifiers
-        const resp:any = Success(JSON.stringify({metaId, artId, audioId}), 'application/json')
+        const resp:any = Success(JSON.stringify({metaId}), 'application/json')
         if(!resp.headers) resp.headers = {}
         // Add CORS Headers explicitly
         resp.headers = Object.assign(resp.headers, {
@@ -164,6 +141,7 @@ async function createMetadataObject(info:SubmissionMetadata) {
     return metaId
 }
 
+/*
 // initiate the upload for the art and remember the identifier
 async function initiateArtUpload(metaId:string, mimeType) {
 
@@ -183,3 +161,4 @@ async function initiateAudioUpload(metaId:string, mimeType:string) {
     const resp:any = await s3.send(command)
     return resp.UploadId
 }
+ */

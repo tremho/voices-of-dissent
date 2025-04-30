@@ -2,8 +2,11 @@
 import {SubmissionMetadata} from "../../../commonLib/SubmissionMetadata";
 import base64 from 'base64-js'
 import ServiceEndpoint from "../../../commonLib/ServiceEndpoint";
+import fs from "fs";
+import {getMimeType} from "../../../commonLib/MimeType";
 
-import debugTheProblem from './DebugProblem'
+
+
 
 /**
  * Handles the complete submission process
@@ -56,18 +59,12 @@ export async function conductSubmission(info:SubmissionMetadata, editId?:string)
         console.log("data retrieved: ", data)
 
     } catch(e:any) {
-        console.error("----- Looks like we blew up here -----")
-        console.error("Full error object:", e);
-        console.error("error.name:", e.name);
-        console.error("error.code:", e.code);
-        console.error("error.stack:", e.stack);
-        console.error("initUrl is "+initUrl)
-        console.error(">>> at upload start fetch: ", e)
+        console.error("Failed to init upload", e)
     }
     console.log("initiate response data", data)
     // alert("Pause 3")
 
-    let {metaId, artId, audioId} = data
+    let {metaId} = data
     if(editId) metaId = editId
 
     if(metaId) console.log("metaId is "+metaId)
@@ -75,75 +72,98 @@ export async function conductSubmission(info:SubmissionMetadata, editId?:string)
         throw new Error("No META in upload process")
     }
 
-    // alert("Pause after starting init")
+    // get artFile name and metaId
+    // upload and get url back
+    let artUrl = ''
+    let audioUrl = ''
+    if(info.artFile?.name) {
+        artUrl = await multistageFileUpload(info.artFile, metaId)
+    }
+    //get audioFile name and metaId
+    // upload and get url back
+    if(info.audioFile?.name) {
+        audioUrl = await multistageFileUpload(info.audioFile, metaId)
+    }
 
-    // upload chunks for art
-    console.log("Uploading art file", info.artFile?.name)
-    const artUrl = await uploadFileInChunks(info.artFile, artId, metaId+'/art')
-    console.log("+>+>+>+>+>+>> art url is ", artUrl)
-    // alert("pausing after art upload")
-    // upload chunks for audio
-    console.log("Uploading audio file", info.audioFile?.name)
-    const audioUrl = await uploadFileInChunks(info.audioFile, audioId, metaId+'/audio')
-    console.log("+>+>+>+>+>+>> audio url is", audioUrl)
-    // alert("pausing after audio upload")
     // do final binding
     const bindId = metaId
     console.log("doing binding ", {bindId, audioUrl, artUrl})
     console.log("final artist name ", info.artistName)
     const fresp:any = await doFinalBinding(bindId, info.artistName, audioUrl, artUrl)
     console.log("response from final", fresp)
-    // alert("pause to take this in")
+    alert("pause to take this in")
     return fresp
 
 }
 
 /**
- * Uploads a file to an established uploadId by doing so in multiple 5MB chunks
  *
- * @param file  -- the File object for the file to be transferred
- * @param uploadId  -- the established uploadId (see initiate)
- * @param fileKey   -- the fileKey the asset is stored under (bucket was already established via uploadId, but we need filekey again, apparently)
  */
-async function uploadFileInChunks(file:File, uploadId:string, fileKey:string) : Promise<string|undefined> {
+async function multistageFileUpload(file:File, contentId:string):Promise<string> {
 
-    if(!file?.name) return undefined
+    const fileName = file.name ?? (file as any).path ?? ''
+    const mimeType = getMimeType(fileName)
 
-    const CHUNK_SIZE = 5 * 1024 * 1024 // chunks must be >=5<6 MB with base64 5MB could be 6.66 MB... we'll see...
-    const totalChunks = Math.ceil(file.size / CHUNK_SIZE)
+    const chunkSize = 1024 * 1024
 
-    const fk = fileKey.replace('/', ':').replace('/', ':') // There are two
-
-    console.log("values", {uploadId, fileKey, fk, totalChunks, name:file?.name})
-
-    console.log(`Starting upload of ${totalChunks} chunks`)
-    for(let chunkIndex=0; chunkIndex<totalChunks; chunkIndex++) {
-            const chunkUrl = ServiceEndpoint(`/chunk/${uploadId?uploadId:'~'}/${fk?fk:'~'}/${chunkIndex}`)
-            const start = chunkIndex * CHUNK_SIZE
-            const end = Math.min(start + CHUNK_SIZE, file.size);
-            const chunk = file.slice(start, end);
-            const chunkArrayBuffer = await chunk.arrayBuffer();
-            // const chunkUint8Array = new Uint8Array(chunkArrayBuffer);
-
-        console.log("fetching chunk @ ", chunkUrl)
-        console.log("with", {uploadId, fk, chunkIndex, totalChunks})
-        const range = end-start
-        console.log("sizes", {range, CHUNK_SIZE})
-        const resp:any = await fetch(chunkUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/octet-stream" },
-            body: chunkArrayBuffer
+    const postJson = async (url:string, data:any) => {
+        const resp = await fetch(url, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
         });
-        console.log(`chunk index ${chunkIndex} uploaded size ${chunkArrayBuffer.byteLength}`)
+        if (!resp.ok) {
+            throw new Error(`HTTP Error ${resp.status}: ${await resp.text()}`);
+        }
+        return await resp.json();
     }
-    console.log("done uploading... now doing completion")
 
-    // now complete it
-    const completeUrl = ServiceEndpoint(`/complete/${uploadId}/${fk}`)
-    const resp:any = await fetch(completeUrl)
-    const data = await resp.json()
-    console.log("return from complete", {data})
-    return data.url
+    // Step 1: XferBegin
+    console.log('Calling XferBegin...', {fileName, contentId});
+    const beginUrl = ServiceEndpoint('/xferbegin')
+    const beginResp = await postJson(beginUrl, {
+        fileName,
+        contentId
+    });
+    const id = (beginResp as any).id; // the id returned
+    console.log(`Received transfer id: ${id}`);
+
+    // Step 2: XferChunk
+    console.log('Uploading chunks...');
+    const fileBytes = file.size
+    const totalChunks = Math.ceil(fileBytes / chunkSize);
+    console.log("sizes at start", {fileBytes, totalChunks})
+    for (let i = 0; i < totalChunks; i++) {
+        const start = i * chunkSize;
+        const end = Math.min(fileBytes, (i + 1) * chunkSize);
+        const chunk = await file.slice(start,end).arrayBuffer()
+        const b64data = base64.fromByteArray(new Uint8Array<ArrayBufferLike>(chunk))
+        console.log("chunk sizes ", {
+            chunkSize: chunk.byteLength,
+            b64Size: b64data.length,
+            start, end,
+            range: end-start
+        })
+
+        console.log(`Uploading chunk ${i} (${end-start} bytes)...`);
+        const chunkUrl = ServiceEndpoint('/xferchunk')
+        await postJson(chunkUrl, {
+            id,
+            chunkIndex: i,
+            data: b64data
+        });
+    }
+
+    // Step 3: XferFinish
+    console.log('Calling XferFinish...');
+    const finishUrl = ServiceEndpoint(`/xferfinish/${id}/${encodeURIComponent(mimeType)}`);
+    const finishResp = await fetch(finishUrl);
+    if (!finishResp.ok) {
+        throw new Error(`HTTP Error ${finishResp.status}: ${await finishResp.text()}`);
+    }
+    const finishData:any = await finishResp.json();
+    console.log('Upload complete! Final URL:', finishData.url);
+    return finishData.url
 }
 
 /**

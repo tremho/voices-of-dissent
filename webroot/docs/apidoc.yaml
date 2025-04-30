@@ -247,95 +247,6 @@ paths:
         required: true
         schema:
           type: string
-  /chunk/{uploadId}/{fileKey}/{chunkIndex}:
-    post:
-      summary: UploadChunk
-      description: uploads a chunk of data in a multi-chunk file transfer. data in body
-      responses:
-        '200':
-          description: successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Empty'
-        '500':
-          type: string
-          description: Error details
-          content:
-            text/plain:
-              schema:
-                type: string
-      x-amazon-apigateway-integration:
-        uri: >-
-          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadChunk_-__voices-of-dissent_b8bd483b/invocations
-        passthroughbehavior: when_no_match
-        contentHandling: CONVERT_TO_BINARY
-        httpMethod: POST
-        type: aws_proxy
-    parameters:
-      - in: path
-        name: uploadId
-        description: The upload Id returned from UploadStart
-        required: true
-        schema:
-          type: string
-      - in: path
-        name: fileKey
-        description: |-
-          fileKey - replace / characters with : before submitting
-            - must contain substring ":"
-        required: true
-        schema:
-          type: string
-      - in: path
-        name: chunkIndex
-        description: |-
-          which number chunk this is in sequence
-            - number must be an integer
-            - number must be positive
-            - Minimum value is 0
-        required: true
-        schema:
-          type: number
-  /complete/{uploadId}/{fileKey}:
-    get:
-      summary: UploadComplete
-      description: Completes the upload of an asset
-      responses:
-        '200':
-          description: successful response.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Empty'
-        '500':
-          type: string
-          description: Error details
-          content:
-            text/plain:
-              schema:
-                type: string
-      x-amazon-apigateway-integration:
-        uri: >-
-          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:UploadComplete_-__voices-of-dissent_b8bd483b/invocations
-        passthroughbehavior: when_no_match
-        httpMethod: POST
-        type: aws_proxy
-    parameters:
-      - in: path
-        name: uploadId
-        description: the uploadId we have completed chunk transfer for
-        required: true
-        schema:
-          type: string
-      - in: path
-        name: fileKey
-        description: |-
-          fileKey - replace / characters with : before submitting
-            - must contain substring ":"
-        required: true
-        schema:
-          type: string
   /finalize:
     post:
       summary: UploadFinal
@@ -385,6 +296,93 @@ paths:
         passthroughbehavior: when_no_match
         httpMethod: POST
         type: aws_proxy
+  /xferbegin:
+    post:
+      summary: XferBegin
+      description: ''
+      responses:
+        '200':
+          description: successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          type: string
+          description: Error details
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:XferBegin_-__voices-of-dissent_b8bd483b/invocations
+        passthroughbehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
+    parameters: []
+  /xferchunk:
+    post:
+      summary: XferChunk
+      description: ''
+      responses:
+        '200':
+          description: successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Empty'
+        '500':
+          type: string
+          description: Error details
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:XferChunk_-__voices-of-dissent_b8bd483b/invocations
+        passthroughbehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
+    parameters: []
+  /xferfinish/{id}/{type}:
+    get:
+      summary: XferFinish
+      description: ''
+      responses:
+        '200':
+          description: 'succcessful response '
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '500':
+          type: string
+          description: Error details
+          content:
+            text/plain:
+              schema:
+                type: string
+      x-amazon-apigateway-integration:
+        uri: >-
+          arn:aws:apigateway:us-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-1:545650260286:function:XferFinish_-__voices-of-dissent_b8bd483b/invocations
+        passthroughbehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
+    parameters:
+      - in: path
+        name: id
+        description: the xfer id that is completing
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: type
+        description: the mime type of the upload
+        required: true
+        schema:
+          type: string
 components:
   schemas:
     CoversResponse:
@@ -413,6 +411,9 @@ components:
     FinalizeResponse:
       $ref: '#/components/schemas/Empty'
       title: FinalizeResponse
+    Response:
+      $ref: '#/components/schemas/Empty'
+      title: Response
   responses: {}
   parameters: {}
   examples: {}

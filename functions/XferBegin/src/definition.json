@@ -1,0 +1,44 @@
+{
+  "name": "XferBegin",
+  "description": "",
+  "version": "1.0.0",
+  "pathMap": "/xferbegin",
+  "method": "POST",
+  "bodyType": "application/json",
+  "timeoutSeconds": 5,
+  "memorySize": 0,
+  "schemas": {
+    "Response": [
+      {
+        "name": "id",
+        "type": "string",
+        "description": "(bucket) id for transfer"
+      }
+    ]
+
+  },
+  "parameters": [
+    {
+      "name": "fileName",
+      "type": "string,",
+      "in": "body",
+      "description": "name and extension of file"
+    },
+    {
+      "name": "contentId",
+      "description": "artistId/contentId identifier of track",
+      "type": "string",
+      "in": "body"
+    }
+  ],
+  "returns": {
+    "200": {
+      "type": "Response",
+      "description": "successful response"
+    },
+    "500": {
+      "type": "string",
+      "description": "Error details"
+    }
+  }
+}

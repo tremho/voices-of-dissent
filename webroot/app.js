@@ -20812,6 +20812,107 @@
     }
   });
 
+  // node_modules/base64-js/index.js
+  var require_base64_js = __commonJS({
+    "node_modules/base64-js/index.js"(exports) {
+      "use strict";
+      exports.byteLength = byteLength;
+      exports.toByteArray = toByteArray;
+      exports.fromByteArray = fromByteArray;
+      var lookup = [];
+      var revLookup = [];
+      var Arr = typeof Uint8Array !== "undefined" ? Uint8Array : Array;
+      var code = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+      for (i = 0, len = code.length; i < len; ++i) {
+        lookup[i] = code[i];
+        revLookup[code.charCodeAt(i)] = i;
+      }
+      var i;
+      var len;
+      revLookup["-".charCodeAt(0)] = 62;
+      revLookup["_".charCodeAt(0)] = 63;
+      function getLens(b64) {
+        var len2 = b64.length;
+        if (len2 % 4 > 0) {
+          throw new Error("Invalid string. Length must be a multiple of 4");
+        }
+        var validLen = b64.indexOf("=");
+        if (validLen === -1) validLen = len2;
+        var placeHoldersLen = validLen === len2 ? 0 : 4 - validLen % 4;
+        return [validLen, placeHoldersLen];
+      }
+      function byteLength(b64) {
+        var lens = getLens(b64);
+        var validLen = lens[0];
+        var placeHoldersLen = lens[1];
+        return (validLen + placeHoldersLen) * 3 / 4 - placeHoldersLen;
+      }
+      function _byteLength(b64, validLen, placeHoldersLen) {
+        return (validLen + placeHoldersLen) * 3 / 4 - placeHoldersLen;
+      }
+      function toByteArray(b64) {
+        var tmp;
+        var lens = getLens(b64);
+        var validLen = lens[0];
+        var placeHoldersLen = lens[1];
+        var arr = new Arr(_byteLength(b64, validLen, placeHoldersLen));
+        var curByte = 0;
+        var len2 = placeHoldersLen > 0 ? validLen - 4 : validLen;
+        var i2;
+        for (i2 = 0; i2 < len2; i2 += 4) {
+          tmp = revLookup[b64.charCodeAt(i2)] << 18 | revLookup[b64.charCodeAt(i2 + 1)] << 12 | revLookup[b64.charCodeAt(i2 + 2)] << 6 | revLookup[b64.charCodeAt(i2 + 3)];
+          arr[curByte++] = tmp >> 16 & 255;
+          arr[curByte++] = tmp >> 8 & 255;
+          arr[curByte++] = tmp & 255;
+        }
+        if (placeHoldersLen === 2) {
+          tmp = revLookup[b64.charCodeAt(i2)] << 2 | revLookup[b64.charCodeAt(i2 + 1)] >> 4;
+          arr[curByte++] = tmp & 255;
+        }
+        if (placeHoldersLen === 1) {
+          tmp = revLookup[b64.charCodeAt(i2)] << 10 | revLookup[b64.charCodeAt(i2 + 1)] << 4 | revLookup[b64.charCodeAt(i2 + 2)] >> 2;
+          arr[curByte++] = tmp >> 8 & 255;
+          arr[curByte++] = tmp & 255;
+        }
+        return arr;
+      }
+      function tripletToBase64(num) {
+        return lookup[num >> 18 & 63] + lookup[num >> 12 & 63] + lookup[num >> 6 & 63] + lookup[num & 63];
+      }
+      function encodeChunk(uint8, start, end) {
+        var tmp;
+        var output = [];
+        for (var i2 = start; i2 < end; i2 += 3) {
+          tmp = (uint8[i2] << 16 & 16711680) + (uint8[i2 + 1] << 8 & 65280) + (uint8[i2 + 2] & 255);
+          output.push(tripletToBase64(tmp));
+        }
+        return output.join("");
+      }
+      function fromByteArray(uint8) {
+        var tmp;
+        var len2 = uint8.length;
+        var extraBytes = len2 % 3;
+        var parts = [];
+        var maxChunkLength = 16383;
+        for (var i2 = 0, len22 = len2 - extraBytes; i2 < len22; i2 += maxChunkLength) {
+          parts.push(encodeChunk(uint8, i2, i2 + maxChunkLength > len22 ? len22 : i2 + maxChunkLength));
+        }
+        if (extraBytes === 1) {
+          tmp = uint8[len2 - 1];
+          parts.push(
+            lookup[tmp >> 2] + lookup[tmp << 4 & 63] + "=="
+          );
+        } else if (extraBytes === 2) {
+          tmp = (uint8[len2 - 2] << 8) + uint8[len2 - 1];
+          parts.push(
+            lookup[tmp >> 10] + lookup[tmp >> 4 & 63] + lookup[tmp << 2 & 63] + "="
+          );
+        }
+        return parts.join("");
+      }
+    }
+  });
+
   // app/app.tsx
   var import_react26 = __toESM(require_react());
   var import_client = __toESM(require_client());
@@ -45350,6 +45451,40 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
   };
 
   // app/components/uploadpage/Uploader.ts
+  var import_base64_js = __toESM(require_base64_js());
+
+  // commonLib/MimeType.ts
+  var mimeMatch = {
+    avif: "image/avif",
+    apng: "image/apng",
+    bmp: "image/bmp",
+    gif: "image/gif",
+    jpg: "image/jpeg",
+    jpeg: "image/jpeg",
+    jfif: "image/jpeg",
+    pjpeg: "image/jpeg",
+    pjp: "image/jpeg",
+    png: "image/png",
+    svg: "image/svg+xml",
+    tif: "image/tiff",
+    tiff: "image/tiff",
+    webp: "image/webp",
+    aac: "audio/aac",
+    mid: "audio/midi",
+    midi: "audio/midi",
+    mp3: "audio/mpeg",
+    m4a: "audio/mp4",
+    oga: "audio/ogg",
+    opus: "audio/ogg",
+    wav: "audio/wav",
+    weba: "audio/webm"
+  };
+  function getMimeType(filename) {
+    const ext = filename.split(".").pop()?.toLowerCase() || "";
+    return mimeMatch[ext] || "application/octet-stream";
+  }
+
+  // app/components/uploadpage/Uploader.ts
   async function conductSubmission(info, editId) {
     let initPath = "/upstart/";
     if (editId) initPath += editId;
@@ -45392,64 +45527,87 @@ To suppress this warning, you need to explicitly provide the \`palette.${key}Cha
       if (typeof data2 === "string") data2 = JSON.parse(data2);
       console.log("data retrieved: ", data2);
     } catch (e) {
-      console.error("----- Looks like we blew up here -----");
-      console.error("Full error object:", e);
-      console.error("error.name:", e.name);
-      console.error("error.code:", e.code);
-      console.error("error.stack:", e.stack);
-      console.error("initUrl is " + initUrl);
-      console.error(">>> at upload start fetch: ", e);
+      console.error("Failed to init upload", e);
     }
     console.log("initiate response data", data2);
-    let { metaId, artId, audioId } = data2;
+    let { metaId } = data2;
     if (editId) metaId = editId;
     if (metaId) console.log("metaId is " + metaId);
     else {
       throw new Error("No META in upload process");
     }
-    console.log("Uploading art file", info.artFile?.name);
-    const artUrl = await uploadFileInChunks(info.artFile, artId, metaId + "/art");
-    console.log("+>+>+>+>+>+>> art url is ", artUrl);
-    console.log("Uploading audio file", info.audioFile?.name);
-    const audioUrl = await uploadFileInChunks(info.audioFile, audioId, metaId + "/audio");
-    console.log("+>+>+>+>+>+>> audio url is", audioUrl);
+    let artUrl = "";
+    let audioUrl = "";
+    if (info.artFile?.name) {
+      artUrl = await multistageFileUpload(info.artFile, metaId);
+    }
+    if (info.audioFile?.name) {
+      audioUrl = await multistageFileUpload(info.audioFile, metaId);
+    }
     const bindId = metaId;
     console.log("doing binding ", { bindId, audioUrl, artUrl });
     console.log("final artist name ", info.artistName);
     const fresp = await doFinalBinding(bindId, info.artistName, audioUrl, artUrl);
     console.log("response from final", fresp);
+    alert("pause to take this in");
     return fresp;
   }
-  async function uploadFileInChunks(file, uploadId, fileKey) {
-    if (!file?.name) return void 0;
-    const CHUNK_SIZE = 5 * 1024 * 1024;
-    const totalChunks = Math.ceil(file.size / CHUNK_SIZE);
-    const fk = fileKey.replace("/", ":").replace("/", ":");
-    console.log("values", { uploadId, fileKey, fk, totalChunks, name: file?.name });
-    console.log(`Starting upload of ${totalChunks} chunks`);
-    for (let chunkIndex = 0; chunkIndex < totalChunks; chunkIndex++) {
-      const chunkUrl = ServiceEndpoint(`/chunk/${uploadId ? uploadId : "~"}/${fk ? fk : "~"}/${chunkIndex}`);
-      const start = chunkIndex * CHUNK_SIZE;
-      const end = Math.min(start + CHUNK_SIZE, file.size);
-      const chunk = file.slice(start, end);
-      const chunkArrayBuffer = await chunk.arrayBuffer();
-      console.log("fetching chunk @ ", chunkUrl);
-      console.log("with", { uploadId, fk, chunkIndex, totalChunks });
-      const range = end - start;
-      console.log("sizes", { range, CHUNK_SIZE });
-      const resp2 = await fetch(chunkUrl, {
+  async function multistageFileUpload(file, contentId) {
+    const fileName = file.name ?? file.path ?? "";
+    const mimeType = getMimeType(fileName);
+    const chunkSize = 1024 * 1024;
+    const postJson = async (url, data2) => {
+      const resp = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/octet-stream" },
-        body: chunkArrayBuffer
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data2)
       });
-      console.log(`chunk index ${chunkIndex} uploaded size ${chunkArrayBuffer.byteLength}`);
+      if (!resp.ok) {
+        throw new Error(`HTTP Error ${resp.status}: ${await resp.text()}`);
+      }
+      return await resp.json();
+    };
+    console.log("Calling XferBegin...", { fileName, contentId });
+    const beginUrl = ServiceEndpoint("/xferbegin");
+    const beginResp = await postJson(beginUrl, {
+      fileName,
+      contentId
+    });
+    const id = beginResp.id;
+    console.log(`Received transfer id: ${id}`);
+    console.log("Uploading chunks...");
+    const fileBytes = file.size;
+    const totalChunks = Math.ceil(fileBytes / chunkSize);
+    console.log("sizes at start", { fileBytes, totalChunks });
+    for (let i = 0; i < totalChunks; i++) {
+      const start = i * chunkSize;
+      const end = Math.min(fileBytes, (i + 1) * chunkSize);
+      const chunk = await file.slice(start, end).arrayBuffer();
+      const b64data = import_base64_js.default.fromByteArray(new Uint8Array(chunk));
+      console.log("chunk sizes ", {
+        chunkSize: chunk.byteLength,
+        b64Size: b64data.length,
+        start,
+        end,
+        range: end - start
+      });
+      console.log(`Uploading chunk ${i} (${end - start} bytes)...`);
+      const chunkUrl = ServiceEndpoint("/xferchunk");
+      await postJson(chunkUrl, {
+        id,
+        chunkIndex: i,
+        data: b64data
+      });
     }
-    console.log("done uploading... now doing completion");
-    const completeUrl = ServiceEndpoint(`/complete/${uploadId}/${fk}`);
-    const resp = await fetch(completeUrl);
-    const data2 = await resp.json();
-    console.log("return from complete", { data: data2 });
-    return data2.url;
+    console.log("Calling XferFinish...");
+    const finishUrl = ServiceEndpoint(`/xferfinish/${id}/${encodeURIComponent(mimeType)}`);
+    const finishResp = await fetch(finishUrl);
+    if (!finishResp.ok) {
+      throw new Error(`HTTP Error ${finishResp.status}: ${await finishResp.text()}`);
+    }
+    const finishData = await finishResp.json();
+    console.log("Upload complete! Final URL:", finishData.url);
+    return finishData.url;
   }
   async function doFinalBinding(metaId, artistName, audioUrl, artUrl) {
     const finalUrl = ServiceEndpoint("/finalize");
