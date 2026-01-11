@@ -21,7 +21,7 @@
     "@tremho/basic-s3-actions": "^2.3.8",
     "@tremho/coverterage": "^1.0.5",
     "@tremho/idtbd": "^1.0.3",
-    "@tremho/inverse-y": "^2.2.29",
+    "@tremho/inverse-y": "^2.2.31",
     "base64-js": "^1.5.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

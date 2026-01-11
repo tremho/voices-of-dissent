@@ -91,7 +91,7 @@ export async function conductSubmission(info:SubmissionMetadata, editId?:string)
     console.log("final artist name ", info.artistName)
     const fresp:any = await doFinalBinding(bindId, info.artistName, audioUrl, artUrl)
     console.log("response from final", fresp)
-    alert("pause to take this in")
+    //alert("pause to take this in")
     return fresp
 
 }
